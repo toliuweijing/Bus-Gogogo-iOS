@@ -10,6 +10,8 @@
 
 #import "PTLinePickerDataSource.h"
 #import "PTLinePickerTableViewCell.h"
+#import "PTStopDetailViewController.h"
+#import "PTLine.h"
 
 @interface PTLinePickerViewController ()
 
@@ -23,6 +25,7 @@
 {
   if (self = [super init]) {
     _dataSource = [[PTLinePickerDataSource alloc] init];
+    self.navigationItem.title = @"Bus Lines";
   }
   return self;
 }
@@ -62,6 +65,29 @@
   PTLine *line = [self.dataSource lineAtIndexPath:indexPath];
   cell.line = line;
   return cell;
+}
+
+#pragma mark -
+#pragma mark UITableViewDelegate
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+  PTLine *line = [self.dataSource lineAtIndexPath:indexPath];
+  
+  [self _pushToStopPickerWithLine:line];
+  
+  [tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
+#pragma mark -
+#pragma mark Private
+
+- (void)_pushToStopPickerWithLine:(PTLine *)line
+{
+  // TODO......
+  PTStop *stop = [line.stops firstObject];
+  PTStopDetailViewController *stopDetailVC = [[PTStopDetailViewController alloc] initWithStop:stop];
+  [self.navigationController pushViewController:stopDetailVC animated:YES];
 }
 
 @end
