@@ -22,6 +22,8 @@
 		FB517C6318DDDF43005C7881 /* Bus_GogogoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FB517C6218DDDF43005C7881 /* Bus_GogogoTests.m */; };
 		FB517C6F18DDE30F005C7881 /* PTLine.m in Sources */ = {isa = PBXBuildFile; fileRef = FB517C6E18DDE30F005C7881 /* PTLine.m */; };
 		FB517C7218DDE4F4005C7881 /* PTStop.m in Sources */ = {isa = PBXBuildFile; fileRef = FB517C7118DDE4F4005C7881 /* PTStop.m */; };
+		FB517C7C18DDE8C3005C7881 /* PTLinePickerDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = FB517C7B18DDE8C3005C7881 /* PTLinePickerDataSource.m */; };
+		FB517C7F18DDF0F4005C7881 /* PTLinePickerTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FB517C7E18DDF0F4005C7881 /* PTLinePickerTableViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +59,10 @@
 		FB517C6E18DDE30F005C7881 /* PTLine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTLine.m; sourceTree = "<group>"; };
 		FB517C7018DDE4F4005C7881 /* PTStop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTStop.h; sourceTree = "<group>"; };
 		FB517C7118DDE4F4005C7881 /* PTStop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTStop.m; sourceTree = "<group>"; };
+		FB517C7A18DDE8C3005C7881 /* PTLinePickerDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTLinePickerDataSource.h; sourceTree = "<group>"; };
+		FB517C7B18DDE8C3005C7881 /* PTLinePickerDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTLinePickerDataSource.m; sourceTree = "<group>"; };
+		FB517C7D18DDF0F4005C7881 /* PTLinePickerTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTLinePickerTableViewCell.h; sourceTree = "<group>"; };
+		FB517C7E18DDF0F4005C7881 /* PTLinePickerTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTLinePickerTableViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -159,6 +165,10 @@
 			children = (
 				FB517C4C18DDDF43005C7881 /* PTLinePickerViewController.h */,
 				FB517C4D18DDDF43005C7881 /* PTLinePickerViewController.m */,
+				FB517C7A18DDE8C3005C7881 /* PTLinePickerDataSource.h */,
+				FB517C7B18DDE8C3005C7881 /* PTLinePickerDataSource.m */,
+				FB517C7D18DDF0F4005C7881 /* PTLinePickerTableViewCell.h */,
+				FB517C7E18DDF0F4005C7881 /* PTLinePickerTableViewCell.m */,
 				FB517C7318DDE4FB005C7881 /* Model */,
 			);
 			name = LinePicker;
@@ -273,7 +283,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				FB517C4818DDDF43005C7881 /* PTAppDelegate.m in Sources */,
+				FB517C7F18DDF0F4005C7881 /* PTLinePickerTableViewCell.m in Sources */,
 				FB517C4E18DDDF43005C7881 /* PTLinePickerViewController.m in Sources */,
+				FB517C7C18DDE8C3005C7881 /* PTLinePickerDataSource.m in Sources */,
 				FB517C4418DDDF43005C7881 /* main.m in Sources */,
 				FB517C7218DDE4F4005C7881 /* PTStop.m in Sources */,
 				FB517C6F18DDE30F005C7881 /* PTLine.m in Sources */,

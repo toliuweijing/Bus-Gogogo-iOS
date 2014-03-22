@@ -18,7 +18,6 @@
 // location of bus stop, derived from coorindate.
 @property (nonatomic, strong, readonly) CLLocation *location;
 
-// coorindate of bus stop.
-@property (nonatomic, assign, readonly) CLLocationCoordinate2D coordinate;
++ (PTStop *)stopAtBayRidgeShoreRoad;
 
 @end

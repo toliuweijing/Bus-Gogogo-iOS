@@ -17,6 +17,11 @@
 @property (nonatomic, copy, readonly) NSString *prefix;
 
 // number of bus line, i.e. 27 for line X27.
-@property (nonatomic, assign, readonly) NSInteger *number;
+@property (nonatomic, copy, readonly) NSString *number;
+
+// stops of bus line.
+@property (nonatomic, strong, readonly) NSArray *stops;
+
++ (PTLine *)lineForX27;
 
 @end

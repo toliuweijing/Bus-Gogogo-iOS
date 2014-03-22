@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface PTLinePickerViewController : UIViewController
+@interface PTLinePickerViewController : UITableViewController
 
 @end
