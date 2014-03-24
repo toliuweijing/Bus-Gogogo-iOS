@@ -51,17 +51,17 @@
   const NSString *kServiceDelivery = @"ServiceDelivery";
   const NSString *kStopMonitoringDelivery = @"StopMonitoringDelivery";
   const NSString *kMonitoredStopVisit = @"MonitoredStopVisit";
+  const NSString *kMonitoredVehicleJourney = @"MonitoredVehicleJourney";
+  const NSString *kVehicleLocation = @"VehicleLocation";
   NSArray *array = [response[kSiri][kServiceDelivery][kStopMonitoringDelivery] firstObject][kMonitoredStopVisit];
-  [array enumerateObjectsUsingBlock:^(NSDictionary *obj, NSUInteger idx, BOOL *stop) {
-    const NSString *kMonitoredVehicleJourney = @"MonitoredVehicleJourney";
-    const NSString *kVehicleLocation = @"VehicleLocation";
+  NSArray *locationsArray = [array valueForKeyPath:@"MonitoredVehicleJourney.VehicleLocation"];
+  for (NSDictionary *locationJSON in locationsArray) {
     const NSString *kLatitude = @"Latitude";
     const NSString *kLongitude = @"Longitude";
-    NSDictionary *locationDict = obj[kMonitoredVehicleJourney][kVehicleLocation];
-    CLLocation *location = [[CLLocation alloc] initWithLatitude:[locationDict[kLatitude] doubleValue]
-                                                      longitude:[locationDict[kLongitude] doubleValue]];
+    CLLocation *location = [[CLLocation alloc] initWithLatitude:[locationJSON[kLatitude] doubleValue]
+                                                      longitude:[locationJSON[kLongitude] doubleValue]];
     [locations addObject:location];
-  }];
+  }
   return locations;
 }
 
