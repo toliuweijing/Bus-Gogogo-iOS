@@ -11,9 +11,15 @@
 #import "PTStop.h"
 #import "PTStopDetailView.h"
 
+#import "PTStopDetailDownloader.h"
+
 @interface PTStopDetailViewController ()
 
 @property (nonatomic, strong) PTStop *stop;
+
+@property (nonatomic, strong) PTStopDetailDownloader *downloader;
+
+@property (nonatomic, strong) PTStopDetailView *stopDetailView;
 
 @end
 
@@ -23,13 +29,24 @@
 {
   if (self = [super init]) {
     _stop = stop;
+    _downloader = [[PTStopDetailDownloader alloc] initWithStop:stop];
   }
   return self;
 }
 
 - (void)loadView
 {
-  self.view = [[PTStopDetailView alloc] initWithFrame:CGRectZero stop:self.stop];
+  self.stopDetailView = [[PTStopDetailView alloc] initWithFrame:CGRectZero stop:self.stop line:self.line];
+  self.view = self.stopDetailView;
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+  [self.downloader
+   downloadWithSuccessBlock:^(NSArray *locations) {
+     self.stopDetailView.locations = locations;
+  }
+   failureBlock:nil];
 }
 
 - (void)viewDidLoad

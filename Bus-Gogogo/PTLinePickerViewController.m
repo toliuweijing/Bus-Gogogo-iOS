@@ -87,6 +87,7 @@
   // TODO......
   PTStop *stop = [line.stops firstObject];
   PTStopDetailViewController *stopDetailVC = [[PTStopDetailViewController alloc] initWithStop:stop];
+  stopDetailVC.line = line;
   [self.navigationController pushViewController:stopDetailVC animated:YES];
 }
 

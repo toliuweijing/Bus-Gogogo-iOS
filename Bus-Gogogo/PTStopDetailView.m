@@ -11,25 +11,49 @@
 #import <MapKit/MapKit.h>
 #import "PTStop+MKAnnotation.h"
 
+@interface PTBus : NSObject <MKAnnotation>
+@property (nonatomic, strong) CLLocation *location;
+@end
+@implementation PTBus
+
+- (CLLocationCoordinate2D)coordinate
+{
+  return self.location.coordinate;
+}
+
+- (NSString *)title
+{
+  return @"bus";
+}
+
+@end
+
 @interface PTStopDetailView ()
 
 @property (nonatomic, strong) MKMapView *mapView;
 
+// bus
+@property (nonatomic, strong) NSArray *circleViews;
+
 @property (nonatomic, strong) UIActivityIndicatorView *activityIndicatorView;
+
+@property (nonatomic, strong) PTLine *line;
+
+@property (nonatomic, strong) PTStop *stop;
 
 @end
 
 @implementation PTStopDetailView
 
-- (id)initWithFrame:(CGRect)frame stop:(PTStop *)stop
+- (id)initWithFrame:(CGRect)frame stop:(PTStop *)stop line:(PTLine *)line
 {
   self = [super initWithFrame:frame];
   if (self) {
     _mapView = [PTStopDetailView _mapViewWithStop:stop];
     [self addSubview:_mapView];
     
-//    _activityIndicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
-//    [self addSubview:_activityIndicatorView];
+    _stop = stop;
+    _line = line;
   }
   return self;
 }
@@ -39,7 +63,7 @@
   MKMapView *mapView = [[MKMapView alloc] initWithFrame:CGRectZero];
   [mapView addAnnotation:stop];
   
-  mapView.region = MKCoordinateRegionMakeWithDistance(stop.coordinate, 5, 5);
+//  mapView.region = MKCoordinateRegionMakeWithDistance(stop.coordinate, 100.0, 100.0);
   return mapView;
 }
 
@@ -47,17 +71,20 @@
 {
   [super layoutSubviews];
   
-  _mapView.frame = self.bounds;
-  _activityIndicatorView.center = self.center;
+  self.mapView.frame = self.bounds;
+  self.activityIndicatorView.center = self.center;
 }
 
-/*
- // Only override drawRect: if you perform custom drawing.
- // An empty implementation adversely affects performance during animation.
- - (void)drawRect:(CGRect)rect
- {
- // Drawing code
- }
- */
+- (void)setLocations:(NSArray *)locations
+{
+  [locations enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+    PTBus *bus = [[PTBus alloc] init];
+    bus.location = obj;
+    NSLog(@"%@", obj);
+    [self.mapView addAnnotation:bus];
+  }];
+  [self setNeedsDisplay];
+  NSLog(@"update");
+}
 
 @end

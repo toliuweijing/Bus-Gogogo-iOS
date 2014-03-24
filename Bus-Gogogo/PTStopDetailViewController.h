@@ -15,4 +15,6 @@
 
 - (instancetype)initWithStop:(PTStop *)stop;
 
+@property (nonatomic, strong) PTLine *line;
+
 @end
