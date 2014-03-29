@@ -10,25 +10,10 @@
 
 #import <MapKit/MapKit.h>
 #import "PTStop+MKAnnotation.h"
+#import "PTBus.h"
+#import "PTBusMapOverlay.h"
 
-@interface PTBus : NSObject <MKAnnotation>
-@property (nonatomic, strong) CLLocation *location;
-@end
-@implementation PTBus
-
-- (CLLocationCoordinate2D)coordinate
-{
-  return self.location.coordinate;
-}
-
-- (NSString *)title
-{
-  return @"bus";
-}
-
-@end
-
-@interface PTStopDetailView ()
+@interface PTStopDetailView () <MKMapViewDelegate>
 
 @property (nonatomic, strong) MKMapView *mapView;
 
@@ -50,6 +35,7 @@
   self = [super initWithFrame:frame];
   if (self) {
     _mapView = [PTStopDetailView _mapViewWithStop:stop];
+    _mapView.delegate = self;
     [self addSubview:_mapView];
     
     _stop = stop;
@@ -63,7 +49,6 @@
   MKMapView *mapView = [[MKMapView alloc] initWithFrame:CGRectZero];
   [mapView addAnnotation:stop];
   
-//  mapView.region = MKCoordinateRegionMakeWithDistance(stop.coordinate, 100.0, 100.0);
   return mapView;
 }
 
@@ -72,6 +57,8 @@
   [super layoutSubviews];
   
   self.mapView.frame = self.bounds;
+  MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(self.stop.coordinate, 100, 100);
+  [self.mapView setRegion:region animated:YES];
   self.activityIndicatorView.center = self.center;
 }
 
@@ -80,11 +67,22 @@
   [locations enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
     PTBus *bus = [[PTBus alloc] init];
     bus.location = obj;
-    NSLog(@"%@", obj);
-    [self.mapView addAnnotation:bus];
+    PTBusMapOverlay *overlay = [[PTBusMapOverlay alloc] initWithBus:bus];
+    [self.mapView addOverlay:overlay];
   }];
   [self setNeedsDisplay];
+  [self setNeedsLayout];
   NSLog(@"update");
+}
+
+#pragma mark -
+#pragma mark MKMapViewDelegate
+
+- (MKOverlayRenderer *)mapView:(MKMapView *)mapView rendererForOverlay:(id<MKOverlay>)overlay
+{
+  assert([overlay isKindOfClass:[PTBusMapOverlay class]]);
+  MKCircleRenderer *renderer = [[MKCircleRenderer alloc] initWithOverlay:((PTBusMapOverlay *)overlay).circle];
+  return renderer;
 }
 
 @end

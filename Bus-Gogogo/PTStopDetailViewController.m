@@ -45,7 +45,8 @@
   [self.downloader
    downloadWithSuccessBlock:^(NSArray *locations) {
      self.stopDetailView.locations = locations;
-  }
+     NSLog(@"%@", locations);
+   }
    failureBlock:nil];
 }
 

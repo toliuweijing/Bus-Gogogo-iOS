@@ -19,4 +19,5 @@ typedef void(^stop_detail_downloader_failure_block)(NSError *error);
 
 - (void)downloadWithSuccessBlock:(stop_detail_downloader_success_block)successBlock
                     failureBlock:(stop_detail_downloader_failure_block)failureBlock;
+
 @end

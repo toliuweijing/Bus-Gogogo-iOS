@@ -9,6 +9,7 @@
 #import "PTStopDetailDownloader.h"
 #import "PTStopMonitoringRequest.h"
 #import <CoreLocation/CoreLocation.h>
+#import "PTDataModels.h"
 @interface PTStopDetailDownloader () <NSURLConnectionDelegate>
 
 @property (nonatomic, strong) NSURLSession *session;
@@ -36,6 +37,7 @@
 {
   [[self.session dataTaskWithRequest:[PTStopMonitoringRequest sampleRequest] completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
     NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+    MTAResponse *mta = [[MTAResponse alloc] initWithDictionary:json];
     NSArray *locations = [self parseResponse:json];
     dispatch_async(dispatch_get_main_queue(), ^{
       successBlock(locations);
