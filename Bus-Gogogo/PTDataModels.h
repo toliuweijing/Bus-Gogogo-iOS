@@ -18,13 +18,6 @@
 @class MTAMonitoredVehicleJourney;
 @class MTAMonitoredStopVisit;
 @class MTAStopMonitoringDelivery;
-@class MTAFramedVehicleJourneyRef2;
-@class MTAVehicleLocation2;
-@class MTADistances2;
-@class MTAExtensions2;
-@class MTAMonitoredCall2;
-@class MTAOnwardCalls2;
-@class MTAMonitoredVehicleJourney2;
 @class MTAVehicleActivity;
 @class MTAVehicleMonitoringDelivery;
 @class MTAServiceDelivery;
@@ -217,157 +210,13 @@
 
 @end
 
-
-@interface MTAFramedVehicleJourneyRef2 : NSObject
-{
-  NSString * DataFrameRef;
-  NSString * DatedVehicleJourneyRef;
-}
-
-@property(nonatomic,retain) NSString * DataFrameRef;
-@property(nonatomic,retain) NSString * DatedVehicleJourneyRef;
-
-+ (id) objectWithDictionary:(NSDictionary*)dictionary;
-- (id) initWithDictionary:(NSDictionary*)dictionary;
-
-@end
-
-
-@interface MTAVehicleLocation2 : NSObject
-{
-  NSNumber * Longitude;
-  NSNumber * Latitude;
-}
-
-@property(nonatomic,retain) NSNumber * Longitude;
-@property(nonatomic,retain) NSNumber * Latitude;
-
-+ (id) objectWithDictionary:(NSDictionary*)dictionary;
-- (id) initWithDictionary:(NSDictionary*)dictionary;
-
-@end
-
-
-@interface MTADistances2 : NSObject
-{
-  NSString * PresentableDistance;
-  NSNumber * DistanceFromCall;
-  NSNumber * StopsFromCall;
-  NSNumber * CallDistanceAlongRoute;
-}
-
-@property(nonatomic,retain) NSString * PresentableDistance;
-@property(nonatomic,retain) NSNumber * DistanceFromCall;
-@property(nonatomic,retain) NSNumber * StopsFromCall;
-@property(nonatomic,retain) NSNumber * CallDistanceAlongRoute;
-
-+ (id) objectWithDictionary:(NSDictionary*)dictionary;
-- (id) initWithDictionary:(NSDictionary*)dictionary;
-
-@end
-
-
-@interface MTAExtensions2 : NSObject
-{
-  MTADistances2 * Distances;
-}
-
-@property(nonatomic,retain) MTADistances2 * Distances;
-
-+ (id) objectWithDictionary:(NSDictionary*)dictionary;
-- (id) initWithDictionary:(NSDictionary*)dictionary;
-
-@end
-
-
-@interface MTAMonitoredCall2 : NSObject
-{
-  MTAExtensions2 * Extensions;
-  NSString * StopPointRef;
-  NSNumber * VisitNumber;
-  NSString * StopPointName;
-}
-
-@property(nonatomic,retain) MTAExtensions2 * Extensions;
-@property(nonatomic,retain) NSString * StopPointRef;
-@property(nonatomic,retain) NSNumber * VisitNumber;
-@property(nonatomic,retain) NSString * StopPointName;
-
-+ (id) objectWithDictionary:(NSDictionary*)dictionary;
-- (id) initWithDictionary:(NSDictionary*)dictionary;
-
-@end
-
-
-@interface MTAOnwardCalls2 : NSObject
-{
-}
-
-
-+ (id) objectWithDictionary:(NSDictionary*)dictionary;
-- (id) initWithDictionary:(NSDictionary*)dictionary;
-
-@end
-
-
-@interface MTAMonitoredVehicleJourney2 : NSObject
-{
-  NSString * LineRef;
-  NSString * DirectionRef;
-  MTAFramedVehicleJourneyRef2 * FramedVehicleJourneyRef;
-  NSString * JourneyPatternRef;
-  NSString * PublishedLineName;
-  NSString * OperatorRef;
-  NSString * OriginRef;
-  NSString * DestinationRef;
-  NSString * DestinationName;
-  NSMutableArray * SituationRef;
-  NSString * Monitored;
-  MTAVehicleLocation2 * VehicleLocation;
-  NSNumber * Bearing;
-  NSString * ProgressRate;
-  NSString * ProgressStatus;
-  NSString * BlockRef;
-  NSString * VehicleRef;
-  MTAMonitoredCall2 * MonitoredCall;
-  MTAOnwardCalls2 * OnwardCalls;
-  NSString * OriginAimedDepartureTime;
-}
-
-@property(nonatomic,retain) NSString * LineRef;
-@property(nonatomic,retain) NSString * DirectionRef;
-@property(nonatomic,retain) MTAFramedVehicleJourneyRef2 * FramedVehicleJourneyRef;
-@property(nonatomic,retain) NSString * JourneyPatternRef;
-@property(nonatomic,retain) NSString * PublishedLineName;
-@property(nonatomic,retain) NSString * OperatorRef;
-@property(nonatomic,retain) NSString * OriginRef;
-@property(nonatomic,retain) NSString * DestinationRef;
-@property(nonatomic,retain) NSString * DestinationName;
-@property(nonatomic,retain) NSMutableArray * SituationRef;
-@property(nonatomic,retain) NSString * Monitored;
-@property(nonatomic,retain) MTAVehicleLocation2 * VehicleLocation;
-@property(nonatomic,retain) NSNumber * Bearing;
-@property(nonatomic,retain) NSString * ProgressRate;
-@property(nonatomic,retain) NSString * ProgressStatus;
-@property(nonatomic,retain) NSString * BlockRef;
-@property(nonatomic,retain) NSString * VehicleRef;
-@property(nonatomic,retain) MTAMonitoredCall2 * MonitoredCall;
-@property(nonatomic,retain) MTAOnwardCalls2 * OnwardCalls;
-@property(nonatomic,retain) NSString * OriginAimedDepartureTime;
-
-+ (id) objectWithDictionary:(NSDictionary*)dictionary;
-- (id) initWithDictionary:(NSDictionary*)dictionary;
-
-@end
-
-
 @interface MTAVehicleActivity : NSObject
 {
-  MTAMonitoredVehicleJourney2 * MonitoredVehicleJourney;
+  MTAMonitoredVehicleJourney * MonitoredVehicleJourney;
   NSString * RecordedAtTime;
 }
 
-@property(nonatomic,retain) MTAMonitoredVehicleJourney2 * MonitoredVehicleJourney;
+@property(nonatomic,retain) MTAMonitoredVehicleJourney * MonitoredVehicleJourney;
 @property(nonatomic,retain) NSString * RecordedAtTime;
 
 + (id) objectWithDictionary:(NSDictionary*)dictionary;

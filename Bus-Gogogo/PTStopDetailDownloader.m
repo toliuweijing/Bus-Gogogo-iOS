@@ -32,39 +32,15 @@
   return self;
 }
 
-- (void)downloadWithSuccessBlock:(stop_detail_downloader_success_block)successBlock
-                    failureBlock:(stop_detail_downloader_failure_block)failureBlock
+- (void)downloadWithCompletionHandler:(stop_detail_downloader_completion_handler)completionHandler
 {
   [[self.session dataTaskWithRequest:[PTStopMonitoringRequest sampleRequest] completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
     NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
     MTAResponse *mta = [[MTAResponse alloc] initWithDictionary:json];
-    NSArray *locations = [self parseResponse:json];
     dispatch_async(dispatch_get_main_queue(), ^{
-      successBlock(locations);
+//      successBlock(locations);
     });
   }] resume];
-}
-
-// return all locations parsed from response
-- (NSArray *)parseResponse:(NSDictionary *)response
-{
-  NSMutableArray *locations = [[NSMutableArray alloc] init];
-  const NSString *kSiri = @"Siri";
-  const NSString *kServiceDelivery = @"ServiceDelivery";
-  const NSString *kStopMonitoringDelivery = @"StopMonitoringDelivery";
-  const NSString *kMonitoredStopVisit = @"MonitoredStopVisit";
-  const NSString *kMonitoredVehicleJourney = @"MonitoredVehicleJourney";
-  const NSString *kVehicleLocation = @"VehicleLocation";
-  NSArray *array = [response[kSiri][kServiceDelivery][kStopMonitoringDelivery] firstObject][kMonitoredStopVisit];
-  NSArray *locationsArray = [array valueForKeyPath:@"MonitoredVehicleJourney.VehicleLocation"];
-  for (NSDictionary *locationJSON in locationsArray) {
-    const NSString *kLatitude = @"Latitude";
-    const NSString *kLongitude = @"Longitude";
-    CLLocation *location = [[CLLocation alloc] initWithLatitude:[locationJSON[kLatitude] doubleValue]
-                                                      longitude:[locationJSON[kLongitude] doubleValue]];
-    [locations addObject:location];
-  }
-  return locations;
 }
 
 - (NSCachedURLResponse *)connection:(NSURLConnection *)connection willCacheResponse:(NSCachedURLResponse *)cachedResponse {

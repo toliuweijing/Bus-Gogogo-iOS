@@ -10,14 +10,12 @@
 
 @class PTStop;
 
-typedef void(^stop_detail_downloader_success_block)(NSArray *locations);
-typedef void(^stop_detail_downloader_failure_block)(NSError *error);
+typedef void(^stop_detail_downloader_completion_handler)(NSArray *locations, NSError *error);
 
 @interface PTStopDetailDownloader : NSObject
 
 - (instancetype)initWithStop:(PTStop *)stop;
 
-- (void)downloadWithSuccessBlock:(stop_detail_downloader_success_block)successBlock
-                    failureBlock:(stop_detail_downloader_failure_block)failureBlock;
+- (void)downloadWithCompletionHandler:(stop_detail_downloader_completion_handler)completionHandler;
 
 @end
