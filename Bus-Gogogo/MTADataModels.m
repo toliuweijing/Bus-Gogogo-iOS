@@ -5,7 +5,7 @@
 // Diego Trinciarelli 2011
 //
 
-#import "PTDataModels.h"
+#import "MTADataModels.h"
 
 
 
@@ -13,15 +13,9 @@
 
 @synthesize Siri;
 
-- (void) dealloc
-{
-  [Siri release];
-  [super dealloc];
-}
-
 + (id) objectWithDictionary:(NSDictionary*)dictionary
 {
-  id obj = [[[MTAResponse alloc] initWithDictionary:dictionary] autorelease];
+  id obj = [[MTAResponse alloc] initWithDictionary:dictionary];
   return obj;
 }
 
@@ -45,16 +39,9 @@
 @synthesize DataFrameRef;
 @synthesize DatedVehicleJourneyRef;
 
-- (void) dealloc
-{
-  [DataFrameRef release];
-  [DatedVehicleJourneyRef release];
-  [super dealloc];
-}
-
 + (id) objectWithDictionary:(NSDictionary*)dictionary
 {
-  id obj = [[[MTAFramedVehicleJourneyRef alloc] initWithDictionary:dictionary] autorelease];
+  id obj = [[MTAFramedVehicleJourneyRef alloc] initWithDictionary:dictionary];
   return obj;
 }
 
@@ -78,16 +65,9 @@
 @synthesize Longitude;
 @synthesize Latitude;
 
-- (void) dealloc
-{
-  [Longitude release];
-  [Latitude release];
-  [super dealloc];
-}
-
 + (id) objectWithDictionary:(NSDictionary*)dictionary
 {
-  id obj = [[[MTAVehicleLocation alloc] initWithDictionary:dictionary] autorelease];
+  id obj = [[MTAVehicleLocation alloc] initWithDictionary:dictionary];
   return obj;
 }
 
@@ -113,18 +93,9 @@
 @synthesize StopsFromCall;
 @synthesize CallDistanceAlongRoute;
 
-- (void) dealloc
-{
-  [PresentableDistance release];
-  [DistanceFromCall release];
-  [StopsFromCall release];
-  [CallDistanceAlongRoute release];
-  [super dealloc];
-}
-
 + (id) objectWithDictionary:(NSDictionary*)dictionary
 {
-  id obj = [[[MTADistances alloc] initWithDictionary:dictionary] autorelease];
+  id obj = [[MTADistances alloc] initWithDictionary:dictionary];
   return obj;
 }
 
@@ -149,15 +120,9 @@
 
 @synthesize Distances;
 
-- (void) dealloc
-{
-  [Distances release];
-  [super dealloc];
-}
-
 + (id) objectWithDictionary:(NSDictionary*)dictionary
 {
-  id obj = [[[MTAExtensions alloc] initWithDictionary:dictionary] autorelease];
+  id obj = [[MTAExtensions alloc] initWithDictionary:dictionary];
   return obj;
 }
 
@@ -183,18 +148,9 @@
 @synthesize VisitNumber;
 @synthesize StopPointName;
 
-- (void) dealloc
-{
-  [Extensions release];
-  [StopPointRef release];
-  [VisitNumber release];
-  [StopPointName release];
-  [super dealloc];
-}
-
 + (id) objectWithDictionary:(NSDictionary*)dictionary
 {
-  id obj = [[[MTAMonitoredCall alloc] initWithDictionary:dictionary] autorelease];
+  id obj = [[MTAMonitoredCall alloc] initWithDictionary:dictionary];
   return obj;
 }
 
@@ -218,15 +174,9 @@
 
 @implementation MTAOnwardCalls
 
-
-- (void) dealloc
-{
-  [super dealloc];
-}
-
 + (id) objectWithDictionary:(NSDictionary*)dictionary
 {
-  id obj = [[[MTAOnwardCalls alloc] initWithDictionary:dictionary] autorelease];
+  id obj = [[MTAOnwardCalls alloc] initWithDictionary:dictionary];
   return obj;
 }
 
@@ -266,34 +216,9 @@
 @synthesize OriginAimedDepartureTime;
 @synthesize ProgressStatus;
 
-- (void) dealloc
-{
-  [LineRef release];
-  [DirectionRef release];
-  [FramedVehicleJourneyRef release];
-  [JourneyPatternRef release];
-  [PublishedLineName release];
-  [OperatorRef release];
-  [OriginRef release];
-  [DestinationRef release];
-  [DestinationName release];
-  [SituationRef release];
-  [Monitored release];
-  [VehicleLocation release];
-  [Bearing release];
-  [ProgressRate release];
-  [BlockRef release];
-  [VehicleRef release];
-  [MonitoredCall release];
-  [OnwardCalls release];
-  [OriginAimedDepartureTime release];
-  [ProgressStatus release];
-  [super dealloc];
-}
-
 + (id) objectWithDictionary:(NSDictionary*)dictionary
 {
-  id obj = [[[MTAMonitoredVehicleJourney alloc] initWithDictionary:dictionary] autorelease];
+  id obj = [[MTAMonitoredVehicleJourney alloc] initWithDictionary:dictionary];
   return obj;
 }
 
@@ -344,16 +269,9 @@
 @synthesize MonitoredVehicleJourney;
 @synthesize RecordedAtTime;
 
-- (void) dealloc
-{
-  [MonitoredVehicleJourney release];
-  [RecordedAtTime release];
-  [super dealloc];
-}
-
 + (id) objectWithDictionary:(NSDictionary*)dictionary
 {
-  id obj = [[[MTAMonitoredStopVisit alloc] initWithDictionary:dictionary] autorelease];
+  id obj = [[MTAMonitoredStopVisit alloc] initWithDictionary:dictionary];
   return obj;
 }
 
@@ -379,17 +297,9 @@
 @synthesize ResponseTimestamp;
 @synthesize ValidUntil;
 
-- (void) dealloc
-{
-  [MonitoredStopVisit release];
-  [ResponseTimestamp release];
-  [ValidUntil release];
-  [super dealloc];
-}
-
 + (id) objectWithDictionary:(NSDictionary*)dictionary
 {
-  id obj = [[[MTAStopMonitoringDelivery alloc] initWithDictionary:dictionary] autorelease];
+  id obj = [[MTAStopMonitoringDelivery alloc] initWithDictionary:dictionary];
   return obj;
 }
 
@@ -418,16 +328,9 @@
 @synthesize MonitoredVehicleJourney;
 @synthesize RecordedAtTime;
 
-- (void) dealloc
-{
-  [MonitoredVehicleJourney release];
-  [RecordedAtTime release];
-  [super dealloc];
-}
-
 + (id) objectWithDictionary:(NSDictionary*)dictionary
 {
-  id obj = [[[MTAVehicleActivity alloc] initWithDictionary:dictionary] autorelease];
+  id obj = [[MTAVehicleActivity alloc] initWithDictionary:dictionary];
   return obj;
 }
 
@@ -453,17 +356,9 @@
 @synthesize ResponseTimestamp;
 @synthesize ValidUntil;
 
-- (void) dealloc
-{
-  [VehicleActivity release];
-  [ResponseTimestamp release];
-  [ValidUntil release];
-  [super dealloc];
-}
-
 + (id) objectWithDictionary:(NSDictionary*)dictionary
 {
-  id obj = [[[MTAVehicleMonitoringDelivery alloc] initWithDictionary:dictionary] autorelease];
+  id obj = [[MTAVehicleMonitoringDelivery alloc] initWithDictionary:dictionary];
   return obj;
 }
 
@@ -495,18 +390,9 @@
 @synthesize VehicleMonitoringDelivery;
 @synthesize SituationExchangeDelivery;
 
-- (void) dealloc
-{
-  [ResponseTimestamp release];
-  [StopMonitoringDelivery release];
-  [VehicleMonitoringDelivery release];
-  [SituationExchangeDelivery release];
-  [super dealloc];
-}
-
 + (id) objectWithDictionary:(NSDictionary*)dictionary
 {
-  id obj = [[[MTAServiceDelivery alloc] initWithDictionary:dictionary] autorelease];
+  id obj = [[MTAServiceDelivery alloc] initWithDictionary:dictionary];
   return obj;
 }
 
@@ -546,15 +432,9 @@
 
 @synthesize ServiceDelivery;
 
-- (void) dealloc
-{
-  [ServiceDelivery release];
-  [super dealloc];
-}
-
 + (id) objectWithDictionary:(NSDictionary*)dictionary
 {
-  id obj = [[[MTASiri alloc] initWithDictionary:dictionary] autorelease];
+  id obj = [[MTASiri alloc] initWithDictionary:dictionary];
   return obj;
 }
 

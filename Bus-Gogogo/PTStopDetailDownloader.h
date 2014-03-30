@@ -10,7 +10,7 @@
 
 @class PTStop;
 
-typedef void(^stop_detail_downloader_completion_handler)(NSArray *locations, NSError *error);
+typedef void(^stop_detail_downloader_completion_handler)(NSArray *vehicleJourney, NSError *error);
 
 @interface PTStopDetailDownloader : NSObject
 

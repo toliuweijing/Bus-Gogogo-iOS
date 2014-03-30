@@ -30,7 +30,8 @@ struct PTStopMonitoringRequestParamNames PTStopMonitoringRequestParamNames = {
 
 + (PTStopMonitoringRequest *)sampleRequest
 {
-  NSString *base = @"http://bustime.mta.info/api/siri/stop-monitoring.json?key=cfb3c75b-5a43-4e66-b7f8-14e666b0c1c1&LineRef=MTA%20NYCT_B9&MonitoringRef=300071";
+//  NSString *base = @"http://bustime.mta.info/api/siri/stop-monitoring.json?key=cfb3c75b-5a43-4e66-b7f8-14e666b0c1c1&LineRef=MTA%20NYCT_B9&MonitoringRef=300071";
+  NSString *base = @"http://bustime.mta.info/api/siri/stop-monitoring.json?key=cfb3c75b-5a43-4e66-b7f8-14e666b0c1c1&MonitoringRef=300071";
   return [NSURLRequest requestWithURL:[NSURL URLWithString:base] cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:10];
 }
           

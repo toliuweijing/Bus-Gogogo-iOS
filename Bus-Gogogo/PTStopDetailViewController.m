@@ -8,18 +8,23 @@
 
 #import "PTStopDetailViewController.h"
 
+#import "PTMacro.h"
 #import "PTStop.h"
 #import "PTStopDetailView.h"
 
 #import "PTStopDetailDownloader.h"
+#import "PTStopDetailTableViewCell.h"
+#import "PTStopDetailDataSource.h"
 
-@interface PTStopDetailViewController ()
+@interface PTStopDetailViewController () <PTStopDetailDataSourceDelegate>
 
 @property (nonatomic, strong) PTStop *stop;
 
 @property (nonatomic, strong) PTStopDetailDownloader *downloader;
 
-@property (nonatomic, strong) PTStopDetailView *stopDetailView;
+@property (nonatomic, weak) IBOutlet UITableView *tableView;
+
+@property (nonatomic, strong) PTStopDetailDataSource *dataSource;
 
 @end
 
@@ -27,33 +32,48 @@
 
 - (instancetype)initWithStop:(PTStop *)stop
 {
-  if (self = [super init]) {
+  if (self = [self initWithNibName:nil bundle:nil]) {
     _stop = stop;
     _downloader = [[PTStopDetailDownloader alloc] initWithStop:stop];
+    _dataSource = [[PTStopDetailDataSource alloc] init];
+    _dataSource.delegate = self;
+    
+    self.navigationItem.title = @"Bay Ridge / Shore Road";
   }
   return self;
 }
 
-- (void)loadView
-{
-  self.stopDetailView = [[PTStopDetailView alloc] initWithFrame:CGRectZero stop:self.stop line:self.line];
-  self.view = self.stopDetailView;
-}
-
 - (void)viewDidAppear:(BOOL)animated
 {
-  [self.downloader
-   downloadWithSuccessBlock:^(NSArray *locations) {
-     self.stopDetailView.locations = locations;
-     NSLog(@"%@", locations);
-   }
-   failureBlock:nil];
+  [self.downloader downloadWithCompletionHandler:^(NSArray *vehcileJourneys, NSError *error) {
+    DLogFmt(@"num of journeys=%d", vehcileJourneys.count);
+    self.dataSource.vehicleJourneys = vehcileJourneys;
+    [self.tableView reloadData];
+  }];
+}
+
+- (void)dataSource:(PTStopDetailDataSource *)dataSource
+     configureCell:(UITableViewCell *)cell
+          withItem:(PTMonitoredVehicleJourney *)item
+{
+  PTStopDetailTableViewCell *stopDetailCell = (PTStopDetailTableViewCell *)cell;
+  stopDetailCell.vehcileJourney = item;
 }
 
 - (void)viewDidLoad
 {
   [super viewDidLoad];
-	// Do any additional setup after loading the view.
+  
+  [self _configureTableView];
+}
+
+/**
+ Used to configure tableview when created(i.e. in viewDidLoad)
+ */
+- (void)_configureTableView
+{
+  self.tableView.dataSource = self.dataSource;
+  [self.tableView registerClass:[PTStopDetailTableViewCell class] forCellReuseIdentifier:kCellIdentifier];
 }
 
 - (void)didReceiveMemoryWarning
@@ -61,5 +81,7 @@
   [super didReceiveMemoryWarning];
   // Dispose of any resources that can be recreated.
 }
+
+
 
 @end
