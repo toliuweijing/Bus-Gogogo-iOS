@@ -14,4 +14,13 @@
 
 @property (nonatomic, strong) PTMonitoredVehicleJourney *vehcileJourney;
 
+@property (nonatomic, weak) IBOutlet UIImageView *thumbnailView;
+
+@property (nonatomic, weak) IBOutlet UILabel *distanceDetailsLabel;
+
+@property (nonatomic, weak) IBOutlet UILabel *destinationLabel;
+
 @end
+
+extern NSString *kStopDetailTableViewCellClassName();
+extern CGFloat kStopDetailTableViewCellHeight();

@@ -11,6 +11,11 @@
 #import "PTMonitoredVehicleJourney.h"
 #import "PTMacro.h"
 
+@interface PTStopDetailTableViewCell ()
+
+
+@end
+
 @implementation PTStopDetailTableViewCell
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
@@ -52,8 +57,25 @@
 - (void)_configure
 {
   NSString *const imageURL = @"Shuttle-Picture.png";
-  self.imageView.image = [UIImage imageNamed:imageURL];
-  self.textLabel.text = self.vehcileJourney.oneLiner;
+//  self.imageView.image = [UIImage imageNamed:imageURL];
+  self.thumbnailView.image = [UIImage imageNamed:imageURL];
+//  self.textLabel.text = self.vehcileJourney.oneLiner;
+  self.distanceDetailsLabel.text = self.vehcileJourney.oneLiner;
+  self.destinationLabel.text = self.vehcileJourney.destinationName;
 }
 
 @end
+
+extern NSString *kStopDetailTableViewCellClassName()
+{
+  static NSString *name;
+  if (name == nil) {
+    name = NSStringFromClass([PTStopDetailTableViewCell class]);
+  }
+  return name;
+}
+
+extern CGFloat kStopDetailTableViewCellHeight()
+{
+  return 68;
+}

@@ -8,8 +8,7 @@
 
 #import "PTStopDetailDataSource.h"
 #import "PTMonitoredVehicleJourney.h"
-
-NSString *const kCellIdentifier = @"cell_identifier";
+#import "PTStopDetailTableViewCell.h"
 
 @interface PTStopDetailDataSource ()
 
@@ -29,7 +28,7 @@ NSString *const kCellIdentifier = @"cell_identifier";
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath;
 {
-  UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kCellIdentifier forIndexPath:indexPath];
+  UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kStopDetailTableViewCellClassName() forIndexPath:indexPath];
   PTMonitoredVehicleJourney *item = [self itemAtIndexPath:indexPath];
   [self.delegate dataSource:self configureCell:cell withItem:item];
   return cell;

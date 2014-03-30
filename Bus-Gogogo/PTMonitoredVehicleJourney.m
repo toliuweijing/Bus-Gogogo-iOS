@@ -57,9 +57,10 @@
 
 - (NSString *)oneLiner
 {
-  return [NSString stringWithFormat:@"%@ is %d stops away",
+  return [NSString stringWithFormat:@"%@ is %@",
           self.lineName,
-          self.stopsFromCall];
+//          self.stopsFromCall,
+          self.presentableDistance];
 }
 
 @end
