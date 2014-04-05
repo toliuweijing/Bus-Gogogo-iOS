@@ -15,6 +15,8 @@
 
 + (PTStopGroup *)stopGroupFromOBACounterPart:(OBAStopGroup *)oba;
 
+- (MKCoordinateRegion)coordinateRegion;
+
 @property (nonatomic, strong) NSString *name;
 
 // PTSTops

@@ -78,8 +78,8 @@ MKMapViewDelegate>
   [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:kCellIdentifier];
   
   _mapView = [[MKMapView alloc] initWithFrame:self.view.bounds];
-  _mapView.showsUserLocation = YES;
-  _mapView.userTrackingMode = MKUserTrackingModeFollow;
+//  _mapView.showsUserLocation = YES;
+//  _mapView.userTrackingMode = MKUserTrackingModeFollow;
   _mapView.delegate = self;
   [self.view addSubview:_mapView];
   // Uncomment the following line to preserve selection between presentations.
@@ -124,13 +124,11 @@ MKMapViewDelegate>
   }
   MKPolyline *polyline = [MKPolyline polylineWithCoordinates:coordinates count:count];
   [self.mapView addOverlay:polyline];
+  self.mapView.region = [self.stopGroup coordinateRegion];
 }
 
 - (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation
 {
-  MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(userLocation.location.coordinate, 10000, 10000);
-  MKCoordinateRegion adjustedRegion = [self.mapView regionThatFits:region];
-  self.mapView.region = adjustedRegion;
 }
 
 #pragma mark - MKMapViewDelegate
