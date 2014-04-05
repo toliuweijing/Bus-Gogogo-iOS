@@ -48,7 +48,24 @@
   for (OBAStop *obaStop in oba.Data.Stops) {
     [ptStops addObject:[[PTStop alloc] initWithOBAStop:obaStop]];
   }
-  [self.delegate downloader:self didReceiveStops:ptStops];
+  
+  // ----
+  OBAStopGrouping *stopGrouping = oba.Data.StopGroupings.firstObject;
+  OBAStopGroup *stopGroup = stopGrouping.StopGroups.firstObject;
+  OBAPolyline *polyline = stopGroup.Polylines.lastObject;
+  
+  NSArray *points = [self parse:polyline];
+  
+  PTStopGroup *stopGroup = [[PTStopGroup alloc] init];
+  route.stops = ptStops;
+  route.polylinePoints = [points copy];
+  [self.delegate downloader:self didReceiveStopGroup:stopGroup];
+}
+
+- (NSArray *)parse:(OBAPolyline *)polyline
+{
+  NSArray *locations = [self decodePolyLine:polyline.Points];
+  return locations;
 }
 
 - (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didCompleteWithError:(NSError *)error

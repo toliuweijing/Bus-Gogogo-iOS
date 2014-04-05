@@ -14,6 +14,8 @@
 		FB3D48DE18EFAE5A00302031 /* PTStopsForRouteDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = FB3D48DD18EFAE5A00302031 /* PTStopsForRouteDownloader.m */; };
 		FB3D48E118EFB26200302031 /* OBADataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FB3D48E018EFB26200302031 /* OBADataModel.m */; };
 		FB3D48E418EFB47700302031 /* PTRouteDetailTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FB3D48E318EFB47700302031 /* PTRouteDetailTableViewController.m */; };
+		FB3D48E918EFC1F900302031 /* PTStopGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = FB3D48E818EFC1F900302031 /* PTStopGroup.m */; };
+		FB3D48EC18F0487E00302031 /* PTBase.m in Sources */ = {isa = PBXBuildFile; fileRef = FB3D48EB18F0487E00302031 /* PTBase.m */; };
 		FB517C3818DDDF43005C7881 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB517C3718DDDF43005C7881 /* Foundation.framework */; };
 		FB517C3A18DDDF43005C7881 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB517C3918DDDF43005C7881 /* CoreGraphics.framework */; };
 		FB517C3C18DDDF43005C7881 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB517C3B18DDDF43005C7881 /* UIKit.framework */; };
@@ -70,6 +72,10 @@
 		FB3D48E018EFB26200302031 /* OBADataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBADataModel.m; sourceTree = "<group>"; };
 		FB3D48E218EFB47700302031 /* PTRouteDetailTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTRouteDetailTableViewController.h; sourceTree = "<group>"; };
 		FB3D48E318EFB47700302031 /* PTRouteDetailTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTRouteDetailTableViewController.m; sourceTree = "<group>"; };
+		FB3D48E718EFC1F900302031 /* PTStopGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTStopGroup.h; sourceTree = "<group>"; };
+		FB3D48E818EFC1F900302031 /* PTStopGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTStopGroup.m; sourceTree = "<group>"; };
+		FB3D48EA18F0487E00302031 /* PTBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTBase.h; sourceTree = "<group>"; };
+		FB3D48EB18F0487E00302031 /* PTBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTBase.m; sourceTree = "<group>"; };
 		FB517C3418DDDF43005C7881 /* Bus-Gogogo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Bus-Gogogo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB517C3718DDDF43005C7881 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		FB517C3918DDDF43005C7881 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -151,6 +157,8 @@
 				FB3D48E618EFB4A000302031 /* Network */,
 				FB3D48E218EFB47700302031 /* PTRouteDetailTableViewController.h */,
 				FB3D48E318EFB47700302031 /* PTRouteDetailTableViewController.m */,
+				FB3D48E718EFC1F900302031 /* PTStopGroup.h */,
+				FB3D48E818EFC1F900302031 /* PTStopGroup.m */,
 			);
 			name = RouteDetail;
 			sourceTree = "<group>";
@@ -160,6 +168,8 @@
 			children = (
 				FB3D48DC18EFAE5A00302031 /* PTStopsForRouteDownloader.h */,
 				FB3D48DD18EFAE5A00302031 /* PTStopsForRouteDownloader.m */,
+				FB3D48EA18F0487E00302031 /* PTBase.h */,
+				FB3D48EB18F0487E00302031 /* PTBase.m */,
 				FB3D48D918EFADB400302031 /* PTStopsForRouteRequest.h */,
 				FB3D48DA18EFADB400302031 /* PTStopsForRouteRequest.m */,
 			);
@@ -435,7 +445,9 @@
 				FB3D48DE18EFAE5A00302031 /* PTStopsForRouteDownloader.m in Sources */,
 				FBC773AA18DE1D7600621261 /* PTStop+MKAnnotation.m in Sources */,
 				FB517C4E18DDDF43005C7881 /* PTLinePickerViewController.m in Sources */,
+				FB3D48E918EFC1F900302031 /* PTStopGroup.m in Sources */,
 				FB01A5DE18E76226001C793F /* PTMonitoredVehicleJourney.m in Sources */,
+				FB3D48EC18F0487E00302031 /* PTBase.m in Sources */,
 				FBC773A318DE192900621261 /* PTStopDetailViewController.m in Sources */,
 				FBC773A718DE19F500621261 /* PTStopDetailView.m in Sources */,
 				FB3D48E118EFB26200302031 /* OBADataModel.m in Sources */,

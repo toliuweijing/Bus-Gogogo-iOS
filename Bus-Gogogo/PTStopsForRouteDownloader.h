@@ -7,13 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "PTStopGroup.h"
 
 @class PTStopsForRouteDownloader;
 
 @protocol PTStopsForRouteDownloaderDelegate
 
 - (void)downloader:(PTStopsForRouteDownloader *)downloader
-    didReceiveStops:(NSArray *)stops;
+   didReceiveStopGroup:(PTStopGroup *)stopGroup;
 
 - (void)downloader:(PTStopsForRouteDownloader *)downloader
    didReceiveError:(NSError *)error;

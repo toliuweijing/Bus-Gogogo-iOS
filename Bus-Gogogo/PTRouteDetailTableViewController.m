@@ -12,11 +12,15 @@
 
 static NSString *const kCellIdentifier = @"cell_identifier";
 
-@interface PTRouteDetailTableViewController () <PTStopsForRouteDownloaderDelegate>
+@interface PTRouteDetailTableViewController () <
+PTStopsForRouteDownloaderDelegate,
+MKMapViewDelegate>
 
 @property (nonatomic, strong) PTStopsForRouteDownloader *downloader;
 
-@property (nonatomic, strong) NSArray *stops;
+@property (nonatomic, strong) PTStopGroup *route;
+
+@property (nonatomic, strong) MKMapView *mapView;
 
 @end
 
@@ -28,8 +32,36 @@ static NSString *const kCellIdentifier = @"cell_identifier";
   if (self) {
     _downloader = [[PTStopsForRouteDownloader alloc] init];
     _downloader.delegate = self;
+    
+    self.navigationItem.title = @"B9";
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]
+                                              initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh
+                                              target:self
+                                              action:@selector(_didTapRefresh:)];
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]
+                                             initWithTitle:@"List"
+                                             style:UIBarButtonItemStylePlain
+                                             target:self
+                                             action:@selector(_didTapSwitch:)];
   }
   return self;
+}
+
+- (void)_didTapSwitch:(id)sender
+{
+  if ([self.view.subviews containsObject:self.mapView]) {
+    [self.mapView removeFromSuperview];
+    self.navigationItem.leftBarButtonItem.title = @"Map";
+  } else {
+    [self.view addSubview:self.mapView];
+    self.navigationItem.leftBarButtonItem.title = @"List";
+  }
+  [self.view setNeedsDisplay];
+}
+
+- (void)_didTapRefresh:(id)sender
+{
+  [self.downloader startDownload];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -44,11 +76,22 @@ static NSString *const kCellIdentifier = @"cell_identifier";
   [super viewDidLoad];
   
   [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:kCellIdentifier];
+  
+  _mapView = [[MKMapView alloc] initWithFrame:self.view.bounds];
+  _mapView.showsUserLocation = YES;
+  _mapView.userTrackingMode = MKUserTrackingModeFollow;
+  _mapView.delegate = self;
+  [self.view addSubview:_mapView];
   // Uncomment the following line to preserve selection between presentations.
   // self.clearsSelectionOnViewWillAppear = NO;
   
   // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
   // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+}
+
+- (void)viewWillLayoutSubviews
+{
+  [super viewWillLayoutSubviews];
 }
 
 - (void)didReceiveMemoryWarning
@@ -65,10 +108,39 @@ static NSString *const kCellIdentifier = @"cell_identifier";
   
 }
 
-- (void)downloader:(PTStopsForRouteDownloader *)downloader didReceiveStops:(NSArray *)stops
+- (void)downloader:(PTStopsForRouteDownloader *)downloader didReceiveRoute:(PTStopGroup *)route
 {
-  self.stops = stops;
+  self.route = route;
+  [self _configureMapViewWithRoute:route];
   [self.tableView reloadData];
+}
+
+- (void)_configureMapViewWithRoute:(PTStopGroup *)route
+{
+  NSInteger count = route.polylinePoints.count;
+  CLLocationCoordinate2D coordinates[count];
+  for (int i = 0 ; i < count ; ++i) {
+    coordinates[i] = [[route.polylinePoints objectAtIndex:i] coordinate];
+  }
+  MKPolyline *polyline = [MKPolyline polylineWithCoordinates:coordinates count:count];
+  [self.mapView addOverlay:polyline];
+}
+
+- (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation
+{
+  MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(userLocation.location.coordinate, 10000, 10000);
+  MKCoordinateRegion adjustedRegion = [self.mapView regionThatFits:region];
+  self.mapView.region = adjustedRegion;
+}
+
+#pragma mark - MKMapViewDelegate
+
+- (MKOverlayRenderer *)mapView:(MKMapView *)mapView rendererForOverlay:(id<MKOverlay>)overlay
+{
+  MKPolylineRenderer *renderer = [[MKPolylineRenderer alloc] initWithOverlay:overlay];
+  renderer.strokeColor = [UIColor blueColor];
+  renderer.lineWidth = 3.0;
+  return renderer;
 }
 
 #pragma mark - Table view data source
@@ -81,14 +153,14 @@ static NSString *const kCellIdentifier = @"cell_identifier";
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
   assert(section == 0);
-  return self.stops.count;
+  return self.route.stops.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
   UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kCellIdentifier forIndexPath:indexPath];
   
-  PTStop *stop = [self.stops objectAtIndex:indexPath.row];
+  PTStop *stop = [self.route.stops objectAtIndex:indexPath.row];
   cell.textLabel.text = stop.name;
   
   return cell;
