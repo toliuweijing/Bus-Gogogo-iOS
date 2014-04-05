@@ -9,6 +9,7 @@
 #import "PTStopsForRouteDownloader.h"
 #import "PTStopsForRouteRequest.h"
 #import "OBADataModel.h"
+#import "PTStop.h"
 
 @interface PTStopsForRouteDownloader () <NSURLSessionDelegate>
 
@@ -42,7 +43,12 @@
 {
   NSDictionary *JSONResponse = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
   OBAResponse *oba = [[OBAResponse alloc] initWithDictionary:JSONResponse];
-  NSLog(@"%@", oba);
+  
+  NSMutableArray *ptStops = [[NSMutableArray alloc] initWithCapacity:oba.Data.Stops.count];
+  for (OBAStop *obaStop in oba.Data.Stops) {
+    [ptStops addObject:[[PTStop alloc] initWithOBAStop:obaStop]];
+  }
+  [self.delegate downloader:self didReceiveStops:ptStops];
 }
 
 - (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didCompleteWithError:(NSError *)error

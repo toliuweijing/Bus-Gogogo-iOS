@@ -8,16 +8,19 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreLocation/CoreLocation.h>
-
+#import "OBADataModel.h"
 
 @interface PTStop : NSObject
 
-// full name of bus stop.
+- (instancetype)initWithOBAStop:(OBAStop *)obaStop;
+
+// id
 @property (nonatomic, copy, readonly) NSString *identifier;
+
+// stop name.
+@property (nonatomic, copy, readonly) NSString *name;
 
 // location of bus stop, derived from coorindate.
 @property (nonatomic, strong, readonly) CLLocation *location;
-
-+ (PTStop *)stopAtBayRidgeShoreRoad;
 
 @end

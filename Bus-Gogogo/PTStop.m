@@ -14,22 +14,28 @@
 
 @property (nonatomic, strong, readwrite) CLLocation *location;
 
+@property (nonatomic, strong) OBAStop *obaStop;
+
 @end
 
 @implementation PTStop
 
-+ (PTStop *)stopAtBayRidgeShoreRoad
+- (instancetype)initWithOBAStop:(OBAStop *)obaStop
 {
-  PTStop *stop = [[PTStop alloc] init];
-  
-  NSString *identifier = @"BAY RIDGE AV/SHORE RD";
-  CLLocationDegrees latitude = 40.638553;
-  CLLocationDegrees longtitude = -74.035362;
-  
-  stop.identifier = identifier;
-  stop.location = [[CLLocation alloc] initWithLatitude:latitude longitude:longtitude];
-  
-  return stop;
+  if (self = [super init]) {
+    _obaStop = obaStop;
+  }
+  return self;
+}
+
+- (NSString *)name
+{
+  return self.obaStop.Name;
+}
+
+- (NSString *)identifier
+{
+  return self.obaStop.Id;
 }
 
 @end

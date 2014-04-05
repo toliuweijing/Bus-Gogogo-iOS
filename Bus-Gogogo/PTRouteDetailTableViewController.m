@@ -8,6 +8,9 @@
 
 #import "PTRouteDetailTableViewController.h"
 #import "PTStopsForRouteDownloader.h"
+#import "PTStop.h"
+
+static NSString *const kCellIdentifier = @"cell_identifier";
 
 @interface PTRouteDetailTableViewController () <PTStopsForRouteDownloaderDelegate>
 
@@ -40,6 +43,7 @@
 {
   [super viewDidLoad];
   
+  [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:kCellIdentifier];
   // Uncomment the following line to preserve selection between presentations.
   // self.clearsSelectionOnViewWillAppear = NO;
   
@@ -63,35 +67,32 @@
 
 - (void)downloader:(PTStopsForRouteDownloader *)downloader didReceiveStops:(NSArray *)stops
 {
-  
+  self.stops = stops;
+  [self.tableView reloadData];
 }
 
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-#warning Potentially incomplete method implementation.
-  // Return the number of sections.
-  return 0;
+  return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-#warning Incomplete method implementation.
-  // Return the number of rows in the section.
-  return 0;
+  assert(section == 0);
+  return self.stops.count;
 }
 
-/*
- - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
- {
- UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
- 
- // Configure the cell...
- 
- return cell;
- }
- */
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+  UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kCellIdentifier forIndexPath:indexPath];
+  
+  PTStop *stop = [self.stops objectAtIndex:indexPath.row];
+  cell.textLabel.text = stop.name;
+  
+  return cell;
+}
 
 /*
  // Override to support conditional editing of the table view.

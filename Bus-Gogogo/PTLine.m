@@ -26,12 +26,12 @@
 {
   PTLine *line = [[PTLine alloc] init];
   
-  // only one stop.
-  NSArray *stops = @[[PTStop stopAtBayRidgeShoreRoad]];
-  line.prefix = @"X";
-  line.number = @"27";
-  line.stops = stops;
-  
+//  // only one stop.
+//  NSArray *stops = @[[PTStop stopAtBayRidgeShoreRoad]];
+//  line.prefix = @"X";
+//  line.number = @"27";
+//  line.stops = stops;
+//  
   return line;
 }
 
