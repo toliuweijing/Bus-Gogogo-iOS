@@ -157,8 +157,6 @@
 				FB3D48E618EFB4A000302031 /* Network */,
 				FB3D48E218EFB47700302031 /* PTRouteDetailTableViewController.h */,
 				FB3D48E318EFB47700302031 /* PTRouteDetailTableViewController.m */,
-				FB3D48E718EFC1F900302031 /* PTStopGroup.h */,
-				FB3D48E818EFC1F900302031 /* PTStopGroup.m */,
 			);
 			name = RouteDetail;
 			sourceTree = "<group>";
@@ -168,8 +166,6 @@
 			children = (
 				FB3D48DC18EFAE5A00302031 /* PTStopsForRouteDownloader.h */,
 				FB3D48DD18EFAE5A00302031 /* PTStopsForRouteDownloader.m */,
-				FB3D48EA18F0487E00302031 /* PTBase.h */,
-				FB3D48EB18F0487E00302031 /* PTBase.m */,
 				FB3D48D918EFADB400302031 /* PTStopsForRouteRequest.h */,
 				FB3D48DA18EFADB400302031 /* PTStopsForRouteRequest.m */,
 			);
@@ -209,6 +205,8 @@
 		FB517C3D18DDDF43005C7881 /* Bus-Gogogo */ = {
 			isa = PBXGroup;
 			children = (
+				FB3D48EA18F0487E00302031 /* PTBase.h */,
+				FB3D48EB18F0487E00302031 /* PTBase.m */,
 				FB517C7318DDE4FB005C7881 /* Model */,
 				FBFF62ED18E876D1008D94F9 /* PTMacro.h */,
 				FB517C4618DDDF43005C7881 /* PTAppDelegate.h */,
@@ -285,6 +283,8 @@
 				FB517C7118DDE4F4005C7881 /* PTStop.m */,
 				FBC773A818DE1D7600621261 /* PTStop+MKAnnotation.h */,
 				FBC773A918DE1D7600621261 /* PTStop+MKAnnotation.m */,
+				FB3D48E718EFC1F900302031 /* PTStopGroup.h */,
+				FB3D48E818EFC1F900302031 /* PTStopGroup.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";

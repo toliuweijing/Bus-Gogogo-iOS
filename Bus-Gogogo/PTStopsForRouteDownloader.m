@@ -52,20 +52,8 @@
   // ----
   OBAStopGrouping *stopGrouping = oba.Data.StopGroupings.firstObject;
   OBAStopGroup *stopGroup = stopGrouping.StopGroups.firstObject;
-  OBAPolyline *polyline = stopGroup.Polylines.lastObject;
-  
-  NSArray *points = [self parse:polyline];
-  
-  PTStopGroup *stopGroup = [[PTStopGroup alloc] init];
-  route.stops = ptStops;
-  route.polylinePoints = [points copy];
-  [self.delegate downloader:self didReceiveStopGroup:stopGroup];
-}
-
-- (NSArray *)parse:(OBAPolyline *)polyline
-{
-  NSArray *locations = [self decodePolyLine:polyline.Points];
-  return locations;
+  PTStopGroup *ptStopGroup = [PTStopGroup stopGroupFromOBACounterPart:stopGroup];
+  [self.delegate downloader:self didReceiveStopGroup:ptStopGroup];
 }
 
 - (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didCompleteWithError:(NSError *)error

@@ -15,8 +15,10 @@
 
 + (PTStopGroup *)stopGroupFromOBACounterPart:(OBAStopGroup *)oba;
 
+@property (nonatomic, strong) NSString *name;
+
 // PTSTops
-@property (nonatomic, strong) NSArray *stops;
+@property (nonatomic, strong) NSArray *stopIDs;
 
 // points for drawing PTRoute
 @property (nonatomic, strong) NSArray *polylinePoints;

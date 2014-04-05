@@ -8,12 +8,17 @@
 
 #import "PTStopGroup.h"
 #import "OBADataModel.h"
+#import "PTBase.h"
 
 @implementation PTStopGroup
 
 + (PTStopGroup *)stopGroupFromOBACounterPart:(OBAStopGroup *)oba
 {
-  
+  PTStopGroup *stopGroup = [[PTStopGroup alloc] init];
+  stopGroup.name = oba.Name.Name;
+  stopGroup.stopIDs = oba.StopIds;
+  stopGroup.polylinePoints = decodePolyLines(oba.Polylines);
+  return stopGroup;
 }
 
 @end

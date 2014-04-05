@@ -17,6 +17,7 @@ NSMutableArray *decodePolyLines(NSArray *polylines)
     assert([polyline isKindOfClass:[OBAPolyline class]]);
     [collection addObjectsFromArray:decodePolyLine(polyline)];
   }
+  [collection removeObjectAtIndex:collection.count-1];
   return collection;
 }
 

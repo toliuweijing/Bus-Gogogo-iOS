@@ -18,7 +18,7 @@ MKMapViewDelegate>
 
 @property (nonatomic, strong) PTStopsForRouteDownloader *downloader;
 
-@property (nonatomic, strong) PTStopGroup *route;
+@property (nonatomic, strong) PTStopGroup *stopGroup;
 
 @property (nonatomic, strong) MKMapView *mapView;
 
@@ -108,19 +108,19 @@ MKMapViewDelegate>
   
 }
 
-- (void)downloader:(PTStopsForRouteDownloader *)downloader didReceiveRoute:(PTStopGroup *)route
+- (void)downloader:(PTStopsForRouteDownloader *)downloader didReceiveStopGroup:(PTStopGroup *)stopGroup
 {
-  self.route = route;
-  [self _configureMapViewWithRoute:route];
+  self.stopGroup = stopGroup;
+  [self _configureMapViewWithStopGroup:stopGroup];
   [self.tableView reloadData];
-}
 
-- (void)_configureMapViewWithRoute:(PTStopGroup *)route
+}
+- (void)_configureMapViewWithStopGroup:(PTStopGroup *)stopGroup
 {
-  NSInteger count = route.polylinePoints.count;
+  NSInteger count = stopGroup.polylinePoints.count;
   CLLocationCoordinate2D coordinates[count];
   for (int i = 0 ; i < count ; ++i) {
-    coordinates[i] = [[route.polylinePoints objectAtIndex:i] coordinate];
+    coordinates[i] = [[stopGroup.polylinePoints objectAtIndex:i] coordinate];
   }
   MKPolyline *polyline = [MKPolyline polylineWithCoordinates:coordinates count:count];
   [self.mapView addOverlay:polyline];
@@ -153,15 +153,15 @@ MKMapViewDelegate>
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
   assert(section == 0);
-  return self.route.stops.count;
+  return self.stopGroup.stopIDs.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
   UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kCellIdentifier forIndexPath:indexPath];
   
-  PTStop *stop = [self.route.stops objectAtIndex:indexPath.row];
-  cell.textLabel.text = stop.name;
+  NSString *stopID = [self.stopGroup.stopIDs objectAtIndex:indexPath.row];
+  cell.textLabel.text = stopID;
   
   return cell;
 }
