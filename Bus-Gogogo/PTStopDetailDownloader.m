@@ -12,11 +12,13 @@
 #import "MTADataModelAdaptors.h"
 #import "PTMonitoredVehicleJourney.h"
 
-@interface PTStopDetailDownloader () <NSURLConnectionDelegate>
+@interface PTStopDetailDownloader () <NSURLSessionDataDelegate>
 
 @property (nonatomic, strong) NSURLSession *session;
 
 @property (nonatomic, strong) PTStop *stop;
+
+@property (nonatomic, strong) stop_detail_downloader_completion_handler completionHandler;
 
 @end
 
@@ -29,29 +31,18 @@
     
     // init session
     NSURLSessionConfiguration *config = [NSURLSessionConfiguration defaultSessionConfiguration];
-    _session = [NSURLSession sessionWithConfiguration:config];
+    config.requestCachePolicy = NSURLRequestReloadIgnoringLocalAndRemoteCacheData;
+    _session = [NSURLSession sessionWithConfiguration:config
+                                             delegate:self
+                                        delegateQueue:[NSOperationQueue mainQueue]];
   }
   return self;
 }
 
 - (void)downloadWithCompletionHandler:(stop_detail_downloader_completion_handler)completionHandler
 {
-  [[self.session dataTaskWithRequest:[PTStopMonitoringRequest sampleRequest]
-                   completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-                     // parse into property list.
-                     NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-                     NSLog(@"%@", json);
-                     
-                     // parse into mta response.
-                     MTAResponse *mta = [[MTAResponse alloc] initWithDictionary:json];
-                     
-                     NSArray *vehcileJourneys = [PTStopDetailDownloader PTVehcileJourneysInMTAResponse:mta];
-                     
-                     // completion callback
-                     dispatch_async(dispatch_get_main_queue(), ^{
-                       completionHandler(vehcileJourneys, error);
-                     });
-                   }] resume];
+  self.completionHandler = completionHandler;
+  [[self.session dataTaskWithRequest:[PTStopMonitoringRequest sampleRequest]] resume];
 }
 
 + (NSArray *)PTVehcileJourneysInMTAResponse:(MTAResponse *)mtaResponse
@@ -68,8 +59,26 @@
   return collection;
 }
 
-- (NSCachedURLResponse *)connection:(NSURLConnection *)connection willCacheResponse:(NSCachedURLResponse *)cachedResponse {
-  return nil;
+- (MTAResponse *)_mtaResponseFromRawData:(NSData *)rawData
+{
+  NSDictionary *json = [NSJSONSerialization JSONObjectWithData:rawData options:0 error:nil];
+  NSLog(@"%@",json);
+  return [[MTAResponse alloc] initWithDictionary:json];
+}
+
+#pragma mark -
+#pragma mark NSURLSessionDataDelegate
+
+- (void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask didReceiveData:(NSData *)data
+{
+  MTAResponse *mta = [self _mtaResponseFromRawData:data];
+  NSArray *vehcileJourneys = [PTStopDetailDownloader PTVehcileJourneysInMTAResponse:mta];
+  self.completionHandler(vehcileJourneys, nil);
+}
+
+- (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didCompleteWithError:(NSError *)error
+{
+  assert(error == nil);
 }
 
 @end
