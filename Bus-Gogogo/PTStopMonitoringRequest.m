@@ -8,7 +8,6 @@
 
 #import "PTStopMonitoringRequest.h"
 
-static NSString *const kSIRIKey = @"cfb3c75b-5a43-4e66-b7f8-14e666b0c1c1";
 
 struct PTStopMonitoringRequestParamNames PTStopMonitoringRequestParamNames = {
   .key = "key",

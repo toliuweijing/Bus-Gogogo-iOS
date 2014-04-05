@@ -9,6 +9,8 @@
 #import "PTAppDelegate.h"
 #import "PTLinePickerViewController.h"
 #import "PTStopDetailViewController.h"
+#import "PTRouteDetailTableViewController.h"
+
 @implementation PTAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
@@ -17,7 +19,8 @@
   self.window.backgroundColor = [UIColor whiteColor];
   
 //  PTLinePickerViewController *linePicker = [[PTLinePickerViewController alloc] init];
-  PTStopDetailViewController *vc = [[PTStopDetailViewController alloc] initWithStop:nil];
+//  PTStopDetailViewController *vc = [[PTStopDetailViewController alloc] initWithStop:nil];
+  UIViewController *vc = [[PTRouteDetailTableViewController alloc] initWithStyle:UITableViewStylePlain];
   UINavigationController *navigator = [[UINavigationController alloc] initWithRootViewController:vc];
   
   self.window.rootViewController = navigator;

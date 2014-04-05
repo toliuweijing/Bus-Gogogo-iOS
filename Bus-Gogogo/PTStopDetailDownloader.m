@@ -11,6 +11,7 @@
 #import <CoreLocation/CoreLocation.h>
 #import "MTADataModelAdaptors.h"
 #import "PTMonitoredVehicleJourney.h"
+#import "PTRouteMonitoringRequest.h"
 
 @interface PTStopDetailDownloader () <NSURLSessionDataDelegate>
 
