@@ -9,6 +9,7 @@
 #import "PTRouteDetailTableViewController.h"
 #import "PTStopsForRouteDownloader.h"
 #import "PTStop.h"
+#import "PTStore.h"
 #import "PTMonitoredVehicleJourney.h"
 #import "PTMonitoredVehicleJourneyDownloader.h"
 
@@ -242,7 +243,8 @@ MKMapViewDelegate>
   UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kCellIdentifier forIndexPath:indexPath];
   
   NSString *stopID = [self.stopGroup.stopIDs objectAtIndex:indexPath.row];
-  cell.textLabel.text = stopID;
+  PTStop *stop = [[PTStore sharedStore] stopWithIdentifier:stopID];
+  cell.textLabel.text = stop.name;
   
   NSString *const imageURL = @"Shuttle-Picture.png";
   cell.imageView.image = [UIImage imageNamed:imageURL];

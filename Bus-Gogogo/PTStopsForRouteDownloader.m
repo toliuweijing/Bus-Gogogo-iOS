@@ -10,6 +10,7 @@
 #import "PTStopsForRouteRequest.h"
 #import "OBADataModel.h"
 #import "PTStop.h"
+#import "PTStore.h"
 
 @interface PTStopsForRouteDownloader () <NSURLSessionDelegate>
 
@@ -44,11 +45,9 @@
   NSDictionary *JSONResponse = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
   OBAResponse *oba = [[OBAResponse alloc] initWithDictionary:JSONResponse];
   
-  NSMutableArray *ptStops = [[NSMutableArray alloc] initWithCapacity:oba.Data.Stops.count];
-  for (OBAStop *obaStop in oba.Data.Stops) {
-    [ptStops addObject:[[PTStop alloc] initWithOBAStop:obaStop]];
-  }
-  
+  // populate results into global store
+  [[PTStore sharedStore] populateWithOBAResponse:oba];
+ 
   // ----
   OBAStopGrouping *stopGrouping = oba.Data.StopGroupings.firstObject;
   assert(stopGrouping.StopGroups.count == 2);
