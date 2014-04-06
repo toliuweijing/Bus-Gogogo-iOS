@@ -10,4 +10,7 @@
 
 @interface PTRouteDetailTableViewController : UITableViewController
 
+- (instancetype)initWithStyle:(UITableViewStyle)style
+              routeIdentifier:(NSString *)routeIdentifier;
+
 @end

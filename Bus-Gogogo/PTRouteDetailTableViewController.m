@@ -38,17 +38,22 @@ MKMapViewDelegate>
 
 @implementation PTRouteDetailTableViewController
 
-- (id)initWithStyle:(UITableViewStyle)style
+- (id)init
+{
+  assert(NO);
+}
+
+- (instancetype)initWithStyle:(UITableViewStyle)style
+              routeIdentifier:(NSString *)routeIdentifier
 {
   self = [super initWithStyle:style];
   if (self) {
-    _stopsForRouteDownloader = [[PTStopsForRouteDownloader alloc] init];
+    _stopsForRouteDownloader = [[PTStopsForRouteDownloader alloc] initWithRouteIdentifier:routeIdentifier];
     _stopsForRouteDownloader.delegate = self;
     
-    _vehicleJourneyDownloader = [[PTMonitoredVehicleJourneyDownloader alloc] init];
+    _vehicleJourneyDownloader = [[PTMonitoredVehicleJourneyDownloader alloc] initWithRouteIdentifier:routeIdentifier];
     _vehicleJourneyDownloader.delegate = self;
     
-    self.navigationItem.title = @"B9";
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]
                                               initWithTitle:@"Direction"
                                               style:UIBarButtonItemStylePlain
@@ -146,6 +151,7 @@ MKMapViewDelegate>
   _stopGroup = stopGroup;
   [self _configureMapViewWithStopGroup:stopGroup];
   self.navigationItem.title = stopGroup.name;
+  [self.tableView reloadData];
 }
 
 #pragma mark -
@@ -183,8 +189,6 @@ MKMapViewDelegate>
 - (void)downloader:(PTStopsForRouteDownloader *)downloader didReceiveStopGroups:(NSArray *)stopGroups
 {
   self.stopGroups = stopGroups;
-  [self _configureMapViewWithStopGroup:self.stopGroup];
-  [self.tableView reloadData];
 }
 
 - (void)_configureMapViewWithStopGroup:(PTStopGroup *)stopGroup

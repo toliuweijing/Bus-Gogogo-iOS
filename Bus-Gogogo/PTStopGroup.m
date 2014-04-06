@@ -24,7 +24,7 @@
 
 - (MKCoordinateRegion)coordinateRegion
 {
-  assert(self.polylinePoints.count > 0);
+//  assert(self.polylinePoints.count > 0);
   CLLocation *initial = self.polylinePoints.firstObject;
   CLLocationDegrees leftMost = initial.coordinate.longitude;
   CLLocationDegrees rightMost = initial.coordinate.longitude;

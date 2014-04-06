@@ -18,9 +18,8 @@
   self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
   self.window.backgroundColor = [UIColor whiteColor];
   
-//  PTLinePickerViewController *linePicker = [[PTLinePickerViewController alloc] init];
-//  PTStopDetailViewController *vc = [[PTStopDetailViewController alloc] initWithStop:nil];
-  UIViewController *vc = [[PTRouteDetailTableViewController alloc] initWithStyle:UITableViewStylePlain];
+  PTLinePickerViewController *vc = [[PTLinePickerViewController alloc] init];
+//  UIViewController *vc = [[PTRouteDetailTableViewController alloc] initWithStyle:UITableViewStylePlain];
   UINavigationController *navigator = [[UINavigationController alloc] initWithRootViewController:vc];
   
   self.window.rootViewController = navigator;

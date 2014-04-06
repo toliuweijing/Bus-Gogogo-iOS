@@ -16,11 +16,13 @@
 
 @property (nonatomic, strong) NSURLSession *session;
 
+@property (nonatomic, strong) NSString *routeID;
+
 @end
 
 @implementation PTStopsForRouteDownloader
 
-- (instancetype)init
+- (instancetype)initWithRouteIdentifier:(NSString *)routeID
 {
   if (self = [super init]) {
     NSURLSessionConfiguration *config = [NSURLSessionConfiguration defaultSessionConfiguration];
@@ -28,13 +30,14 @@
     _session = [NSURLSession sessionWithConfiguration:config
                                              delegate:self
                                         delegateQueue:[NSOperationQueue mainQueue]];
+    _routeID = routeID;
   }
   return self;
 }
 
 - (void)startDownload
 {
-  [[self.session dataTaskWithRequest:[PTStopsForRouteRequest sampleRequest]] resume];
+  [[self.session dataTaskWithRequest:[PTStopsForRouteRequest requestWithRouteID:self.routeID]] resume];
 }
 
 #pragma mark -
@@ -50,7 +53,7 @@
  
   // ----
   OBAStopGrouping *stopGrouping = oba.Data.StopGroupings.firstObject;
-  assert(stopGrouping.StopGroups.count == 2);
+//  assert(stopGrouping.StopGroups.count == 2);
   OBAStopGroup *stopGroupA = stopGrouping.StopGroups.firstObject;
   OBAStopGroup *stopGroupB = stopGrouping.StopGroups.lastObject;
   NSArray *ptStopGroups = @[[PTStopGroup stopGroupFromOBACounterPart:stopGroupA],

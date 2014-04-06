@@ -8,7 +8,18 @@
 
 #import "PTStopsForRouteRequest.h"
 
+const NSString *kRouteIdentifierB9 = @"MTA NYCT_B9";
+const NSString *kRouteIdentifierX27 = @"MTA NYCT_X27";
+
 @implementation PTStopsForRouteRequest
+
++ (NSURLRequest *)requestWithRouteID:(NSString *)identifier
+{
+  identifier = [identifier stringByReplacingOccurrencesOfString:@" " withString:@"%20"];
+  NSString *format = @"http://bustime.mta.info/api/where/stops-for-route/%@.json?key=cfb3c75b-5a43-4e66-b7f8-14e666b0c1c1";
+  NSString *base = [NSString stringWithFormat:format, identifier];
+  return [NSURLRequest requestWithURL:[NSURL URLWithString:base]];
+}
 
 + (NSURLRequest *)sampleRequest
 {

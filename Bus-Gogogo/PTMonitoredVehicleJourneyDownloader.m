@@ -13,22 +13,28 @@
 
 @property (nonatomic, strong) NSURLSession *session;
 
+@property (nonatomic, strong) NSString *routeIdentifier;
+
 @end
 
 @implementation PTMonitoredVehicleJourneyDownloader
 
-- (instancetype)init
+- (instancetype)initWithRouteIdentifier:(NSString *)routeID
 {
   if (self = [super init]) {
     NSURLSessionConfiguration *config = [NSURLSessionConfiguration defaultSessionConfiguration];
     _session = [NSURLSession sessionWithConfiguration:config delegate:self delegateQueue:[NSOperationQueue mainQueue]];
+    _routeIdentifier = routeID;
   }
   return self;
 }
 
 -(void)startDownload
 {
-  NSURL *url = [NSURL URLWithString:@"http://bustime.mta.info/api/siri/vehicle-monitoring.json?key=cfb3c75b-5a43-4e66-b7f8-14e666b0c1c1&LineRef=MTA%20NYCT_B9"];
+  self.routeIdentifier = [self.routeIdentifier stringByReplacingOccurrencesOfString:@" " withString:@"%20"];
+  NSString *format = @"http://bustime.mta.info/api/siri/vehicle-monitoring.json?key=cfb3c75b-5a43-4e66-b7f8-14e666b0c1c1&LineRef=%@";
+  NSString *base = [NSString stringWithFormat:format, self.routeIdentifier];
+  NSURL *url = [NSURL URLWithString:base];
   NSURLRequest *request = [NSURLRequest requestWithURL:url];
   [[self.session dataTaskWithRequest:request] resume];
 }

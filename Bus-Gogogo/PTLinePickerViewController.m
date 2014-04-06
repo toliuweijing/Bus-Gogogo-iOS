@@ -11,6 +11,7 @@
 #import "PTLinePickerDataSource.h"
 #import "PTLinePickerTableViewCell.h"
 #import "PTStopDetailViewController.h"
+#import "PTRouteDetailTableViewController.h"
 #import "PTLine.h"
 
 @interface PTLinePickerViewController ()
@@ -54,7 +55,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
   assert(section == 0);
-  return self.dataSource.lines.count;
+  return self.dataSource.routeIdentifiers.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -62,8 +63,8 @@
   PTLinePickerTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kLinePickerTableViewCellIdentifier forIndexPath:indexPath];
   assert(cell);
   
-  PTLine *line = [self.dataSource lineAtIndexPath:indexPath];
-  cell.line = line;
+  NSString *line = [self.dataSource routeIdentifierAtIndexPath:indexPath];
+  cell.textLabel.text = line;
   return cell;
 }
 
@@ -72,9 +73,9 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-  PTLine *line = [self.dataSource lineAtIndexPath:indexPath];
+  NSString *routeID = [self.dataSource routeIdentifierAtIndexPath:indexPath];
   
-  [self _pushToStopPickerWithLine:line];
+  [self _pushToRouteDetailViewWithRouteIdentifier:routeID];
   
   [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
@@ -82,13 +83,11 @@
 #pragma mark -
 #pragma mark Private
 
-- (void)_pushToStopPickerWithLine:(PTLine *)line
+- (void)_pushToRouteDetailViewWithRouteIdentifier:(NSString *)routeIdentifier
 {
-  // TODO......
-  PTStop *stop = [line.stops firstObject];
-  PTStopDetailViewController *stopDetailVC = [[PTStopDetailViewController alloc] initWithStop:stop];
-  stopDetailVC.line = line;
-  [self.navigationController pushViewController:stopDetailVC animated:YES];
+  UIViewController *vc = [[PTRouteDetailTableViewController alloc] initWithStyle:UITableViewStylePlain
+                                                                 routeIdentifier:routeIdentifier];
+  [self.navigationController pushViewController:vc animated:YES];
 }
 
 @end
