@@ -18,6 +18,7 @@
   stopGroup.name = oba.Name.Name;
   stopGroup.stopIDs = oba.StopIds;
   stopGroup.polylinePoints = decodePolyLines(oba.Polylines);
+  stopGroup.direction = [oba.Id intValue];
   return stopGroup;
 }
 

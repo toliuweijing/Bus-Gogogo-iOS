@@ -14,7 +14,7 @@
 @protocol PTStopsForRouteDownloaderDelegate
 
 - (void)downloader:(PTStopsForRouteDownloader *)downloader
-   didReceiveStopGroup:(PTStopGroup *)stopGroup;
+   didReceiveStopGroups:(NSArray *)stopGroups;
 
 - (void)downloader:(PTStopsForRouteDownloader *)downloader
    didReceiveError:(NSError *)error;

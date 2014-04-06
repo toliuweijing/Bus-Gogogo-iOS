@@ -8,10 +8,11 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreLocation/CoreLocation.h>
+#import <MapKit/MapKit.h>
 
 @class MTAMonitoredVehicleJourney;
 
-@interface PTMonitoredVehicleJourney : NSObject
+@interface PTMonitoredVehicleJourney : NSObject 
 
 - (instancetype)initWithMTACounterPart:(MTAMonitoredVehicleJourney *)mtaCounterPart;
 
@@ -28,5 +29,7 @@
 @property (nonatomic, readonly) NSString *lineName;
 
 @property (nonatomic, readonly) NSString *destinationName;
+
+@property (nonatomic, readonly) int direction;
 
 @end

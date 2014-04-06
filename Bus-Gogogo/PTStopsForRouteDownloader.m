@@ -51,9 +51,12 @@
   
   // ----
   OBAStopGrouping *stopGrouping = oba.Data.StopGroupings.firstObject;
-  OBAStopGroup *stopGroup = stopGrouping.StopGroups.firstObject;
-  PTStopGroup *ptStopGroup = [PTStopGroup stopGroupFromOBACounterPart:stopGroup];
-  [self.delegate downloader:self didReceiveStopGroup:ptStopGroup];
+  assert(stopGrouping.StopGroups.count == 2);
+  OBAStopGroup *stopGroupA = stopGrouping.StopGroups.firstObject;
+  OBAStopGroup *stopGroupB = stopGrouping.StopGroups.lastObject;
+  NSArray *ptStopGroups = @[[PTStopGroup stopGroupFromOBACounterPart:stopGroupA],
+                            [PTStopGroup stopGroupFromOBACounterPart:stopGroupB]];
+  [self.delegate downloader:self didReceiveStopGroups:ptStopGroups];
 }
 
 - (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didCompleteWithError:(NSError *)error

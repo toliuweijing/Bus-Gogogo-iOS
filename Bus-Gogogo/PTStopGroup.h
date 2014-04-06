@@ -19,6 +19,8 @@
 
 @property (nonatomic, strong) NSString *name;
 
+@property (nonatomic, assign) int direction;
+
 // PTSTops
 @property (nonatomic, strong) NSArray *stopIDs;
 

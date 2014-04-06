@@ -9,16 +9,27 @@
 #import "PTRouteDetailTableViewController.h"
 #import "PTStopsForRouteDownloader.h"
 #import "PTStop.h"
+#import "PTMonitoredVehicleJourney.h"
+#import "PTMonitoredVehicleJourneyDownloader.h"
 
 static NSString *const kCellIdentifier = @"cell_identifier";
 
 @interface PTRouteDetailTableViewController () <
 PTStopsForRouteDownloaderDelegate,
+PTMonitoredVehicleJourneyDownloaderDelegate,
 MKMapViewDelegate>
 
-@property (nonatomic, strong) PTStopsForRouteDownloader *downloader;
+@property (nonatomic, strong) PTStopsForRouteDownloader *stopsForRouteDownloader;
 
-@property (nonatomic, strong) PTStopGroup *stopGroup;
+@property (nonatomic, strong) PTMonitoredVehicleJourneyDownloader *vehicleJourneyDownloader;
+
+@property (nonatomic, strong) NSArray *stopGroups; // with 2 directions
+
+@property (nonatomic, strong) PTStopGroup *stopGroup; // current stop group
+
+@property (nonatomic, strong) NSArray *circleOverlays; // circle Overlays
+
+@property (nonatomic, strong) MKPolyline *polylineOverlays;
 
 @property (nonatomic, strong) MKMapView *mapView;
 
@@ -30,24 +41,31 @@ MKMapViewDelegate>
 {
   self = [super initWithStyle:style];
   if (self) {
-    _downloader = [[PTStopsForRouteDownloader alloc] init];
-    _downloader.delegate = self;
+    _stopsForRouteDownloader = [[PTStopsForRouteDownloader alloc] init];
+    _stopsForRouteDownloader.delegate = self;
+    
+    _vehicleJourneyDownloader = [[PTMonitoredVehicleJourneyDownloader alloc] init];
+    _vehicleJourneyDownloader.delegate = self;
     
     self.navigationItem.title = @"B9";
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]
-                                              initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh
+                                              initWithTitle:@"Direction"
+                                              style:UIBarButtonItemStylePlain
                                               target:self
-                                              action:@selector(_didTapRefresh:)];
+                                              action:@selector(_didTapDirection:)];
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]
                                              initWithTitle:@"List"
                                              style:UIBarButtonItemStylePlain
                                              target:self
-                                             action:@selector(_didTapSwitch:)];
+                                             action:@selector(_didTapSwitchPresentation:)];
   }
   return self;
 }
 
-- (void)_didTapSwitch:(id)sender
+/**
+ Switch between MapView and TableView
+ */
+- (void)_didTapSwitchPresentation:(id)sender
 {
   if ([self.view.subviews containsObject:self.mapView]) {
     [self.mapView removeFromSuperview];
@@ -59,34 +77,47 @@ MKMapViewDelegate>
   [self.view setNeedsDisplay];
 }
 
-- (void)_didTapRefresh:(id)sender
+- (void)_didTapDirection:(id)sender
 {
-  [self.downloader startDownload];
+  // switch stopGroups order
+  if (self.stopGroup == self.stopGroups.firstObject) {
+    self.stopGroup = self.stopGroups.lastObject;
+  } else {
+    self.stopGroup = self.stopGroups.firstObject;
+  }
+  // retrieve vehicle journeys
+  [self.vehicleJourneyDownloader startDownload];
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
   [super viewWillAppear:animated];
   
-  [self.downloader startDownload];
+  [self.stopsForRouteDownloader startDownload];
+  [self.vehicleJourneyDownloader startDownload];
+  [NSTimer scheduledTimerWithTimeInterval:60
+                                   target:self
+                                 selector:@selector(_fireVehicleJourneyDownloader:)
+                                 userInfo:nil
+                                  repeats:YES];
+}
+
+- (void)_fireVehicleJourneyDownloader:(NSTimer *)timer
+{
+  [self.vehicleJourneyDownloader startDownload];
 }
 
 - (void)viewDidLoad
 {
   [super viewDidLoad];
   
+  // configure tableview
   [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:kCellIdentifier];
   
+  // configure mapview
   _mapView = [[MKMapView alloc] initWithFrame:self.view.bounds];
-//  _mapView.showsUserLocation = YES;
-//  _mapView.userTrackingMode = MKUserTrackingModeFollow;
   _mapView.delegate = self;
   [self.view addSubview:_mapView];
-  // Uncomment the following line to preserve selection between presentations.
-  // self.clearsSelectionOnViewWillAppear = NO;
-  
-  // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-  // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
 - (void)viewWillLayoutSubviews
@@ -100,6 +131,46 @@ MKMapViewDelegate>
   // Dispose of any resources that can be recreated.
 }
 
+#pragma mark - Getters/setters
+
+- (void)setStopGroups:(NSArray *)stopGroups
+{
+  assert(stopGroups.count == 2);
+  _stopGroups = stopGroups;
+  self.stopGroup = stopGroups.firstObject;
+}
+
+- (void)setStopGroup:(PTStopGroup *)stopGroup
+{
+  _stopGroup = stopGroup;
+  [self _configureMapViewWithStopGroup:stopGroup];
+  self.navigationItem.title = stopGroup.name;
+}
+
+#pragma mark -
+#pragma mark PTMonitoredVehicleJourneyDownloaderDelegate
+
+- (void)downloader:(PTMonitoredVehicleJourneyDownloader *)downloader didReceiveVehicleJourneys:(NSArray *)vehicleJourneys
+{
+  [self _configureMapViewWithVehicleJourneys:vehicleJourneys];
+}
+
+- (void)_configureMapViewWithVehicleJourneys:(NSArray *)vechileJourneys
+{
+  [self.mapView removeOverlays:self.circleOverlays];
+  
+  NSMutableArray *collection = [[NSMutableArray alloc] init];
+  for (PTMonitoredVehicleJourney *journey in vechileJourneys) {
+    // only show journeys of the same direction.
+    if (journey.direction == self.stopGroup.direction) {
+      MKCircle *circle = [MKCircle circleWithCenterCoordinate:journey.coordinate radius:10];
+      [collection addObject:circle];
+    }
+  }
+  self.circleOverlays = collection;
+  [self.mapView addOverlays:collection];
+}
+
 #pragma mark -
 #pragma mark PTStopsForRouteDownloaderDelegate
 
@@ -108,21 +179,24 @@ MKMapViewDelegate>
   
 }
 
-- (void)downloader:(PTStopsForRouteDownloader *)downloader didReceiveStopGroup:(PTStopGroup *)stopGroup
+- (void)downloader:(PTStopsForRouteDownloader *)downloader didReceiveStopGroups:(NSArray *)stopGroups
 {
-  self.stopGroup = stopGroup;
-  [self _configureMapViewWithStopGroup:stopGroup];
+  self.stopGroups = stopGroups;
+  [self _configureMapViewWithStopGroup:self.stopGroup];
   [self.tableView reloadData];
-
 }
+
 - (void)_configureMapViewWithStopGroup:(PTStopGroup *)stopGroup
 {
+  [self.mapView removeOverlay:self.polylineOverlays];
+  
   NSInteger count = stopGroup.polylinePoints.count;
   CLLocationCoordinate2D coordinates[count];
   for (int i = 0 ; i < count ; ++i) {
     coordinates[i] = [[stopGroup.polylinePoints objectAtIndex:i] coordinate];
   }
   MKPolyline *polyline = [MKPolyline polylineWithCoordinates:coordinates count:count];
+  self.polylineOverlays = polyline;
   [self.mapView addOverlay:polyline];
   self.mapView.region = [self.stopGroup coordinateRegion];
 }
@@ -135,10 +209,19 @@ MKMapViewDelegate>
 
 - (MKOverlayRenderer *)mapView:(MKMapView *)mapView rendererForOverlay:(id<MKOverlay>)overlay
 {
-  MKPolylineRenderer *renderer = [[MKPolylineRenderer alloc] initWithOverlay:overlay];
-  renderer.strokeColor = [UIColor blueColor];
-  renderer.lineWidth = 3.0;
-  return renderer;
+  if ([overlay isKindOfClass:[MKCircle class]]) {
+    MKCircleRenderer *renderer = [[MKCircleRenderer alloc] initWithOverlay:overlay];
+    renderer.fillColor = [UIColor grayColor];
+    renderer.strokeColor = [UIColor blueColor];
+    renderer.lineWidth = 5.0;
+    return renderer;
+  } else if ([overlay isKindOfClass:[MKPolyline class]]) {
+    MKPolylineRenderer *renderer = [[MKPolylineRenderer alloc] initWithOverlay:overlay];
+    renderer.strokeColor = [UIColor redColor];
+    renderer.lineWidth = 3.0;
+    return renderer;
+  }
+  assert(false);
 }
 
 #pragma mark - Table view data source
@@ -160,6 +243,9 @@ MKMapViewDelegate>
   
   NSString *stopID = [self.stopGroup.stopIDs objectAtIndex:indexPath.row];
   cell.textLabel.text = stopID;
+  
+  NSString *const imageURL = @"Shuttle-Picture.png";
+  cell.imageView.image = [UIImage imageNamed:imageURL];
   
   return cell;
 }

@@ -63,4 +63,9 @@
           self.presentableDistance];
 }
 
+- (int)direction
+{
+  return [self.mta.DirectionRef intValue];
+}
+
 @end
