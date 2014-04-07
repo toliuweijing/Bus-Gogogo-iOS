@@ -37,7 +37,7 @@ UITableViewDelegate>
 - (instancetype)initWithStop:(PTStop *)stop
 {
   if (self = [self initWithNibName:nil bundle:nil]) {
-//    _stop = stop;
+    //    _stop = stop;
     
     _downloader = [[PTStopDetailDownloader alloc] initWithStop:stop];
     _dataSource = [[PTStopDetailDataSource alloc] init];

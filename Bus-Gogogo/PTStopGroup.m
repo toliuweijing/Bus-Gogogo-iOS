@@ -17,7 +17,14 @@
   PTStopGroup *stopGroup = [[PTStopGroup alloc] init];
   stopGroup.name = oba.Name.Name;
   stopGroup.stopIDs = oba.StopIds;
-  stopGroup.polylinePoints = decodePolyLines(oba.Polylines);
+  // hack
+  if ([oba.Id intValue] == 1) {
+    NSArray *polylinPoints = decodePolyLine(oba.Polylines.lastObject);
+    polylinPoints = [polylinPoints arrayByAddingObjectsFromArray:decodePolyLine(oba.Polylines.firstObject)];
+    stopGroup.polylinePoints = polylinPoints;
+  } else {
+    stopGroup.polylinePoints = decodePolyLines(oba.Polylines);
+  }
   stopGroup.direction = [oba.Id intValue];
   return stopGroup;
 }
@@ -37,7 +44,7 @@
     leftMost = MIN(leftMost, lon);
     rightMost = MAX(rightMost, lon);
     topMost = MIN(topMost, lat);
-    bottomMost = MIN(bottomMost, lat);
+    bottomMost = MAX(bottomMost, lat);
   }
   
   CLLocationCoordinate2D center = CLLocationCoordinate2DMake((topMost + bottomMost) / 2, (leftMost + rightMost) / 2);
