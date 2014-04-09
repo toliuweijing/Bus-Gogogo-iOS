@@ -18,6 +18,8 @@
 
 @property (nonatomic, strong) PTLinePickerDataSource *dataSource;
 
+@property (nonatomic, strong) NSURLSession *session;
+
 @end
 
 @implementation PTLinePickerViewController
@@ -26,9 +28,41 @@
 {
   if (self = [super init]) {
     _dataSource = [[PTLinePickerDataSource alloc] init];
+    _session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
     self.navigationItem.title = @"Bus Lines";
   }
   return self;
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+  [super viewWillAppear:animated];
+  
+  [self _downloadRouteIDs];
+}
+
+- (void)_downloadRouteIDs
+{
+  NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"http://bustime.mta.info/api/where/routes-for-agency/MTA%20NYCT.json?key=cfb3c75b-5a43-4e66-b7f8-14e666b0c1c1"]];
+  [[self.session dataTaskWithRequest:request
+                  completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                      self.dataSource.routeIdentifiers = [self _routeIDsFromData:data];
+                      [self.tableView reloadData];
+                    });
+                  }] resume];
+}
+
+- (NSArray *)_routeIDsFromData:(NSData *)data
+{
+  NSError *error;
+  NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
+  assert(!error);
+
+  NSArray *list = json[@"data"][@"list"];
+  NSArray *routeIDs = [list valueForKey:@"id"];
+  routeIDs = [routeIDs sortedArrayUsingSelector:@selector(localizedCompare:)];
+  return routeIDs;
 }
 
 - (void)viewDidLoad

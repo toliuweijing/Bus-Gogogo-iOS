@@ -12,7 +12,7 @@
 
 @interface PTLinePickerDataSource : NSObject
 
-@property (nonatomic, strong, readonly) NSArray *routeIdentifiers;
+@property (nonatomic, strong) NSArray *routeIdentifiers;
 
 - (NSString *)routeIdentifierAtIndexPath:(NSIndexPath *)indexPath;
 

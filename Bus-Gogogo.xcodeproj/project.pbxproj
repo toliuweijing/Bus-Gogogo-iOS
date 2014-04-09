@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E94206E918F57E13009E9D3D /* PTLinePickerDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = E94206E818F57E13009E9D3D /* PTLinePickerDownloader.m */; };
 		FB01A5DE18E76226001C793F /* PTMonitoredVehicleJourney.m in Sources */ = {isa = PBXBuildFile; fileRef = FB01A5DD18E76226001C793F /* PTMonitoredVehicleJourney.m */; };
 		FB01A5E118E76427001C793F /* MTADataModelAdaptors.m in Sources */ = {isa = PBXBuildFile; fileRef = FB01A5E018E76427001C793F /* MTADataModelAdaptors.m */; };
 		FB129CD018F10D29009AAEA7 /* PTMonitoredVehicleJourneyDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = FB129CCF18F10D29009AAEA7 /* PTMonitoredVehicleJourneyDownloader.m */; };
@@ -61,6 +62,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E94206E718F57E13009E9D3D /* PTLinePickerDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTLinePickerDownloader.h; sourceTree = "<group>"; };
+		E94206E818F57E13009E9D3D /* PTLinePickerDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTLinePickerDownloader.m; sourceTree = "<group>"; };
 		FB01A5DC18E76226001C793F /* PTMonitoredVehicleJourney.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTMonitoredVehicleJourney.h; sourceTree = "<group>"; };
 		FB01A5DD18E76226001C793F /* PTMonitoredVehicleJourney.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTMonitoredVehicleJourney.m; sourceTree = "<group>"; };
 		FB01A5DF18E76427001C793F /* MTADataModelAdaptors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTADataModelAdaptors.h; sourceTree = "<group>"; };
@@ -277,6 +280,8 @@
 				FB517C4D18DDDF43005C7881 /* PTLinePickerViewController.m */,
 				FB517C7A18DDE8C3005C7881 /* PTLinePickerDataSource.h */,
 				FB517C7B18DDE8C3005C7881 /* PTLinePickerDataSource.m */,
+				E94206E718F57E13009E9D3D /* PTLinePickerDownloader.h */,
+				E94206E818F57E13009E9D3D /* PTLinePickerDownloader.m */,
 				FB517C7D18DDF0F4005C7881 /* PTLinePickerTableViewCell.h */,
 				FB517C7E18DDF0F4005C7881 /* PTLinePickerTableViewCell.m */,
 			);
@@ -463,6 +468,7 @@
 			files = (
 				FB517C4818DDDF43005C7881 /* PTAppDelegate.m in Sources */,
 				FB517C7F18DDF0F4005C7881 /* PTLinePickerTableViewCell.m in Sources */,
+				E94206E918F57E13009E9D3D /* PTLinePickerDownloader.m in Sources */,
 				FB3D48E418EFB47700302031 /* PTRouteDetailTableViewController.m in Sources */,
 				FB129CD018F10D29009AAEA7 /* PTMonitoredVehicleJourneyDownloader.m in Sources */,
 				FB3D48DB18EFADB400302031 /* PTStopsForRouteRequest.m in Sources */,

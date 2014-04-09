@@ -14,8 +14,6 @@
 
 @interface PTLinePickerDataSource ()
 
-@property (nonatomic, strong) NSArray *routeIdentifiers;
-
 @end
 
 @implementation PTLinePickerDataSource
