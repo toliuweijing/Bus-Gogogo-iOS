@@ -54,16 +54,15 @@ MKMapViewDelegate>
     _vehicleJourneyDownloader = [[PTMonitoredVehicleJourneyDownloader alloc] initWithRouteIdentifier:routeIdentifier];
     _vehicleJourneyDownloader.delegate = self;
     
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]
-                                              initWithTitle:@"Direction"
-                                              style:UIBarButtonItemStylePlain
-                                              target:self
-                                              action:@selector(_didTapDirection:)];
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]
-                                             initWithTitle:@"List"
-                                             style:UIBarButtonItemStylePlain
-                                             target:self
-                                             action:@selector(_didTapSwitchPresentation:)];
+    UIBarButtonItem *direction = [[UIBarButtonItem alloc] initWithTitle:@"Direction"
+                                                                  style:UIBarButtonItemStylePlain
+                                                                 target:self
+                                                                 action:@selector(_didTapDirection:)];
+    UIBarButtonItem *list = [[UIBarButtonItem alloc] initWithTitle:@"List"
+                                                             style:UIBarButtonItemStylePlain
+                                                            target:self
+                                                            action:@selector(_didTapSwitchPresentation:)];
+    self.navigationItem.rightBarButtonItems = @[direction, list];
   }
   return self;
 }
