@@ -29,7 +29,12 @@
   if (self = [super init]) {
     _dataSource = [[PTLinePickerDataSource alloc] init];
     _session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
+    
     self.navigationItem.title = @"Bus Lines";
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"All"
+                                                                              style:UIBarButtonItemStylePlain
+                                                                             target:self
+                                                                             action:@selector(_downloadRouteIDs)];
   }
   return self;
 }
@@ -38,7 +43,7 @@
 {
   [super viewWillAppear:animated];
   
-  [self _downloadRouteIDs];
+//  [self _downloadRouteIDs];
 }
 
 - (void)_downloadRouteIDs
