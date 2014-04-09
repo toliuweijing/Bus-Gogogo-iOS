@@ -20,6 +20,8 @@
 
 @property (nonatomic, readonly) NSString *stopPointName;
 
+@property (nonatomic, readonly) NSString *stopPointRef;
+
 @property (nonatomic, readonly) NSInteger stopsFromCall;
 
 @property (nonatomic, readonly) NSString *presentableDistance;

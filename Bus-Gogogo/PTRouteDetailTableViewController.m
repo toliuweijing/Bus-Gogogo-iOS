@@ -9,6 +9,7 @@
 #import "PTRouteDetailTableViewController.h"
 #import "PTStopsForRouteDownloader.h"
 #import "PTStop.h"
+#import "PTRouteDetailTableViewCell.h"
 #import "PTStore.h"
 #import "PTMonitoredVehicleJourney.h"
 #import "PTMonitoredVehicleJourneyDownloader.h"
@@ -23,6 +24,8 @@ MKMapViewDelegate>
 @property (nonatomic, strong) PTStopsForRouteDownloader *stopsForRouteDownloader;
 
 @property (nonatomic, strong) PTMonitoredVehicleJourneyDownloader *vehicleJourneyDownloader;
+
+@property (nonatomic, strong) NSArray *vehcleJourneys;
 
 @property (nonatomic, strong) NSArray *stopGroups; // with 2 directions
 
@@ -117,10 +120,11 @@ MKMapViewDelegate>
   [super viewDidLoad];
   
   // configure tableview
-  [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:kCellIdentifier];
+  [self.tableView registerClass:[PTRouteDetailTableViewCell class] forCellReuseIdentifier:kCellIdentifier];
   
   // configure mapview
   _mapView = [[MKMapView alloc] initWithFrame:self.view.bounds];
+  _mapView.showsUserLocation = YES;
   _mapView.delegate = self;
   [self.view addSubview:_mapView];
 }
@@ -137,6 +141,12 @@ MKMapViewDelegate>
 }
 
 #pragma mark - Getters/setters
+
+- (void)setVehcleJourneys:(NSArray *)vehcleJourneys
+{
+  _vehcleJourneys = vehcleJourneys;
+  [self.tableView reloadData];
+}
 
 - (void)setStopGroups:(NSArray *)stopGroups
 {
@@ -158,6 +168,7 @@ MKMapViewDelegate>
 
 - (void)downloader:(PTMonitoredVehicleJourneyDownloader *)downloader didReceiveVehicleJourneys:(NSArray *)vehicleJourneys
 {
+  self.vehcleJourneys = vehicleJourneys;
   [self _configureMapViewWithVehicleJourneys:vehicleJourneys];
 }
 
@@ -244,15 +255,33 @@ MKMapViewDelegate>
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
   UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kCellIdentifier forIndexPath:indexPath];
-  
   NSString *stopID = [self.stopGroup.stopIDs objectAtIndex:indexPath.row];
+  
   PTStop *stop = [[PTStore sharedStore] stopWithIdentifier:stopID];
   cell.textLabel.text = stop.name;
-  
-  NSString *const imageURL = @"Shuttle-Picture.png";
-  cell.imageView.image = [UIImage imageNamed:imageURL];
+ 
+  // ------
+  PTMonitoredVehicleJourney *journey = [self _journeyAtStop:stopID];
+  if (journey) {
+    cell.detailTextLabel.text = journey.presentableDistance;
+    
+    NSString *const imageURL = @"Shuttle-Picture.png";
+    cell.imageView.image = [UIImage imageNamed:imageURL];
+ 
+  }
   
   return cell;
+}
+
+- (PTMonitoredVehicleJourney *)_journeyAtStop:(NSString *)stopID
+{
+  for (PTMonitoredVehicleJourney *journey in self.vehcleJourneys) {
+    NSString *stopPointRef = journey.stopPointRef;
+    if ([journey.stopPointRef isEqualToString:stopID]) {
+      return journey;
+    }
+  }
+  return nil;
 }
 
 /*

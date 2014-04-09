@@ -68,4 +68,9 @@
   return [self.mta.DirectionRef intValue];
 }
 
+- (NSString *)stopPointRef
+{
+  return self.mta.MonitoredCall.StopPointRef;
+}
+
 @end
