@@ -160,6 +160,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E94206E618F4E514009E9D3D /* PTBase */ = {
+			isa = PBXGroup;
+			children = (
+				FBFF62ED18E876D1008D94F9 /* PTMacro.h */,
+				FB3D48EA18F0487E00302031 /* PTBase.h */,
+				FB3D48EB18F0487E00302031 /* PTBase.m */,
+			);
+			name = PTBase;
+			sourceTree = "<group>";
+		};
 		FB3D48E518EFB47C00302031 /* RouteDetail */ = {
 			isa = PBXGroup;
 			children = (
@@ -218,15 +228,13 @@
 		FB517C3D18DDDF43005C7881 /* Bus-Gogogo */ = {
 			isa = PBXGroup;
 			children = (
-				FB3D48EA18F0487E00302031 /* PTBase.h */,
-				FB3D48EB18F0487E00302031 /* PTBase.m */,
+				E94206E618F4E514009E9D3D /* PTBase */,
 				FB517C7318DDE4FB005C7881 /* Model */,
-				FBFF62ED18E876D1008D94F9 /* PTMacro.h */,
-				FB517C4618DDDF43005C7881 /* PTAppDelegate.h */,
-				FB517C4718DDDF43005C7881 /* PTAppDelegate.m */,
 				FB3D48E518EFB47C00302031 /* RouteDetail */,
 				FBC773A418DE193800621261 /* StopDetail */,
 				FB517C6C18DDE2CA005C7881 /* LinePicker */,
+				FB517C4618DDDF43005C7881 /* PTAppDelegate.h */,
+				FB517C4718DDDF43005C7881 /* PTAppDelegate.m */,
 				FB517C4F18DDDF43005C7881 /* Images.xcassets */,
 				FB517C3E18DDDF43005C7881 /* Supporting Files */,
 			);

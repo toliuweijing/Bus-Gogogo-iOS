@@ -27,9 +27,7 @@
   if (self = [super init]) {
     NSURLSessionConfiguration *config = [NSURLSessionConfiguration defaultSessionConfiguration];
     config.requestCachePolicy = NSURLRequestReloadIgnoringLocalAndRemoteCacheData;
-    _session = [NSURLSession sessionWithConfiguration:config
-                                             delegate:self
-                                        delegateQueue:[NSOperationQueue mainQueue]];
+    _session = [NSURLSession sessionWithConfiguration:config];
     _routeID = routeID;
   }
   return self;
@@ -37,33 +35,33 @@
 
 - (void)startDownload
 {
-  [[self.session dataTaskWithRequest:[PTStopsForRouteRequest requestWithRouteID:self.routeID]] resume];
+  NSURLRequest *request = [PTStopsForRouteRequest requestWithRouteID:self.routeID];
+  [[self.session dataTaskWithRequest:request
+                  completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+                    NSArray *stopGroups = [self stopGroupsFromData:data];
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                      [self.delegate downloader:self didReceiveStopGroups:stopGroups];
+                    });
+  }] resume];
 }
 
-#pragma mark -
-#pragma mark NSURLSessionDataDelegate
-
-- (void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask didReceiveData:(NSData *)data
+- (NSArray *)stopGroupsFromData:(NSData *)data
 {
-  NSDictionary *JSONResponse = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+  NSError *error;
+  NSDictionary *JSONResponse = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
+  assert(!error);
+  
   OBAResponse *oba = [[OBAResponse alloc] initWithDictionary:JSONResponse];
   
   // populate results into global store
   [[PTStore sharedStore] populateWithOBAResponse:oba];
  
-  // ----
   OBAStopGrouping *stopGrouping = oba.Data.StopGroupings.firstObject;
-//  assert(stopGrouping.StopGroups.count == 2);
   OBAStopGroup *stopGroupA = stopGrouping.StopGroups.firstObject;
   OBAStopGroup *stopGroupB = stopGrouping.StopGroups.lastObject;
   NSArray *ptStopGroups = @[[PTStopGroup stopGroupFromOBACounterPart:stopGroupA],
                             [PTStopGroup stopGroupFromOBACounterPart:stopGroupB]];
-  [self.delegate downloader:self didReceiveStopGroups:ptStopGroups];
-}
-
-- (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didCompleteWithError:(NSError *)error
-{
-  assert(error == nil);
+  return ptStopGroups;
 }
 
 @end

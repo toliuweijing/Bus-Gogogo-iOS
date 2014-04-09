@@ -23,7 +23,7 @@
 {
   if (self = [super init]) {
     NSURLSessionConfiguration *config = [NSURLSessionConfiguration defaultSessionConfiguration];
-    _session = [NSURLSession sessionWithConfiguration:config delegate:self delegateQueue:[NSOperationQueue mainQueue]];
+    _session = [NSURLSession sessionWithConfiguration:config];
     _routeIdentifier = routeID;
   }
   return self;
@@ -36,15 +36,21 @@
   NSString *base = [NSString stringWithFormat:format, self.routeIdentifier];
   NSURL *url = [NSURL URLWithString:base];
   NSURLRequest *request = [NSURLRequest requestWithURL:url];
-  [[self.session dataTaskWithRequest:request] resume];
+  [[self.session dataTaskWithRequest:request
+                   completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+                     NSArray *journeys = [self vehicleJourneysFromData:data];
+                     dispatch_async(dispatch_get_main_queue(), ^{
+                       [self.delegate downloader:self didReceiveVehicleJourneys:journeys];
+                     });
+  }] resume];
 }
 
-#pragma mark -
-#pragma mark NSURLSessionDataDelegate
-
-- (void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask didReceiveData:(NSData *)data
+- (NSArray *)vehicleJourneysFromData:(NSData *)data
 {
-  NSDictionary *JSONResponse = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+  NSError *error;
+  NSDictionary *JSONResponse = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
+  assert(!error);
+  
   MTAResponse *mta = [[MTAResponse alloc] initWithDictionary:JSONResponse];
   
   NSMutableArray *collection = [[NSMutableArray alloc] init];
@@ -56,12 +62,7 @@
     MTAMonitoredVehicleJourney *journey = activity.MonitoredVehicleJourney;
     [collection addObject:[[PTMonitoredVehicleJourney alloc] initWithMTACounterPart:journey]];
   }
-  [self.delegate downloader:self didReceiveVehicleJourneys:collection];
-}
-
-- (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didCompleteWithError:(NSError *)error
-{
-  assert(error == nil);
+  return collection;
 }
 
 @end
