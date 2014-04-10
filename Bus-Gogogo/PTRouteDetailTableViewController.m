@@ -276,7 +276,7 @@ MKMapViewDelegate>
 - (PTMonitoredVehicleJourney *)_journeyAtStop:(NSString *)stopID
 {
   for (PTMonitoredVehicleJourney *journey in self.vehcleJourneys) {
-    NSString *stopPointRef = journey.stopPointRef;
+    //NSString *stopPointRef = journey.stopPointRef;
     if ([journey.stopPointRef isEqualToString:stopID]) {
       return journey;
     }
