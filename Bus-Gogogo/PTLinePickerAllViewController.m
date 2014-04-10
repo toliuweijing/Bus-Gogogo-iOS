@@ -36,6 +36,11 @@
                                                                                  target:self
                                                                                  action:@selector(_downloadRouteIDs)];
          */
+        self.searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 44)];
+        
+        //self.searchBar.delegate=self.searchBarController;
+        
+        self.tableView.tableHeaderView = self.searchBar;
         [self _downloadRouteIDs];
     }
     return self;

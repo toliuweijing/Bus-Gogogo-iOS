@@ -10,4 +10,6 @@
 
 @interface PTLinePickerAllViewController : UITableViewController
 
+@property (strong, nonatomic) IBOutlet UISearchBar *searchBar;
+
 @end
