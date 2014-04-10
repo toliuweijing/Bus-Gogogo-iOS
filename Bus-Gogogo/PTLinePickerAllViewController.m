@@ -20,6 +20,12 @@
 
 @property (nonatomic, strong) NSURLSession *session;
 
+@property (strong, nonatomic) IBOutlet UISearchBar *searchBar;
+
+@property (strong, nonatomic) NSMutableArray* filteredTableData;
+
+@property bool isFiltered;
+
 @end
 
 @implementation PTLinePickerAllViewController
@@ -36,9 +42,11 @@
                                                                                  target:self
                                                                                  action:@selector(_downloadRouteIDs)];
          */
+        self.isFiltered=false;
         self.searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 44)];
         
         //self.searchBar.delegate=self.searchBarController;
+        self.searchBar.delegate = (id)self;
         
         self.tableView.tableHeaderView = self.searchBar;
         [self _downloadRouteIDs];
@@ -101,7 +109,11 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     assert(section == 0);
-    return self.dataSource.routeIdentifiers.count;
+    if (self.isFiltered)
+    {
+        return self.filteredTableData.count;
+    }
+    else return self.dataSource.routeIdentifiers.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -135,5 +147,22 @@
                                                                    routeIdentifier:routeIdentifier];
     [self.navigationController pushViewController:vc animated:YES];
 }
+
+
+/*
+-(void)searchBar:(UISearchBar*)searchBar textDidChange:(NSString*)text
+{
+    if(text.length == 0)
+    {
+        self.isFiltered = FALSE;
+        
+    }
+    else
+    {
+        self.isFiltered = true;
+        self.filteredTableData = [[NSMutableArray alloc] init];
+    }
+}
+*/
 
 @end
