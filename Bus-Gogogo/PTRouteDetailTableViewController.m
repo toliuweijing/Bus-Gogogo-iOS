@@ -275,8 +275,8 @@ MKMapViewDelegate>
 - (PTMonitoredVehicleJourney *)_journeyAtStop:(NSString *)stopID
 {
   for (PTMonitoredVehicleJourney *journey in self.vehcleJourneys) {
-    //NSString *stopPointRef = journey.stopPointRef;
-    if ([journey.stopPointRef isEqualToString:stopID]) {
+    if ([journey.stopPointRef isEqualToString:stopID] &&
+         journey.direction == self.stopGroup.direction) {
       return journey;
     }
   }
