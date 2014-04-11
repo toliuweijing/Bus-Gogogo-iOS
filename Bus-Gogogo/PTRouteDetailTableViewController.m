@@ -267,7 +267,6 @@ MKMapViewDelegate>
     
     NSString *const imageURL = @"Shuttle-Picture.png";
     cell.imageView.image = [UIImage imageNamed:imageURL];
- 
   }
   
   return cell;
