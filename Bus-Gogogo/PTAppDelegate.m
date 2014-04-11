@@ -21,23 +21,22 @@
   
   
   PTLinePickerViewController *vc = [[PTLinePickerViewController alloc] init];
-    PTLinePickerAllViewController *vc2= [[PTLinePickerAllViewController alloc] init];
-    vc.title=@"Store Lines";
-    vc2.title=@"All Lines";
-  //UINavigationController *navigator2 = [[UINavigationController alloc] initWithRootViewController:vc2];
+  PTLinePickerAllViewController *vc2= [[PTLinePickerAllViewController alloc] init];
+  vc.title=@"Store Lines";
+  vc2.title=@"All Lines";
   NSArray* controllers = [NSArray arrayWithObjects:vc, vc2, nil];
   UITabBarController* tabBarController = [[UITabBarController alloc] init];
+  tabBarController.tabBar.translucent=NO;
   tabBarController.viewControllers = controllers;
-  UINavigationController *navigator = [[UINavigationController alloc] initWithRootViewController:tabBarController];
+  tabBarController.title=@"Bus Lines";
     
-  
-  
-//  UIViewController *vc = [[PTRouteDetailTableViewController alloc] initWithStyle:UITableViewStylePlain];
-  
+  UINavigationController *navigator = [[UINavigationController alloc] initWithRootViewController:tabBarController];
+  navigator.navigationBar.translucent = NO;
   
   self.window.rootViewController = navigator;
-  
+
   [self.window makeKeyAndVisible];
+    
   return YES;
 }
 

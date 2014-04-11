@@ -33,6 +33,7 @@
 - (instancetype)init
 {
     if (self = [super init]) {
+        
         _dataSource = [[PTLinePickerDataSource alloc] init];
         _session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
         //self.navigationItem.title = @"Bus Lines";
@@ -48,7 +49,7 @@
         //self.searchBar.delegate=self.searchBarController;
         self.searchBar.delegate = (id)self;
         
-        self.tableView.tableHeaderView = self.searchBar;
+        //self.tableView.tableHeaderView = self.searchBar;
         [self _downloadRouteIDs];
     }
     return self;
