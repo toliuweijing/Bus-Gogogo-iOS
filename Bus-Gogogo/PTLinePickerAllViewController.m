@@ -23,9 +23,9 @@
 @property (strong, nonatomic) IBOutlet UISearchBar *searchBar;
 
 @property (strong, nonatomic) NSMutableArray* filteredTableData;
-
+/*
 @property bool isFiltered;
-
+*/
 @end
 
 @implementation PTLinePickerAllViewController
@@ -36,20 +36,13 @@
         
         _dataSource = [[PTLinePickerDataSource alloc] init];
         _session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
-        //self.navigationItem.title = @"Bus Lines";
         /*
-        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"All"
-                                                                                  style:UIBarButtonItemStylePlain
-                                                                                 target:self
-                                                                                 action:@selector(_downloadRouteIDs)];
-         */
         self.isFiltered=false;
         self.searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 44)];
         
-        //self.searchBar.delegate=self.searchBarController;
         self.searchBar.delegate = (id)self;
-        
-        //self.tableView.tableHeaderView = self.searchBar;
+        self.tableView.tableHeaderView = self.searchBar;
+         */
         [self _downloadRouteIDs];
     }
     return self;
@@ -110,11 +103,14 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     assert(section == 0);
+    /*
     if (self.isFiltered)
     {
         return self.filteredTableData.count;
     }
     else return self.dataSource.routeIdentifiers.count;
+    */
+    return self.dataSource.routeIdentifiers.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
