@@ -13,6 +13,7 @@
 #import "PTStore.h"
 #import "PTMonitoredVehicleJourney.h"
 #import "PTMonitoredVehicleJourneyDownloader.h"
+#import "PTPolyline.h"
 
 static NSString *const kCellIdentifier = @"cell_identifier";
 
@@ -213,6 +214,7 @@ MKMapViewDelegate>
     coordinates[i] = [[stopGroup.polylinePoints objectAtIndex:i] coordinate];
   }
   MKPolyline *polyline = [MKPolyline polylineWithCoordinates:coordinates count:count];
+
   self.polylineOverlays = polyline;
   [self.mapView addOverlay:polyline];
   self.mapView.region = [self.stopGroup coordinateRegion];
