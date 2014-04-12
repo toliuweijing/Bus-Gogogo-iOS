@@ -16,7 +16,4 @@
 
 - (MKPolyline *)mapPolyline;
 
-// An array of locations represets points.
-- (NSArray *)points;
-
 @end

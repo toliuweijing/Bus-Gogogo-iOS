@@ -28,7 +28,7 @@
   }
   stopGroup.polylines = ptPolylines;
   
-  stopGroup.polylinePoints = decodePolyLines(oba.Polylines);
+  stopGroup.polylinePoints = [PTBase decodePolyLines:oba.Polylines];
 
   stopGroup.direction = [oba.Id intValue];
   return stopGroup;

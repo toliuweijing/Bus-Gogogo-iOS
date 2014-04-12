@@ -28,7 +28,7 @@
 
 - (MKPolyline *)mapPolyline
 {
-  NSArray *points = decodePolyLine(self.oba);
+  NSArray *points = [PTBase decodePolyLine:self.oba];
   
   NSUInteger count = points.count;
   CLLocationCoordinate2D coordinates[count];

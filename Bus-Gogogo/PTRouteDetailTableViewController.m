@@ -14,6 +14,7 @@
 #import "PTMonitoredVehicleJourney.h"
 #import "PTMonitoredVehicleJourneyDownloader.h"
 #import "PTPolyline.h"
+#import "PTMapContainerView.h"
 
 static NSString *const kCellIdentifier = @"cell_identifier";
 
@@ -39,7 +40,8 @@ MKMapViewDelegate>
 @property (nonatomic, strong) NSArray *polylinesDrawn; // MKPolyeline objects added to map.
 //@property (nonatomic, strong) MKPolyline *polylineOverlays;
 
-@property (nonatomic, strong) MKMapView *mapView;
+@property (nonatomic, strong) PTMapContainerView *mapContainerView;
+//@property (nonatomic, strong) MKMapView *mapView;
 
 @end
 
@@ -79,11 +81,11 @@ MKMapViewDelegate>
  */
 - (void)_didTapSwitchPresentation:(id)sender
 {
-  if ([self.view.subviews containsObject:self.mapView]) {
-    [self.mapView removeFromSuperview];
+  if ([self.view.subviews containsObject:self.mapContainerView]) {
+    [self.mapContainerView removeFromSuperview];
     self.navigationItem.leftBarButtonItem.title = @"Map";
   } else {
-    [self.view addSubview:self.mapView];
+    [self.view addSubview:self.mapContainerView];
     self.navigationItem.leftBarButtonItem.title = @"List";
   }
   [self.view setNeedsDisplay];
@@ -127,15 +129,15 @@ MKMapViewDelegate>
   [self.tableView registerClass:[PTRouteDetailTableViewCell class] forCellReuseIdentifier:kCellIdentifier];
   
   // configure mapview
-  _mapView = [[MKMapView alloc] initWithFrame:self.view.bounds];
-  _mapView.showsUserLocation = YES;
-  _mapView.delegate = self;
-  [self.view addSubview:_mapView];
+  _mapContainerView = [[PTMapContainerView alloc] initWithFrame:CGRectZero];
+  [self.view addSubview:_mapContainerView];
 }
 
 - (void)viewWillLayoutSubviews
 {
   [super viewWillLayoutSubviews];
+  
+  _mapContainerView.frame = self.view.bounds;
 }
 
 - (void)didReceiveMemoryWarning
@@ -178,18 +180,7 @@ MKMapViewDelegate>
 
 - (void)_configureMapViewWithVehicleJourneys:(NSArray *)vechileJourneys
 {
-  [self.mapView removeOverlays:self.circleOverlays];
-  
-  NSMutableArray *collection = [[NSMutableArray alloc] init];
-  for (PTMonitoredVehicleJourney *journey in vechileJourneys) {
-    // only show journeys of the same direction.
-    if (journey.direction == self.stopGroup.direction) {
-      MKCircle *circle = [MKCircle circleWithCenterCoordinate:journey.coordinate radius:10];
-      [collection addObject:circle];
-    }
-  }
-  self.circleOverlays = collection;
-  [self.mapView addOverlays:collection];
+  self.mapContainerView.vehicleJourneys = vechileJourneys;
 }
 
 #pragma mark -
@@ -207,28 +198,7 @@ MKMapViewDelegate>
 
 - (void)_configureMapViewWithStopGroup:(PTStopGroup *)stopGroup
 {
-  // remove current polylines from map.
-  for (MKPolyline *polyline in self.polylinesDrawn) {
-    [self.mapView removeOverlay:polyline];
-  }
-  
-  // add polylines from stopGroup to map.
-  NSMutableArray *polylinesDrawn = [[NSMutableArray alloc] initWithCapacity:stopGroup.polylines.count];
-  for (PTPolyline *polyline in stopGroup.polylines) {
-    MKPolyline *mkPolyline = polyline.mapPolyline;
-    [polylinesDrawn addObject:mkPolyline];
-    [self.mapView addOverlay:mkPolyline];
-  }
-
-  // update polylines drawn.
-  self.polylinesDrawn = polylinesDrawn;
-  
-  // zoom region to fit stopGroup.
-  self.mapView.region = [self.stopGroup coordinateRegion];
-}
-
-- (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation
-{
+  self.mapContainerView.stopGroup = stopGroup;
 }
 
 #pragma mark - MKMapViewDelegate
