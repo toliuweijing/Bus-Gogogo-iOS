@@ -36,7 +36,8 @@ MKMapViewDelegate>
 
 @property (nonatomic, strong) NSArray *circleOverlays; // circle Overlays
 
-@property (nonatomic, strong) MKPolyline *polylineOverlays;
+@property (nonatomic, strong) NSArray *polylinesDrawn; // MKPolyeline objects added to map.
+//@property (nonatomic, strong) MKPolyline *polylineOverlays;
 
 @property (nonatomic, strong) MKMapView *mapView;
 
@@ -206,17 +207,23 @@ MKMapViewDelegate>
 
 - (void)_configureMapViewWithStopGroup:(PTStopGroup *)stopGroup
 {
-  [self.mapView removeOverlay:self.polylineOverlays];
-  
-  NSInteger count = stopGroup.polylinePoints.count;
-  CLLocationCoordinate2D coordinates[count];
-  for (int i = 0 ; i < count ; ++i) {
-    coordinates[i] = [[stopGroup.polylinePoints objectAtIndex:i] coordinate];
+  // remove current polylines from map.
+  for (MKPolyline *polyline in self.polylinesDrawn) {
+    [self.mapView removeOverlay:polyline];
   }
-  MKPolyline *polyline = [MKPolyline polylineWithCoordinates:coordinates count:count];
+  
+  // add polylines from stopGroup to map.
+  NSMutableArray *polylinesDrawn = [[NSMutableArray alloc] initWithCapacity:stopGroup.polylines.count];
+  for (PTPolyline *polyline in stopGroup.polylines) {
+    MKPolyline *mkPolyline = polyline.mapPolyline;
+    [polylinesDrawn addObject:mkPolyline];
+    [self.mapView addOverlay:mkPolyline];
+  }
 
-  self.polylineOverlays = polyline;
-  [self.mapView addOverlay:polyline];
+  // update polylines drawn.
+  self.polylinesDrawn = polylinesDrawn;
+  
+  // zoom region to fit stopGroup.
   self.mapView.region = [self.stopGroup coordinateRegion];
 }
 
