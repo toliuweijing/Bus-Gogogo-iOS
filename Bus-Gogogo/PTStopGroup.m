@@ -9,22 +9,27 @@
 #import "PTStopGroup.h"
 #import "OBADataModel.h"
 #import "PTBase.h"
+#import "PTPolyline.h"
 
 @implementation PTStopGroup
 
 + (PTStopGroup *)stopGroupFromOBACounterPart:(OBAStopGroup *)oba
 {
   PTStopGroup *stopGroup = [[PTStopGroup alloc] init];
+  
   stopGroup.name = oba.Name.Name;
+  
   stopGroup.stopIDs = oba.StopIds;
-  // hack
-  if ([oba.Id intValue] == 1) {
-    NSArray *polylinPoints = decodePolyLine(oba.Polylines.lastObject);
-    polylinPoints = [polylinPoints arrayByAddingObjectsFromArray:decodePolyLine(oba.Polylines.firstObject)];
-    stopGroup.polylinePoints = polylinPoints;
-  } else {
-    stopGroup.polylinePoints = decodePolyLines(oba.Polylines);
+  
+  NSMutableArray *ptPolylines = [[NSMutableArray alloc] initWithCapacity:oba.Polylines.count];
+  for (OBAPolyline *obaPolyline in oba.Polylines) {
+    PTPolyline *ptPolyline = [[PTPolyline alloc] initWithOBACounterPart:obaPolyline];
+    [ptPolylines addObject:ptPolyline];
   }
+  stopGroup.polylines = ptPolylines;
+  
+  stopGroup.polylinePoints = decodePolyLines(oba.Polylines);
+
   stopGroup.direction = [oba.Id intValue];
   return stopGroup;
 }

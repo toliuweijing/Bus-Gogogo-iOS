@@ -13,8 +13,11 @@
 #import "PTStore.h"
 #import "PTMonitoredVehicleJourney.h"
 #import "PTMonitoredVehicleJourneyDownloader.h"
+#import "PTPolyline.h"
 
 static NSString *const kCellIdentifier = @"cell_identifier";
+
+static NSString *const kShuttlePictureImageName = @"Shuttle-Picture.png";
 
 @interface PTRouteDetailTableViewController () <
 PTStopsForRouteDownloaderDelegate,
@@ -211,6 +214,7 @@ MKMapViewDelegate>
     coordinates[i] = [[stopGroup.polylinePoints objectAtIndex:i] coordinate];
   }
   MKPolyline *polyline = [MKPolyline polylineWithCoordinates:coordinates count:count];
+
   self.polylineOverlays = polyline;
   [self.mapView addOverlay:polyline];
   self.mapView.region = [self.stopGroup coordinateRegion];
@@ -258,18 +262,25 @@ MKMapViewDelegate>
   NSString *stopID = [self.stopGroup.stopIDs objectAtIndex:indexPath.row];
   
   PTStop *stop = [[PTStore sharedStore] stopWithIdentifier:stopID];
-  cell.textLabel.text = stop.name;
- 
-  // ------
   PTMonitoredVehicleJourney *journey = [self _journeyAtStop:stopID];
+  [self _configureCell:cell withVehicleJourney:journey stop:stop];
+  return cell;
+}
+
+- (void)_configureCell:(UITableViewCell *)cell
+    withVehicleJourney:(PTMonitoredVehicleJourney *)journey
+                  stop:(PTStop *)stop
+{
+  assert(stop); // should have a valid stop for each cell.
+  
+  cell.textLabel.text = stop.name;
   if (journey) {
     cell.detailTextLabel.text = journey.presentableDistance;
-    
-    NSString *const imageURL = @"Shuttle-Picture.png";
-    cell.imageView.image = [UIImage imageNamed:imageURL];
+    cell.imageView.image = [UIImage imageNamed:kShuttlePictureImageName];
+  } else {
+    cell.detailTextLabel.text = nil;
+    cell.imageView.image = nil;
   }
-  
-  return cell;
 }
 
 - (PTMonitoredVehicleJourney *)_journeyAtStop:(NSString *)stopID

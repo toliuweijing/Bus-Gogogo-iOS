@@ -24,7 +24,10 @@
 // PTSTops
 @property (nonatomic, strong) NSArray *stopIDs;
 
-// points for drawing PTRoute
+// An array of PTPolyline objects.
+@property (nonatomic, strong) NSArray *polylines;
+
+// An unordered array of CLLocation objects from self.polylines.
 @property (nonatomic, strong) NSArray *polylinePoints;
 
 @end
