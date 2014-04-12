@@ -20,7 +20,7 @@ static NSString *const kMapViewReuseIdentifierVehcileJourneys = @"vehcile_journe
 
 @property (nonatomic, strong) UIToolbar *toolBar;
 
-//@property (nonatomic, strong) CLLocation *userLocation;
+@property (nonatomic, strong) CLLocation *userLocation;
 
 @property (nonatomic, strong) MKUserTrackingBarButtonItem *userTrackingBarButton;
 
@@ -42,8 +42,6 @@ static NSString *const kMapViewReuseIdentifierVehcileJourneys = @"vehcile_journe
   self = [super initWithFrame:frame];
   if (self) {
     _mapView = [[MKMapView alloc] initWithFrame:CGRectZero];
-    _mapView.showsUserLocation = YES;
-    _mapView.userTrackingMode = MKUserTrackingModeFollow;
     _mapView.delegate = self;
     [self addSubview:_mapView];
     
@@ -143,8 +141,19 @@ static NSString *const kMapViewReuseIdentifierVehcileJourneys = @"vehcile_journe
 - (void)mapView:(MKMapView *)mapView didChangeUserTrackingMode:(MKUserTrackingMode)mode animated:(BOOL)animated
 {
   if (mode == MKUserTrackingModeNone) {
-    _mapView.showsUserLocation = NO;
+    mapView.showsUserLocation = NO;
+  } else if (mode == MKUserTrackingModeFollow) {
+    mapView.showsUserLocation = YES;
+    MKCoordinateRegion region = [self _regionForUserTrackingModeFollow];
+    [mapView setRegion:region animated:NO];
   }
+  [mapView setNeedsDisplay];
+}
+
+- (MKCoordinateRegion)_regionForUserTrackingModeFollow
+{
+  MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(self.userLocation.coordinate, 1000, 1000);
+  return region;
 }
 
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation
@@ -165,10 +174,10 @@ static NSString *const kMapViewReuseIdentifierVehcileJourneys = @"vehcile_journe
   }
 }
 
-//- (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation
-//{
-//  self.userLocation = userLocation.location;
-//}
+- (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation
+{
+  self.userLocation = userLocation.location;
+}
 
 - (MKOverlayRenderer *)mapView:(MKMapView *)mapView rendererForOverlay:(id<MKOverlay>)overlay
 {
