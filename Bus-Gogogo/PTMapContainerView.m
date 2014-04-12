@@ -92,5 +92,23 @@
   [self.mapView addOverlays:self.circlesForVehicleJourneys];
 }
 
+#pragma mark - MKMapViewDelegate
+
+- (MKOverlayRenderer *)mapView:(MKMapView *)mapView rendererForOverlay:(id<MKOverlay>)overlay
+{
+  if ([overlay isKindOfClass:[MKCircle class]]) {
+    MKCircleRenderer *renderer = [[MKCircleRenderer alloc] initWithOverlay:overlay];
+    renderer.fillColor = [UIColor grayColor];
+    renderer.strokeColor = [UIColor blueColor];
+    renderer.lineWidth = 5.0;
+    return renderer;
+  } else if ([overlay isKindOfClass:[MKPolyline class]]) {
+    MKPolylineRenderer *renderer = [[MKPolylineRenderer alloc] initWithOverlay:overlay];
+    renderer.strokeColor = [UIColor redColor];
+    renderer.lineWidth = 3.0;
+    return renderer;
+  }
+  assert(false);
+}
 
 @end
