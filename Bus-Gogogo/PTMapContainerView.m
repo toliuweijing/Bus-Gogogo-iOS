@@ -18,7 +18,11 @@ static NSString *const kMapViewReuseIdentifierVehcileJourneys = @"vehcile_journe
 
 @property (nonatomic, strong) MKMapView *mapView;
 
-@property (nonatomic, strong) CLLocation *userLocation;
+@property (nonatomic, strong) UIToolbar *toolBar;
+
+//@property (nonatomic, strong) CLLocation *userLocation;
+
+@property (nonatomic, strong) MKUserTrackingBarButtonItem *userTrackingBarButton;
 
 @property (nonatomic, strong) NSMutableArray *polylinesForStopGroup; // MKPolyline objs
 
@@ -42,6 +46,12 @@ static NSString *const kMapViewReuseIdentifierVehcileJourneys = @"vehcile_journe
     _mapView.userTrackingMode = MKUserTrackingModeFollow;
     _mapView.delegate = self;
     [self addSubview:_mapView];
+    
+    _toolBar = [[UIToolbar alloc] initWithFrame:CGRectZero];
+    [self addSubview:_toolBar];
+    
+    _userTrackingBarButton = [[MKUserTrackingBarButtonItem alloc] initWithMapView:_mapView];
+    _toolBar.items = @[_userTrackingBarButton];
   }
   return self;
 }
@@ -51,6 +61,9 @@ static NSString *const kMapViewReuseIdentifierVehcileJourneys = @"vehcile_journe
   [super layoutSubviews];
   
   self.mapView.frame = self.bounds;
+  
+  const CGFloat kToolBarHeight = 35.0;
+  self.toolBar.frame = CGRectMake(0, CGRectGetHeight(self.bounds)-kToolBarHeight, CGRectGetWidth(self.bounds), kToolBarHeight);
 }
 
 - (void)setStopGroup:(PTStopGroup *)stopGroup
@@ -107,11 +120,11 @@ static NSString *const kMapViewReuseIdentifierVehcileJourneys = @"vehcile_journe
 #endif
 }
 
-- (void)setUserLocation:(CLLocation *)userLocation
-{
-  _userLocation = userLocation;
-  [self _configureMapViewWithUserLocation:userLocation];
-}
+//- (void)setUserLocation:(CLLocation *)userLocation
+//{
+//  _userLocation = userLocation;
+//  [self _configureMapViewWithUserLocation:userLocation];
+//}
 
 - (void)_configureMapViewWithUserLocation:(CLLocation *)userLocation
 {
@@ -120,6 +133,13 @@ static NSString *const kMapViewReuseIdentifierVehcileJourneys = @"vehcile_journe
 }
 
 #pragma mark - MKMapViewDelegate
+
+- (void)mapView:(MKMapView *)mapView didChangeUserTrackingMode:(MKUserTrackingMode)mode animated:(BOOL)animated
+{
+  if (mode == MKUserTrackingModeNone) {
+    _mapView.showsUserLocation = NO;
+  }
+}
 
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation
 {
@@ -139,10 +159,10 @@ static NSString *const kMapViewReuseIdentifierVehcileJourneys = @"vehcile_journe
   }
 }
 
-- (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation
-{
-  self.userLocation = userLocation.location;
-}
+//- (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation
+//{
+//  self.userLocation = userLocation.location;
+//}
 
 - (MKOverlayRenderer *)mapView:(MKMapView *)mapView rendererForOverlay:(id<MKOverlay>)overlay
 {
