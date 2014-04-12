@@ -10,6 +10,7 @@
 #import "PTLinePickerViewController.h"
 #import "PTStopDetailViewController.h"
 #import "PTRouteDetailTableViewController.h"
+#import "PTLinePickerAllViewController.h"
 
 @implementation PTAppDelegate
 
@@ -18,12 +19,24 @@
   self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
   self.window.backgroundColor = [UIColor whiteColor];
   
+  
   PTLinePickerViewController *vc = [[PTLinePickerViewController alloc] init];
-//  UIViewController *vc = [[PTRouteDetailTableViewController alloc] initWithStyle:UITableViewStylePlain];
-  UINavigationController *navigator = [[UINavigationController alloc] initWithRootViewController:vc];
+  PTLinePickerAllViewController *vc2= [[PTLinePickerAllViewController alloc] init];
+  vc.title=@"Store Lines";
+  vc2.title=@"All Lines";
+  NSArray* controllers = [NSArray arrayWithObjects:vc, vc2, nil];
+  UITabBarController* tabBarController = [[UITabBarController alloc] init];
+  tabBarController.tabBar.translucent=NO;
+  tabBarController.viewControllers = controllers;
+  tabBarController.title=@"Bus Lines";
+    
+  UINavigationController *navigator = [[UINavigationController alloc] initWithRootViewController:tabBarController];
+  navigator.navigationBar.translucent = NO;
   
   self.window.rootViewController = navigator;
+
   [self.window makeKeyAndVisible];
+    
   return YES;
 }
 

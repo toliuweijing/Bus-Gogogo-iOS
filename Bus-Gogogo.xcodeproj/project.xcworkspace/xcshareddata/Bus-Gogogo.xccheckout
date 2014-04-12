@@ -5,34 +5,34 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>ADFE2E99-97A1-445E-8197-516D4FBC4BEB</string>
+	<string>5738032A-67B9-4D0A-A606-0A4879506143</string>
 	<key>IDESourceControlProjectName</key>
 	<string>Bus-Gogogo</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>47DCA01F-69FC-4030-BA2C-EBF32B2363AC</key>
-		<string>https://github.com/toliuweijing/Bus-Gogogo</string>
+		<key>263E97FA-8581-41D4-A517-05ED40AE3D0D</key>
+		<string>https://github.com/whmsysu/Bus-Gogogo.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>Bus-Gogogo.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>47DCA01F-69FC-4030-BA2C-EBF32B2363AC</key>
+		<key>263E97FA-8581-41D4-A517-05ED40AE3D0D</key>
 		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>https://github.com/toliuweijing/Bus-Gogogo</string>
+	<string>https://github.com/whmsysu/Bus-Gogogo.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>110</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>47DCA01F-69FC-4030-BA2C-EBF32B2363AC</string>
+	<string>263E97FA-8581-41D4-A517-05ED40AE3D0D</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>47DCA01F-69FC-4030-BA2C-EBF32B2363AC</string>
+			<string>263E97FA-8581-41D4-A517-05ED40AE3D0D</string>
 			<key>IDESourceControlWCCName</key>
 			<string>Bus-Gogogo</string>
 		</dict>

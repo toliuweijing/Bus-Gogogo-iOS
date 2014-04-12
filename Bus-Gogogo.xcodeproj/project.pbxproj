@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C672505218F74160005BF9C2 /* PTLinePickerAllViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C672505118F74160005BF9C2 /* PTLinePickerAllViewController.m */; };
 		E94206E918F57E13009E9D3D /* PTLinePickerDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = E94206E818F57E13009E9D3D /* PTLinePickerDownloader.m */; };
 		E94206EC18F590DB009E9D3D /* PTRouteDetailTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E94206EB18F590DB009E9D3D /* PTRouteDetailTableViewCell.m */; };
 		FB01A5DE18E76226001C793F /* PTMonitoredVehicleJourney.m in Sources */ = {isa = PBXBuildFile; fileRef = FB01A5DD18E76226001C793F /* PTMonitoredVehicleJourney.m */; };
@@ -63,6 +64,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C672505018F74160005BF9C2 /* PTLinePickerAllViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTLinePickerAllViewController.h; sourceTree = "<group>"; };
+		C672505118F74160005BF9C2 /* PTLinePickerAllViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTLinePickerAllViewController.m; sourceTree = "<group>"; };
 		E94206E718F57E13009E9D3D /* PTLinePickerDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTLinePickerDownloader.h; sourceTree = "<group>"; };
 		E94206E818F57E13009E9D3D /* PTLinePickerDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTLinePickerDownloader.m; sourceTree = "<group>"; };
 		E94206EA18F590DB009E9D3D /* PTRouteDetailTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTRouteDetailTableViewCell.h; sourceTree = "<group>"; };
@@ -283,6 +286,8 @@
 			children = (
 				FB517C4C18DDDF43005C7881 /* PTLinePickerViewController.h */,
 				FB517C4D18DDDF43005C7881 /* PTLinePickerViewController.m */,
+				C672505018F74160005BF9C2 /* PTLinePickerAllViewController.h */,
+				C672505118F74160005BF9C2 /* PTLinePickerAllViewController.m */,
 				FB517C7A18DDE8C3005C7881 /* PTLinePickerDataSource.h */,
 				FB517C7B18DDE8C3005C7881 /* PTLinePickerDataSource.m */,
 				E94206E718F57E13009E9D3D /* PTLinePickerDownloader.h */,
@@ -414,7 +419,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = PT;
-				LastUpgradeCheck = 0500;
+				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = "Weijing Liu";
 				TargetAttributes = {
 					FB517C3318DDDF43005C7881 = {
@@ -499,6 +504,7 @@
 				FB3D48D818EFA8E500302031 /* PTRouteMonitoringRequest.m in Sources */,
 				FB01A5E118E76427001C793F /* MTADataModelAdaptors.m in Sources */,
 				FB517C7218DDE4F4005C7881 /* PTStop.m in Sources */,
+				C672505218F74160005BF9C2 /* PTLinePickerAllViewController.m in Sources */,
 				FBC7AA6A18F1E0630045A27B /* PTStore.m in Sources */,
 				FB517C6F18DDE30F005C7881 /* PTLine.m in Sources */,
 				FB7915CF18DF94D000EA0A2A /* PTStopDetailDownloader.m in Sources */,
@@ -547,7 +553,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -586,7 +591,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -650,7 +654,6 @@
 		FB517C6A18DDDF43005C7881 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Bus-Gogogo.app/Bus-Gogogo";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
@@ -673,7 +676,6 @@
 		FB517C6B18DDDF43005C7881 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Bus-Gogogo.app/Bus-Gogogo";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
