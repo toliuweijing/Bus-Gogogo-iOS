@@ -114,8 +114,14 @@ static NSString *const kMapViewReuseIdentifierVehcileJourneys = @"vehcile_journe
   [self.mapView addOverlays:self.circlesForVehicleJourneys];
   
 #else // 0 to enable annotation
-  [self.mapView removeAnnotations:self.vehicleJourneys];
-  [self.mapView addAnnotations:vehicleJourneys];
+//  [self.mapView removeOverlays:self.mapView.annotations];
+  [self.mapView removeAnnotations:self.mapView.annotations];
+  for (PTMonitoredVehicleJourney *journey in vehicleJourneys) {
+    if (journey.direction == self.stopGroup.direction) {
+      [self.mapView addAnnotation:journey];
+    }
+  }
+//  [self.mapView setNeedsDisplay];
   
 #endif
 }
