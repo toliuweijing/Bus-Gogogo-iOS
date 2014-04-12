@@ -12,9 +12,13 @@
 #import "PTPolyline.h"
 #import <MapKit/MapKit.h>
 
+static NSString *const kMapViewReuseIdentifierVehcileJourneys = @"vehcile_journeys_annotation";
+
 @interface PTMapContainerView () <MKMapViewDelegate>
 
 @property (nonatomic, strong) MKMapView *mapView;
+
+@property (nonatomic, strong) CLLocation *userLocation;
 
 @property (nonatomic, strong) NSMutableArray *polylinesForStopGroup; // MKPolyline objs
 
@@ -35,6 +39,7 @@
   if (self) {
     _mapView = [[MKMapView alloc] initWithFrame:CGRectZero];
     _mapView.showsUserLocation = YES;
+    _mapView.userTrackingMode = MKUserTrackingModeFollow;
     _mapView.delegate = self;
     [self addSubview:_mapView];
   }
@@ -68,17 +73,21 @@
   }];
   
   // zoom region to fit stopGroup.
-  self.mapView.region = [self.stopGroup coordinateRegion];
+//  self.mapView.region = [self.stopGroup coordinateRegion];
 }
 
 - (void)setVehicleJourneys:(NSArray *)vehicleJourneys
 {
-  _vehicleJourneys = vehicleJourneys;
   [self _configureMapViewWithVehicleJourneys:vehicleJourneys];
+  _vehicleJourneys = vehicleJourneys;
+//  [self _configureMapViewWithVehicleJourneys:vehicleJourneys];
 }
 
 - (void)_configureMapViewWithVehicleJourneys:(NSArray *)vehicleJourneys
 {
+  assert(self.vehicleJourneys != vehicleJourneys);
+  
+#if 0 // 1 to enable overlays
   [self.mapView removeOverlays:self.circlesForVehicleJourneys];
   
   self.circlesForVehicleJourneys = [[NSMutableArray alloc] init];
@@ -90,9 +99,50 @@
     }
   }
   [self.mapView addOverlays:self.circlesForVehicleJourneys];
+  
+#else // 0 to enable annotation
+  [self.mapView removeAnnotations:self.vehicleJourneys];
+  [self.mapView addAnnotations:vehicleJourneys];
+  
+#endif
+}
+
+- (void)setUserLocation:(CLLocation *)userLocation
+{
+  _userLocation = userLocation;
+  [self _configureMapViewWithUserLocation:userLocation];
+}
+
+- (void)_configureMapViewWithUserLocation:(CLLocation *)userLocation
+{
+  MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(userLocation.coordinate, 1000, 1000);
+  self.mapView.region = region;
 }
 
 #pragma mark - MKMapViewDelegate
+
+- (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation
+{
+  if ([annotation isKindOfClass:[PTMonitoredVehicleJourney class]]) {
+    
+    MKAnnotationView *view  = [self.mapView dequeueReusableAnnotationViewWithIdentifier:kMapViewReuseIdentifierVehcileJourneys];
+    view = view?: [[MKAnnotationView alloc] initWithAnnotation:annotation
+                                               reuseIdentifier:kMapViewReuseIdentifierVehcileJourneys];
+    view.image = [UIImage imageNamed:@"bus"];
+    view.frame = CGRectMake(view.frame.origin.x,
+                            view.frame.origin.y,
+                            CGRectGetWidth(view.frame),
+                            CGRectGetHeight(view.frame));
+    return view;
+  } else {
+    return nil;
+  }
+}
+
+- (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation
+{
+  self.userLocation = userLocation.location;
+}
 
 - (MKOverlayRenderer *)mapView:(MKMapView *)mapView rendererForOverlay:(id<MKOverlay>)overlay
 {
