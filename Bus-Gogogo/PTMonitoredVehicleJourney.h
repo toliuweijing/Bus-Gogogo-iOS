@@ -12,7 +12,7 @@
 
 @class MTAMonitoredVehicleJourney;
 
-@interface PTMonitoredVehicleJourney : NSObject 
+@interface PTMonitoredVehicleJourney : NSObject <MKAnnotation>
 
 - (instancetype)initWithMTACounterPart:(MTAMonitoredVehicleJourney *)mtaCounterPart;
 
