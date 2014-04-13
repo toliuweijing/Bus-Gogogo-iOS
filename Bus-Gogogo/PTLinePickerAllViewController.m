@@ -22,31 +22,35 @@
 
 @property (strong, nonatomic) IBOutlet UISearchBar *searchBar;
 
-
-@property (strong, nonatomic) NSMutableArray* filteredTableData;
-
-@property bool isFiltered;
+@property (strong,nonatomic) NSMutableArray *searchResults;
 
 @end
 
 @implementation PTLinePickerAllViewController
 
+
 - (instancetype)init
 {
-    if (self = [super init]) {
-        
+    if (self = [super init])
+    {
         _dataSource = [[PTLinePickerDataSource alloc] init];
         _session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
-        
-        self.isFiltered=false;
-        self.searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 44)];
-        self.searchBar.delegate = (id)self;
-        self.tableView.tableHeaderView = self.searchBar;
-        
         [self _downloadRouteIDs];
+        self.searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 44)];
+        self.searchBar.delegate = self;
+        self.searchResults = [NSMutableArray arrayWithCapacity:[self.dataSource.routeIdentifiers count]];
+        self.tableView.tableHeaderView = self.searchBar;
+        UISearchDisplayController *searchController = [[UISearchDisplayController alloc]
+                                                       initWithSearchBar:self.searchBar
+                                                       contentsController:self ];
+        
+        [self setValue:searchController forKey:@"searchDisplayController"];
+        
+        
     }
     return self;
 }
+
 
 - (void)_downloadRouteIDs
 {
@@ -75,8 +79,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	
     [self.tableView registerClass:[PTLinePickerTableViewCell class] forCellReuseIdentifier:kLinePickerTableViewCellIdentifier];
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -96,23 +100,31 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     assert(section == 0);
-    
-    if (self.isFiltered)
-    {
-        return self.filteredTableData.count;
+
+    if (tableView == self.searchDisplayController.searchResultsTableView)
+	{
+        return [self.searchResults count];
     }
-    else return self.dataSource.routeIdentifiers.count;
-    
-    return self.dataSource.routeIdentifiers.count;
+    else
+    {
+        return self.dataSource.routeIdentifiers.count;
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     PTLinePickerTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kLinePickerTableViewCellIdentifier forIndexPath:indexPath];
+    if (tableView == self.searchDisplayController.searchResultsTableView)
+	{
+        NSString *line=[self.searchResults objectAtIndex:indexPath.row];
+        cell.textLabel.text=line;
+    }
+    else
+    {
     assert(cell);
-    
     NSString *line = [self.dataSource routeIdentifierAtIndexPath:indexPath];
     cell.textLabel.text = line;
+    }
     return cell;
 }
 
@@ -138,21 +150,22 @@
     [self.navigationController pushViewController:vc animated:YES];
 }
 
-
-/*
--(void)searchBar:(UISearchBar*)searchBar textDidChange:(NSString*)text
-{
-    if(text.length == 0)
-    {
-        self.isFiltered = FALSE;
-        
-    }
-    else
-    {
-        self.isFiltered = true;
-        self.filteredTableData = [[NSMutableArray alloc] init];
-    }
+-(void)filterContentForSearchText:(NSString*)searchText scope:(NSString*)scope {
+    // Update the filtered array based on the search text and scope.
+    // Remove all objects from the filtered search array
+    [self.searchResults removeAllObjects];
+    // Filter the array using NSPredicate
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"self contains[c] %@",searchText];
+    self.searchResults = [NSMutableArray arrayWithArray:[self.dataSource.routeIdentifiers filteredArrayUsingPredicate:predicate]];
 }
-*/
 
+-(BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString
+{
+    [self filterContentForSearchText:searchString
+                               scope:[[self.searchDisplayController.searchBar scopeButtonTitles]
+                                      objectAtIndex:[self.searchDisplayController.searchBar
+                                                     selectedScopeButtonIndex]]];
+    
+    return YES;
+}
 @end
