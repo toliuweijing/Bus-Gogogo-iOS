@@ -19,9 +19,9 @@
 @property (nonatomic, strong) PTLinePickerDataSource *dataSource;
 
 @property (nonatomic, strong) NSURLSession *session;
-
-@property (strong, nonatomic) IBOutlet UISearchBar *searchBar;
 /*
+@property (strong, nonatomic) IBOutlet UISearchBar *searchBar;
+
 @property (strong, nonatomic) NSMutableArray* filteredTableData;
 
 @property bool isFiltered;
