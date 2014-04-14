@@ -83,10 +83,10 @@ MKMapViewDelegate>
 {
   if ([self.view.subviews containsObject:self.mapContainerView]) {
     [self.mapContainerView removeFromSuperview];
-    self.navigationItem.leftBarButtonItem.title = @"Map";
+    //self.navigationItem.leftBarButtonItem.title = @"Map";
   } else {
     [self.view addSubview:self.mapContainerView];
-    self.navigationItem.leftBarButtonItem.title = @"List";
+    //self.navigationItem.leftBarButtonItem.title = @"List";
   }
   [self.view setNeedsDisplay];
 }
