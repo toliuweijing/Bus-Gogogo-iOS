@@ -19,13 +19,13 @@
 @property (nonatomic, strong) PTLinePickerDataSource *dataSource;
 
 @property (nonatomic, strong) NSURLSession *session;
-/*
+
 @property (strong, nonatomic) IBOutlet UISearchBar *searchBar;
 
-@property (strong, nonatomic) NSMutableArray* filteredTableData;
+@property (strong,nonatomic) NSMutableArray *searchResults;
 
-@property bool isFiltered;
-*/
+@property BOOL isSearching;
+
 @end
 
 @implementation PTLinePickerAllViewController
