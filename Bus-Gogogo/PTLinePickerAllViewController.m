@@ -32,28 +32,21 @@
 
 - (instancetype)init
 {
-    if (self = [super init]) {
-        
+    if (self = [super init])
+    {
         _dataSource = [[PTLinePickerDataSource alloc] init];
         _session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
-        /*
-        self.isFiltered=false;
-        self.searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 44)];
-        
-        self.searchBar.delegate = (id)self;
-        self.tableView.tableHeaderView = self.searchBar;
-         */
         [self _downloadRouteIDs];
+        self.searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 44)];
+        self.searchBar.delegate = self;
+        self.searchBar.showsCancelButton=YES;
+        self.tableView.tableHeaderView = self.searchBar;
+        self.isSearching=false;
+        
     }
     return self;
 }
 
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-    
-    //  [self _downloadRouteIDs];
-}
 
 - (void)_downloadRouteIDs
 {
@@ -82,8 +75,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	
     [self.tableView registerClass:[PTLinePickerTableViewCell class] forCellReuseIdentifier:kLinePickerTableViewCellIdentifier];
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -103,22 +96,31 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     assert(section == 0);
-    /*
-    if (self.isFiltered)
-    {
-        return self.filteredTableData.count;
+    
+    if (self.isSearching)
+	{
+        
+        return [self.searchResults count];
     }
-    else return self.dataSource.routeIdentifiers.count;
-    */
-    return self.dataSource.routeIdentifiers.count;
+    else
+    {
+        return self.dataSource.routeIdentifiers.count;
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     PTLinePickerTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kLinePickerTableViewCellIdentifier forIndexPath:indexPath];
+    NSString *line;
+    if (self.isSearching)
+	{
+        line=[self.searchResults objectAtIndex:indexPath.row];
+    }
+    else
+    {
     assert(cell);
-    
-    NSString *line = [self.dataSource routeIdentifierAtIndexPath:indexPath];
+    line = [self.dataSource routeIdentifierAtIndexPath:indexPath];
+    }
     cell.textLabel.text = line;
     return cell;
 }
@@ -135,6 +137,7 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
+
 #pragma mark -
 #pragma mark Private
 
@@ -145,21 +148,32 @@
     [self.navigationController pushViewController:vc animated:YES];
 }
 
-
-/*
--(void)searchBar:(UISearchBar*)searchBar textDidChange:(NSString*)text
+#pragma mark -
+#pragma mark SearchBarResponse
+- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
 {
-    if(text.length == 0)
+    if ([searchText length]>0)
     {
-        self.isFiltered = FALSE;
-        
+        self.isSearching=true;
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"self contains[c] %@",searchText];
+        self.searchResults= [NSMutableArray arrayWithArray:[self.dataSource.routeIdentifiers filteredArrayUsingPredicate:predicate]];
     }
-    else
-    {
-        self.isFiltered = true;
-        self.filteredTableData = [[NSMutableArray alloc] init];
-    }
+    else self.isSearching=false;
+    
+    [self.tableView reloadData];
 }
-*/
+
+- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar
+{
+    self.searchBar.text=@"";
+    self.isSearching=false;
+    [self.searchBar resignFirstResponder];
+    [self.tableView reloadData];
+}
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
+{
+    self.isSearching=true;
+    [self.searchBar resignFirstResponder];
+}
 
 @end
