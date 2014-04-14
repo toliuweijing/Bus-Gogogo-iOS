@@ -24,10 +24,11 @@
 
 @property (strong,nonatomic) NSMutableArray *searchResults;
 
+@property BOOL isSearching;
+
 @end
 
 @implementation PTLinePickerAllViewController
-
 
 - (instancetype)init
 {
@@ -38,14 +39,9 @@
         [self _downloadRouteIDs];
         self.searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 44)];
         self.searchBar.delegate = self;
-        self.searchResults = [NSMutableArray arrayWithCapacity:[self.dataSource.routeIdentifiers count]];
+        self.searchBar.showsCancelButton=YES;
         self.tableView.tableHeaderView = self.searchBar;
-        UISearchDisplayController *searchController = [[UISearchDisplayController alloc]
-                                                       initWithSearchBar:self.searchBar
-                                                       contentsController:self ];
-        
-        [self setValue:searchController forKey:@"searchDisplayController"];
-        
+        self.isSearching=false;
         
     }
     return self;
@@ -100,9 +96,10 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     assert(section == 0);
-
-    if (tableView == self.searchDisplayController.searchResultsTableView)
+    
+    if (self.isSearching)
 	{
+        
         return [self.searchResults count];
     }
     else
@@ -114,17 +111,17 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     PTLinePickerTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kLinePickerTableViewCellIdentifier forIndexPath:indexPath];
-    if (tableView == self.searchDisplayController.searchResultsTableView)
+    NSString *line;
+    if (self.isSearching)
 	{
-        NSString *line=[self.searchResults objectAtIndex:indexPath.row];
-        cell.textLabel.text=line;
+        line=[self.searchResults objectAtIndex:indexPath.row];
     }
     else
     {
     assert(cell);
-    NSString *line = [self.dataSource routeIdentifierAtIndexPath:indexPath];
-    cell.textLabel.text = line;
+    line = [self.dataSource routeIdentifierAtIndexPath:indexPath];
     }
+    cell.textLabel.text = line;
     return cell;
 }
 
@@ -140,6 +137,7 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
+
 #pragma mark -
 #pragma mark Private
 
@@ -150,22 +148,32 @@
     [self.navigationController pushViewController:vc animated:YES];
 }
 
--(void)filterContentForSearchText:(NSString*)searchText scope:(NSString*)scope {
-    // Update the filtered array based on the search text and scope.
-    // Remove all objects from the filtered search array
-    [self.searchResults removeAllObjects];
-    // Filter the array using NSPredicate
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"self contains[c] %@",searchText];
-    self.searchResults = [NSMutableArray arrayWithArray:[self.dataSource.routeIdentifiers filteredArrayUsingPredicate:predicate]];
+#pragma mark -
+#pragma mark SearchBarResponse
+- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
+{
+    if ([searchText length]>0)
+    {
+        self.isSearching=true;
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"self contains[c] %@",searchText];
+        self.searchResults= [NSMutableArray arrayWithArray:[self.dataSource.routeIdentifiers filteredArrayUsingPredicate:predicate]];
+    }
+    else self.isSearching=false;
+    
+    [self.tableView reloadData];
 }
 
--(BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString
+- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar
 {
-    [self filterContentForSearchText:searchString
-                               scope:[[self.searchDisplayController.searchBar scopeButtonTitles]
-                                      objectAtIndex:[self.searchDisplayController.searchBar
-                                                     selectedScopeButtonIndex]]];
-    
-    return YES;
+    self.searchBar.text=@"";
+    self.isSearching=false;
+    [self.searchBar resignFirstResponder];
+    [self.tableView reloadData];
 }
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
+{
+    self.isSearching=true;
+    [self.searchBar resignFirstResponder];
+}
+
 @end

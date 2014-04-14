@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface PTLinePickerAllViewController : UITableViewController<UISearchDisplayDelegate, UISearchBarDelegate>
-
-
+@interface PTLinePickerAllViewController : UITableViewController<UISearchBarDelegate>
 
 @end
