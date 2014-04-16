@@ -130,10 +130,16 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSString *routeID = [self.dataSource routeIdentifierAtIndexPath:indexPath];
-    
+    NSString *routeID;
+    if (!self.isSearching)
+    {
+      routeID = [self.dataSource routeIdentifierAtIndexPath:indexPath];
+    }
+    else
+    {
+      routeID=[self.searchResults objectAtIndex:indexPath.row];
+    }
     [self _pushToRouteDetailViewWithRouteIdentifier:routeID];
-    
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
@@ -165,6 +171,7 @@
 
 - (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar
 {
+    
     self.searchBar.text=@"";
     self.isSearching=false;
     [self.searchBar resignFirstResponder];
