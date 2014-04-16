@@ -39,7 +39,7 @@
         [self _downloadRouteIDs];
         self.searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 44)];
         self.searchBar.delegate = self;
-        self.searchBar.showsCancelButton=YES;
+        self.searchBar.showsCancelButton=NO;
         self.tableView.tableHeaderView = self.searchBar;
         self.isSearching=false;
         
@@ -158,6 +158,7 @@
 #pragma mark SearchBarResponse
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
 {
+    self.searchBar.showsCancelButton=YES;
     if ([searchText length]>0)
     {
         self.isSearching=true;
@@ -171,10 +172,10 @@
 
 - (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar
 {
-    
     self.searchBar.text=@"";
     self.isSearching=false;
     [self.searchBar resignFirstResponder];
+    self.searchBar.showsCancelButton=NO;
     [self.tableView reloadData];
 }
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
