@@ -84,7 +84,7 @@ static NSString *const kMapViewReuseIdentifierVehcileJourneys = @"vehcile_journe
   }];
   
   // zoom region to fit stopGroup.
-//  self.mapView.region = [self.stopGroup coordinateRegion];
+ self.mapView.region = [self.stopGroup coordinateRegion];
 }
 
 - (void)setVehicleJourneys:(NSArray *)vehicleJourneys
