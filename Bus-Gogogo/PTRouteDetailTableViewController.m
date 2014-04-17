@@ -13,8 +13,12 @@
 #import "PTStore.h"
 #import "PTMonitoredVehicleJourney.h"
 #import "PTMonitoredVehicleJourneyDownloader.h"
+#import "PTPolyline.h"
+#import "PTMapContainerView.h"
 
 static NSString *const kCellIdentifier = @"cell_identifier";
+
+static NSString *const kShuttlePictureImageName = @"Shuttle-Picture.png";
 
 @interface PTRouteDetailTableViewController () <
 PTStopsForRouteDownloaderDelegate,
@@ -33,9 +37,11 @@ MKMapViewDelegate>
 
 @property (nonatomic, strong) NSArray *circleOverlays; // circle Overlays
 
-@property (nonatomic, strong) MKPolyline *polylineOverlays;
+@property (nonatomic, strong) NSArray *polylinesDrawn; // MKPolyeline objects added to map.
+//@property (nonatomic, strong) MKPolyline *polylineOverlays;
 
-@property (nonatomic, strong) MKMapView *mapView;
+@property (nonatomic, strong) PTMapContainerView *mapContainerView;
+//@property (nonatomic, strong) MKMapView *mapView;
 
 @end
 
@@ -75,12 +81,12 @@ MKMapViewDelegate>
  */
 - (void)_didTapSwitchPresentation:(id)sender
 {
-  if ([self.view.subviews containsObject:self.mapView]) {
-    [self.mapView removeFromSuperview];
-    self.navigationItem.leftBarButtonItem.title = @"Map";
+  if ([self.view.subviews containsObject:self.mapContainerView]) {
+    [self.mapContainerView removeFromSuperview];
+    //self.navigationItem.leftBarButtonItem.title = @"Map";
   } else {
-    [self.view addSubview:self.mapView];
-    self.navigationItem.leftBarButtonItem.title = @"List";
+    [self.view addSubview:self.mapContainerView];
+    //self.navigationItem.leftBarButtonItem.title = @"List";
   }
   [self.view setNeedsDisplay];
 }
@@ -123,15 +129,15 @@ MKMapViewDelegate>
   [self.tableView registerClass:[PTRouteDetailTableViewCell class] forCellReuseIdentifier:kCellIdentifier];
   
   // configure mapview
-  _mapView = [[MKMapView alloc] initWithFrame:self.view.bounds];
-  _mapView.showsUserLocation = YES;
-  _mapView.delegate = self;
-  [self.view addSubview:_mapView];
+  _mapContainerView = [[PTMapContainerView alloc] initWithFrame:CGRectZero];
+  [self.view addSubview:_mapContainerView];
 }
 
 - (void)viewWillLayoutSubviews
 {
   [super viewWillLayoutSubviews];
+  
+  _mapContainerView.frame = self.view.bounds;
 }
 
 - (void)didReceiveMemoryWarning
@@ -174,18 +180,7 @@ MKMapViewDelegate>
 
 - (void)_configureMapViewWithVehicleJourneys:(NSArray *)vechileJourneys
 {
-  [self.mapView removeOverlays:self.circleOverlays];
-  
-  NSMutableArray *collection = [[NSMutableArray alloc] init];
-  for (PTMonitoredVehicleJourney *journey in vechileJourneys) {
-    // only show journeys of the same direction.
-    if (journey.direction == self.stopGroup.direction) {
-      MKCircle *circle = [MKCircle circleWithCenterCoordinate:journey.coordinate radius:10];
-      [collection addObject:circle];
-    }
-  }
-  self.circleOverlays = collection;
-  [self.mapView addOverlays:collection];
+  self.mapContainerView.vehicleJourneys = vechileJourneys;
 }
 
 #pragma mark -
@@ -203,40 +198,7 @@ MKMapViewDelegate>
 
 - (void)_configureMapViewWithStopGroup:(PTStopGroup *)stopGroup
 {
-  [self.mapView removeOverlay:self.polylineOverlays];
-  
-  NSInteger count = stopGroup.polylinePoints.count;
-  CLLocationCoordinate2D coordinates[count];
-  for (int i = 0 ; i < count ; ++i) {
-    coordinates[i] = [[stopGroup.polylinePoints objectAtIndex:i] coordinate];
-  }
-  MKPolyline *polyline = [MKPolyline polylineWithCoordinates:coordinates count:count];
-  self.polylineOverlays = polyline;
-  [self.mapView addOverlay:polyline];
-  self.mapView.region = [self.stopGroup coordinateRegion];
-}
-
-- (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation
-{
-}
-
-#pragma mark - MKMapViewDelegate
-
-- (MKOverlayRenderer *)mapView:(MKMapView *)mapView rendererForOverlay:(id<MKOverlay>)overlay
-{
-  if ([overlay isKindOfClass:[MKCircle class]]) {
-    MKCircleRenderer *renderer = [[MKCircleRenderer alloc] initWithOverlay:overlay];
-    renderer.fillColor = [UIColor grayColor];
-    renderer.strokeColor = [UIColor blueColor];
-    renderer.lineWidth = 5.0;
-    return renderer;
-  } else if ([overlay isKindOfClass:[MKPolyline class]]) {
-    MKPolylineRenderer *renderer = [[MKPolylineRenderer alloc] initWithOverlay:overlay];
-    renderer.strokeColor = [UIColor redColor];
-    renderer.lineWidth = 3.0;
-    return renderer;
-  }
-  assert(false);
+  self.mapContainerView.stopGroup = stopGroup;
 }
 
 #pragma mark - Table view data source
@@ -258,18 +220,25 @@ MKMapViewDelegate>
   NSString *stopID = [self.stopGroup.stopIDs objectAtIndex:indexPath.row];
   
   PTStop *stop = [[PTStore sharedStore] stopWithIdentifier:stopID];
-  cell.textLabel.text = stop.name;
- 
-  // ------
   PTMonitoredVehicleJourney *journey = [self _journeyAtStop:stopID];
+  [self _configureCell:cell withVehicleJourney:journey stop:stop];
+  return cell;
+}
+
+- (void)_configureCell:(UITableViewCell *)cell
+    withVehicleJourney:(PTMonitoredVehicleJourney *)journey
+                  stop:(PTStop *)stop
+{
+  assert(stop); // should have a valid stop for each cell.
+  
+  cell.textLabel.text = stop.name;
   if (journey) {
     cell.detailTextLabel.text = journey.presentableDistance;
-    
-    NSString *const imageURL = @"Shuttle-Picture.png";
-    cell.imageView.image = [UIImage imageNamed:imageURL];
+    cell.imageView.image = [UIImage imageNamed:kShuttlePictureImageName];
+  } else {
+    cell.detailTextLabel.text = nil;
+    cell.imageView.image = nil;
   }
-  
-  return cell;
 }
 
 - (PTMonitoredVehicleJourney *)_journeyAtStop:(NSString *)stopID
