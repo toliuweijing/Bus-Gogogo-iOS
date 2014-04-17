@@ -24,7 +24,7 @@
 
 @property (strong,nonatomic) NSMutableArray *searchResults;
 
-@property BOOL isSearching;
+@property (nonatomic) BOOL isSearching;
 
 @end
 
@@ -50,7 +50,11 @@
 
 - (void)_downloadRouteIDs
 {
+    /*
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"http://bustime.mta.info/api/where/routes-for-agency/MTA%20NYCT.json?key=cfb3c75b-5a43-4e66-b7f8-14e666b0c1c1"]];
+    */
+     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"http://api.prod.obanyc.com/api/siri/vehicle-monitoring.json?key=cfb3c75b-5a43-4e66-b7f8-14e666b0c1c1"]];
+    
     [[self.session dataTaskWithRequest:request
                      completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
                          dispatch_async(dispatch_get_main_queue(), ^{
@@ -65,9 +69,13 @@
     NSError *error;
     NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
     assert(!error);
+    NSMutableSet *tempRouteIDs=[[NSMutableSet alloc] init];
+    for (int i=0; i<[json[@"Siri"][@"ServiceDelivery"][@"VehicleMonitoringDelivery"][0][@"VehicleActivity"] count]; i++)
+    {
+        [tempRouteIDs addObject:json[@"Siri"][@"ServiceDelivery"][@"VehicleMonitoringDelivery"][0][@"VehicleActivity"][i][@"MonitoredVehicleJourney"][@"LineRef"]];
+    }
+    NSArray *routeIDs=[tempRouteIDs allObjects];
     
-    NSArray *list = json[@"data"][@"list"];
-    NSArray *routeIDs = [list valueForKey:@"id"];
     routeIDs = [routeIDs sortedArrayUsingSelector:@selector(localizedCompare:)];
     return routeIDs;
 }
