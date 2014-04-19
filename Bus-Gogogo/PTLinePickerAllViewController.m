@@ -21,43 +21,40 @@
 @property (nonatomic, strong) NSURLSession *session;
 
 @property (strong, nonatomic) IBOutlet UISearchBar *searchBar;
-/*
-@property (strong, nonatomic) NSMutableArray* filteredTableData;
 
-@property bool isFiltered;
-*/
+@property (strong,nonatomic) NSMutableArray *searchResults;
+
+@property (nonatomic) BOOL isSearching;
+
 @end
 
 @implementation PTLinePickerAllViewController
 
 - (instancetype)init
 {
-    if (self = [super init]) {
-        
+    if (self = [super init])
+    {
         _dataSource = [[PTLinePickerDataSource alloc] init];
         _session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
-        /*
-        self.isFiltered=false;
-        self.searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 44)];
-        
-        self.searchBar.delegate = (id)self;
-        self.tableView.tableHeaderView = self.searchBar;
-         */
         [self _downloadRouteIDs];
+        self.searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 44)];
+        self.searchBar.delegate = self;
+        self.searchBar.showsCancelButton=NO;
+        self.tableView.tableHeaderView = self.searchBar;
+        self.isSearching=false;
+        
     }
     return self;
 }
 
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-    
-    //  [self _downloadRouteIDs];
-}
 
 - (void)_downloadRouteIDs
 {
+    /*
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"http://bustime.mta.info/api/where/routes-for-agency/MTA%20NYCT.json?key=cfb3c75b-5a43-4e66-b7f8-14e666b0c1c1"]];
+    */
+     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"http://api.prod.obanyc.com/api/siri/vehicle-monitoring.json?key=cfb3c75b-5a43-4e66-b7f8-14e666b0c1c1"]];
+    
     [[self.session dataTaskWithRequest:request
                      completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
                          dispatch_async(dispatch_get_main_queue(), ^{
@@ -72,9 +69,13 @@
     NSError *error;
     NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
     assert(!error);
+    NSMutableSet *tempRouteIDs=[[NSMutableSet alloc] init];
+    for (int i=0; i<[json[@"Siri"][@"ServiceDelivery"][@"VehicleMonitoringDelivery"][0][@"VehicleActivity"] count]; i++)
+    {
+        [tempRouteIDs addObject:json[@"Siri"][@"ServiceDelivery"][@"VehicleMonitoringDelivery"][0][@"VehicleActivity"][i][@"MonitoredVehicleJourney"][@"LineRef"]];
+    }
+    NSArray *routeIDs=[tempRouteIDs allObjects];
     
-    NSArray *list = json[@"data"][@"list"];
-    NSArray *routeIDs = [list valueForKey:@"id"];
     routeIDs = [routeIDs sortedArrayUsingSelector:@selector(localizedCompare:)];
     return routeIDs;
 }
@@ -82,8 +83,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	
     [self.tableView registerClass:[PTLinePickerTableViewCell class] forCellReuseIdentifier:kLinePickerTableViewCellIdentifier];
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -103,22 +104,31 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     assert(section == 0);
-    /*
-    if (self.isFiltered)
-    {
-        return self.filteredTableData.count;
+    
+    if (self.isSearching)
+	{
+        
+        return [self.searchResults count];
     }
-    else return self.dataSource.routeIdentifiers.count;
-    */
-    return self.dataSource.routeIdentifiers.count;
+    else
+    {
+        return self.dataSource.routeIdentifiers.count;
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     PTLinePickerTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kLinePickerTableViewCellIdentifier forIndexPath:indexPath];
+    NSString *line;
+    if (self.isSearching)
+	{
+        line=[self.searchResults objectAtIndex:indexPath.row];
+    }
+    else
+    {
     assert(cell);
-    
-    NSString *line = [self.dataSource routeIdentifierAtIndexPath:indexPath];
+    line = [self.dataSource routeIdentifierAtIndexPath:indexPath];
+    }
     cell.textLabel.text = line;
     return cell;
 }
@@ -128,12 +138,19 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSString *routeID = [self.dataSource routeIdentifierAtIndexPath:indexPath];
-    
+    NSString *routeID;
+    if (!self.isSearching)
+    {
+      routeID = [self.dataSource routeIdentifierAtIndexPath:indexPath];
+    }
+    else
+    {
+      routeID=[self.searchResults objectAtIndex:indexPath.row];
+    }
     [self _pushToRouteDetailViewWithRouteIdentifier:routeID];
-    
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
+
 
 #pragma mark -
 #pragma mark Private
@@ -145,21 +162,34 @@
     [self.navigationController pushViewController:vc animated:YES];
 }
 
-
-/*
--(void)searchBar:(UISearchBar*)searchBar textDidChange:(NSString*)text
+#pragma mark -
+#pragma mark SearchBarResponse
+- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
 {
-    if(text.length == 0)
+    self.searchBar.showsCancelButton=YES;
+    if ([searchText length]>0)
     {
-        self.isFiltered = FALSE;
-        
+        self.isSearching=true;
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"self contains[c] %@",searchText];
+        self.searchResults= [NSMutableArray arrayWithArray:[self.dataSource.routeIdentifiers filteredArrayUsingPredicate:predicate]];
     }
-    else
-    {
-        self.isFiltered = true;
-        self.filteredTableData = [[NSMutableArray alloc] init];
-    }
+    else self.isSearching=false;
+    
+    [self.tableView reloadData];
 }
-*/
+
+- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar
+{
+    self.searchBar.text=@"";
+    self.isSearching=false;
+    [self.searchBar resignFirstResponder];
+    self.searchBar.showsCancelButton=NO;
+    [self.tableView reloadData];
+}
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
+{
+    self.isSearching=true;
+    [self.searchBar resignFirstResponder];
+}
 
 @end
