@@ -1,0 +1,53 @@
+==PTStopsForRouteRequest===
+- sample http://bustime.mta.info/api/where/stops-for-route/MTA%20NYCT_B9.json?key=cfb3c75b-5a43-4e66-b7f8-14e666b0c1c1
+
+- structures
+data { #OBAData
+
+stops {
+  stop { #PTStop
+	id,
+	lat, lon, : double 
+	direction : Str #i.e. "NW"
+	locationType ?
+	name, #stop name
+	code, ?
+  },
+
+}
+
+route { #PTRoute
+	id,
+	textColor, color, : hex
+	description, 
+	longName,  #Bay Ridge - KingsPlaza
+	shortname, #B9
+	url, #xxx.pdf
+}
+
+stopGroupings [
+  stopGrouping { #PTStopGrouping
+	ordered
+	stopGroups {
+
+		stopGroup { #PTStopGroup
+		  id, #unique within a stopGroups #direction
+		  name {
+			name #descriptive name for stopGroup
+			type: "destination"
+		  },
+		  stopIds {
+			stopid, #unique identifier across all stops
+		  }
+		}
+
+	}
+	type: "direction"
+  }
+]
+
+}
+
+
+
+
