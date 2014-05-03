@@ -12,7 +12,7 @@
 @class PTStop;
 
 /**
- A typical store in MVCS pattern. It serves as saving and loading PT-models.
+ A typical store in MVCS pattern. It serves a centralized store for saving and retriving PT-models.
  */
 @interface PTStore : NSObject
 

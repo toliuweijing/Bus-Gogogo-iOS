@@ -10,6 +10,7 @@
 #import "PTLinePickerViewController.h"
 #import "PTStopDetailViewController.h"
 #import "PTRouteDetailTableViewController.h"
+#import "PTDashBoardViewController.h"
 
 @implementation PTAppDelegate
 
@@ -18,8 +19,9 @@
   self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
   self.window.backgroundColor = [UIColor whiteColor];
   
-  PTLinePickerViewController *vc = [[PTLinePickerViewController alloc] init];
+//  PTLinePickerViewController *vc = [[PTLinePickerViewController alloc] init];
 //  UIViewController *vc = [[PTRouteDetailTableViewController alloc] initWithStyle:UITableViewStylePlain];
+  PTDashBoardViewController *vc = [[PTDashBoardViewController alloc] init];
   UINavigationController *navigator = [[UINavigationController alloc] initWithRootViewController:vc];
   
   self.window.rootViewController = navigator;

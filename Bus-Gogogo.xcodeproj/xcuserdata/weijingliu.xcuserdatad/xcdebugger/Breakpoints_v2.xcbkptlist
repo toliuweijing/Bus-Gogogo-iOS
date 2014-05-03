@@ -164,7 +164,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Bus-Gogogo/PTMapContainerView.m"
-            timestampString = "419025903.759861"
+            timestampString = "420819041.732333"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "84"
@@ -212,7 +212,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Bus-Gogogo/PTMapContainerView.m"
-            timestampString = "419025903.759861"
+            timestampString = "420819041.732333"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "85"
@@ -228,13 +228,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Bus-Gogogo/PTMapContainerView.m"
-            timestampString = "419026610.747577"
+            timestampString = "420819041.732333"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "158"
             endingLineNumber = "158"
-            landmarkName = "-mapView:viewForAnnotation:"
-            landmarkType = "5">
+            landmarkName = "@implementation PTMapContainerView"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
