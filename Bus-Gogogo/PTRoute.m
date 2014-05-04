@@ -30,16 +30,41 @@
   return _oba.Id;
 }
 
-- (NSString *)prefix
+- (NSString *)regionPrefix
 {
   assert(_oba.ShortName.length > 0);
-  return [_oba.ShortName substringToIndex:1];
+  NSRange range = [_oba.ShortName rangeOfCharacterFromSet:[NSCharacterSet letterCharacterSet]];
+  for (int i = range.location + 1; i < _oba.ShortName.length ; ++i) {
+    if ([[NSCharacterSet letterCharacterSet] characterIsMember:[_oba.ShortName characterAtIndex:i]]) {
+      ++range.length;
+    } else {
+      break;
+    }
+  }
+  NSString *prefix = [_oba.ShortName substringWithRange:range];
+  return prefix;
 }
 
 - (NSString *)number
 {
   assert(_oba.ShortName.length > 0);
-  return [_oba.ShortName substringFromIndex:1];
+  NSRange range = [_oba.ShortName rangeOfCharacterFromSet:[NSCharacterSet decimalDigitCharacterSet]];
+  for (int i = range.location + 1 ; i < _oba.ShortName.length ; ++i) {
+    if ([[NSCharacterSet decimalDigitCharacterSet] characterIsMember:[_oba.ShortName characterAtIndex:i]]) {
+      ++range.length;
+    } else {
+      break;
+    }
+  }
+  NSString *number = [_oba.ShortName substringWithRange:range];
+  return number;
+}
+
+- (id)copyWithZone:(NSZone *)zone
+{
+  id copy = [[[self class] alloc] initWithOBACounterPart:_oba];
+  
+  return copy;
 }
 
 @end

@@ -8,13 +8,13 @@
 
 #import "OBADataModel.h"
 
-@interface PTRoute : NSObject
+@interface PTRoute : NSObject <NSCopying>
 
 - (instancetype)initWithOBACounterPart:(OBARoute *)oba;
 
 - (NSString *)identifier; 
 
-- (NSString *)prefix; // i.e. B in B9
+- (NSString *)regionPrefix; // i.e. B in B9
 
 - (NSString *)number; // i.e. X in X27
 
