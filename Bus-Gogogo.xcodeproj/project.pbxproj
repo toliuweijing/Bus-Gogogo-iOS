@@ -52,7 +52,6 @@
 		FBC773A718DE19F500621261 /* PTStopDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = FBC773A618DE19F500621261 /* PTStopDetailView.m */; };
 		FBC773AA18DE1D7600621261 /* PTStop+MKAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = FBC773A918DE1D7600621261 /* PTStop+MKAnnotation.m */; };
 		FBC7AA6A18F1E0630045A27B /* PTStore.m in Sources */ = {isa = PBXBuildFile; fileRef = FBC7AA6918F1E0630045A27B /* PTStore.m */; };
-		FBC7AA6D18F1F3930045A27B /* PTRouteIDDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = FBC7AA6C18F1F3930045A27B /* PTRouteIDDownloader.m */; };
 		FBD7894518E74E580077F68A /* MTADataModels.m in Sources */ = {isa = PBXBuildFile; fileRef = FBD7894418E74E580077F68A /* MTADataModels.m */; };
 		FBE4FD8118DF8752001DA86F /* PTStopMonitoringRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = FBE4FD8018DF8752001DA86F /* PTStopMonitoringRequest.m */; };
 		FBFF62E218E86645008D94F9 /* PTStopDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBFF62E118E86645008D94F9 /* PTStopDetailViewController.xib */; };
@@ -152,8 +151,6 @@
 		FBC773A918DE1D7600621261 /* PTStop+MKAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "PTStop+MKAnnotation.m"; sourceTree = "<group>"; };
 		FBC7AA6818F1E0630045A27B /* PTStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTStore.h; sourceTree = "<group>"; };
 		FBC7AA6918F1E0630045A27B /* PTStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTStore.m; sourceTree = "<group>"; };
-		FBC7AA6B18F1F3930045A27B /* PTRouteIDDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTRouteIDDownloader.h; sourceTree = "<group>"; };
-		FBC7AA6C18F1F3930045A27B /* PTRouteIDDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTRouteIDDownloader.m; sourceTree = "<group>"; };
 		FBD7894318E74E580077F68A /* MTADataModels.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTADataModels.h; sourceTree = "<group>"; };
 		FBD7894418E74E580077F68A /* MTADataModels.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTADataModels.m; sourceTree = "<group>"; };
 		FBE4FD7F18DF8752001DA86F /* PTStopMonitoringRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTStopMonitoringRequest.h; sourceTree = "<group>"; };
@@ -220,8 +217,6 @@
 				FB786CBF18F99510002A7CFF /* PTMapContainerView.m */,
 				E94206EA18F590DB009E9D3D /* PTRouteDetailTableViewCell.h */,
 				E94206EB18F590DB009E9D3D /* PTRouteDetailTableViewCell.m */,
-				FBC7AA6B18F1F3930045A27B /* PTRouteIDDownloader.h */,
-				FBC7AA6C18F1F3930045A27B /* PTRouteIDDownloader.m */,
 			);
 			name = RouteDetail;
 			sourceTree = "<group>";
@@ -576,7 +571,6 @@
 				FB517C4E18DDDF43005C7881 /* PTLinePickerViewController.m in Sources */,
 				FB65611F19154236009EA53E /* PTRoute.m in Sources */,
 				FB3D48E918EFC1F900302031 /* PTStopGroup.m in Sources */,
-				FBC7AA6D18F1F3930045A27B /* PTRouteIDDownloader.m in Sources */,
 				FB01A5DE18E76226001C793F /* PTMonitoredVehicleJourney.m in Sources */,
 				FB3D48EC18F0487E00302031 /* PTBase.m in Sources */,
 				FBC773A318DE192900621261 /* PTStopDetailViewController.m in Sources */,
