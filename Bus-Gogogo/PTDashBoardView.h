@@ -10,4 +10,6 @@
 
 @interface PTDashBoardView : UIView
 
+@property (nonatomic, assign) CGFloat topLayoutGuide;
+
 @end

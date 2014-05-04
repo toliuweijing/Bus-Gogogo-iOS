@@ -11,6 +11,7 @@
 #import "PTStopDetailViewController.h"
 #import "PTRouteDetailTableViewController.h"
 #import "PTDashBoardViewController.h"
+#import "PTStopGroupPickerViewController.h"
 
 @implementation PTAppDelegate
 
@@ -21,7 +22,8 @@
   
 //  PTLinePickerViewController *vc = [[PTLinePickerViewController alloc] init];
 //  UIViewController *vc = [[PTRouteDetailTableViewController alloc] initWithStyle:UITableViewStylePlain];
-  PTDashBoardViewController *vc = [[PTDashBoardViewController alloc] init];
+//  PTDashBoardViewController *vc = [[PTDashBoardViewController alloc] init];
+  PTStopGroupPickerViewController *vc = [PTStopGroupPickerViewController new];
   UINavigationController *navigator = [[UINavigationController alloc] initWithRootViewController:vc];
   
   self.window.rootViewController = navigator;

@@ -32,6 +32,12 @@
   self.view = [[PTDashBoardView alloc] initWithFrame:CGRectZero];
 }
 
+- (void)viewWillLayoutSubviews
+{
+  [super viewWillLayoutSubviews];
+  [((PTDashBoardView *)self.view) setTopLayoutGuide:self.topLayoutGuide.length];
+}
+
 - (void)didReceiveMemoryWarning
 {
   [super didReceiveMemoryWarning];

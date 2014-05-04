@@ -8,10 +8,17 @@
 
 #import "PTStore.h"
 #import "PTStop.h"
+#import "PTRoute.h"
+#import "PTAllRoutesDownloadTask.h"
 
 @interface PTStore ()
+{
+  NSMutableDictionary *_stopsMap; // stopID -> PTStop
+  NSMutableDictionary *_routesMap; // routeID -> PTRoute
+  PTAllRoutesDownloadTask *_task;
+}
 
-@property (nonatomic, strong) NSMutableDictionary *stopsMap;
+@property (nonatomic, assign) BOOL allRoutesLoaded;
 
 @end
 
@@ -21,8 +28,24 @@
 {
   if (self = [super init]) {
     _stopsMap = [[NSMutableDictionary alloc] init];
+    _routesMap = [[NSMutableDictionary alloc] init];
+    
+    [self _syncAllRoutes];
   }
   return self;
+}
+
+- (void)_syncAllRoutes
+{
+  _task = [PTAllRoutesDownloadTask scheduledTaskWithCompletionHandler:^(NSArray *routes, NSError *error) {
+    for (PTRoute *route in routes) {
+      assert(route.identifier);
+      [_routesMap setObject:route forKey:route.identifier];
+    }
+    dispatch_async(dispatch_get_main_queue(), ^{
+      self.allRoutesLoaded = YES;
+    });
+  }];
 }
 
 + (PTStore *)sharedStore
@@ -38,12 +61,12 @@
 - (PTStop *)stopWithIdentifier:(NSString *)identifier
 {
   assert(identifier);
-  return [self.stopsMap objectForKey:identifier];
+  return [_stopsMap objectForKey:identifier];
 }
 
 - (void)saveStop:(PTStop *)stop
 {
-  [self.stopsMap setObject:stop forKey:stop.identifier];
+  [_stopsMap setObject:stop forKey:stop.identifier];
 }
 
 - (void)populateWithOBAResponse:(OBAResponse *)oba
@@ -53,6 +76,16 @@
     PTStop *ptStop = [[PTStop alloc] initWithOBAStop:obaStop];
     [self saveStop:ptStop];
   }
+}
+
+- (NSArray *)routes
+{
+  return [_routesMap allValues];
+}
+
+- (PTRoute *)routeForKey:(NSString *)routeIdentifier
+{
+  return [_routesMap objectForKey:routeIdentifier];
 }
 
 @end
