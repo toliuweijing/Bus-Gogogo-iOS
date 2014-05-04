@@ -113,6 +113,15 @@ const CGFloat kMaximumViewHeight = 216.0;
   }
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+  [super viewWillAppear:animated];
+  
+  CGRect frame = self.view.frame;
+  frame.origin.y = self.topLayoutGuide.length;
+  self.view.frame = frame;
+}
+
 - (void)setRoutes:(NSArray *)routes
 {
   _routes = routes;

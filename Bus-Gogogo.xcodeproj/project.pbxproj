@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5D998CC12B3F4973BBAC2E7D /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B3FAB90E95E497C9F4BB358 /* libPods.a */; };
 		E94206E918F57E13009E9D3D /* PTLinePickerDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = E94206E818F57E13009E9D3D /* PTLinePickerDownloader.m */; };
 		E94206EC18F590DB009E9D3D /* PTRouteDetailTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E94206EB18F590DB009E9D3D /* PTRouteDetailTableViewCell.m */; };
 		E966D16F18F9800700CD8C0F /* PTPolyline.m in Sources */ = {isa = PBXBuildFile; fileRef = E966D16E18F9800700CD8C0F /* PTPolyline.m */; };
@@ -71,7 +70,6 @@
 
 /* Begin PBXFileReference section */
 		2B3FAB90E95E497C9F4BB358 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		A2C7363215A44511A06C527A /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		E94206E718F57E13009E9D3D /* PTLinePickerDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTLinePickerDownloader.h; sourceTree = "<group>"; };
 		E94206E818F57E13009E9D3D /* PTLinePickerDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTLinePickerDownloader.m; sourceTree = "<group>"; };
 		E94206EA18F590DB009E9D3D /* PTRouteDetailTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTRouteDetailTableViewCell.h; sourceTree = "<group>"; };
@@ -171,7 +169,6 @@
 				FB517C3A18DDDF43005C7881 /* CoreGraphics.framework in Frameworks */,
 				FB517C3C18DDDF43005C7881 /* UIKit.framework in Frameworks */,
 				FB517C3818DDDF43005C7881 /* Foundation.framework in Frameworks */,
-				5D998CC12B3F4973BBAC2E7D /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -241,7 +238,6 @@
 				FB517C5C18DDDF43005C7881 /* Bus-GogogoTests */,
 				FB517C3618DDDF43005C7881 /* Frameworks */,
 				FB517C3518DDDF43005C7881 /* Products */,
-				A2C7363215A44511A06C527A /* Pods.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -428,11 +424,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = FB517C6618DDDF43005C7881 /* Build configuration list for PBXNativeTarget "Bus-Gogogo" */;
 			buildPhases = (
-				074E9F30CEEF47338812FFA4 /* Check Pods Manifest.lock */,
 				FB517C3018DDDF43005C7881 /* Sources */,
 				FB517C3118DDDF43005C7881 /* Frameworks */,
 				FB517C3218DDDF43005C7881 /* Resources */,
-				1ACAC16E80714857BA267579 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -516,39 +510,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		074E9F30CEEF47338812FFA4 /* Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		1ACAC16E80714857BA267579 /* Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		FB517C3018DDDF43005C7881 /* Sources */ = {
@@ -705,7 +666,6 @@
 		};
 		FB517C6718DDDF43005C7881 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A2C7363215A44511A06C527A /* Pods.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -722,7 +682,6 @@
 		};
 		FB517C6818DDDF43005C7881 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A2C7363215A44511A06C527A /* Pods.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
