@@ -16,6 +16,7 @@
   UIView *_rightSeparatorView;
   UILabel *_titleLabel;
   UILabel *_selectionLabel;
+  UIImageView *_accessoryView;
 }
 
 - (id)initWithFrame:(CGRect)frame
@@ -40,13 +41,21 @@
       [self addSubview:_rightSeparatorView];
     }
     
+    UIFont *font = [UIFont fontWithName:@"Avenir" size:12];
+  
     _titleLabel = [[UILabel alloc] init];
     _titleLabel.textColor = [UIColor darkGrayColor];
+    _titleLabel.font = font;
     [self addSubview:_titleLabel];
     
     _selectionLabel = [[UILabel alloc] init];
     _selectionLabel.textColor = [UIColor darkGrayColor];
+    NSLog(@"%@", _selectionLabel.font);
+    _selectionLabel.font = font;
     [self addSubview:_selectionLabel];
+    
+    _accessoryView = [[UIImageView alloc] init];
+    [self addSubview:_accessoryView];
   }
   return self;
 }
@@ -94,14 +103,27 @@
     }
   }
   
+  {// accessoryView
+    _accessoryView.image = [UIImage imageNamed:@"arrow"];
+    [_accessoryView sizeToFit];
+    CGFloat totalPadding = CGRectGetHeight(self.bounds) - CGRectGetHeight(_accessoryView.bounds);
+    CGFloat topPadding = totalPadding / 2.0;
+    CGFloat originY = topPadding;
+    CGFloat rightPadding  = 10;
+    _accessoryView.frame = CGRectMake(CGRectGetMaxX(bound) - CGRectGetWidth(_accessoryView.bounds) - rightPadding,
+                                      originY,
+                                      CGRectGetWidth(_accessoryView.bounds),
+                                      CGRectGetHeight(_accessoryView.bounds));
+  }
+  
   {// selectionLabel
-    _selectionLabel.text = @"B";
+    _selectionLabel.text = @"None";
     [_selectionLabel sizeToFit];
     CGFloat totalPadding = CGRectGetHeight(self.bounds) - CGRectGetHeight(_titleLabel.bounds);
     CGFloat topPadding = totalPadding / 2.0;
     CGFloat originY = topPadding;
     CGFloat rightPadding  = 10;
-    _selectionLabel.frame = CGRectMake(CGRectGetMaxX(bound) - _selectionLabel.bounds.size.width - rightPadding,
+    _selectionLabel.frame = CGRectMake(CGRectGetMinX(_accessoryView.frame) - _selectionLabel.bounds.size.width - rightPadding,
                                        originY,
                                        _selectionLabel.bounds.size.width,
                                        _selectionLabel.bounds.size.height);
