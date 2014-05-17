@@ -8,7 +8,17 @@
 
 #import <UIKit/UIKit.h>
 
+@class PTMainPickerView;
+
+@protocol PTMainPickerViewDelegate <NSObject>
+
+- (void)pickerViewDidReceiveTap:(PTMainPickerView *)pickerView;
+
+@end
+
 @interface PTMainPickerView : UIView
+
+@property (nonatomic, weak) id<PTMainPickerViewDelegate> delegate;
 
 @property (nonatomic, strong) NSString *title;
 

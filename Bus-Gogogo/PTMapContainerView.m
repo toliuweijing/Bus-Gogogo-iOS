@@ -32,11 +32,6 @@ static NSString *const kMapViewReuseIdentifierVehcileJourneys = @"vehcile_journe
 
 @implementation PTMapContainerView
 
-- (id)init
-{
-  assert(NO);
-}
-
 - (id)initWithFrame:(CGRect)frame
 {
   self = [super initWithFrame:frame];

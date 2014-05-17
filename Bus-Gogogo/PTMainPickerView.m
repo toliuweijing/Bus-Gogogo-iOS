@@ -17,13 +17,14 @@
   UILabel *_titleLabel;
   UILabel *_selectionLabel;
   UIImageView *_accessoryView;
+  UITapGestureRecognizer *_tapGestureRecognizer;
 }
 
 - (id)initWithFrame:(CGRect)frame
 {
   self = [super initWithFrame:frame];
   if (self) {
-    {
+    { // separator
       _topSeparatorView = [[UIView alloc] init];
       _topSeparatorView.backgroundColor = [UIColor greenColor];
       [self addSubview:_topSeparatorView];
@@ -56,8 +57,28 @@
     
     _accessoryView = [[UIImageView alloc] init];
     [self addSubview:_accessoryView];
+    
+    [self _configureTapGesture];
   }
   return self;
+}
+
+- (void)dealloc
+{
+  [_tapGestureRecognizer removeTarget:self action:NULL];
+  [self removeGestureRecognizer:_tapGestureRecognizer];
+}
+
+- (void)_configureTapGesture
+{
+  assert(_tapGestureRecognizer == nil);
+  _tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(_didReceiveTap:)];
+  [self addGestureRecognizer:_tapGestureRecognizer];
+}
+
+- (void)_didReceiveTap:(UITapGestureRecognizer *)recognizer
+{
+  [self.delegate pickerViewDidReceiveTap:self];
 }
 
 - (void)layoutSubviews
