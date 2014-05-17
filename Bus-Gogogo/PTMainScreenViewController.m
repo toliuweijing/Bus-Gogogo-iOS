@@ -48,7 +48,7 @@
 {
   [super viewDidLayoutSubviews];
   
-  CGFloat pickerViewHeight = 40;
+  CGFloat pickerViewHeight = 30;
   _regionPickerView.frame = CGRectMake(0,
                                        [self _topInset],
                                        CGRectGetWidth(self.view.bounds),

@@ -50,7 +50,7 @@
     [self addSubview:_titleLabel];
     
     _selectionLabel = [[UILabel alloc] init];
-    _selectionLabel.textColor = [UIColor darkGrayColor];
+    _selectionLabel.textColor = [UIColor greenColor];
     NSLog(@"%@", _selectionLabel.font);
     _selectionLabel.font = font;
     [self addSubview:_selectionLabel];
