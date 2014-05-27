@@ -21,8 +21,6 @@
 @end
 
 @implementation PTMainScreenViewController
-{
-}
 
 - (instancetype)init
 {
@@ -46,15 +44,6 @@
 
 - (void)viewDidAppear:(BOOL)animated
 {
-  /**
-   HACK: use -setNeedsLayout to redraw subviews, as subviews have been changed.
-   i.e. new titles .
-   */
-  for (UIView *view in self.view.subviews) {
-    [view setNeedsLayout];
-  }
-  [self.view setNeedsLayout];
-  
   id<PTRouteStore> routeStore = [PTRouteStore sharedStore];
   [routeStore retrieveRoutes:^(NSArray *routes) {
     NSLog(@"all routes are loaded in route store");
