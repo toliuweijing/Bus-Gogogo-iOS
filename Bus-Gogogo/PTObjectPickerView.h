@@ -22,4 +22,6 @@
 
 @property (nonatomic, strong) NSString *title;
 
+- (void)setSelectionLabelText:(NSString *)text;
+
 @end

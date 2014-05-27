@@ -8,24 +8,29 @@
 
 #import <UIKit/UIKit.h>
 
+@class PTRoutePickerView;
+@class PTObjectPickerView;
+
 // A fixed size view
 extern const CGFloat kRoutePickerViewHeight;
 
-// Each PTRoute should contain three components, which are used
-// to filter in PTRoutePickerView.
-@protocol PTRouteComponents <NSObject>
+typedef NS_ENUM(NSInteger, PTRoutePickerViewComponentType) {
+  PTRoutePickerViewComponentTypeRegion = 1,
+  PTRoutePickerViewComponentTypeLine,
+  PTRoutePickerViewComponentTypeDirection,
+};
 
-- (NSString *)region;
-- (NSString *)line;
-- (NSArray *)directions;
+@protocol PTRoutePickerViewDelegate <NSObject>
+
+- (void)routePickerView:(PTRoutePickerView *)view
+receivedTapOnComponenet:(PTRoutePickerViewComponentType)component;
 
 @end
 
 @interface PTRoutePickerView : UIView
 
-/**
- A list of id<PTRouteComponents> objects.
- */
-@property (nonatomic, strong) NSArray *routes;
+- (PTObjectPickerView *)objectPickerView:(PTRoutePickerViewComponentType)type;
+
+@property (nonatomic, weak) id<PTRoutePickerViewDelegate> delegate;
 
 @end

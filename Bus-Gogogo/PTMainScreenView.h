@@ -8,8 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
+@class PTRoutePickerView;
+
 @interface PTMainScreenView : UIView
 
 @property (nonatomic, assign) CGFloat topInset;
+
+- (id)initWithFrame:(CGRect)frame
+    routePickerView:(PTRoutePickerView *)routePickerView;
 
 @end

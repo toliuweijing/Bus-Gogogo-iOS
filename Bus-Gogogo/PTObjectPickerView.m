@@ -138,7 +138,9 @@
   }
   
   {// selectionLabel
-    _selectionLabel.text = @"None";
+    if (_selectionLabel.text.length == 0) {
+      _selectionLabel.text = @"None";
+    }
     [_selectionLabel sizeToFit];
     CGFloat totalPadding = CGRectGetHeight(self.bounds) - CGRectGetHeight(_titleLabel.bounds);
     CGFloat topPadding = totalPadding / 2.0;
@@ -149,6 +151,12 @@
                                        _selectionLabel.bounds.size.width,
                                        _selectionLabel.bounds.size.height);
   }
+}
+
+- (void)setSelectionLabelText:(NSString *)text
+{
+  _selectionLabel.text = text;
+  [self setNeedsLayout];
 }
 
 @end

@@ -12,9 +12,11 @@
 #import "PTMapContainerView.h"
 #import "PTRouteStore.h"
 #import "PTStore.h"
+#import "PTRoutePickerController.h"
 
 @interface PTMainScreenViewController ()
 {
+  PTRoutePickerController *_routePickerController;
   PTMainScreenView *_view;
 }
 
@@ -25,6 +27,9 @@
 - (instancetype)init
 {
   if (self = [super init]) {
+    _routePickerController = [[PTRoutePickerController alloc] init];
+    _routePickerController.owner = self;
+    
     self.navigationItem.title = @"Bus gogogo";
   }
   return self;
@@ -32,7 +37,8 @@
 
 - (void)loadView
 {
-  _view = [[PTMainScreenView alloc] init];
+  _view = [[PTMainScreenView alloc] initWithFrame:CGRectZero
+                                  routePickerView:[_routePickerController view]];
   self.view = _view;
 }
 

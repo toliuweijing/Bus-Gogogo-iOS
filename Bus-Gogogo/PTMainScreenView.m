@@ -19,9 +19,16 @@
 
 - (id)initWithFrame:(CGRect)frame
 {
+  assert(NO);
+  return self;
+}
+
+- (id)initWithFrame:(CGRect)frame
+    routePickerView:(PTRoutePickerView *)routePickerView
+{
   self = [super initWithFrame:frame];
   if (self) {
-    _routePickerView = [[PTRoutePickerView alloc] init];
+    _routePickerView = routePickerView;
     [self addSubview:_routePickerView];
     
     _mapView = [[PTMapContainerView alloc] init];
