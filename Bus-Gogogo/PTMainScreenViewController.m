@@ -7,21 +7,21 @@
 //
 
 #import "PTMainScreenViewController.h"
-#import "PTMainPickerView.h"
+#import "PTObjectPickerView.h"
+#import "PTMainScreenView.h"
 #import "PTMapContainerView.h"
 #import "PTRouteStore.h"
 #import "PTStore.h"
 
 @interface PTMainScreenViewController ()
+{
+  PTMainScreenView *_view;
+}
 
 @end
 
 @implementation PTMainScreenViewController
 {
-  PTMainPickerView *_regionPickerView;
-  PTMainPickerView *_linePickerView;
-  PTMainPickerView *_directionPickerView;
-  PTMapContainerView *_mapView;
 }
 
 - (instancetype)init
@@ -32,56 +32,16 @@
   return self;
 }
 
-/**
- Load all subviews
- */
-- (void)viewDidLoad
+- (void)loadView
 {
-  [super viewDidLoad];
-  
-  _mapView = [[PTMapContainerView alloc] init];
-  [self.view addSubview:_mapView];
-  
-  _regionPickerView = [[PTMainPickerView alloc] init];
-  [self.view addSubview:_regionPickerView];
-  
-  _linePickerView = [[PTMainPickerView alloc] init];
-  [self.view addSubview:_linePickerView];
-  
-  _directionPickerView = [[PTMainPickerView alloc] init];
-  [self.view addSubview:_directionPickerView];
+  _view = [[PTMainScreenView alloc] init];
+  self.view = _view;
 }
 
-/**
- Layout all subviews
- */
-- (void)viewDidLayoutSubviews
+- (void)viewWillLayoutSubviews
 {
-  [super viewDidLayoutSubviews];
-  
-  CGFloat pickerViewHeight = 30;
-  _regionPickerView.frame = CGRectMake(0,
-                                       [self _topInset],
-                                       CGRectGetWidth(self.view.bounds),
-                                       pickerViewHeight);
-  _regionPickerView.title = @"Region";
-  
-  _linePickerView.frame = CGRectMake(0,
-                                     CGRectGetMaxY(_regionPickerView.frame),
-                                     CGRectGetWidth(self.view.bounds),
-                                     pickerViewHeight);
-  _linePickerView.title = @"Line";
-  
-  _directionPickerView.frame = CGRectMake(0,
-                                          CGRectGetMaxY(_linePickerView.frame),
-                                          CGRectGetWidth(self.view.bounds),
-                                          pickerViewHeight);
-  _directionPickerView.title = @"Direction";
-  
-  _mapView.frame = CGRectMake(0,
-                              CGRectGetMaxY(_directionPickerView.frame),
-                              CGRectGetWidth(self.view.bounds),
-                              CGRectGetHeight(self.view.bounds) - CGRectGetMaxY(_directionPickerView.frame));
+  [super viewWillLayoutSubviews];
+  _view.topInset = self.topLayoutGuide.length;
 }
 
 - (void)viewDidAppear:(BOOL)animated

@@ -6,9 +6,9 @@
 //  Copyright (c) 2014 Weijing Liu. All rights reserved.
 //
 
-#import "PTMainPickerView.h"
+#import "PTObjectPickerView.h"
 
-@implementation PTMainPickerView
+@implementation PTObjectPickerView
 {
   UIView *_topSeparatorView;
   UIView *_bottomSeparatorView;
