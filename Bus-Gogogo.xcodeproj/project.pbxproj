@@ -12,6 +12,7 @@
 		E966D16F18F9800700CD8C0F /* PTPolyline.m in Sources */ = {isa = PBXBuildFile; fileRef = E966D16E18F9800700CD8C0F /* PTPolyline.m */; };
 		FB01A5DE18E76226001C793F /* PTMonitoredVehicleJourney.m in Sources */ = {isa = PBXBuildFile; fileRef = FB01A5DD18E76226001C793F /* PTMonitoredVehicleJourney.m */; };
 		FB01A5E118E76427001C793F /* MTADataModelAdaptors.m in Sources */ = {isa = PBXBuildFile; fileRef = FB01A5E018E76427001C793F /* MTADataModelAdaptors.m */; };
+		FB0CAA8E193407E80088A314 /* PTRouteStore.m in Sources */ = {isa = PBXBuildFile; fileRef = FB0CAA8D193407E80088A314 /* PTRouteStore.m */; };
 		FB129CD018F10D29009AAEA7 /* PTMonitoredVehicleJourneyDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = FB129CCF18F10D29009AAEA7 /* PTMonitoredVehicleJourneyDownloader.m */; };
 		FB189F451927BE8D0071B8F9 /* PTMainScreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FB189F441927BE8D0071B8F9 /* PTMainScreenViewController.m */; };
 		FB189F481927C1790071B8F9 /* PTMainPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = FB189F471927C1790071B8F9 /* PTMainPickerView.m */; };
@@ -82,6 +83,8 @@
 		FB01A5DD18E76226001C793F /* PTMonitoredVehicleJourney.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTMonitoredVehicleJourney.m; sourceTree = "<group>"; };
 		FB01A5DF18E76427001C793F /* MTADataModelAdaptors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTADataModelAdaptors.h; sourceTree = "<group>"; };
 		FB01A5E018E76427001C793F /* MTADataModelAdaptors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTADataModelAdaptors.m; sourceTree = "<group>"; };
+		FB0CAA8B1933EE4F0088A314 /* PTRouteStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTRouteStore.h; sourceTree = "<group>"; };
+		FB0CAA8D193407E80088A314 /* PTRouteStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTRouteStore.m; sourceTree = "<group>"; };
 		FB129CCE18F10D29009AAEA7 /* PTMonitoredVehicleJourneyDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTMonitoredVehicleJourneyDownloader.h; sourceTree = "<group>"; };
 		FB129CCF18F10D29009AAEA7 /* PTMonitoredVehicleJourneyDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTMonitoredVehicleJourneyDownloader.m; sourceTree = "<group>"; };
 		FB189F431927BE8D0071B8F9 /* PTMainScreenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTMainScreenViewController.h; sourceTree = "<group>"; };
@@ -191,14 +194,65 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		E94206E618F4E514009E9D3D /* PTBase */ = {
+		E94206E618F4E514009E9D3D /* Base */ = {
 			isa = PBXGroup;
 			children = (
 				FBFF62ED18E876D1008D94F9 /* PTMacro.h */,
 				FB3D48EA18F0487E00302031 /* PTBase.h */,
 				FB3D48EB18F0487E00302031 /* PTBase.m */,
 			);
-			name = PTBase;
+			name = Base;
+			sourceTree = "<group>";
+		};
+		FB0CAA871933EAF90088A314 /* VC */ = {
+			isa = PBXGroup;
+			children = (
+				FB189F431927BE8D0071B8F9 /* PTMainScreenViewController.h */,
+				FB189F441927BE8D0071B8F9 /* PTMainScreenViewController.m */,
+				FB189F461927C1790071B8F9 /* PTMainPickerView.h */,
+				FB189F471927C1790071B8F9 /* PTMainPickerView.m */,
+			);
+			name = VC;
+			sourceTree = "<group>";
+		};
+		FB0CAA881933EB200088A314 /* DEPRECATED */ = {
+			isa = PBXGroup;
+			children = (
+				FB8953CD191509F700496282 /* Dashboard */,
+				FB3D48E518EFB47C00302031 /* RouteDetail */,
+				FBC773A418DE193800621261 /* StopDetail_DEPRECATED */,
+				FB517C6C18DDE2CA005C7881 /* LinePicker */,
+			);
+			name = DEPRECATED;
+			sourceTree = "<group>";
+		};
+		FB0CAA891933EB3C0088A314 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				FB786CBE18F99510002A7CFF /* PTMapContainerView.h */,
+				FB786CBF18F99510002A7CFF /* PTMapContainerView.m */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		FB0CAA8A1933EBDD0088A314 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				FB65611A19154177009EA53E /* PTAllRoutesDownloadTask.h */,
+				FB65611B19154177009EA53E /* PTAllRoutesDownloadTask.m */,
+			);
+			name = Network;
+			sourceTree = "<group>";
+		};
+		FB0CAA8C1933EF0B0088A314 /* Store */ = {
+			isa = PBXGroup;
+			children = (
+				FBC7AA6818F1E0630045A27B /* PTStore.h */,
+				FBC7AA6918F1E0630045A27B /* PTStore.m */,
+				FB0CAA8B1933EE4F0088A314 /* PTRouteStore.h */,
+				FB0CAA8D193407E80088A314 /* PTRouteStore.m */,
+			);
+			name = Store;
 			sourceTree = "<group>";
 		};
 		FB20DA121916604900D7EC27 /* PTStopGroupPicker */ = {
@@ -216,8 +270,6 @@
 				FB3D48E618EFB4A000302031 /* Network */,
 				FB3D48E218EFB47700302031 /* PTRouteDetailTableViewController.h */,
 				FB3D48E318EFB47700302031 /* PTRouteDetailTableViewController.m */,
-				FB786CBE18F99510002A7CFF /* PTMapContainerView.h */,
-				FB786CBF18F99510002A7CFF /* PTMapContainerView.m */,
 				E94206EA18F590DB009E9D3D /* PTRouteDetailTableViewCell.h */,
 				E94206EB18F590DB009E9D3D /* PTRouteDetailTableViewCell.m */,
 			);
@@ -271,18 +323,15 @@
 		FB517C3D18DDDF43005C7881 /* Bus-Gogogo */ = {
 			isa = PBXGroup;
 			children = (
-				E94206E618F4E514009E9D3D /* PTBase */,
+				FB0CAA881933EB200088A314 /* DEPRECATED */,
+				E94206E618F4E514009E9D3D /* Base */,
 				FB517C7318DDE4FB005C7881 /* Model */,
-				FB8953CD191509F700496282 /* Dashboard */,
-				FB3D48E518EFB47C00302031 /* RouteDetail */,
-				FBC773A418DE193800621261 /* StopDetail_DEPRECATED */,
-				FB517C6C18DDE2CA005C7881 /* LinePicker */,
 				FB517C4618DDDF43005C7881 /* PTAppDelegate.h */,
 				FB517C4718DDDF43005C7881 /* PTAppDelegate.m */,
-				FB189F431927BE8D0071B8F9 /* PTMainScreenViewController.h */,
-				FB189F441927BE8D0071B8F9 /* PTMainScreenViewController.m */,
-				FB189F461927C1790071B8F9 /* PTMainPickerView.h */,
-				FB189F471927C1790071B8F9 /* PTMainPickerView.m */,
+				FB0CAA8C1933EF0B0088A314 /* Store */,
+				FB0CAA8A1933EBDD0088A314 /* Network */,
+				FB0CAA891933EB3C0088A314 /* View */,
+				FB0CAA871933EAF90088A314 /* VC */,
 				FB517C4F18DDDF43005C7881 /* Images.xcassets */,
 				FB517C3E18DDDF43005C7881 /* Supporting Files */,
 			);
@@ -336,8 +385,6 @@
 		FB517C7318DDE4FB005C7881 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				FBC7AA6818F1E0630045A27B /* PTStore.h */,
-				FBC7AA6918F1E0630045A27B /* PTStore.m */,
 				FB01A5DC18E76226001C793F /* PTMonitoredVehicleJourney.h */,
 				FB01A5DD18E76226001C793F /* PTMonitoredVehicleJourney.m */,
 				FB01A5DF18E76427001C793F /* MTADataModelAdaptors.h */,
@@ -373,8 +420,6 @@
 				FB8953CB191509F200496282 /* PTDashBoardViewController.m */,
 				FB8953CE191515D700496282 /* PTDashBoardView.h */,
 				FB20DA121916604900D7EC27 /* PTStopGroupPicker */,
-				FB65611A19154177009EA53E /* PTAllRoutesDownloadTask.h */,
-				FB65611B19154177009EA53E /* PTAllRoutesDownloadTask.m */,
 				FB8953CF191515D700496282 /* PTDashBoardView.m */,
 			);
 			name = Dashboard;
@@ -475,6 +520,9 @@
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = "Weijing Liu";
 				TargetAttributes = {
+					FB517C3318DDDF43005C7881 = {
+						DevelopmentTeam = S62C7BAM48;
+					};
 					FB517C5418DDDF43005C7881 = {
 						TestTargetID = FB517C3318DDDF43005C7881;
 					};
@@ -535,6 +583,7 @@
 				FB129CD018F10D29009AAEA7 /* PTMonitoredVehicleJourneyDownloader.m in Sources */,
 				FB3D48DB18EFADB400302031 /* PTStopsForRouteRequest.m in Sources */,
 				FBB5EB3A18E738E6007921A3 /* PTBus.m in Sources */,
+				FB0CAA8E193407E80088A314 /* PTRouteStore.m in Sources */,
 				FBE4FD8118DF8752001DA86F /* PTStopMonitoringRequest.m in Sources */,
 				FBD7894518E74E580077F68A /* MTADataModels.m in Sources */,
 				FB786CC018F99510002A7CFF /* PTMapContainerView.m in Sources */,
@@ -682,12 +731,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Bus-Gogogo/Bus-Gogogo-Prefix.pch";
 				INFOPLIST_FILE = "Bus-Gogogo/Bus-Gogogo-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "16F2FC22-429D-4D99-8199-DF58AE10D438";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -698,12 +748,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Bus-Gogogo/Bus-Gogogo-Prefix.pch";
 				INFOPLIST_FILE = "Bus-Gogogo/Bus-Gogogo-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "16F2FC22-429D-4D99-8199-DF58AE10D438";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

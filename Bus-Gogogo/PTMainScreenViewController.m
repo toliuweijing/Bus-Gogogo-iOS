@@ -9,6 +9,8 @@
 #import "PTMainScreenViewController.h"
 #import "PTMainPickerView.h"
 #import "PTMapContainerView.h"
+#import "PTRouteStore.h"
+#import "PTStore.h"
 
 @interface PTMainScreenViewController ()
 
@@ -22,6 +24,17 @@
   PTMapContainerView *_mapView;
 }
 
+- (instancetype)init
+{
+  if (self = [super init]) {
+    self.navigationItem.title = @"Bus gogogo";
+  }
+  return self;
+}
+
+/**
+ Load all subviews
+ */
 - (void)viewDidLoad
 {
   [super viewDidLoad];
@@ -39,11 +52,9 @@
   [self.view addSubview:_directionPickerView];
 }
 
-- (CGFloat)_topInset
-{
-  return self.topLayoutGuide.length;
-}
-
+/**
+ Layout all subviews
+ */
 - (void)viewDidLayoutSubviews
 {
   [super viewDidLayoutSubviews];
@@ -75,16 +86,26 @@
 
 - (void)viewDidAppear:(BOOL)animated
 {
+  /**
+   HACK: use -setNeedsLayout to redraw subviews, as subviews have been changed.
+   i.e. new titles .
+   */
   for (UIView *view in self.view.subviews) {
     [view setNeedsLayout];
   }
   [self.view setNeedsLayout];
+  
+  id<PTRouteStore> routeStore = [PTRouteStore sharedStore];
+  [routeStore retrieveRoutes:^(NSArray *routes) {
+    NSLog(@"all routes are loaded in route store");
+  }];
 }
 
-- (void)didReceiveMemoryWarning
+#pragma mark - Private
+
+- (CGFloat)_topInset
 {
-  [super didReceiveMemoryWarning];
-  // Dispose of any resources that can be recreated.
+  return self.topLayoutGuide.length;
 }
 
 @end

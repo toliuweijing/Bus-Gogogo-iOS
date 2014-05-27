@@ -12,22 +12,16 @@
 @class PTStop;
 @class PTRoute;
 
+
 /**
  A typical store in MVCS pattern. It serves a centralized store for saving and retriving PT-models.
  */
 @interface PTStore : NSObject
 
 /**
- PTStore starts downloading all PTRoute objects at app launch.
- This property is used to observe when routes are available 
+ Class singleton
  */
-@property (nonatomic, assign, readonly) BOOL allRoutesLoaded;
-
 + (PTStore *)sharedStore;
-
-- (NSArray *)routes;
-- (PTRoute *)routeForKey:(NSString *)routeIdentifier;
-
 
 - (void)populateWithOBAResponse:(OBAResponse *)obaResponse;
 

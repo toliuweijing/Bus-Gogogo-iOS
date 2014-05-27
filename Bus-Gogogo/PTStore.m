@@ -16,6 +16,9 @@
   NSMutableDictionary *_stopsMap; // stopID -> PTStop
   NSMutableDictionary *_routesMap; // routeID -> PTRoute
   PTAllRoutesDownloadTask *_task;
+  
+  // PTRouteStore callbacks
+  NSMutableArray *_routeStoreCallbacks;
 }
 
 @property (nonatomic, assign) BOOL allRoutesLoaded;
@@ -29,23 +32,9 @@
   if (self = [super init]) {
     _stopsMap = [[NSMutableDictionary alloc] init];
     _routesMap = [[NSMutableDictionary alloc] init];
-    
-    [self _syncAllRoutes];
+    _routeStoreCallbacks = [[NSMutableArray alloc] init];
   }
   return self;
-}
-
-- (void)_syncAllRoutes
-{
-  _task = [PTAllRoutesDownloadTask scheduledTaskWithCompletionHandler:^(NSArray *routes, NSError *error) {
-    for (PTRoute *route in routes) {
-      assert(route.identifier);
-      [_routesMap setObject:route forKey:route.identifier];
-    }
-    dispatch_async(dispatch_get_main_queue(), ^{
-      self.allRoutesLoaded = YES;
-    });
-  }];
 }
 
 + (PTStore *)sharedStore
@@ -78,14 +67,5 @@
   }
 }
 
-- (NSArray *)routes
-{
-  return [_routesMap allValues];
-}
-
-- (PTRoute *)routeForKey:(NSString *)routeIdentifier
-{
-  return [_routesMap objectForKey:routeIdentifier];
-}
 
 @end

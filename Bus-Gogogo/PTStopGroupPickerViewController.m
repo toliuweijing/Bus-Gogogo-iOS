@@ -109,7 +109,7 @@ const CGFloat kMaximumViewHeight = 216.0;
                        context:(void *)context
 {
   if (object == [PTStore sharedStore] && [keyPath isEqualToString:@"allRoutesLoaded"]) {
-    self.routes = [[PTStore sharedStore] routes];
+//    self.routes = [[PTStore sharedStore] routes];
   }
 }
 
