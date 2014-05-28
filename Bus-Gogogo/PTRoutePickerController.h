@@ -16,8 +16,6 @@
 
 @property (nonatomic, weak) UIViewController *owner;
 
-- (void)setRoutes:(NSArray *)routes;
-
 - (PTRoutePickerView *)view;
 
 @end

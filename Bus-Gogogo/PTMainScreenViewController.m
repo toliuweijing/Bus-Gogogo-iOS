@@ -48,14 +48,6 @@
   _view.topInset = self.topLayoutGuide.length;
 }
 
-- (void)viewDidAppear:(BOOL)animated
-{
-  id<PTRouteStore> routeStore = [PTRouteStore sharedStore];
-  [routeStore retrieveRoutes:^(NSArray *routes) {
-    NSLog(@"all routes are loaded in route store");
-  }];
-}
-
 #pragma mark - Private
 
 - (CGFloat)_topInset

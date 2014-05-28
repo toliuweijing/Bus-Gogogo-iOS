@@ -11,6 +11,7 @@
 #import "PTRoute.h"
 #import "PTObjectPickerTableViewController.h"
 #import "PTObjectPickerView.h"
+#import "PTRouteStore.h"
 
 @interface PTRoutePickerController () <PTRoutePickerViewDelegate, PTObjectPickerTableViewController>
 
@@ -26,13 +27,9 @@
 - (id)init
 {
   if (self = [super init]) {
+    [self _prepareRouteData];
   }
   return self;
-}
-
-- (void)setRoutes:(NSArray *)routes
-{
-  //TODO
 }
 
 - (PTRoutePickerView *)view
@@ -42,6 +39,15 @@
     _view.delegate = self;
   }
   return _view;
+}
+
+#pragma mark - Private
+
+- (void)_prepareRouteData
+{
+  [[PTRouteStore sharedStore] retrieveRoutes:^(NSArray *routes) {
+    _routes = routes;
+  }];
 }
 
 #pragma mark - PTRoutePickerViewDelegate
@@ -57,7 +63,8 @@ receivedTapOnComponenet:(PTRoutePickerViewComponentType)component
 
 #pragma mark - PTObjectPickerTableViewController
 
-- (void)objectPickerTableViewController:(PTObjectPickerTableViewController *)controller didFinishWithContent:(NSString *)content
+- (void)objectPickerTableViewController:(PTObjectPickerTableViewController *)controller
+                   didFinishWithContent:(NSString *)content
 {
   PTObjectPickerView *picker = [_view objectPickerView:_lastComponent];
   [picker setSelectionLabelText:content];
