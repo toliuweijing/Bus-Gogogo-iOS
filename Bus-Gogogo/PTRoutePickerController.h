@@ -8,11 +8,21 @@
 
 @class PTRoutePickerView;
 @class PTRoutePickerController;
+@class PTStopGroup;
+
+@protocol PTRoutePickerControllerDelegate <NSObject>
+
+- (void)routePickerController:(PTRoutePickerController *)controller
+       didFinishWithStopGroup:(PTStopGroup *)stopGroup;
+
+@end
 
 /**
  A meditary controller that governs PTRoutePickerView
  */
 @interface PTRoutePickerController : NSObject
+
+@property (nonatomic, weak) id<PTRoutePickerControllerDelegate> delegate;
 
 @property (nonatomic, weak) UIViewController *owner;
 

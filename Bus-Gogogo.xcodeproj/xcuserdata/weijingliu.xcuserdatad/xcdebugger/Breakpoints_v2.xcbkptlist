@@ -276,11 +276,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Bus-Gogogo/PTRoutePickerController.m"
-            timestampString = "422971627.628724"
+            timestampString = "422975131.091204"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "65"
-            endingLineNumber = "65"
+            startingLineNumber = "87"
+            endingLineNumber = "87"
             landmarkName = "-objectPickerTableViewController:didFinishWithContent:"
             landmarkType = "5">
          </BreakpointContent>

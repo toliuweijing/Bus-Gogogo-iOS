@@ -59,6 +59,7 @@
 		FBC7AA6A18F1E0630045A27B /* PTStore.m in Sources */ = {isa = PBXBuildFile; fileRef = FBC7AA6918F1E0630045A27B /* PTStore.m */; };
 		FBD4224E1934B1B9003743EE /* PTRoutePickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = FBD4224D1934B1B9003743EE /* PTRoutePickerController.m */; };
 		FBD7894518E74E580077F68A /* MTADataModels.m in Sources */ = {isa = PBXBuildFile; fileRef = FBD7894418E74E580077F68A /* MTADataModels.m */; };
+		FBD8B66319360DDE00E43725 /* PTRouteFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = FBD8B66219360DDE00E43725 /* PTRouteFilter.m */; };
 		FBE4FD8118DF8752001DA86F /* PTStopMonitoringRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = FBE4FD8018DF8752001DA86F /* PTStopMonitoringRequest.m */; };
 		FBFF62E218E86645008D94F9 /* PTStopDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBFF62E118E86645008D94F9 /* PTStopDetailViewController.xib */; };
 		FBFF62E518E86B4E008D94F9 /* PTStopDetailTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FBFF62E418E86B4E008D94F9 /* PTStopDetailTableViewCell.m */; };
@@ -172,6 +173,8 @@
 		FBD4224D1934B1B9003743EE /* PTRoutePickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTRoutePickerController.m; sourceTree = "<group>"; };
 		FBD7894318E74E580077F68A /* MTADataModels.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTADataModels.h; sourceTree = "<group>"; };
 		FBD7894418E74E580077F68A /* MTADataModels.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTADataModels.m; sourceTree = "<group>"; };
+		FBD8B66119360DDE00E43725 /* PTRouteFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTRouteFilter.h; sourceTree = "<group>"; };
+		FBD8B66219360DDE00E43725 /* PTRouteFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTRouteFilter.m; sourceTree = "<group>"; };
 		FBE4FD7F18DF8752001DA86F /* PTStopMonitoringRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTStopMonitoringRequest.h; sourceTree = "<group>"; };
 		FBE4FD8018DF8752001DA86F /* PTStopMonitoringRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTStopMonitoringRequest.m; sourceTree = "<group>"; };
 		FBFF62E118E86645008D94F9 /* PTStopDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PTStopDetailViewController.xib; sourceTree = "<group>"; };
@@ -460,6 +463,8 @@
 				FB0CAA93193423ED0088A314 /* PTRoutePickerView.m */,
 				FBD4224C1934B1B9003743EE /* PTRoutePickerController.h */,
 				FBD4224D1934B1B9003743EE /* PTRoutePickerController.m */,
+				FBD8B66119360DDE00E43725 /* PTRouteFilter.h */,
+				FBD8B66219360DDE00E43725 /* PTRouteFilter.m */,
 				FB5145C11934BF4C00B20EF9 /* PTObjectPickerTableViewController.h */,
 				FB5145C21934BF4C00B20EF9 /* PTObjectPickerTableViewController.m */,
 			);
@@ -641,6 +646,7 @@
 				FB3D48D818EFA8E500302031 /* PTRouteMonitoringRequest.m in Sources */,
 				FB01A5E118E76427001C793F /* MTADataModelAdaptors.m in Sources */,
 				FB0CAA94193423ED0088A314 /* PTRoutePickerView.m in Sources */,
+				FBD8B66319360DDE00E43725 /* PTRouteFilter.m in Sources */,
 				FB517C7218DDE4F4005C7881 /* PTStop.m in Sources */,
 				FBC7AA6A18F1E0630045A27B /* PTStore.m in Sources */,
 				FB517C6F18DDE30F005C7881 /* PTLine.m in Sources */,

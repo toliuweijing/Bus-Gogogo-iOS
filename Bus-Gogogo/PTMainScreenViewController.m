@@ -14,7 +14,7 @@
 #import "PTStore.h"
 #import "PTRoutePickerController.h"
 
-@interface PTMainScreenViewController ()
+@interface PTMainScreenViewController () <PTRoutePickerControllerDelegate>
 {
   PTRoutePickerController *_routePickerController;
   PTMainScreenView *_view;
@@ -29,6 +29,7 @@
   if (self = [super init]) {
     _routePickerController = [[PTRoutePickerController alloc] init];
     _routePickerController.owner = self;
+    _routePickerController.delegate = self;
     
     self.navigationItem.title = @"Bus gogogo";
   }
@@ -46,6 +47,14 @@
 {
   [super viewWillLayoutSubviews];
   _view.topInset = self.topLayoutGuide.length;
+}
+
+#pragma mark - PTRoutePickerControllerDelegate
+
+- (void)routePickerController:(PTRoutePickerController *)controller
+       didFinishWithStopGroup:(PTStopGroup *)stopGroup
+{
+  assert(NO);
 }
 
 #pragma mark - Private
