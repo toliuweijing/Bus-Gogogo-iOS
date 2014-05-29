@@ -22,8 +22,7 @@ didReceiveVehicleJourneys:(NSArray *)vehicleJourneys;
 
 @property (nonatomic, weak) id<PTMonitoredVehicleJourneyDownloaderDelegate> delegate;
 
-- (instancetype)initWithRouteIdentifier:(NSString *)routeID;
-
-- (void)startDownload;
+- (instancetype)initWithRouteIdentifier:(NSString *)routeID
+                               delegate:(id<PTMonitoredVehicleJourneyDownloaderDelegate>)delegate;
 
 @end

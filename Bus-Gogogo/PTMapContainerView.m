@@ -79,7 +79,7 @@ static NSString *const kMapViewReuseIdentifierVehcileJourneys = @"vehcile_journe
   }];
   
   // zoom region to fit stopGroup.
- self.mapView.region = [self.stopGroup coordinateRegion];
+  self.mapView.region = [self.stopGroup coordinateRegion];
 }
 
 - (void)setVehicleJourneys:(NSArray *)vehicleJourneys
@@ -91,7 +91,6 @@ static NSString *const kMapViewReuseIdentifierVehcileJourneys = @"vehcile_journe
 
 - (void)_configureMapViewWithVehicleJourneys:(NSArray *)vehicleJourneys
 {
-  assert(self.vehicleJourneys != vehicleJourneys);
   
 #if 0 // 1 to enable overlays
   [self.mapView removeOverlays:self.circlesForVehicleJourneys];

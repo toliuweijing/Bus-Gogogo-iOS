@@ -22,13 +22,14 @@
 
 @implementation PTStopsForRouteDownloader
 
-- (instancetype)initWithRouteIdentifier:(NSString *)routeID
+- (instancetype)initWithRouteIdentifier:(NSString *)routeID delegate:(id<PTStopsForRouteDownloaderDelegate>)delegate;
 {
   if (self = [super init]) {
     NSURLSessionConfiguration *config = [NSURLSessionConfiguration defaultSessionConfiguration];
     config.requestCachePolicy = NSURLRequestReloadIgnoringLocalAndRemoteCacheData;
     _session = [NSURLSession sessionWithConfiguration:config];
     _routeID = routeID;
+    _delegate = delegate;
     [self _startDownload];
   }
   return self;

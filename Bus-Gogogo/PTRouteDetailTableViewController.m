@@ -57,10 +57,10 @@ MKMapViewDelegate>
 {
   self = [super initWithStyle:style];
   if (self) {
-    _stopsForRouteDownloader = [[PTStopsForRouteDownloader alloc] initWithRouteIdentifier:routeIdentifier];
+    _stopsForRouteDownloader = [[PTStopsForRouteDownloader alloc] initWithRouteIdentifier:routeIdentifier delegate:self];
     _stopsForRouteDownloader.delegate = self;
     
-    _vehicleJourneyDownloader = [[PTMonitoredVehicleJourneyDownloader alloc] initWithRouteIdentifier:routeIdentifier];
+    _vehicleJourneyDownloader = [[PTMonitoredVehicleJourneyDownloader alloc] initWithRouteIdentifier:routeIdentifier delegate:self];
     _vehicleJourneyDownloader.delegate = self;
     
     UIBarButtonItem *direction = [[UIBarButtonItem alloc] initWithTitle:@"Direction"
@@ -99,16 +99,12 @@ MKMapViewDelegate>
   } else {
     self.stopGroup = self.stopGroups.firstObject;
   }
-  // retrieve vehicle journeys
-  [self.vehicleJourneyDownloader startDownload];
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
   [super viewWillAppear:animated];
   
-//  [self.stopsForRouteDownloader startDownload];
-  [self.vehicleJourneyDownloader startDownload];
   [NSTimer scheduledTimerWithTimeInterval:60
                                    target:self
                                  selector:@selector(_fireVehicleJourneyDownloader:)
@@ -118,7 +114,6 @@ MKMapViewDelegate>
 
 - (void)_fireVehicleJourneyDownloader:(NSTimer *)timer
 {
-  [self.vehicleJourneyDownloader startDownload];
 }
 
 - (void)viewDidLoad

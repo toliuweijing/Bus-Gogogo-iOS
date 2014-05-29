@@ -20,16 +20,20 @@
 @implementation PTMonitoredVehicleJourneyDownloader
 
 - (instancetype)initWithRouteIdentifier:(NSString *)routeID
+                               delegate:(id<PTMonitoredVehicleJourneyDownloaderDelegate>)delegate;
 {
   if (self = [super init]) {
     NSURLSessionConfiguration *config = [NSURLSessionConfiguration defaultSessionConfiguration];
     _session = [NSURLSession sessionWithConfiguration:config];
     _routeIdentifier = routeID;
+    _delegate = delegate;
+    [self _startDownload];
+
   }
   return self;
 }
 
--(void)startDownload
+-(void)_startDownload
 {
   self.routeIdentifier = [self.routeIdentifier stringByReplacingOccurrencesOfString:@" " withString:@"%20"];
   NSString *format = @"http://bustime.mta.info/api/siri/vehicle-monitoring.json?key=cfb3c75b-5a43-4e66-b7f8-14e666b0c1c1&LineRef=%@";

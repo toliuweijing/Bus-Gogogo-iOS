@@ -9,12 +9,16 @@
 #import <UIKit/UIKit.h>
 
 @class PTRoutePickerView;
+@class PTMapContainerView;
 
 @interface PTMainScreenView : UIView
 
 @property (nonatomic, assign) CGFloat topInset;
 
 - (id)initWithFrame:(CGRect)frame
-    routePickerView:(PTRoutePickerView *)routePickerView;
+    routePickerView:(PTRoutePickerView *)routePickerView
+stopGroupPickerView:(UIView *)stopGroupPickerView;
+
+- (PTMapContainerView *)mapContainerView;
 
 @end

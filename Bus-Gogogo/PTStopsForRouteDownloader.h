@@ -25,6 +25,6 @@
 
 @property (nonatomic, weak) id<PTStopsForRouteDownloaderDelegate> delegate;
 
-- (instancetype)initWithRouteIdentifier:(NSString *)routeID;
+- (instancetype)initWithRouteIdentifier:(NSString *)routeID delegate:(id<PTStopsForRouteDownloaderDelegate>)delegate;
 
 @end

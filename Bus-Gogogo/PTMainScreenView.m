@@ -15,6 +15,7 @@
 {
   PTMapContainerView *_mapView;
   PTRoutePickerView *_routePickerView;
+  UIView *_stopGroupPickerView;
 }
 
 - (id)initWithFrame:(CGRect)frame
@@ -25,11 +26,15 @@
 
 - (id)initWithFrame:(CGRect)frame
     routePickerView:(PTRoutePickerView *)routePickerView
+stopGroupPickerView:(UIView *)stopGroupPickerView
 {
   self = [super initWithFrame:frame];
   if (self) {
     _routePickerView = routePickerView;
     [self addSubview:_routePickerView];
+    
+    _stopGroupPickerView = stopGroupPickerView;
+    [self addSubview:_stopGroupPickerView];
     
     _mapView = [[PTMapContainerView alloc] init];
     [self addSubview:_mapView];
@@ -43,11 +48,22 @@
                                       self.topInset,
                                       CGRectGetWidth(self.bounds),
                                       kRoutePickerViewHeight);
-  _mapView.frame = CGRectMake(0,
-                              CGRectGetMaxY(_routePickerView.frame)+1,
-                              CGRectGetWidth(self.bounds),
-                              CGRectGetHeight(self.bounds) - CGRectGetMaxY(_routePickerView.frame));
   
+  _stopGroupPickerView.frame = CGRectMake(0,
+                                          CGRectGetMaxY(_routePickerView.frame),
+                                          CGRectGetWidth(self.bounds),
+                                          30);
+  
+  _mapView.frame = CGRectMake(0,
+                              CGRectGetMaxY(_stopGroupPickerView.frame)+1,
+                              CGRectGetWidth(self.bounds),
+                              CGRectGetHeight(self.bounds) - CGRectGetMaxY(_stopGroupPickerView.frame));
+  
+}
+
+- (PTMapContainerView *)mapContainerView
+{
+  return _mapView;
 }
 
 @end
