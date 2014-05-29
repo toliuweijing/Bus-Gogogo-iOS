@@ -43,10 +43,10 @@
   // Dispose of any resources that can be recreated.
 }
 
-- (void)viewWillLayoutSubviews
+- (void)viewDidLayoutSubviews
 {
-  [super viewWillLayoutSubviews];
-  self.tableView.contentInset = UIEdgeInsetsMake(self.topLayoutGuide.length, 0, 0, 0);
+  [super viewDidLayoutSubviews];
+//  self.tableView.contentInset = UIEdgeInsetsMake(self.topLayoutGuide.length, 0, 0, 0);
 }
 
 #pragma mark - Table view data source
@@ -69,7 +69,13 @@
     cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kIdentifier];
   }
   cell.textLabel.text = [_content objectAtIndex:indexPath.row];
+  cell.textLabel.font = [UIFont fontWithName:@"Avenir" size:12];
   return cell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+  return 30;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath

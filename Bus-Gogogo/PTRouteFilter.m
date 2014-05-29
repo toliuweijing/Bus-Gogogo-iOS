@@ -48,7 +48,13 @@
       [lines addObject:[route number]];
     }
   }
-  return [lines allObjects];
+  
+  // sort
+  NSArray *ret = [lines allObjects];
+  NSArray *sortedRet = [ret sortedArrayUsingComparator:^NSComparisonResult(NSString *obj1, NSString *obj2) {
+    return [obj1 intValue] > [obj2 intValue];
+  }];
+  return sortedRet;
 }
 
 - (PTStopGroup *)stopGroup
