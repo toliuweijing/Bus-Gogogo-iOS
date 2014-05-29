@@ -36,7 +36,7 @@
   for (PTRoute *route in _routes) {
     [regions addObject:[route regionPrefix]];
   }
-  return [regions allObjects];
+  return [[regions allObjects] sortedArrayUsingSelector:@selector(caseInsensitiveCompare:)];
 }
 
 - (NSArray *)lines
