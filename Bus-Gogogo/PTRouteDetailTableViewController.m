@@ -107,7 +107,7 @@ MKMapViewDelegate>
 {
   [super viewWillAppear:animated];
   
-  [self.stopsForRouteDownloader startDownload];
+//  [self.stopsForRouteDownloader startDownload];
   [self.vehicleJourneyDownloader startDownload];
   [NSTimer scheduledTimerWithTimeInterval:60
                                    target:self

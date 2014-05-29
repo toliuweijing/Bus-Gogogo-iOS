@@ -23,13 +23,12 @@
 // A list of NSString objects that represents available option to pick based on filter.
 - (NSArray *)regions;
 - (NSArray *)lines;
-- (NSArray *)directions;
 
 // The concluded stopGroup that surivive through all three filters.
+- (PTRoute *)route;
 - (PTStopGroup *)stopGroup;
 
 - (void)filterByRegion:(NSString *)region;
 - (void)filterByLine:(NSString *)line;
-- (void)filterByDirection:(NSString *)direction;
 
 @end

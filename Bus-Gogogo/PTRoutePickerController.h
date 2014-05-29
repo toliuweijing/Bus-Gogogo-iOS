@@ -9,11 +9,12 @@
 @class PTRoutePickerView;
 @class PTRoutePickerController;
 @class PTStopGroup;
+@class PTRoute;
 
 @protocol PTRoutePickerControllerDelegate <NSObject>
 
 - (void)routePickerController:(PTRoutePickerController *)controller
-       didFinishWithStopGroup:(PTStopGroup *)stopGroup;
+           didFinishWithRoute:(PTRoute *)route;
 
 @end
 

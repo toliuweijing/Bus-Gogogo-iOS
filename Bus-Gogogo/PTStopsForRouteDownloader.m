@@ -29,11 +29,12 @@
     config.requestCachePolicy = NSURLRequestReloadIgnoringLocalAndRemoteCacheData;
     _session = [NSURLSession sessionWithConfiguration:config];
     _routeID = routeID;
+    [self _startDownload];
   }
   return self;
 }
 
-- (void)startDownload
+- (void)_startDownload
 {
   NSURLRequest *request = [PTStopsForRouteRequest requestWithRouteID:self.routeID];
   [[self.session dataTaskWithRequest:request

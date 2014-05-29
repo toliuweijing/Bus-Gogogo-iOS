@@ -256,6 +256,9 @@
 		FB0CAA8A1933EBDD0088A314 /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				FBD8B66419375BCF00E43725 /* PTStopGroupDownloader */,
+				FB129CCE18F10D29009AAEA7 /* PTMonitoredVehicleJourneyDownloader.h */,
+				FB129CCF18F10D29009AAEA7 /* PTMonitoredVehicleJourneyDownloader.m */,
 				FB65611A19154177009EA53E /* PTAllRoutesDownloadTask.h */,
 				FB65611B19154177009EA53E /* PTAllRoutesDownloadTask.m */,
 			);
@@ -297,12 +300,6 @@
 		FB3D48E618EFB4A000302031 /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				FB3D48DC18EFAE5A00302031 /* PTStopsForRouteDownloader.h */,
-				FB3D48DD18EFAE5A00302031 /* PTStopsForRouteDownloader.m */,
-				FB129CCE18F10D29009AAEA7 /* PTMonitoredVehicleJourneyDownloader.h */,
-				FB129CCF18F10D29009AAEA7 /* PTMonitoredVehicleJourneyDownloader.m */,
-				FB3D48D918EFADB400302031 /* PTStopsForRouteRequest.h */,
-				FB3D48DA18EFADB400302031 /* PTStopsForRouteRequest.m */,
 			);
 			name = Network;
 			sourceTree = "<group>";
@@ -469,6 +466,17 @@
 				FB5145C21934BF4C00B20EF9 /* PTObjectPickerTableViewController.m */,
 			);
 			name = PTRoutePickerView;
+			sourceTree = "<group>";
+		};
+		FBD8B66419375BCF00E43725 /* PTStopGroupDownloader */ = {
+			isa = PBXGroup;
+			children = (
+				FB3D48DC18EFAE5A00302031 /* PTStopsForRouteDownloader.h */,
+				FB3D48DD18EFAE5A00302031 /* PTStopsForRouteDownloader.m */,
+				FB3D48D918EFADB400302031 /* PTStopsForRouteRequest.h */,
+				FB3D48DA18EFADB400302031 /* PTStopsForRouteRequest.m */,
+			);
+			name = PTStopGroupDownloader;
 			sourceTree = "<group>";
 		};
 		FBFF62E918E86BE5008D94F9 /* DataSource */ = {

@@ -10,7 +10,7 @@
 #import "PTObjectPickerView.h"
 
 // A fixed size view.
-const CGFloat kRoutePickerViewHeight = 90.0;
+const CGFloat kRoutePickerViewHeight = 60.0;
 
 @interface PTRoutePickerView () <PTObjectPickerViewDelegate>
 
@@ -20,7 +20,6 @@ const CGFloat kRoutePickerViewHeight = 90.0;
 {
   PTObjectPickerView *_regionPickerView;
   PTObjectPickerView *_linePickerView;
-  PTObjectPickerView *_directionPickerView;
 }
 
 - (id)initWithFrame:(CGRect)frame
@@ -36,11 +35,6 @@ const CGFloat kRoutePickerViewHeight = 90.0;
     _linePickerView.title = @"Line";
     _linePickerView.delegate = self;
     [self addSubview:_linePickerView];
-    
-    _directionPickerView = [[PTObjectPickerView alloc] init];
-    _directionPickerView.title = @"Direction";
-    _directionPickerView.delegate = self;
-    [self addSubview:_directionPickerView];
   }
   return self;
 }
@@ -60,11 +54,6 @@ const CGFloat kRoutePickerViewHeight = 90.0;
                                      CGRectGetWidth(self.bounds),
                                      pickerViewHeight);
   
-  _directionPickerView.frame = CGRectMake(0,
-                                          CGRectGetMaxY(_linePickerView.frame),
-                                          CGRectGetWidth(self.bounds),
-                                          pickerViewHeight);
- 
 }
 
 #pragma mark - PTObjectPickerViewDelegate
@@ -82,8 +71,6 @@ const CGFloat kRoutePickerViewHeight = 90.0;
     return PTRoutePickerViewComponentTypeRegion;
   } else if (pickerView == _linePickerView) {
     return PTRoutePickerViewComponentTypeLine;
-  } else {
-    return PTRoutePickerViewComponentTypeDirection;
   }
   assert(NO);
   return component;
@@ -93,7 +80,6 @@ const CGFloat kRoutePickerViewHeight = 90.0;
 {
   if (PTRoutePickerViewComponentTypeRegion == type) return _regionPickerView;
   if (PTRoutePickerViewComponentTypeLine == type) return _linePickerView;
-  if (PTRoutePickerViewComponentTypeDirection == type) return _directionPickerView;
   assert(NO);
   return nil;
 }

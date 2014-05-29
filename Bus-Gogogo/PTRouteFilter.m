@@ -14,7 +14,6 @@
   NSArray *_routes;
   NSString *_regionFilter;
   NSString *_lineFilter;
-  NSString *_directionFilter;
 }
 
 - (id)init
@@ -57,9 +56,19 @@
   return sortedRet;
 }
 
+- (PTRoute *)route
+{
+  for (PTRoute *route in _routes) {
+    if ([route.regionPrefix isEqualToString:_regionFilter] &&
+        [route.number isEqualToString:_lineFilter]) {
+      return route;
+    }
+  }
+  return nil;
+}
+
 - (PTStopGroup *)stopGroup
 {
-  return nil;
   assert(NO);
 }
 
@@ -71,11 +80,6 @@
 - (void)filterByLine:(NSString *)line
 {
   _lineFilter = line;
-}
-
-- (void)filterByDirection:(NSString *)direction
-{
-  _directionFilter = direction;
 }
 
 #pragma mark - Private

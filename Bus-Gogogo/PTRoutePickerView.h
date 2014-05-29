@@ -17,7 +17,6 @@ extern const CGFloat kRoutePickerViewHeight;
 typedef NS_ENUM(NSInteger, PTRoutePickerViewComponentType) {
   PTRoutePickerViewComponentTypeRegion = 1,
   PTRoutePickerViewComponentTypeLine,
-  PTRoutePickerViewComponentTypeDirection,
 };
 
 @protocol PTRoutePickerViewDelegate <NSObject>

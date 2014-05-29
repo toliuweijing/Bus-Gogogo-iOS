@@ -63,8 +63,6 @@ receivedTapOnComponenet:(PTRoutePickerViewComponentType)component
     content = [_routeFilter regions];
   } else if (PTRoutePickerViewComponentTypeLine == component) {
     content = [_routeFilter lines];
-  } else if (PTRoutePickerViewComponentTypeDirection == component) {
-    content = [_routeFilter directions];
   } else {
     assert(NO);
   }
@@ -89,16 +87,14 @@ receivedTapOnComponenet:(PTRoutePickerViewComponentType)component
     [_routeFilter filterByRegion:content];
   } else if (PTRoutePickerViewComponentTypeLine == _lastComponent) {
     [_routeFilter filterByLine:content];
-  } else if (PTRoutePickerViewComponentTypeDirection == _lastComponent) {
-    [_routeFilter filterByDirection:content];
   } else {
     assert(NO);
   }
   
   // update delegate if filter has conclusion.
-  if ([_routeFilter stopGroup]) {
+  if ([_routeFilter route]) {
     [self.delegate routePickerController:self
-                  didFinishWithStopGroup:[_routeFilter stopGroup]];
+                      didFinishWithRoute:[_routeFilter route]];
   }
   
   // pop back to owner.

@@ -27,6 +27,4 @@
 
 - (instancetype)initWithRouteIdentifier:(NSString *)routeID;
 
-- (void)startDownload;
-
 @end
