@@ -52,6 +52,8 @@
 		FB8953D0191515D700496282 /* PTDashBoardView.m in Sources */ = {isa = PBXBuildFile; fileRef = FB8953CF191515D700496282 /* PTDashBoardView.m */; };
 		FB9E199B18E8C951008BDDF5 /* PTStopDetailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB9E199A18E8C951008BDDF5 /* PTStopDetailTableViewCell.xib */; };
 		FBA258C9193762E7007B05DE /* PTStopGroupPickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = FBA258C8193762E7007B05DE /* PTStopGroupPickerController.m */; };
+		FBA258CD193899FB007B05DE /* PTRoutePresenterController.m in Sources */ = {isa = PBXBuildFile; fileRef = FBA258CC193899FB007B05DE /* PTRoutePresenterController.m */; };
+		FBA258D019389A0B007B05DE /* PTRoutePresenterView.m in Sources */ = {isa = PBXBuildFile; fileRef = FBA258CF19389A0B007B05DE /* PTRoutePresenterView.m */; };
 		FBB5EB3A18E738E6007921A3 /* PTBus.m in Sources */ = {isa = PBXBuildFile; fileRef = FBB5EB3918E738E6007921A3 /* PTBus.m */; };
 		FBB5EB3D18E739BD007921A3 /* PTBusMapOverlay.m in Sources */ = {isa = PBXBuildFile; fileRef = FBB5EB3C18E739BD007921A3 /* PTBusMapOverlay.m */; };
 		FBC773A318DE192900621261 /* PTStopDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FBC773A218DE192900621261 /* PTStopDetailViewController.m */; };
@@ -160,6 +162,10 @@
 		FB9E199A18E8C951008BDDF5 /* PTStopDetailTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PTStopDetailTableViewCell.xib; sourceTree = "<group>"; };
 		FBA258C7193762E7007B05DE /* PTStopGroupPickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTStopGroupPickerController.h; sourceTree = "<group>"; };
 		FBA258C8193762E7007B05DE /* PTStopGroupPickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTStopGroupPickerController.m; sourceTree = "<group>"; };
+		FBA258CB193899FB007B05DE /* PTRoutePresenterController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTRoutePresenterController.h; sourceTree = "<group>"; };
+		FBA258CC193899FB007B05DE /* PTRoutePresenterController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTRoutePresenterController.m; sourceTree = "<group>"; };
+		FBA258CE19389A0B007B05DE /* PTRoutePresenterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTRoutePresenterView.h; sourceTree = "<group>"; };
+		FBA258CF19389A0B007B05DE /* PTRoutePresenterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTRoutePresenterView.m; sourceTree = "<group>"; };
 		FBB5EB3818E738E6007921A3 /* PTBus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTBus.h; sourceTree = "<group>"; };
 		FBB5EB3918E738E6007921A3 /* PTBus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTBus.m; sourceTree = "<group>"; };
 		FBB5EB3B18E739BD007921A3 /* PTBusMapOverlay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTBusMapOverlay.h; sourceTree = "<group>"; };
@@ -227,10 +233,11 @@
 			children = (
 				FB189F431927BE8D0071B8F9 /* PTMainScreenViewController.h */,
 				FB189F441927BE8D0071B8F9 /* PTMainScreenViewController.m */,
-				FBA258CA193762EB007B05DE /* PTStopGroupPIckerView */,
 				FB0CAA8F193421490088A314 /* PTMainScreenView.h */,
 				FB0CAA90193421490088A314 /* PTMainScreenView.m */,
-				FBD4224F1934B1C2003743EE /* PTRoutePickerView */,
+				FBA258CA193762EB007B05DE /* StopGroupPIcker */,
+				FBA258D119389A0E007B05DE /* RoutePresenter */,
+				FBD4224F1934B1C2003743EE /* RoutePickerView */,
 			);
 			name = VC;
 			sourceTree = "<group>";
@@ -444,13 +451,24 @@
 			name = Dashboard;
 			sourceTree = "<group>";
 		};
-		FBA258CA193762EB007B05DE /* PTStopGroupPIckerView */ = {
+		FBA258CA193762EB007B05DE /* StopGroupPIcker */ = {
 			isa = PBXGroup;
 			children = (
 				FBA258C7193762E7007B05DE /* PTStopGroupPickerController.h */,
 				FBA258C8193762E7007B05DE /* PTStopGroupPickerController.m */,
 			);
-			name = PTStopGroupPIckerView;
+			name = StopGroupPIcker;
+			sourceTree = "<group>";
+		};
+		FBA258D119389A0E007B05DE /* RoutePresenter */ = {
+			isa = PBXGroup;
+			children = (
+				FBA258CB193899FB007B05DE /* PTRoutePresenterController.h */,
+				FBA258CC193899FB007B05DE /* PTRoutePresenterController.m */,
+				FBA258CE19389A0B007B05DE /* PTRoutePresenterView.h */,
+				FBA258CF19389A0B007B05DE /* PTRoutePresenterView.m */,
+			);
+			name = RoutePresenter;
 			sourceTree = "<group>";
 		};
 		FBC773A418DE193800621261 /* StopDetail_DEPRECATED */ = {
@@ -466,7 +484,7 @@
 			name = StopDetail_DEPRECATED;
 			sourceTree = "<group>";
 		};
-		FBD4224F1934B1C2003743EE /* PTRoutePickerView */ = {
+		FBD4224F1934B1C2003743EE /* RoutePickerView */ = {
 			isa = PBXGroup;
 			children = (
 				FB0CAA92193423ED0088A314 /* PTRoutePickerView.h */,
@@ -478,7 +496,7 @@
 				FB5145C11934BF4C00B20EF9 /* PTObjectPickerTableViewController.h */,
 				FB5145C21934BF4C00B20EF9 /* PTObjectPickerTableViewController.m */,
 			);
-			name = PTRoutePickerView;
+			name = RoutePickerView;
 			sourceTree = "<group>";
 		};
 		FBD8B66419375BCF00E43725 /* PTStopGroupDownloader */ = {
@@ -635,6 +653,7 @@
 				E94206E918F57E13009E9D3D /* PTLinePickerDownloader.m in Sources */,
 				FB3D48E418EFB47700302031 /* PTRouteDetailTableViewController.m in Sources */,
 				FB5145C31934BF4C00B20EF9 /* PTObjectPickerTableViewController.m in Sources */,
+				FBA258D019389A0B007B05DE /* PTRoutePresenterView.m in Sources */,
 				FB129CD018F10D29009AAEA7 /* PTMonitoredVehicleJourneyDownloader.m in Sources */,
 				FB3D48DB18EFADB400302031 /* PTStopsForRouteRequest.m in Sources */,
 				FBB5EB3A18E738E6007921A3 /* PTBus.m in Sources */,
@@ -645,6 +664,7 @@
 				FB786CC018F99510002A7CFF /* PTMapContainerView.m in Sources */,
 				FB65611C19154177009EA53E /* PTAllRoutesDownloadTask.m in Sources */,
 				FB3D48DE18EFAE5A00302031 /* PTStopsForRouteDownloader.m in Sources */,
+				FBA258CD193899FB007B05DE /* PTRoutePresenterController.m in Sources */,
 				FBC773AA18DE1D7600621261 /* PTStop+MKAnnotation.m in Sources */,
 				FB517C4E18DDDF43005C7881 /* PTLinePickerViewController.m in Sources */,
 				FB65611F19154236009EA53E /* PTRoute.m in Sources */,

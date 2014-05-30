@@ -17,8 +17,7 @@
 
 - (id)initWithFrame:(CGRect)frame
     routePickerView:(PTRoutePickerView *)routePickerView
-stopGroupPickerView:(UIView *)stopGroupPickerView;
-
-- (PTMapContainerView *)mapContainerView;
+stopGroupPickerView:(UIView *)stopGroupPickerView
+   mapContainerView:(UIView *)mapContainerView;
 
 @end

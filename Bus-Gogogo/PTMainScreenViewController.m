@@ -18,6 +18,7 @@
 #import "PTRoutePickerController.h"
 #import "PTStopGroupPickerController.h"
 #import "PTMonitoredVehicleJourneyDownloader.h"
+#import "PTRoutePresenterController.h"
 
 @interface PTMainScreenViewController () <
   PTRoutePickerControllerDelegate,
@@ -27,6 +28,8 @@
 {
   PTRoutePickerController *_routePickerController;
   PTStopGroupPickerController *_stopGroupPickerController;
+  PTRoutePresenterController *_routePresenterController;
+  
   PTMonitoredVehicleJourneyDownloader *_downloader;
   NSArray *_vehicleJourneys;
   PTMainScreenView *_view;
@@ -47,6 +50,8 @@
     _stopGroupPickerController.owner = self;
     _stopGroupPickerController.delegate = self;
     
+    _routePresenterController = [[PTRoutePresenterController alloc] init];
+    
     self.navigationItem.title = @"Bus gogogo";
   }
   return self;
@@ -56,7 +61,8 @@
 {
   _view = [[PTMainScreenView alloc] initWithFrame:CGRectZero
                                   routePickerView:[_routePickerController view]
-                              stopGroupPickerView:[_stopGroupPickerController view]];
+                              stopGroupPickerView:[_stopGroupPickerController view]
+                                 mapContainerView:[_routePresenterController view]];
   self.view = _view;
 }
 
@@ -70,8 +76,8 @@
 
 - (void)stopGroupPickerController:(PTStopGroupPickerController *)controller didFinishWithStopGroup:(PTStopGroup *)stopGroup
 {
-  [[_view mapContainerView] setStopGroup:stopGroup];
-  [[_view mapContainerView] setVehicleJourneys:_vehicleJourneys];
+  [_routePresenterController setStopGroup:stopGroup];
+  [_routePresenterController setVehicleJourneys:_vehicleJourneys];
 }
 
 #pragma mark - PTRoutePickerControllerDelegate

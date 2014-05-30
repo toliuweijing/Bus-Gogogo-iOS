@@ -8,12 +8,11 @@
 
 #import "PTMainScreenView.h"
 #import "PTObjectPickerView.h"
-#import "PTMapContainerView.h"
 #import "PTRoutePickerView.h"
 
 @implementation PTMainScreenView
 {
-  PTMapContainerView *_mapView;
+  UIView *_mapView;
   PTRoutePickerView *_routePickerView;
   UIView *_stopGroupPickerView;
 }
@@ -27,6 +26,7 @@
 - (id)initWithFrame:(CGRect)frame
     routePickerView:(PTRoutePickerView *)routePickerView
 stopGroupPickerView:(UIView *)stopGroupPickerView
+   mapContainerView:(UIView *)mapContainerView;
 {
   self = [super initWithFrame:frame];
   if (self) {
@@ -36,7 +36,7 @@ stopGroupPickerView:(UIView *)stopGroupPickerView
     _stopGroupPickerView = stopGroupPickerView;
     [self addSubview:_stopGroupPickerView];
     
-    _mapView = [[PTMapContainerView alloc] init];
+    _mapView = mapContainerView;
     [self addSubview:_mapView];
   }
   return self;
@@ -59,11 +59,6 @@ stopGroupPickerView:(UIView *)stopGroupPickerView
                               CGRectGetWidth(self.bounds),
                               CGRectGetHeight(self.bounds) - CGRectGetMaxY(_stopGroupPickerView.frame));
   
-}
-
-- (PTMapContainerView *)mapContainerView
-{
-  return _mapView;
 }
 
 @end
