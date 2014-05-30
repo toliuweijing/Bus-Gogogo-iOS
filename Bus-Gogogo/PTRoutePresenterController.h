@@ -7,6 +7,7 @@
 //
 
 @class PTStopGroup;
+@class PTRoute;
 
 typedef NS_ENUM(NSInteger, PTRoutePresenterViewMode) {
   PTRoutePresenterViewModeMap = 1,
@@ -19,8 +20,10 @@ typedef NS_ENUM(NSInteger, PTRoutePresenterViewMode) {
 
 - (UIView *)view;
 
+- (void)setRoute:(PTRoute *)route;
+
 - (void)setStopGroup:(PTStopGroup *)stopGroup;
 
-- (void)setVehicleJourneys:(NSArray *)vehicleJourneys;
+- (void)_setVehicleJourneys:(NSArray *)vehicleJourneys;
 
 @end

@@ -9,11 +9,18 @@
 #import "PTRoutePresenterController.h"
 #import "PTMapContainerView.h"
 #import "PTRoutePresenterView.h"
+#import "PTMonitoredVehicleJourneyDownloader.h"
+#import "PTRoute.h"
+
+@interface PTRoutePresenterController () <PTMonitoredVehicleJourneyDownloaderDelegate>
+
+@end
 
 @implementation PTRoutePresenterController
 {
   PTRoutePresenterView *_view;
   PTMapContainerView *_mapView;
+  PTMonitoredVehicleJourneyDownloader *_downloader;
 }
 
 - (id)init
@@ -50,10 +57,22 @@
   _mapView.stopGroup = stopGroup;
 }
 
-- (void)setVehicleJourneys:(NSArray *)vehicleJourneys
+- (void)_setVehicleJourneys:(NSArray *)vehicleJourneys
 {
   assert(_mode == PTRoutePresenterViewModeMap);
   _mapView.vehicleJourneys = vehicleJourneys;
+}
+
+- (void)setRoute:(PTRoute *)route
+{
+  _downloader = [[PTMonitoredVehicleJourneyDownloader alloc] initWithRouteIdentifier:route.identifier delegate:self];
+}
+
+#pragma mark - PTMonitoredVehicleJourneyDownloaderDelegate
+
+- (void)downloader:(PTMonitoredVehicleJourneyDownloader *)downloader didReceiveVehicleJourneys:(NSArray *)vehicleJourneys
+{
+  [self _setVehicleJourneys:vehicleJourneys];
 }
 
 @end

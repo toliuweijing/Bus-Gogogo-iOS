@@ -17,20 +17,17 @@
 #import "PTStore.h"
 #import "PTRoutePickerController.h"
 #import "PTStopGroupPickerController.h"
-#import "PTMonitoredVehicleJourneyDownloader.h"
 #import "PTRoutePresenterController.h"
 
 @interface PTMainScreenViewController () <
   PTRoutePickerControllerDelegate,
-  PTStopGroupPickerControllerDelegate,
-  PTMonitoredVehicleJourneyDownloaderDelegate
+  PTStopGroupPickerControllerDelegate
 >
 {
   PTRoutePickerController *_routePickerController;
   PTStopGroupPickerController *_stopGroupPickerController;
   PTRoutePresenterController *_routePresenterController;
   
-  PTMonitoredVehicleJourneyDownloader *_downloader;
   NSArray *_vehicleJourneys;
   PTMainScreenView *_view;
 }
@@ -77,7 +74,6 @@
 - (void)stopGroupPickerController:(PTStopGroupPickerController *)controller didFinishWithStopGroup:(PTStopGroup *)stopGroup
 {
   [_routePresenterController setStopGroup:stopGroup];
-  [_routePresenterController setVehicleJourneys:_vehicleJourneys];
 }
 
 #pragma mark - PTRoutePickerControllerDelegate
@@ -86,14 +82,7 @@
            didFinishWithRoute:(PTRoute *)route
 {
   [_stopGroupPickerController setRoute:route];
-  _downloader = [[PTMonitoredVehicleJourneyDownloader alloc] initWithRouteIdentifier:route.identifier delegate:self];
-}
-
-#pragma mark - PTMonitoredVehicleJourneyDownloaderDelegate
-
-- (void)downloader:(PTMonitoredVehicleJourneyDownloader *)downloader didReceiveVehicleJourneys:(NSArray *)vehicleJourneys
-{
-  _vehicleJourneys = vehicleJourneys;
+  [_routePresenterController setRoute:route];
 }
 
 #pragma mark - Private
