@@ -70,5 +70,21 @@
   return array;
 }
 
++ (NSString *)shuttlePictureImageName
+{
+  static NSString *const kShuttlePictureImageName = @"Shuttle-Picture.png";
+  return kShuttlePictureImageName;
+}
+
++ (UIFont *)font
+{
+  return [self fontWithSize:12];
+}
+
++ (UIFont *)fontWithSize:(CGFloat)size
+{
+  return [UIFont fontWithName:@"Avenir" size:size];
+}
+
 @end
 

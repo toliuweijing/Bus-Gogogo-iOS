@@ -355,13 +355,45 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Bus-Gogogo/PTStopGroupPickerController.m"
-            timestampString = "423061908.193792"
+            filePath = "Bus-Gogogo/PTRoutePresenterController.m"
+            timestampString = "423261381.391453"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "73"
-            endingLineNumber = "73"
-            landmarkName = "-pickerViewDidReceiveTap:"
+            startingLineNumber = "96"
+            endingLineNumber = "96"
+            landmarkName = "-_updateVehicleJourneysPeriodic:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Bus-Gogogo/PTRoutePresenterController.m"
+            timestampString = "423261381.391453"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "91"
+            endingLineNumber = "91"
+            landmarkName = "-_updateVehicleJourneys:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Bus-Gogogo/PTRoutePresenterController.m"
+            timestampString = "423261381.391453"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "84"
+            endingLineNumber = "84"
+            landmarkName = "-downloader:didReceiveVehicleJourneys:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

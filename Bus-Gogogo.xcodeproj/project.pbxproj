@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E3D78FF620B54F618D846F7C /* libPods-Bus-GogogoTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CEC9CA41AFE4D5EA4247A62 /* libPods-Bus-GogogoTests.a */; };
 		E94206E918F57E13009E9D3D /* PTLinePickerDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = E94206E818F57E13009E9D3D /* PTLinePickerDownloader.m */; };
 		E94206EC18F590DB009E9D3D /* PTRouteDetailTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E94206EB18F590DB009E9D3D /* PTRouteDetailTableViewCell.m */; };
 		E966D16F18F9800700CD8C0F /* PTPolyline.m in Sources */ = {isa = PBXBuildFile; fileRef = E966D16E18F9800700CD8C0F /* PTPolyline.m */; };
@@ -19,6 +20,7 @@
 		FB189F451927BE8D0071B8F9 /* PTMainScreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FB189F441927BE8D0071B8F9 /* PTMainScreenViewController.m */; };
 		FB189F481927C1790071B8F9 /* PTObjectPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = FB189F471927C1790071B8F9 /* PTObjectPickerView.m */; };
 		FB20DA151916606600D7EC27 /* PTStopGroupPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FB20DA141916606600D7EC27 /* PTStopGroupPickerViewController.m */; };
+		FB2AE9A41938B1020038D4EE /* PTListContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = FB2AE9A31938B1020038D4EE /* PTListContainerView.m */; };
 		FB3D48D818EFA8E500302031 /* PTRouteMonitoringRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = FB3D48D718EFA8E500302031 /* PTRouteMonitoringRequest.m */; };
 		FB3D48DB18EFADB400302031 /* PTStopsForRouteRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = FB3D48DA18EFADB400302031 /* PTStopsForRouteRequest.m */; };
 		FB3D48DE18EFAE5A00302031 /* PTStopsForRouteDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = FB3D48DD18EFAE5A00302031 /* PTStopsForRouteDownloader.m */; };
@@ -39,7 +41,6 @@
 		FB517C5818DDDF43005C7881 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB517C3718DDDF43005C7881 /* Foundation.framework */; };
 		FB517C5918DDDF43005C7881 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB517C3B18DDDF43005C7881 /* UIKit.framework */; };
 		FB517C6118DDDF43005C7881 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = FB517C5F18DDDF43005C7881 /* InfoPlist.strings */; };
-		FB517C6318DDDF43005C7881 /* Bus_GogogoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FB517C6218DDDF43005C7881 /* Bus_GogogoTests.m */; };
 		FB517C6F18DDE30F005C7881 /* PTLine.m in Sources */ = {isa = PBXBuildFile; fileRef = FB517C6E18DDE30F005C7881 /* PTLine.m */; };
 		FB517C7218DDE4F4005C7881 /* PTStop.m in Sources */ = {isa = PBXBuildFile; fileRef = FB517C7118DDE4F4005C7881 /* PTStop.m */; };
 		FB517C7C18DDE8C3005C7881 /* PTLinePickerDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = FB517C7B18DDE8C3005C7881 /* PTLinePickerDataSource.m */; };
@@ -54,6 +55,7 @@
 		FBA258C9193762E7007B05DE /* PTStopGroupPickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = FBA258C8193762E7007B05DE /* PTStopGroupPickerController.m */; };
 		FBA258CD193899FB007B05DE /* PTRoutePresenterController.m in Sources */ = {isa = PBXBuildFile; fileRef = FBA258CC193899FB007B05DE /* PTRoutePresenterController.m */; };
 		FBA258D019389A0B007B05DE /* PTRoutePresenterView.m in Sources */ = {isa = PBXBuildFile; fileRef = FBA258CF19389A0B007B05DE /* PTRoutePresenterView.m */; };
+		FBB54463193B8B9B00F72979 /* PTRouteFilterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FBB54462193B8B9B00F72979 /* PTRouteFilterTests.m */; };
 		FBB5EB3A18E738E6007921A3 /* PTBus.m in Sources */ = {isa = PBXBuildFile; fileRef = FBB5EB3918E738E6007921A3 /* PTBus.m */; };
 		FBB5EB3D18E739BD007921A3 /* PTBusMapOverlay.m in Sources */ = {isa = PBXBuildFile; fileRef = FBB5EB3C18E739BD007921A3 /* PTBusMapOverlay.m */; };
 		FBC773A318DE192900621261 /* PTStopDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FBC773A218DE192900621261 /* PTStopDetailViewController.m */; };
@@ -80,7 +82,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1C459DDA767F4C4AA42E4783 /* Pods-Bus-GogogoTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bus-GogogoTests.xcconfig"; path = "Pods/Pods-Bus-GogogoTests.xcconfig"; sourceTree = "<group>"; };
 		2B3FAB90E95E497C9F4BB358 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		6CEC9CA41AFE4D5EA4247A62 /* libPods-Bus-GogogoTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Bus-GogogoTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E94206E718F57E13009E9D3D /* PTLinePickerDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTLinePickerDownloader.h; sourceTree = "<group>"; };
 		E94206E818F57E13009E9D3D /* PTLinePickerDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTLinePickerDownloader.m; sourceTree = "<group>"; };
 		E94206EA18F590DB009E9D3D /* PTRouteDetailTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTRouteDetailTableViewCell.h; sourceTree = "<group>"; };
@@ -105,6 +109,8 @@
 		FB189F471927C1790071B8F9 /* PTObjectPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTObjectPickerView.m; sourceTree = "<group>"; };
 		FB20DA131916606600D7EC27 /* PTStopGroupPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTStopGroupPickerViewController.h; sourceTree = "<group>"; };
 		FB20DA141916606600D7EC27 /* PTStopGroupPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTStopGroupPickerViewController.m; sourceTree = "<group>"; };
+		FB2AE9A21938B1020038D4EE /* PTListContainerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTListContainerView.h; sourceTree = "<group>"; };
+		FB2AE9A31938B1020038D4EE /* PTListContainerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTListContainerView.m; sourceTree = "<group>"; };
 		FB3D48D618EFA8E500302031 /* PTRouteMonitoringRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTRouteMonitoringRequest.h; sourceTree = "<group>"; };
 		FB3D48D718EFA8E500302031 /* PTRouteMonitoringRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTRouteMonitoringRequest.m; sourceTree = "<group>"; };
 		FB3D48D918EFADB400302031 /* PTStopsForRouteRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTStopsForRouteRequest.h; sourceTree = "<group>"; };
@@ -138,7 +144,6 @@
 		FB517C5618DDDF43005C7881 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		FB517C5E18DDDF43005C7881 /* Bus-GogogoTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Bus-GogogoTests-Info.plist"; sourceTree = "<group>"; };
 		FB517C6018DDDF43005C7881 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		FB517C6218DDDF43005C7881 /* Bus_GogogoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Bus_GogogoTests.m; sourceTree = "<group>"; };
 		FB517C6D18DDE30F005C7881 /* PTLine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTLine.h; sourceTree = "<group>"; };
 		FB517C6E18DDE30F005C7881 /* PTLine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTLine.m; sourceTree = "<group>"; };
 		FB517C7018DDE4F4005C7881 /* PTStop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTStop.h; sourceTree = "<group>"; };
@@ -166,6 +171,7 @@
 		FBA258CC193899FB007B05DE /* PTRoutePresenterController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTRoutePresenterController.m; sourceTree = "<group>"; };
 		FBA258CE19389A0B007B05DE /* PTRoutePresenterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTRoutePresenterView.h; sourceTree = "<group>"; };
 		FBA258CF19389A0B007B05DE /* PTRoutePresenterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTRoutePresenterView.m; sourceTree = "<group>"; };
+		FBB54462193B8B9B00F72979 /* PTRouteFilterTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTRouteFilterTests.m; sourceTree = "<group>"; };
 		FBB5EB3818E738E6007921A3 /* PTBus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTBus.h; sourceTree = "<group>"; };
 		FBB5EB3918E738E6007921A3 /* PTBus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTBus.m; sourceTree = "<group>"; };
 		FBB5EB3B18E739BD007921A3 /* PTBusMapOverlay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTBusMapOverlay.h; sourceTree = "<group>"; };
@@ -212,6 +218,7 @@
 				FB517C5718DDDF43005C7881 /* XCTest.framework in Frameworks */,
 				FB517C5918DDDF43005C7881 /* UIKit.framework in Frameworks */,
 				FB517C5818DDDF43005C7881 /* Foundation.framework in Frameworks */,
+				E3D78FF620B54F618D846F7C /* libPods-Bus-GogogoTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -322,6 +329,7 @@
 				FB517C5C18DDDF43005C7881 /* Bus-GogogoTests */,
 				FB517C3618DDDF43005C7881 /* Frameworks */,
 				FB517C3518DDDF43005C7881 /* Products */,
+				1C459DDA767F4C4AA42E4783 /* Pods-Bus-GogogoTests.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -342,6 +350,7 @@
 				FB517C3B18DDDF43005C7881 /* UIKit.framework */,
 				FB517C5618DDDF43005C7881 /* XCTest.framework */,
 				2B3FAB90E95E497C9F4BB358 /* libPods.a */,
+				6CEC9CA41AFE4D5EA4247A62 /* libPods-Bus-GogogoTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -378,7 +387,7 @@
 		FB517C5C18DDDF43005C7881 /* Bus-GogogoTests */ = {
 			isa = PBXGroup;
 			children = (
-				FB517C6218DDDF43005C7881 /* Bus_GogogoTests.m */,
+				FBB54462193B8B9B00F72979 /* PTRouteFilterTests.m */,
 				FB517C5D18DDDF43005C7881 /* Supporting Files */,
 			);
 			path = "Bus-GogogoTests";
@@ -467,6 +476,8 @@
 				FBA258CC193899FB007B05DE /* PTRoutePresenterController.m */,
 				FBA258CE19389A0B007B05DE /* PTRoutePresenterView.h */,
 				FBA258CF19389A0B007B05DE /* PTRoutePresenterView.m */,
+				FB2AE9A21938B1020038D4EE /* PTListContainerView.h */,
+				FB2AE9A31938B1020038D4EE /* PTListContainerView.m */,
 			);
 			name = RoutePresenter;
 			sourceTree = "<group>";
@@ -568,9 +579,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = FB517C6918DDDF43005C7881 /* Build configuration list for PBXNativeTarget "Bus-GogogoTests" */;
 			buildPhases = (
+				356D4A14F6374B50AB417C41 /* Check Pods Manifest.lock */,
 				FB517C5118DDDF43005C7881 /* Sources */,
 				FB517C5218DDDF43005C7881 /* Frameworks */,
 				FB517C5318DDDF43005C7881 /* Resources */,
+				584F4004C4B642B9A96777D0 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -641,6 +654,39 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		356D4A14F6374B50AB417C41 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		584F4004C4B642B9A96777D0 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-Bus-GogogoTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		FB517C3018DDDF43005C7881 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -677,6 +723,7 @@
 				FB3D48E118EFB26200302031 /* OBADataModel.m in Sources */,
 				FBFF62E518E86B4E008D94F9 /* PTStopDetailTableViewCell.m in Sources */,
 				FB517C7C18DDE8C3005C7881 /* PTLinePickerDataSource.m in Sources */,
+				FB2AE9A41938B1020038D4EE /* PTListContainerView.m in Sources */,
 				FB517C4418DDDF43005C7881 /* main.m in Sources */,
 				FBD4224E1934B1B9003743EE /* PTRoutePickerController.m in Sources */,
 				E966D16F18F9800700CD8C0F /* PTPolyline.m in Sources */,
@@ -701,7 +748,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FB517C6318DDDF43005C7881 /* Bus_GogogoTests.m in Sources */,
+				FBB54463193B8B9B00F72979 /* PTRouteFilterTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -841,6 +888,7 @@
 		};
 		FB517C6A18DDDF43005C7881 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1C459DDA767F4C4AA42E4783 /* Pods-Bus-GogogoTests.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Bus-Gogogo.app/Bus-Gogogo";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -863,6 +911,7 @@
 		};
 		FB517C6B18DDDF43005C7881 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1C459DDA767F4C4AA42E4783 /* Pods-Bus-GogogoTests.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Bus-Gogogo.app/Bus-Gogogo";
 				FRAMEWORK_SEARCH_PATHS = (

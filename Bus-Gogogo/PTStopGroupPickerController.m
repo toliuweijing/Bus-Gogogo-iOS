@@ -70,6 +70,10 @@
 
 - (void)pickerViewDidReceiveTap:(PTObjectPickerView *)pickerView
 {
+  if (_stopGroups == nil) {
+    NSLog(@"%s:wait for network", __FUNCTION__);
+    return;
+  }
   NSArray *content = @[[(PTStopGroup *)_stopGroups.firstObject name],
                        [(PTStopGroup *)_stopGroups.lastObject name]];
   PTObjectPickerTableViewController *vc = [[PTObjectPickerTableViewController alloc] initWithContent:content];

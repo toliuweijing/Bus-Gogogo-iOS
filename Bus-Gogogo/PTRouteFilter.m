@@ -67,11 +67,6 @@
   return nil;
 }
 
-- (PTStopGroup *)stopGroup
-{
-  assert(NO);
-}
-
 - (void)filterByRegion:(NSString *)region
 {
   _regionFilter = region;
@@ -83,12 +78,5 @@
 }
 
 #pragma mark - Private
-
-- (BOOL)_route:(PTRoute *)route
-      selector:(SEL)selector
-        filter:(NSString *)filter
-{
-  assert(NO);
-}
 
 @end

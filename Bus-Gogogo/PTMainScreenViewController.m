@@ -50,6 +50,7 @@
     _routePresenterController = [[PTRoutePresenterController alloc] init];
     
     self.navigationItem.title = @"Bus gogogo";
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemEdit target:self action:@selector(_presenterButtonDidReceiveTap)];
   }
   return self;
 }
@@ -90,6 +91,11 @@
 - (CGFloat)_topInset
 {
   return self.topLayoutGuide.length;
+}
+
+- (void)_presenterButtonDidReceiveTap
+{
+  _routePresenterController.mode = _routePresenterController.mode == PTRoutePresenterViewModeMap ? PTRoutePresenterViewModeList : PTRoutePresenterViewModeMap;
 }
 
 @end

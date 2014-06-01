@@ -14,4 +14,8 @@
 + (NSMutableArray *)decodePolyLines:(NSArray *)polylines;
 + (NSMutableArray *)decodePolyLineStr:(NSString *)encodedStr;
 
++ (NSString *)shuttlePictureImageName;
++ (UIFont *)font;
++ (UIFont *)fontWithSize:(CGFloat)size;
+
 @end

@@ -26,7 +26,6 @@
 
 // The concluded stopGroup that surivive through all three filters.
 - (PTRoute *)route;
-- (PTStopGroup *)stopGroup;
 
 - (void)filterByRegion:(NSString *)region;
 - (void)filterByLine:(NSString *)line;
