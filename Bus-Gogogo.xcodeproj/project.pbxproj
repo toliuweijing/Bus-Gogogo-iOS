@@ -190,6 +190,7 @@
 		FBD7894418E74E580077F68A /* MTADataModels.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTADataModels.m; sourceTree = "<group>"; };
 		FBD8B66119360DDE00E43725 /* PTRouteFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTRouteFilter.h; sourceTree = "<group>"; };
 		FBD8B66219360DDE00E43725 /* PTRouteFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTRouteFilter.m; sourceTree = "<group>"; };
+		FBDBB9A3193BDABE008374A2 /* PTRouteProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTRouteProtocol.h; sourceTree = "<group>"; };
 		FBE4FD7F18DF8752001DA86F /* PTStopMonitoringRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTStopMonitoringRequest.h; sourceTree = "<group>"; };
 		FBE4FD8018DF8752001DA86F /* PTStopMonitoringRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTStopMonitoringRequest.m; sourceTree = "<group>"; };
 		FBFF62E118E86645008D94F9 /* PTStopDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PTStopDetailViewController.xib; sourceTree = "<group>"; };
@@ -420,14 +421,12 @@
 		FB517C7318DDE4FB005C7881 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				FBDBB9A2193BC744008374A2 /* Machine */,
 				FB01A5DC18E76226001C793F /* PTMonitoredVehicleJourney.h */,
+				FBDBB9A4193BDAC4008374A2 /* Protocols */,
 				FB01A5DD18E76226001C793F /* PTMonitoredVehicleJourney.m */,
 				FB01A5DF18E76427001C793F /* MTADataModelAdaptors.h */,
 				FB01A5E018E76427001C793F /* MTADataModelAdaptors.m */,
-				FBD7894318E74E580077F68A /* MTADataModels.h */,
-				FBD7894418E74E580077F68A /* MTADataModels.m */,
-				FB3D48DF18EFB26200302031 /* OBADataModel.h */,
-				FB3D48E018EFB26200302031 /* OBADataModel.m */,
 				FBB5EB3818E738E6007921A3 /* PTBus.h */,
 				FBB5EB3918E738E6007921A3 /* PTBus.m */,
 				FBB5EB3B18E739BD007921A3 /* PTBusMapOverlay.h */,
@@ -519,6 +518,25 @@
 				FB3D48DA18EFADB400302031 /* PTStopsForRouteRequest.m */,
 			);
 			name = PTStopGroupDownloader;
+			sourceTree = "<group>";
+		};
+		FBDBB9A2193BC744008374A2 /* Machine */ = {
+			isa = PBXGroup;
+			children = (
+				FBD7894318E74E580077F68A /* MTADataModels.h */,
+				FBD7894418E74E580077F68A /* MTADataModels.m */,
+				FB3D48DF18EFB26200302031 /* OBADataModel.h */,
+				FB3D48E018EFB26200302031 /* OBADataModel.m */,
+			);
+			name = Machine;
+			sourceTree = "<group>";
+		};
+		FBDBB9A4193BDAC4008374A2 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				FBDBB9A3193BDABE008374A2 /* PTRouteProtocol.h */,
+			);
+			name = Protocols;
 			sourceTree = "<group>";
 		};
 		FBFF62E918E86BE5008D94F9 /* DataSource */ = {
