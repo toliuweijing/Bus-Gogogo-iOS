@@ -191,6 +191,8 @@
 		FBD8B66119360DDE00E43725 /* PTRouteFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTRouteFilter.h; sourceTree = "<group>"; };
 		FBD8B66219360DDE00E43725 /* PTRouteFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTRouteFilter.m; sourceTree = "<group>"; };
 		FBDBB9A3193BDABE008374A2 /* PTRouteProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTRouteProtocol.h; sourceTree = "<group>"; };
+		FBDBB9A5193BDB7A008374A2 /* PTStopProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTStopProtocol.h; sourceTree = "<group>"; };
+		FBDBB9A6193BDBFF008374A2 /* PTMonitoredVehicleJourneyProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTMonitoredVehicleJourneyProtocol.h; sourceTree = "<group>"; };
 		FBE4FD7F18DF8752001DA86F /* PTStopMonitoringRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTStopMonitoringRequest.h; sourceTree = "<group>"; };
 		FBE4FD8018DF8752001DA86F /* PTStopMonitoringRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTStopMonitoringRequest.m; sourceTree = "<group>"; };
 		FBFF62E118E86645008D94F9 /* PTStopDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PTStopDetailViewController.xib; sourceTree = "<group>"; };
@@ -421,9 +423,9 @@
 		FB517C7318DDE4FB005C7881 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				FBDBB9A4193BDAC4008374A2 /* Protocols */,
 				FBDBB9A2193BC744008374A2 /* Machine */,
 				FB01A5DC18E76226001C793F /* PTMonitoredVehicleJourney.h */,
-				FBDBB9A4193BDAC4008374A2 /* Protocols */,
 				FB01A5DD18E76226001C793F /* PTMonitoredVehicleJourney.m */,
 				FB01A5DF18E76427001C793F /* MTADataModelAdaptors.h */,
 				FB01A5E018E76427001C793F /* MTADataModelAdaptors.m */,
@@ -535,6 +537,8 @@
 			isa = PBXGroup;
 			children = (
 				FBDBB9A3193BDABE008374A2 /* PTRouteProtocol.h */,
+				FBDBB9A6193BDBFF008374A2 /* PTMonitoredVehicleJourneyProtocol.h */,
+				FBDBB9A5193BDB7A008374A2 /* PTStopProtocol.h */,
 			);
 			name = Protocols;
 			sourceTree = "<group>";

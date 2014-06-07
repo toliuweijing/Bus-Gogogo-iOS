@@ -6,21 +6,11 @@
 //  Copyright (c) 2014 Weijing Liu. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-#import <CoreLocation/CoreLocation.h>
 #import "OBADataModel.h"
+#import "PTStopProtocol.h"
 
-@interface PTStop : NSObject
+@interface PTStop : NSObject <PTStopProtocol>
 
 - (instancetype)initWithOBAStop:(OBAStop *)obaStop;
-
-// id
-@property (nonatomic, copy, readonly) NSString *identifier;
-
-// stop name.
-@property (nonatomic, copy, readonly) NSString *name;
-
-// location of bus stop, derived from coorindate.
-@property (nonatomic, strong, readonly) CLLocation *location;
 
 @end
