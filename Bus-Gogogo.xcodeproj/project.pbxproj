@@ -55,6 +55,7 @@
 		FBD8B66319360DDE00E43725 /* PTRouteFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = FBD8B66219360DDE00E43725 /* PTRouteFilter.m */; };
 		FBE4FD8118DF8752001DA86F /* PTStopMonitoringRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = FBE4FD8018DF8752001DA86F /* PTStopMonitoringRequest.m */; };
 		FBE61DF819434F9B00CAE3F7 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FBE61DF719434F9B00CAE3F7 /* MainStoryboard.storyboard */; };
+		FBE61DFB1943529B00CAE3F7 /* PTRouteDashboardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FBE61DFA1943529B00CAE3F7 /* PTRouteDashboardViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -159,6 +160,8 @@
 		FBE4FD7F18DF8752001DA86F /* PTStopMonitoringRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTStopMonitoringRequest.h; sourceTree = "<group>"; };
 		FBE4FD8018DF8752001DA86F /* PTStopMonitoringRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTStopMonitoringRequest.m; sourceTree = "<group>"; };
 		FBE61DF719434F9B00CAE3F7 /* MainStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainStoryboard.storyboard; sourceTree = "<group>"; };
+		FBE61DF91943529B00CAE3F7 /* PTRouteDashboardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTRouteDashboardViewController.h; sourceTree = "<group>"; };
+		FBE61DFA1943529B00CAE3F7 /* PTRouteDashboardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTRouteDashboardViewController.m; sourceTree = "<group>"; };
 		FBFF62ED18E876D1008D94F9 /* PTMacro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PTMacro.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -293,6 +296,8 @@
 				FB517C4618DDDF43005C7881 /* PTAppDelegate.h */,
 				FB517C4718DDDF43005C7881 /* PTAppDelegate.m */,
 				FBE61DF719434F9B00CAE3F7 /* MainStoryboard.storyboard */,
+				FBE61DF91943529B00CAE3F7 /* PTRouteDashboardViewController.h */,
+				FBE61DFA1943529B00CAE3F7 /* PTRouteDashboardViewController.m */,
 				FB0CAA881933EB200088A314 /* DEPRECATED */,
 				E94206E618F4E514009E9D3D /* Base */,
 				FB517C7318DDE4FB005C7881 /* Model */,
@@ -607,6 +612,7 @@
 				FB517C4418DDDF43005C7881 /* main.m in Sources */,
 				FBD4224E1934B1B9003743EE /* PTRoutePickerController.m in Sources */,
 				E966D16F18F9800700CD8C0F /* PTPolyline.m in Sources */,
+				FBE61DFB1943529B00CAE3F7 /* PTRouteDashboardViewController.m in Sources */,
 				FBB5EB3D18E739BD007921A3 /* PTBusMapOverlay.m in Sources */,
 				FB0CAA91193421490088A314 /* PTMainScreenView.m in Sources */,
 				FB3D48D818EFA8E500302031 /* PTRouteMonitoringRequest.m in Sources */,
