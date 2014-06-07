@@ -7,10 +7,6 @@
 //
 
 #import "PTAppDelegate.h"
-#import "PTLinePickerViewController.h"
-#import "PTStopDetailViewController.h"
-#import "PTRouteDetailTableViewController.h"
-#import "PTDashBoardViewController.h"
 #import "PTMainScreenViewController.h"
 
 @implementation PTAppDelegate
