@@ -128,10 +128,10 @@
             </objects>
             <point key="canvasLocation" x="-34" y="114"/>
         </scene>
-        <!--Table View Controller - Pick Route-->
+        <!--View Controller - Pick Route-->
         <scene sceneID="9TP-9j-Oig">
             <objects>
-                <viewController id="cMf-PX-Sfo" customClass="UITableViewController" sceneMemberID="viewController">
+                <viewController id="cMf-PX-Sfo" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="zxZ-wg-jXA"/>
                         <viewControllerLayoutGuide type="bottom" id="Uti-O9-UKT"/>
@@ -368,10 +368,6 @@
                                     </tableViewCell>
                                 </prototypes>
                                 <sections/>
-                                <connections>
-                                    <outlet property="dataSource" destination="cMf-PX-Sfo" id="q3X-AD-Gfo"/>
-                                    <outlet property="delegate" destination="cMf-PX-Sfo" id="56Q-3o-kdH"/>
-                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
