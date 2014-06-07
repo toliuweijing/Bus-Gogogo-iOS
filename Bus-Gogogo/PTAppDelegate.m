@@ -13,18 +13,6 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-  self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-  self.window.backgroundColor = [UIColor whiteColor];
-  
-//  PTLinePickerViewController *vc = [[PTLinePickerViewController alloc] init];
-//  UIViewController *vc = [[PTRouteDetailTableViewController alloc] initWithStyle:UITableViewStylePlain];
-//  PTDashBoardViewController *vc = [[PTDashBoardViewController alloc] init];
-  UIViewController *vc = [[PTMainScreenViewController alloc] init];
-//  UIViewController *vc = [UIViewController new];
-  UINavigationController *navigator = [[UINavigationController alloc] initWithRootViewController:vc];
-  
-  self.window.rootViewController = navigator;
-  [self.window makeKeyAndVisible];
   return YES;
 }
 

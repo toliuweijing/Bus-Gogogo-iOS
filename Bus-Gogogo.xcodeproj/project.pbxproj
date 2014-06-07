@@ -54,6 +54,7 @@
 		FBD7894518E74E580077F68A /* MTADataModels.m in Sources */ = {isa = PBXBuildFile; fileRef = FBD7894418E74E580077F68A /* MTADataModels.m */; };
 		FBD8B66319360DDE00E43725 /* PTRouteFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = FBD8B66219360DDE00E43725 /* PTRouteFilter.m */; };
 		FBE4FD8118DF8752001DA86F /* PTStopMonitoringRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = FBE4FD8018DF8752001DA86F /* PTStopMonitoringRequest.m */; };
+		FBE61DF819434F9B00CAE3F7 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FBE61DF719434F9B00CAE3F7 /* MainStoryboard.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -157,6 +158,7 @@
 		FBDBB9A6193BDBFF008374A2 /* PTMonitoredVehicleJourneyProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTMonitoredVehicleJourneyProtocol.h; sourceTree = "<group>"; };
 		FBE4FD7F18DF8752001DA86F /* PTStopMonitoringRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTStopMonitoringRequest.h; sourceTree = "<group>"; };
 		FBE4FD8018DF8752001DA86F /* PTStopMonitoringRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTStopMonitoringRequest.m; sourceTree = "<group>"; };
+		FBE61DF719434F9B00CAE3F7 /* MainStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainStoryboard.storyboard; sourceTree = "<group>"; };
 		FBFF62ED18E876D1008D94F9 /* PTMacro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PTMacro.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -290,6 +292,7 @@
 			children = (
 				FB517C4618DDDF43005C7881 /* PTAppDelegate.h */,
 				FB517C4718DDDF43005C7881 /* PTAppDelegate.m */,
+				FBE61DF719434F9B00CAE3F7 /* MainStoryboard.storyboard */,
 				FB0CAA881933EB200088A314 /* DEPRECATED */,
 				E94206E618F4E514009E9D3D /* Base */,
 				FB517C7318DDE4FB005C7881 /* Model */,
@@ -524,6 +527,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FBE61DF819434F9B00CAE3F7 /* MainStoryboard.storyboard in Resources */,
 				FB517C5018DDDF43005C7881 /* Images.xcassets in Resources */,
 				FB517C4218DDDF43005C7881 /* InfoPlist.strings in Resources */,
 			);
