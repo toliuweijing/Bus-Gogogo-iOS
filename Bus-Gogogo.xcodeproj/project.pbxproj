@@ -40,7 +40,7 @@
 		FB517C6118DDDF43005C7881 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = FB517C5F18DDDF43005C7881 /* InfoPlist.strings */; };
 		FB517C6F18DDE30F005C7881 /* PTLine.m in Sources */ = {isa = PBXBuildFile; fileRef = FB517C6E18DDE30F005C7881 /* PTLine.m */; };
 		FB517C7218DDE4F4005C7881 /* PTStop.m in Sources */ = {isa = PBXBuildFile; fileRef = FB517C7118DDE4F4005C7881 /* PTStop.m */; };
-		FB612B5619441BD900BBDD89 /* PTRouteSummaryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB612B5519441BD900BBDD89 /* PTRouteSummaryCell.xib */; };
+		FB612B5619441BD900BBDD89 /* PTRouteSummaryCell_WhiteGreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB612B5519441BD900BBDD89 /* PTRouteSummaryCell_WhiteGreen.xib */; };
 		FB612B5919441E7200BBDD89 /* PTRouteSummaryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FB612B5819441E7200BBDD89 /* PTRouteSummaryCell.m */; };
 		FB65611C19154177009EA53E /* PTAllRoutesDownloadTask.m in Sources */ = {isa = PBXBuildFile; fileRef = FB65611B19154177009EA53E /* PTAllRoutesDownloadTask.m */; };
 		FB65611F19154236009EA53E /* PTRoute.m in Sources */ = {isa = PBXBuildFile; fileRef = FB65611E19154236009EA53E /* PTRoute.m */; };
@@ -49,6 +49,10 @@
 		FBA258C9193762E7007B05DE /* PTStopGroupPickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = FBA258C8193762E7007B05DE /* PTStopGroupPickerController.m */; };
 		FBA258CD193899FB007B05DE /* PTRoutePresenterController.m in Sources */ = {isa = PBXBuildFile; fileRef = FBA258CC193899FB007B05DE /* PTRoutePresenterController.m */; };
 		FBA258D019389A0B007B05DE /* PTRoutePresenterView.m in Sources */ = {isa = PBXBuildFile; fileRef = FBA258CF19389A0B007B05DE /* PTRoutePresenterView.m */; };
+		FBB001F619449E8D00974AB4 /* PTRouteSummaryCell_GreenGray.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBB001F519449E8D00974AB4 /* PTRouteSummaryCell_GreenGray.xib */; };
+		FBB001F81944A44400974AB4 /* RoutePresenterCell_top.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBB001F71944A44400974AB4 /* RoutePresenterCell_top.xib */; };
+		FBB001FB1944AA4A00974AB4 /* RoutePresenterCell_middle.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBB001FA1944AA4A00974AB4 /* RoutePresenterCell_middle.xib */; };
+		FBB001FD1944ABCB00974AB4 /* RoutePresenterCell_bottom.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBB001FC1944ABCB00974AB4 /* RoutePresenterCell_bottom.xib */; };
 		FBB15CCA1943D9D800B4AD81 /* PTRoutePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FBB15CC91943D9D800B4AD81 /* PTRoutePickerViewController.m */; };
 		FBB54463193B8B9B00F72979 /* PTRouteFilterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FBB54462193B8B9B00F72979 /* PTRouteFilterTests.m */; };
 		FBB5EB3A18E738E6007921A3 /* PTBus.m in Sources */ = {isa = PBXBuildFile; fileRef = FBB5EB3918E738E6007921A3 /* PTBus.m */; };
@@ -133,7 +137,7 @@
 		FB517C6E18DDE30F005C7881 /* PTLine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTLine.m; sourceTree = "<group>"; };
 		FB517C7018DDE4F4005C7881 /* PTStop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTStop.h; sourceTree = "<group>"; };
 		FB517C7118DDE4F4005C7881 /* PTStop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTStop.m; sourceTree = "<group>"; };
-		FB612B5519441BD900BBDD89 /* PTRouteSummaryCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PTRouteSummaryCell.xib; sourceTree = "<group>"; };
+		FB612B5519441BD900BBDD89 /* PTRouteSummaryCell_WhiteGreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PTRouteSummaryCell_WhiteGreen.xib; sourceTree = "<group>"; };
 		FB612B5719441E7200BBDD89 /* PTRouteSummaryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTRouteSummaryCell.h; sourceTree = "<group>"; };
 		FB612B5819441E7200BBDD89 /* PTRouteSummaryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTRouteSummaryCell.m; sourceTree = "<group>"; };
 		FB65611A19154177009EA53E /* PTAllRoutesDownloadTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTAllRoutesDownloadTask.h; sourceTree = "<group>"; };
@@ -150,6 +154,10 @@
 		FBA258CC193899FB007B05DE /* PTRoutePresenterController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTRoutePresenterController.m; sourceTree = "<group>"; };
 		FBA258CE19389A0B007B05DE /* PTRoutePresenterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTRoutePresenterView.h; sourceTree = "<group>"; };
 		FBA258CF19389A0B007B05DE /* PTRoutePresenterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTRoutePresenterView.m; sourceTree = "<group>"; };
+		FBB001F519449E8D00974AB4 /* PTRouteSummaryCell_GreenGray.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PTRouteSummaryCell_GreenGray.xib; sourceTree = "<group>"; };
+		FBB001F71944A44400974AB4 /* RoutePresenterCell_top.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RoutePresenterCell_top.xib; sourceTree = "<group>"; };
+		FBB001FA1944AA4A00974AB4 /* RoutePresenterCell_middle.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RoutePresenterCell_middle.xib; sourceTree = "<group>"; };
+		FBB001FC1944ABCB00974AB4 /* RoutePresenterCell_bottom.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RoutePresenterCell_bottom.xib; sourceTree = "<group>"; };
 		FBB15CC81943D9D800B4AD81 /* PTRoutePickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTRoutePickerViewController.h; sourceTree = "<group>"; };
 		FBB15CC91943D9D800B4AD81 /* PTRoutePickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTRoutePickerViewController.m; sourceTree = "<group>"; };
 		FBB54462193B8B9B00F72979 /* PTRouteFilterTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTRouteFilterTests.m; sourceTree = "<group>"; };
@@ -245,6 +253,7 @@
 				FB786CBF18F99510002A7CFF /* PTMapContainerView.m */,
 				FB189F461927C1790071B8F9 /* PTObjectPickerView.h */,
 				FB189F471927C1790071B8F9 /* PTObjectPickerView.m */,
+				FBB001F91944A9A200974AB4 /* RoutePresenterCell */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -400,7 +409,8 @@
 			children = (
 				FB612B5719441E7200BBDD89 /* PTRouteSummaryCell.h */,
 				FB612B5819441E7200BBDD89 /* PTRouteSummaryCell.m */,
-				FB612B5519441BD900BBDD89 /* PTRouteSummaryCell.xib */,
+				FB612B5519441BD900BBDD89 /* PTRouteSummaryCell_WhiteGreen.xib */,
+				FBB001F519449E8D00974AB4 /* PTRouteSummaryCell_GreenGray.xib */,
 			);
 			name = PTRouteSummaryCell;
 			sourceTree = "<group>";
@@ -425,6 +435,16 @@
 				FB2AE9A31938B1020038D4EE /* PTListContainerView.m */,
 			);
 			name = RoutePresenter;
+			sourceTree = "<group>";
+		};
+		FBB001F91944A9A200974AB4 /* RoutePresenterCell */ = {
+			isa = PBXGroup;
+			children = (
+				FBB001F71944A44400974AB4 /* RoutePresenterCell_top.xib */,
+				FBB001FA1944AA4A00974AB4 /* RoutePresenterCell_middle.xib */,
+				FBB001FC1944ABCB00974AB4 /* RoutePresenterCell_bottom.xib */,
+			);
+			name = RoutePresenterCell;
 			sourceTree = "<group>";
 		};
 		FBD4224F1934B1C2003743EE /* RoutePickerView */ = {
@@ -569,11 +589,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FBB001F619449E8D00974AB4 /* PTRouteSummaryCell_GreenGray.xib in Resources */,
 				FBE61DF819434F9B00CAE3F7 /* MainStoryboard.storyboard in Resources */,
 				FB2B86C319440CBB008187BA /* PTRegionHeaderView.xib in Resources */,
+				FBB001FD1944ABCB00974AB4 /* RoutePresenterCell_bottom.xib in Resources */,
+				FBB001FB1944AA4A00974AB4 /* RoutePresenterCell_middle.xib in Resources */,
 				FB517C5018DDDF43005C7881 /* Images.xcassets in Resources */,
 				FB517C4218DDDF43005C7881 /* InfoPlist.strings in Resources */,
-				FB612B5619441BD900BBDD89 /* PTRouteSummaryCell.xib in Resources */,
+				FBB001F81944A44400974AB4 /* RoutePresenterCell_top.xib in Resources */,
+				FB612B5619441BD900BBDD89 /* PTRouteSummaryCell_WhiteGreen.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
