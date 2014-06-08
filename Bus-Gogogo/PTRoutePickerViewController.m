@@ -8,8 +8,18 @@
 
 #import "PTRoutePickerViewController.h"
 #import "PTRegionHeaderView.h"
+#import "PTRouteSummaryCell.h"
 
-@interface PTRoutePickerViewController ()
+@interface PTRoutePickerViewController () <
+  UITableViewDataSource,
+  UITableViewDelegate
+>
+{
+  __weak IBOutlet UIView *_regionHeaderContainer;
+  
+  PTRegionHeaderView *_regionHeader;
+  UITableView *_tableView;
+}
 
 @end
 
@@ -28,15 +38,53 @@
 {
   [super viewDidLoad];
   
-  UIView *regionHeader = [PTRegionHeaderView loadNibWithOwner:self];
-  regionHeader.frame = CGRectMake(0, 0, 320, 29);
-  [self.view addSubview:regionHeader];
+  // 1. _regionHeaderContainer contains _regionHeader
+  _regionHeader = [PTRegionHeaderView loadNibWithOwner:self];
+  _regionHeader.frame = _regionHeaderContainer.bounds;
+  [_regionHeaderContainer addSubview:_regionHeader];
+  
+  // 2. self.view contains _tableView
+  _tableView =
+  [[UITableView alloc] initWithFrame:
+   CGRectMake(0,
+              CGRectGetMaxY(_regionHeaderContainer.frame)+1,
+              CGRectGetWidth(self.view.bounds),
+              CGRectGetHeight(self.view.bounds) - CGRectGetMaxY(_regionHeaderContainer.frame))];
+  [_tableView registerNib:[UINib nibWithNibName:@"PTRouteSummaryCell" bundle:nil] forCellReuseIdentifier:@"RouteSummaryCell"];
+  _tableView.dataSource = self;
+  _tableView.delegate = self;
+  [self.view addSubview:_tableView];
 }
 
 - (void)didReceiveMemoryWarning
 {
   [super didReceiveMemoryWarning];
   // Dispose of any resources that can be recreated.
+}
+
+#pragma mark - UITableView
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+  return 1;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+  UITableViewCell *cell = [tableView
+                           dequeueReusableCellWithIdentifier:@"RouteSummaryCell"
+                           forIndexPath:indexPath];
+  return cell;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+  return 1;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+  return 33;
 }
 
 /*

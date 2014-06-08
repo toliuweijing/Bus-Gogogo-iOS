@@ -144,13 +144,23 @@
                     <view key="view" contentMode="scaleToFill" id="6Cr-oj-rpK">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gDa-2y-EpY" userLabel="RegionHeaderContainer">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="29"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="DTw-en-6xI"/>
+                    <connections>
+                        <outlet property="_regionHeaderContainer" destination="gDa-2y-EpY" id="rGI-Yn-xEb"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4PV-pp-Hz4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="385" y="-450"/>
+            <point key="canvasLocation" x="396" y="-471"/>
         </scene>
         <!--View Controller - Pick Route-->
         <scene sceneID="9TP-9j-Oig">
