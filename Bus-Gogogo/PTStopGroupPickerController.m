@@ -8,7 +8,8 @@
 
 #import "PTStopGroupPickerController.h"
 #import "PTObjectPickerView.h"
-#import "PTStopGroupDownloadTask.h"
+#import "PTStopGroupDownloadRequester.h"
+#import "PTDownloadTask.h"
 #import "PTStopGroup.h"
 #import "PTRoute.h"
 #import "PTObjectPickerTableViewController.h"
@@ -25,7 +26,7 @@
   PTObjectPickerView *_view;
   NSArray *_stopGroups;
   PTRoute *_route;
-  PTStopGroupDownloadTask *_task;
+  PTDownloadTask *_task;
 }
 
 - (UIView *)view
@@ -45,7 +46,7 @@
   // reset
   [self _reset];
   
-  _task = [PTStopGroupDownloadTask scheduledTaskWithRouteId:_route.identifier callback:^(NSArray *stopGroups, NSError *error) {
+  _task = [PTDownloadTask scheduledTaskWithRequester:[[PTStopGroupDownloadRequester alloc] initWithRouteId:_route.identifier] callback:^(NSArray *stopGroups, NSError *error) {
     if (error == nil) {
       _stopGroups = stopGroups;
     } else {

@@ -11,7 +11,7 @@
 #import "PTDownloadTask.h"
 
 @interface PTDownloadTaskTests : XCTestCase <
-  PTDownloadTaskRequester
+  PTDownloadRequester
 >
 {
   id _mockDataTask;

@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 Weijing Liu. All rights reserved.
 //
 
-@protocol PTDownloadTaskRequester
+@protocol PTDownloadRequester
 
 - (NSURLRequest *)request;
 
@@ -19,7 +19,7 @@ typedef void(^download_task_callback_t)(id result, NSError *error);
 @interface PTDownloadTask : NSObject
 
 // Both this method and callback are main-thread only.
-+ (PTDownloadTask *)scheduledTaskWithRequester:(id<PTDownloadTaskRequester>)requester
++ (PTDownloadTask *)scheduledTaskWithRequester:(id<PTDownloadRequester>)requester
                                       callback:(download_task_callback_t)callback;
 
 @end

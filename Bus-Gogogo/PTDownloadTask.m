@@ -10,7 +10,7 @@
 
 @interface PTDownloadTask ()
 {
-  id<PTDownloadTaskRequester> _requester;
+  id<PTDownloadRequester> _requester;
   download_task_callback_t _callback;
   NSURLSession *_session;
 }
@@ -19,7 +19,7 @@
 
 @implementation PTDownloadTask
 
-+ (PTDownloadTask *)scheduledTaskWithRequester:(id<PTDownloadTaskRequester>)requester
++ (PTDownloadTask *)scheduledTaskWithRequester:(id<PTDownloadRequester>)requester
                                       callback:(download_task_callback_t)callback
 {
   PTDownloadTask *task =
@@ -31,7 +31,7 @@
   return task;
 }
 
-- (instancetype)initWithRequester:(id<PTDownloadTaskRequester>)requester
+- (instancetype)initWithRequester:(id<PTDownloadRequester>)requester
                          callback:(download_task_callback_t)callback
 {
   if (self = [super init]) {
@@ -47,7 +47,7 @@
   config.requestCachePolicy = NSURLRequestReloadIgnoringLocalAndRemoteCacheData;
   _session = [NSURLSession sessionWithConfiguration:config];
   
-  [_session
+  [[_session
    dataTaskWithRequest:[_requester request]
    completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
      id result;
@@ -57,7 +57,7 @@
      dispatch_async(dispatch_get_main_queue(), ^{
        _callback(result, error);
      });
-   }];
+   }] resume];
 }
 
 @end

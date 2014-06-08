@@ -8,7 +8,9 @@
 
 #import "PTRouteStore.h"
 #import "PTRoute.h"
-#import "PTAllRoutesDownloadTask.h"
+
+#import "PTDownloadTask.h"
+#import "PTAllRoutesDownloadRequester.h"
 
 @implementation PTRouteStore
 {
@@ -20,7 +22,7 @@
   NSMutableDictionary *_routesMap;
   
   // A download task for fetching PTRoute objects.
-  PTAllRoutesDownloadTask *_task;
+  PTDownloadTask *_task;
   
   // Queued listeners
   NSMutableArray *_listeners;
@@ -62,14 +64,16 @@
 
 - (void)_syncAllRoutes
 {
-  _task = [PTAllRoutesDownloadTask
-           scheduledTaskWithCompletionHandler:^(NSArray *routes, NSError *error) {
-             assert(error == nil);
-             [self _configureWithRoutes:routes];
-             dispatch_async(dispatch_get_main_queue(), ^{
-               [self _maybeNotifyListeners];
-             });
-           }];
+  _task =
+  [PTDownloadTask
+   scheduledTaskWithRequester:[[PTAllRoutesDownloadRequester alloc] init]
+   callback:^(NSArray *routes, NSError *error) {
+     assert(error == nil);
+     [self _configureWithRoutes:routes];
+     dispatch_async(dispatch_get_main_queue(), ^{
+       [self _maybeNotifyListeners];
+     });
+   }];
 }
 
 #pragma mark - PTRouteStore
