@@ -7,8 +7,14 @@
 //
 
 #import "PTRouteDashboardViewController.h"
+#import "PTRoutePresenterController.h"
 
 @interface PTRouteDashboardViewController ()
+{
+  __weak IBOutlet UIView *_presenterContainerView;
+  
+  PTRoutePresenterController *_presenterController;
+}
 
 @end
 
@@ -21,13 +27,16 @@
 
 - (void)awakeFromNib
 {
-//  self.navigationController.navigationBar.backgroundColor = [UIColor greenColor];
 }
 
 - (void)viewDidLoad
 {
   [super viewDidLoad];
-  NSLog(@"asdf");
+  
+  _presenterController = [[PTRoutePresenterController alloc] init];
+  
+  [_presenterContainerView addSubview:[_presenterController view]];
+  [_presenterController view].frame = _presenterContainerView.bounds;
 }
 
 - (void)didReceiveMemoryWarning
