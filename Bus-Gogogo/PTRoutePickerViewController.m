@@ -7,6 +7,7 @@
 //
 
 #import "PTRoutePickerViewController.h"
+#import "PTRegionHeaderView.h"
 
 @interface PTRoutePickerViewController ()
 
@@ -26,7 +27,10 @@
 - (void)viewDidLoad
 {
   [super viewDidLoad];
-  // Do any additional setup after loading the view.
+  
+  UIView *regionHeader = [PTRegionHeaderView loadNibWithOwner:self];
+  regionHeader.frame = CGRectMake(0, 0, 320, 29);
+  [self.view addSubview:regionHeader];
 }
 
 - (void)didReceiveMemoryWarning

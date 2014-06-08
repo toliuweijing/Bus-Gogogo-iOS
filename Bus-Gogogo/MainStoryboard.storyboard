@@ -127,16 +127,35 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MOS-UF-k5s" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tapGestureRecognizer id="ARX-BW-5oR">
                     <connections>
-                        <segue destination="cMf-PX-Sfo" kind="push" id="Xdz-lS-nMD"/>
+                        <segue destination="98V-uu-w7h" kind="push" id="lgE-qh-PIB"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="-34" y="114"/>
         </scene>
-        <!--Route Picker View Controller - Pick Route-->
+        <!--Route Picker View Controller-->
+        <scene sceneID="ra2-di-ix0">
+            <objects>
+                <viewController id="98V-uu-w7h" customClass="PTRoutePickerViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="a5I-Al-XAR"/>
+                        <viewControllerLayoutGuide type="bottom" id="JOP-wm-Fga"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="6Cr-oj-rpK">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="DTw-en-6xI"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4PV-pp-Hz4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="385" y="-450"/>
+        </scene>
+        <!--View Controller - Pick Route-->
         <scene sceneID="9TP-9j-Oig">
             <objects>
-                <viewController id="cMf-PX-Sfo" customClass="PTRoutePickerViewController" sceneMemberID="viewController">
+                <viewController id="cMf-PX-Sfo" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="zxZ-wg-jXA"/>
                         <viewControllerLayoutGuide type="bottom" id="Uti-O9-UKT"/>
@@ -150,7 +169,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.00094125861849999996" green="0.45509805479999998" blue="0.001460381196" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dmI-7t-wr5" userLabel="Region header view">
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dmI-7t-wr5" userLabel="Region header view" customClass="PTRegionHeaderView">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="29"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
@@ -381,7 +400,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nR1-UF-P00" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="397" y="114"/>
+            <point key="canvasLocation" x="-7" y="-478"/>
         </scene>
     </scenes>
     <resources>

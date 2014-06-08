@@ -18,6 +18,8 @@
 		FB189F451927BE8D0071B8F9 /* PTMainScreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FB189F441927BE8D0071B8F9 /* PTMainScreenViewController.m */; };
 		FB189F481927C1790071B8F9 /* PTObjectPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = FB189F471927C1790071B8F9 /* PTObjectPickerView.m */; };
 		FB2AE9A41938B1020038D4EE /* PTListContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = FB2AE9A31938B1020038D4EE /* PTListContainerView.m */; };
+		FB2B86C319440CBB008187BA /* PTRegionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB2B86C219440CBB008187BA /* PTRegionHeaderView.xib */; };
+		FB2B86C6194410C5008187BA /* PTRegionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = FB2B86C5194410C5008187BA /* PTRegionHeaderView.m */; };
 		FB3D48D818EFA8E500302031 /* PTRouteMonitoringRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = FB3D48D718EFA8E500302031 /* PTRouteMonitoringRequest.m */; };
 		FB3D48DB18EFADB400302031 /* PTStopsForRouteRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = FB3D48DA18EFADB400302031 /* PTStopsForRouteRequest.m */; };
 		FB3D48DE18EFAE5A00302031 /* PTStopsForRouteDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = FB3D48DD18EFAE5A00302031 /* PTStopsForRouteDownloader.m */; };
@@ -93,6 +95,9 @@
 		FB189F471927C1790071B8F9 /* PTObjectPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTObjectPickerView.m; sourceTree = "<group>"; };
 		FB2AE9A21938B1020038D4EE /* PTListContainerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTListContainerView.h; sourceTree = "<group>"; };
 		FB2AE9A31938B1020038D4EE /* PTListContainerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTListContainerView.m; sourceTree = "<group>"; };
+		FB2B86C219440CBB008187BA /* PTRegionHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PTRegionHeaderView.xib; sourceTree = "<group>"; };
+		FB2B86C4194410C5008187BA /* PTRegionHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTRegionHeaderView.h; sourceTree = "<group>"; };
+		FB2B86C5194410C5008187BA /* PTRegionHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTRegionHeaderView.m; sourceTree = "<group>"; };
 		FB3D48D618EFA8E500302031 /* PTRouteMonitoringRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTRouteMonitoringRequest.h; sourceTree = "<group>"; };
 		FB3D48D718EFA8E500302031 /* PTRouteMonitoringRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTRouteMonitoringRequest.m; sourceTree = "<group>"; };
 		FB3D48D918EFADB400302031 /* PTStopsForRouteRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTStopsForRouteRequest.h; sourceTree = "<group>"; };
@@ -303,6 +308,9 @@
 				FBE61DFA1943529B00CAE3F7 /* PTRouteDashboardViewController.m */,
 				FBB15CC81943D9D800B4AD81 /* PTRoutePickerViewController.h */,
 				FBB15CC91943D9D800B4AD81 /* PTRoutePickerViewController.m */,
+				FB2B86C219440CBB008187BA /* PTRegionHeaderView.xib */,
+				FB2B86C4194410C5008187BA /* PTRegionHeaderView.h */,
+				FB2B86C5194410C5008187BA /* PTRegionHeaderView.m */,
 				FB0CAA881933EB200088A314 /* DEPRECATED */,
 				E94206E618F4E514009E9D3D /* Base */,
 				FB517C7318DDE4FB005C7881 /* Model */,
@@ -538,6 +546,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FBE61DF819434F9B00CAE3F7 /* MainStoryboard.storyboard in Resources */,
+				FB2B86C319440CBB008187BA /* PTRegionHeaderView.xib in Resources */,
 				FB517C5018DDDF43005C7881 /* Images.xcassets in Resources */,
 				FB517C4218DDDF43005C7881 /* InfoPlist.strings in Resources */,
 			);
@@ -614,6 +623,7 @@
 				FBB15CCA1943D9D800B4AD81 /* PTRoutePickerViewController.m in Sources */,
 				FB3D48EC18F0487E00302031 /* PTBase.m in Sources */,
 				FB3D48E118EFB26200302031 /* OBADataModel.m in Sources */,
+				FB2B86C6194410C5008187BA /* PTRegionHeaderView.m in Sources */,
 				FB2AE9A41938B1020038D4EE /* PTListContainerView.m in Sources */,
 				FB517C4418DDDF43005C7881 /* main.m in Sources */,
 				FBD4224E1934B1B9003743EE /* PTRoutePickerController.m in Sources */,
