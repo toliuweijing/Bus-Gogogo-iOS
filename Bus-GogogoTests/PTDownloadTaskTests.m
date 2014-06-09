@@ -33,6 +33,7 @@
   [[[mockSesion stub] andReturn:mockSesion] sessionWithConfiguration:[OCMArg any]];
   
   _mockDataTask = [OCMockObject mockForClass:[NSURLSessionDataTask class]];
+  [[_mockDataTask expect] resume];
   [[[mockSesion stub]
     andDo:^(NSInvocation *invocation) {
       __unsafe_unretained void (^callback)(NSData *data, NSURLResponse *response, NSError *error);
@@ -84,9 +85,10 @@
                    @"expecting to be called on main-thread");
      callbackReceived = YES;
    }];
+  [_mockDataTask verify];
   
   [self runBlock:^{
-    XCTAssertTrue(callbackReceived, @"exepecting to receive callback in 2 sec");
+    XCTAssertTrue(callbackReceived, @"exepecting to receive callback in 1 sec");
   } withTimeout:1];
 }
 
