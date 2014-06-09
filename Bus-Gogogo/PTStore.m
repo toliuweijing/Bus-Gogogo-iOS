@@ -9,13 +9,11 @@
 #import "PTStore.h"
 #import "PTStop.h"
 #import "PTRoute.h"
-#import "PTAllRoutesDownloadTask.h"
 
 @interface PTStore ()
 {
   NSMutableDictionary *_stopsMap; // stopID -> PTStop
   NSMutableDictionary *_routesMap; // routeID -> PTRoute
-  PTAllRoutesDownloadTask *_task;
   
   // PTRouteStore callbacks
   NSMutableArray *_routeStoreCallbacks;

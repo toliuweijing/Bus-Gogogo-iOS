@@ -8,14 +8,15 @@
 
 #import "PTStopGroupPickerController.h"
 #import "PTObjectPickerView.h"
-#import "PTStopsForRouteDownloader.h"
+#import "PTStopGroupDownloadRequester.h"
+#import "PTDownloadTask.h"
+#import "PTStopGroup.h"
 #import "PTRoute.h"
 #import "PTObjectPickerTableViewController.h"
 
 @interface PTStopGroupPickerController () <
   PTObjectPickerViewDelegate,
-  PTObjectPickerTableViewController,
-  PTStopsForRouteDownloaderDelegate
+  PTObjectPickerTableViewController
 >
 
 @end
@@ -25,7 +26,7 @@
   PTObjectPickerView *_view;
   NSArray *_stopGroups;
   PTRoute *_route;
-  PTStopsForRouteDownloader *_downloader;
+  PTDownloadTask *_task;
 }
 
 - (UIView *)view
@@ -45,25 +46,19 @@
   // reset
   [self _reset];
   
-  _downloader = [[PTStopsForRouteDownloader alloc] initWithRouteIdentifier:_route.identifier delegate:self];
+  _task = [PTDownloadTask scheduledTaskWithRequester:[[PTStopGroupDownloadRequester alloc] initWithRouteId:_route.identifier] callback:^(NSArray *stopGroups, NSError *error) {
+    if (error == nil) {
+      _stopGroups = stopGroups;
+    } else {
+      NSLog(@"%s received error=%@", __FUNCTION__, error);
+    }
+  }];
 }
 
 - (void)_reset
 {
   [_view setSelectionLabelText:@"None"];
   _stopGroups = nil;
-}
-
-#pragma mark - PTStopsForRouteDownloaderDelegate
-
-- (void)downloader:(PTStopsForRouteDownloader *)downloader didReceiveStopGroups:(NSArray *)stopGroups
-{
-  _stopGroups = stopGroups;
-}
-
-- (void)downloader:(PTStopsForRouteDownloader *)downloader didReceiveError:(NSError *)error
-{
-  assert(NO);
 }
 
 #pragma mark - PTObjectPickerViewDelegate
