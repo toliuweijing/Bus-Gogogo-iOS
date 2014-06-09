@@ -331,8 +331,7 @@
 				FBE61DF719434F9B00CAE3F7 /* MainStoryboard.storyboard */,
 				FBE61DF91943529B00CAE3F7 /* PTRouteDashboardViewController.h */,
 				FBE61DFA1943529B00CAE3F7 /* PTRouteDashboardViewController.m */,
-				FBB15CC81943D9D800B4AD81 /* PTRoutePickerViewController.h */,
-				FBB15CC91943D9D800B4AD81 /* PTRoutePickerViewController.m */,
+				FB5440591945458C00EF7ACE /* RoutePickerViewController */,
 				FB0CAA881933EB200088A314 /* DEPRECATED */,
 				E94206E618F4E514009E9D3D /* Base */,
 				FB517C7318DDE4FB005C7881 /* Model */,
@@ -404,6 +403,17 @@
 			name = Model;
 			sourceTree = "<group>";
 		};
+		FB5440591945458C00EF7ACE /* RoutePickerViewController */ = {
+			isa = PBXGroup;
+			children = (
+				FBD8B66119360DDE00E43725 /* PTRouteFilter.h */,
+				FBD8B66219360DDE00E43725 /* PTRouteFilter.m */,
+				FBB15CC81943D9D800B4AD81 /* PTRoutePickerViewController.h */,
+				FBB15CC91943D9D800B4AD81 /* PTRoutePickerViewController.m */,
+			);
+			name = RoutePickerViewController;
+			sourceTree = "<group>";
+		};
 		FB612B5419441A6200BBDD89 /* RegionHeaderView */ = {
 			isa = PBXGroup;
 			children = (
@@ -464,8 +474,6 @@
 				FB0CAA93193423ED0088A314 /* PTRoutePickerView.m */,
 				FBD4224C1934B1B9003743EE /* PTRoutePickerController.h */,
 				FBD4224D1934B1B9003743EE /* PTRoutePickerController.m */,
-				FBD8B66119360DDE00E43725 /* PTRouteFilter.h */,
-				FBD8B66219360DDE00E43725 /* PTRouteFilter.m */,
 				FB5145C11934BF4C00B20EF9 /* PTObjectPickerTableViewController.h */,
 				FB5145C21934BF4C00B20EF9 /* PTObjectPickerTableViewController.m */,
 			);

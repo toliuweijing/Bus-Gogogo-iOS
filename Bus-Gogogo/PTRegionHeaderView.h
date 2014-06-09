@@ -8,7 +8,19 @@
 
 #import <UIKit/UIKit.h>
 
+@class PTRegionHeaderView;
+
+@protocol PTRegionHeaderViewDelegate
+
+- (void)view:(PTRegionHeaderView *)view
+selectedRegion:(NSString *)region;
+
+@end
+
 @interface PTRegionHeaderView : UIView
+
+@property (nonatomic, weak)
+id<PTRegionHeaderViewDelegate> delegate;
 
 + (PTRegionHeaderView *)loadNibWithOwner:(id)owner;
 

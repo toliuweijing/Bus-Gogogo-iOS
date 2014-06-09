@@ -87,6 +87,12 @@
   return 33;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+  // pop back to PTRouteDashboardViewController
+  //self.delegate
+}
+
 /*
  #pragma mark - Navigation
  

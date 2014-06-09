@@ -8,8 +8,11 @@
 
 #import "PTRouteDashboardViewController.h"
 #import "PTRoutePresenterController.h"
+#import "PTRoutePickerViewController.h"
 
-@interface PTRouteDashboardViewController ()
+@interface PTRouteDashboardViewController () <
+  PTRoutePickerViewControllerDelegate
+>
 {
   __weak IBOutlet UIView *_presenterContainerView;
   
@@ -39,21 +42,34 @@
   [_presenterController view].frame = _presenterContainerView.bounds;
 }
 
-- (void)didReceiveMemoryWarning
+- (void)viewWillAppear:(BOOL)animated
 {
-  [super didReceiveMemoryWarning];
-  // Dispose of any resources that can be recreated.
+  [super viewWillAppear:animated];
 }
 
-/*
- #pragma mark - Navigation
- 
- // In a storyboard-based application, you will often want to do a little preparation before navigation
- - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
- {
- // Get the new view controller using [segue destinationViewController].
- // Pass the selected object to the new view controller.
- }
- */
+#pragma mark - Navigation
+
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue
+                 sender:(id)sender
+{
+  // Get the new view controller using [segue destinationViewController].
+  // Pass the selected object to the new view controller.
+  if ([segue.identifier
+       isEqualToString:@"RoutePickerViewController"]) {
+    [(PTRoutePickerViewController *)segue.destinationViewController
+     setDelegate:self];
+  }
+}
+
+#pragma mark - PTRoutePickerViewControllerDelegate
+
+- (void)controller:(PTRoutePickerViewController *)controller
+didFinishWithRoute:(PTRoute *)route;
+{
+  [self.navigationController
+   popToViewController:self
+   animated:YES];
+}
 
 @end
