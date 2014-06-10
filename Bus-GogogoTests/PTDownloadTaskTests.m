@@ -14,7 +14,10 @@
   PTDownloadRequester
 >
 {
-  id _mockDataTask;
+  id _mSession;
+  id _mDataTask;
+  id _mURLRequest;
+  id _mParsedResult;
 }
 
 @end
@@ -25,20 +28,22 @@
 {
   [super setUp];
   [self setUpNSURLSession];
+  
+  _mURLRequest = [OCMockObject mockForClass:[NSURLRequest class]];
+  _mParsedResult = [OCMockObject mockForClass:[NSObject class]];
 }
 
 - (void)setUpNSURLSession
 {
-  id mockSesion = [OCMockObject mockForClass:[NSURLSession class]];
-  [[[mockSesion stub] andReturn:mockSesion] sessionWithConfiguration:[OCMArg any]];
+  _mSession = [OCMockObject mockForClass:[NSURLSession class]];
+  [[[_mSession stub] andReturn:_mSession] sessionWithConfiguration:[OCMArg any]];
   
-  _mockDataTask = [OCMockObject mockForClass:[NSURLSessionDataTask class]];
-  [[_mockDataTask expect] resume];
-  [[[mockSesion stub]
+  _mDataTask = [OCMockObject mockForClass:[NSURLSessionDataTask class]];
+  [[[_mSession stub]
     andDo:^(NSInvocation *invocation) {
       __unsafe_unretained void (^callback)(NSData *data, NSURLResponse *response, NSError *error);
       [invocation getArgument:&callback atIndex:3];
-      [invocation setReturnValue:&_mockDataTask];
+      [invocation setReturnValue:&_mDataTask];
       
       [PTDownloadTaskTests invokeCallback:callback withError:NO];
     }]
@@ -63,44 +68,65 @@
 {
   // Put teardown code here. This method is called after the invocation of each test method in the class.
   [super tearDown];
+  
+  [self verify];
 }
 
 - (NSURLRequest *)request
 {
-  return [OCMockObject mockForClass:[NSURLRequest class]];
+  return _mURLRequest;
 }
 
 - (id)parseData:(NSData *)data
 {
-  return [OCMockObject mockForClass:[NSObject class]];
+  return _mParsedResult;
+}
+
+- (void)verify
+{
+  [_mDataTask verify];
+  [_mSession verify];
 }
 
 - (void)testTaskShouldCallbackOnMainthread
 {
+  // expectation
+  [[_mDataTask expect] resume];
+//  [[_mSession expect]
+//   dataTaskWithRequest:_mURLRequest
+//   completionHandler:[OCMArg any]];
+  
+  // run test
   __block BOOL callbackReceived = NO;
   [PTDownloadTask
    scheduledTaskWithRequester:self
    callback:^(id result, NSError *error) {
      XCTAssertTrue([NSThread isMainThread],
                    @"expecting to be called on main-thread");
+     XCTAssertTrue(_mParsedResult == result,
+                   @"expecting parsed result");
      callbackReceived = YES;
    }];
-  [_mockDataTask verify];
   
-  [self runBlock:^{
-    XCTAssertTrue(callbackReceived, @"exepecting to receive callback in 1 sec");
-  } withTimeout:1];
+  [self
+   runRunLoopUntilTimeout:1
+   condition:^BOOL{
+    return callbackReceived;
+   }];
 }
 
-- (void)runBlock:(void(^)(void))block
-     withTimeout:(NSTimeInterval)timeoutInSec
+- (void)runRunLoopUntilTimeout:(NSTimeInterval)timeout
+                     condition:(BOOL (^)(void))block
 {
-  NSDate *loopUntil = [NSDate dateWithTimeIntervalSinceNow:timeoutInSec];
+  NSDate *loopUntil = [NSDate dateWithTimeIntervalSinceNow:timeout];
   while ([loopUntil timeIntervalSinceNow] > 0) {
+    if (block()) {
+      return;
+    }
     [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode
                              beforeDate:loopUntil];
   }
-  block();
+  XCTFail(@"Failed to pass condition check with %lf secs", timeout);
 }
 
 @end
