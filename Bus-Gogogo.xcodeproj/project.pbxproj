@@ -10,6 +10,7 @@
 		3F731F56194CD18D00C79812 /* RoutePresenterCell_BusAtStop.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3F731F54194CD18D00C79812 /* RoutePresenterCell_BusAtStop.xib */; };
 		3F731F57194CD18D00C79812 /* RoutePresenterCell_BusDriving.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3F731F55194CD18D00C79812 /* RoutePresenterCell_BusDriving.xib */; };
 		3F731F59194CE4D700C79812 /* RoutePickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3F731F58194CE4D700C79812 /* RoutePickerView.xib */; };
+		3F731F5C194CF1D800C79812 /* RoutePickerViewDefault.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3F731F5B194CF1D800C79812 /* RoutePickerViewDefault.xib */; };
 		E3D78FF620B54F618D846F7C /* libPods-Bus-GogogoTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CEC9CA41AFE4D5EA4247A62 /* libPods-Bus-GogogoTests.a */; };
 		E966D16F18F9800700CD8C0F /* PTPolyline.m in Sources */ = {isa = PBXBuildFile; fileRef = E966D16E18F9800700CD8C0F /* PTPolyline.m */; };
 		FB01A5DE18E76226001C793F /* PTMonitoredVehicleJourney.m in Sources */ = {isa = PBXBuildFile; fileRef = FB01A5DD18E76226001C793F /* PTMonitoredVehicleJourney.m */; };
@@ -88,6 +89,7 @@
 		3F731F54194CD18D00C79812 /* RoutePresenterCell_BusAtStop.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RoutePresenterCell_BusAtStop.xib; sourceTree = "<group>"; };
 		3F731F55194CD18D00C79812 /* RoutePresenterCell_BusDriving.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RoutePresenterCell_BusDriving.xib; sourceTree = "<group>"; };
 		3F731F58194CE4D700C79812 /* RoutePickerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RoutePickerView.xib; sourceTree = "<group>"; };
+		3F731F5B194CF1D800C79812 /* RoutePickerViewDefault.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RoutePickerViewDefault.xib; sourceTree = "<group>"; };
 		6CEC9CA41AFE4D5EA4247A62 /* libPods-Bus-GogogoTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Bus-GogogoTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E966D16D18F9800700CD8C0F /* PTPolyline.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTPolyline.h; sourceTree = "<group>"; };
 		E966D16E18F9800700CD8C0F /* PTPolyline.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTPolyline.m; sourceTree = "<group>"; };
@@ -226,6 +228,7 @@
 			isa = PBXGroup;
 			children = (
 				3F731F58194CE4D700C79812 /* RoutePickerView.xib */,
+				3F731F5B194CF1D800C79812 /* RoutePickerViewDefault.xib */,
 			);
 			name = RoutePickerView;
 			sourceTree = "<group>";
@@ -628,6 +631,7 @@
 				3F731F57194CD18D00C79812 /* RoutePresenterCell_BusDriving.xib in Resources */,
 				3F731F59194CE4D700C79812 /* RoutePickerView.xib in Resources */,
 				FBB001FD1944ABCB00974AB4 /* RoutePresenterCell_bottom.xib in Resources */,
+				3F731F5C194CF1D800C79812 /* RoutePickerViewDefault.xib in Resources */,
 				FBB001FB1944AA4A00974AB4 /* RoutePresenterCell_middle.xib in Resources */,
 				FB517C5018DDDF43005C7881 /* Images.xcassets in Resources */,
 				3F731F56194CD18D00C79812 /* RoutePresenterCell_BusAtStop.xib in Resources */,
