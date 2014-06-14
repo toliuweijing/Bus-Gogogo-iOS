@@ -11,40 +11,24 @@
 @interface PTRegionHeaderView ()
 {
   IBOutletCollection(UIButton) NSArray *_buttons;
-  UIButton *_selected;
 }
 
 @end
 
 @implementation PTRegionHeaderView
 
-- (id)initWithCoder:(NSCoder *)aDecoder
+- (id)initWithFrame:(CGRect)frame
 {
-  if (self = [super initWithCoder:aDecoder]) {
-    [self _didSelectButton:[_buttons firstObject]];
+  self = [super initWithFrame:frame];
+  if (self) {
+    // Initialization code
   }
   return self;
 }
 
 - (IBAction)_didSelectButton:(UIButton *)sender
 {
-  if (_selected != sender) {
-    [self _swapButtonColor:sender];
-    [self _swapButtonColor:_selected];
-    _selected = sender;
-    
-    [self.delegate
-     view:self
-     selectedRegion:_selected.titleLabel.text];
-  }
-}
-
-- (void)_swapButtonColor:(UIButton *)button
-{
-  UIColor *color = [button titleColorForState:UIControlStateNormal];
-  [button setTitleColor:[button backgroundColor]
-               forState:UIControlStateNormal];
-  button.backgroundColor = color;
+  NSLog(@"%@", sender.titleLabel.text);
 }
 
 + (PTRegionHeaderView *)loadNibWithOwner:(id)owner

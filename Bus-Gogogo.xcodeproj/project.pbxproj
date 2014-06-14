@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3F731F56194CD18D00C79812 /* RoutePresenterCell_BusAtStop.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3F731F54194CD18D00C79812 /* RoutePresenterCell_BusAtStop.xib */; };
+		3F731F57194CD18D00C79812 /* RoutePresenterCell_BusDriving.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3F731F55194CD18D00C79812 /* RoutePresenterCell_BusDriving.xib */; };
 		E3D78FF620B54F618D846F7C /* libPods-Bus-GogogoTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CEC9CA41AFE4D5EA4247A62 /* libPods-Bus-GogogoTests.a */; };
 		E966D16F18F9800700CD8C0F /* PTPolyline.m in Sources */ = {isa = PBXBuildFile; fileRef = E966D16E18F9800700CD8C0F /* PTPolyline.m */; };
 		FB01A5DE18E76226001C793F /* PTMonitoredVehicleJourney.m in Sources */ = {isa = PBXBuildFile; fileRef = FB01A5DD18E76226001C793F /* PTMonitoredVehicleJourney.m */; };
@@ -82,6 +84,8 @@
 /* Begin PBXFileReference section */
 		1C459DDA767F4C4AA42E4783 /* Pods-Bus-GogogoTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bus-GogogoTests.xcconfig"; path = "Pods/Pods-Bus-GogogoTests.xcconfig"; sourceTree = "<group>"; };
 		2B3FAB90E95E497C9F4BB358 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		3F731F54194CD18D00C79812 /* RoutePresenterCell_BusAtStop.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RoutePresenterCell_BusAtStop.xib; sourceTree = "<group>"; };
+		3F731F55194CD18D00C79812 /* RoutePresenterCell_BusDriving.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RoutePresenterCell_BusDriving.xib; sourceTree = "<group>"; };
 		6CEC9CA41AFE4D5EA4247A62 /* libPods-Bus-GogogoTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Bus-GogogoTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E966D16D18F9800700CD8C0F /* PTPolyline.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTPolyline.h; sourceTree = "<group>"; };
 		E966D16E18F9800700CD8C0F /* PTPolyline.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTPolyline.m; sourceTree = "<group>"; };
@@ -460,6 +464,8 @@
 		FBB001F91944A9A200974AB4 /* RoutePresenterCell */ = {
 			isa = PBXGroup;
 			children = (
+				3F731F54194CD18D00C79812 /* RoutePresenterCell_BusAtStop.xib */,
+				3F731F55194CD18D00C79812 /* RoutePresenterCell_BusDriving.xib */,
 				FBB001F71944A44400974AB4 /* RoutePresenterCell_top.xib */,
 				FBB001FA1944AA4A00974AB4 /* RoutePresenterCell_middle.xib */,
 				FBB001FC1944ABCB00974AB4 /* RoutePresenterCell_bottom.xib */,
@@ -608,9 +614,11 @@
 				FBB001F619449E8D00974AB4 /* PTRouteSummaryCell_GreenGray.xib in Resources */,
 				FBE61DF819434F9B00CAE3F7 /* MainStoryboard.storyboard in Resources */,
 				FB2B86C319440CBB008187BA /* PTRegionHeaderView.xib in Resources */,
+				3F731F57194CD18D00C79812 /* RoutePresenterCell_BusDriving.xib in Resources */,
 				FBB001FD1944ABCB00974AB4 /* RoutePresenterCell_bottom.xib in Resources */,
 				FBB001FB1944AA4A00974AB4 /* RoutePresenterCell_middle.xib in Resources */,
 				FB517C5018DDDF43005C7881 /* Images.xcassets in Resources */,
+				3F731F56194CD18D00C79812 /* RoutePresenterCell_BusAtStop.xib in Resources */,
 				FB517C4218DDDF43005C7881 /* InfoPlist.strings in Resources */,
 				FBB001F81944A44400974AB4 /* RoutePresenterCell_top.xib in Resources */,
 				FB612B5619441BD900BBDD89 /* PTRouteSummaryCell_WhiteGreen.xib in Resources */,
