@@ -11,24 +11,25 @@
 @interface PTRegionHeaderView ()
 {
   IBOutletCollection(UIButton) NSArray *_buttons;
+  UIButton *_selected;
 }
 
 @end
 
 @implementation PTRegionHeaderView
 
-- (id)initWithFrame:(CGRect)frame
+- (id)initWithCoder:(NSCoder *)aDecoder
 {
-  self = [super initWithFrame:frame];
-  if (self) {
-    // Initialization code
+  if (self = [super initWithCoder:aDecoder]) {
+    [self _setupDefaulSelection];
   }
   return self;
 }
 
-- (IBAction)_didSelectButton:(UIButton *)sender
+- (NSString *)selectedRegion
 {
-  NSLog(@"%@", sender.titleLabel.text);
+  assert([self _isButtonSelected:_selected]);
+  return _selected.titleLabel.text;
 }
 
 + (PTRegionHeaderView *)loadNibWithOwner:(id)owner
@@ -40,6 +41,51 @@
   return view;
 }
 
+#pragma mark - Private
+
+- (void)_setupDefaulSelection
+{
+  // Find the first button in subviews and set
+  // it as current selection.
+  for (UIView *view in self.subviews) {
+    if ([view isKindOfClass:[UIButton class]]) {
+      UIButton *button = (UIButton *)view;
+      if (![self _isButtonSelected:button]) {
+        [self _didSelectButton:button];
+      }
+      _selected = (UIButton *)view;
+      break;
+    }
+  }
+}
+
+- (BOOL)_isButtonSelected:(UIButton *)button
+{
+  assert(button);
+  assert(button.backgroundColor != [button titleColorForState:UIControlStateNormal]);
+  return button.backgroundColor != [UIColor whiteColor];
+}
+
+- (IBAction)_didSelectButton:(UIButton *)sender
+{
+  if (_selected != sender) {
+    [self _swapButtonColor:sender];
+    [self _swapButtonColor:_selected];
+    _selected = sender;
+    
+    [self.delegate
+     regionHeaderView:self
+     selectionDidChange:[self selectedRegion]];
+  }
+}
+
+- (void)_swapButtonColor:(UIButton *)button
+{
+  UIColor *color = [button titleColorForState:UIControlStateNormal];
+  [button setTitleColor:[button backgroundColor]
+               forState:UIControlStateNormal];
+  button.backgroundColor = color;
+}
 /*
  // Only override drawRect: if you perform custom drawing.
  // An empty implementation adversely affects performance during animation.
