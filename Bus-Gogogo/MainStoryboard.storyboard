@@ -22,7 +22,7 @@
                         </textAttributes>
                     </navigationBar>
                     <connections>
-                        <segue destination="jWZ-h3-E3U" kind="relationship" relationship="rootViewController" id="XkB-c3-Kyc"/>
+                        <segue destination="428-o4-QMZ" kind="relationship" relationship="rootViewController" id="u0z-G1-Hb7"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eMZ-O0-LUO" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -38,7 +38,7 @@
                         <viewControllerLayoutGuide type="bottom" id="ed7-d7-5mE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="U2v-5Q-mTH">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view tag="10" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GF4-Tw-hT9" userLabel="RoutePresenterView">
@@ -382,10 +382,35 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.00094125861849999996" green="0.45509805479999998" blue="0.001460381196" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
-                            <view contentMode="scaleToFill" fixedFrame="YES" placeholderIntrinsicWidth="320" placeholderIntrinsicHeight="61" translatesAutoresizingMaskIntoConstraints="NO" id="QA8-Pi-sWt">
+                            <view contentMode="scaleToFill" fixedFrame="YES" placeholderIntrinsicWidth="320" placeholderIntrinsicHeight="61" translatesAutoresizingMaskIntoConstraints="NO" id="QA8-Pi-sWt" customClass="PTDashboardRoutePickerView">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="61"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="O4t-TG-4pp" userLabel="DirectionPickContainer">
+                                        <rect key="frame" x="84" y="0.0" width="236" height="61"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <subviews>
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Direction" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xgy-eO-7xI">
+                                                <rect key="frame" x="0.0" y="6" width="236" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="turn" translatesAutoresizingMaskIntoConstraints="NO" id="XF6-Yn-jeZ">
+                                                <rect key="frame" x="211" y="27" width="20" height="20"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            </imageView>
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Bay Ridge to Kings Plaza" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LTZ-UA-tRe">
+                                                <rect key="frame" x="0.0" y="26" width="236" height="20"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                <color key="textColor" red="0.00094125861849999996" green="0.45509805479999998" blue="0.001460381196" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                    </view>
                                     <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="m3h-qq-nKG" userLabel="LinePickerContainer">
                                         <rect key="frame" x="0.0" y="0.0" width="83" height="61"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -417,34 +442,51 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                     </view>
-                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="O4t-TG-4pp" userLabel="DirectionPickContainer">
-                                        <rect key="frame" x="84" y="0.0" width="236" height="61"/>
+                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JzT-ty-wbY" userLabel="EmptyRoutePicker">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="61"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <subviews>
-                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Direction" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xgy-eO-7xI">
-                                                <rect key="frame" x="0.0" y="6" width="236" height="21"/>
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Route" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Ch-BK-18h">
+                                                <rect key="frame" x="3" y="9" width="81" height="43"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                <color key="textColor" red="0.00094125861849999996" green="0.45509805479999998" blue="0.001460381196" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="turn" translatesAutoresizingMaskIntoConstraints="NO" id="XF6-Yn-jeZ">
-                                                <rect key="frame" x="211" y="27" width="20" height="20"/>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="arrow2" translatesAutoresizingMaskIntoConstraints="NO" id="ora-ds-kGH">
+                                                <rect key="frame" x="292" y="24" width="8" height="12"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             </imageView>
-                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Bay Ridge to Kings Plaza" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LTZ-UA-tRe">
-                                                <rect key="frame" x="0.0" y="26" width="236" height="20"/>
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Choose" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k4L-bk-WPo">
+                                                <rect key="frame" x="217" y="19" width="63" height="21"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                <color key="textColor" red="0.00094125861849999996" green="0.45509805479999998" blue="0.001460381196" alpha="1" colorSpace="calibratedRGB"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                        <gestureRecognizers/>
+                                        <constraints>
+                                            <constraint firstItem="k4L-bk-WPo" firstAttribute="centerY" secondItem="6Ch-BK-18h" secondAttribute="centerY" constant="1" id="Fpb-ze-0Ub"/>
+                                            <constraint firstItem="ora-ds-kGH" firstAttribute="centerY" secondItem="k4L-bk-WPo" secondAttribute="centerY" constant="-0.5" id="TMo-93-G5S"/>
+                                            <constraint firstItem="ora-ds-kGH" firstAttribute="leading" secondItem="k4L-bk-WPo" secondAttribute="trailing" constant="20" id="jBW-vB-9Jb"/>
+                                            <constraint firstItem="k4L-bk-WPo" firstAttribute="leading" secondItem="6Ch-BK-18h" secondAttribute="trailing" constant="128" id="qVF-G4-dpZ"/>
+                                            <constraint firstAttribute="centerX" secondItem="k4L-bk-WPo" secondAttribute="centerX" constant="-88.5" id="wFa-KN-fgs"/>
+                                            <constraint firstAttribute="centerY" secondItem="6Ch-BK-18h" secondAttribute="centerY" id="xAF-kK-zx9"/>
+                                        </constraints>
+                                        <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                                     </view>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                                <connections>
+                                    <outlet property="_directionTextLabel" destination="LTZ-UA-tRe" id="C7W-PX-z68"/>
+                                    <outlet property="_routeTextLabel" destination="CSw-ap-19z" id="naq-m2-yhS"/>
+                                    <outlet property="directionPicker" destination="O4t-TG-4pp" id="Ehn-Vg-bEk"/>
+                                    <outlet property="emptyRoutePicker" destination="JzT-ty-wbY" id="w9Q-b8-ze7"/>
+                                    <outlet property="linePicker" destination="m3h-qq-nKG" id="6qn-k1-DJk"/>
+                                </connections>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -453,15 +495,11 @@
                     <navigationItem key="navigationItem" title="BusGoGoGo" id="y7D-cL-4em"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="_pickerContainerView" destination="QA8-Pi-sWt" id="Wfb-xC-8p1"/>
                         <outlet property="_presenterContainerView" destination="GF4-Tw-hT9" id="38p-FV-rIo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MOS-UF-k5s" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="ARX-BW-5oR">
-                    <connections>
-                        <segue destination="cMf-PX-Sfo" kind="push" id="RGs-yV-rqw"/>
-                    </connections>
-                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="-34" y="114"/>
         </scene>
@@ -503,10 +541,10 @@
                         <viewControllerLayoutGuide type="bottom" id="lAs-Vm-jF3"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="suh-jz-bPe">
-                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fcT-3B-h2w">
+                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fcT-3B-h2w" userLabel="EmptyRoutePicker">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="61"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
@@ -540,9 +578,6 @@
                                     <constraint firstItem="yU3-Hc-rPi" firstAttribute="leading" secondItem="x1R-75-gzT" secondAttribute="trailing" constant="128" id="cZZ-GT-Yw0"/>
                                 </constraints>
                                 <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                                <connections>
-                                    <outletCollection property="gestureRecognizers" destination="etk-6Q-KP7" appends="YES" id="PKf-A4-8Rz"/>
-                                </connections>
                             </view>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fV1-3K-mq2" userLabel="Horizontal Separator">
                                 <rect key="frame" x="0.0" y="61" width="320" height="1"/>
@@ -550,7 +585,7 @@
                                 <color key="backgroundColor" red="0.00094125861849999996" green="0.45509805479999998" blue="0.001460381196" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tOd-qg-KAb">
-                                <rect key="frame" x="0.0" y="62" width="320" height="355"/>
+                                <rect key="frame" x="0.0" y="126" width="320" height="355"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             </mapView>
                         </subviews>
@@ -1131,7 +1166,4 @@
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
-    <inferredMetricsTieBreakers>
-        <segue reference="RGs-yV-rqw"/>
-    </inferredMetricsTieBreakers>
 </document>

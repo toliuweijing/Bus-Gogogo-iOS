@@ -9,12 +9,14 @@
 #import "PTRouteDashboardViewController.h"
 #import "PTRoutePresenterController.h"
 #import "PTRoutePickerViewController.h"
+#import "PTDashboardRoutePickerView.h"
 
 @interface PTRouteDashboardViewController () <
   PTRoutePickerViewControllerDelegate
 >
 {
   __weak IBOutlet UIView *_presenterContainerView;
+  __weak IBOutlet PTDashboardRoutePickerView *_pickerContainerView;
   
   PTRoutePresenterController *_presenterController;
 }
@@ -64,9 +66,9 @@
 
 #pragma mark - PTRoutePickerViewControllerDelegate
 
-- (void)controller:(PTRoutePickerViewController *)controller
-didFinishWithRoute:(PTRoute *)route;
+- (void)routePickerViewController:(PTRoutePickerViewController *)controller didFinishWithRoute:(PTRoute *)route
 {
+  [_pickerContainerView setRoute:route];
   [self.navigationController
    popToViewController:self
    animated:YES];
