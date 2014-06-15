@@ -143,7 +143,9 @@
    delegate:self
    cancelButtonTitle:@"cancel"
    destructiveButtonTitle:nil
-   otherButtonTitles:@"subscribe", nil];
+   otherButtonTitles:@"remind when 1 stop away",
+   @"remind when 2 stops away",
+   @"remind when 3 stops away", nil];
   [actionSheet showInView:[UIApplication sharedApplication].keyWindow];
   
   _actionSheetRowClicked = indexPath.row;
@@ -155,7 +157,7 @@
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
   NSLog(@"%d clicked", buttonIndex);
-  if (buttonIndex == 0) {
+  if (buttonIndex <= 2) {
     [_reminder cancel];
     
     NSString *stopId = [_stopGroup.stopIDs objectAtIndex:_actionSheetRowClicked];
@@ -164,7 +166,7 @@
                  initWithStop:stop
                  route:_route
                  direction:_stopGroup.direction
-                 stopsAway:3];
+                 stopsAway:buttonIndex + 1];
     NSLog(@"subscribe click");
   }
 }

@@ -78,9 +78,9 @@
                  UIAlertView *alert =
                  [[UIAlertView alloc] initWithTitle:@"Reminder"
                                             message:[NSString stringWithFormat:
-                                                     @"A %@ Bus is ARRIVING %@", _route.shortName, _stop.name]
+                                                     @"A %@ is arriving %@", _route.shortName, _stop.name]
                                            delegate:self
-                                  cancelButtonTitle:@"OK"
+                                  cancelButtonTitle:@"unsubscribe"
                                   otherButtonTitles:nil];
                  [alert show];
 
