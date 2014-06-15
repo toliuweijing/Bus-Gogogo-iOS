@@ -36,6 +36,21 @@
 {
 }
 
+- (NSString *)_rightBarItemTitle
+{
+  return _presenterController.mode == PTRoutePresenterViewModeMap ? @"List" : @"Map";
+}
+
+- (IBAction)_didTapRightBarItem:(id)sender
+{
+  if (_presenterController.mode == PTRoutePresenterViewModeMap) {
+    _presenterController.mode = PTRoutePresenterViewModeList;
+  } else {
+    _presenterController.mode = PTRoutePresenterViewModeMap;
+  }
+  self.navigationItem.rightBarButtonItem.title = [self _rightBarItemTitle];
+}
+
 - (void)viewDidLoad
 {
   [super viewDidLoad];
@@ -44,6 +59,13 @@
   
   [_presenterContainerView addSubview:[_presenterController view]];
   [_presenterController view].frame = _presenterContainerView.bounds;
+  
+  self.navigationItem.rightBarButtonItem =
+  [[UIBarButtonItem alloc]
+   initWithTitle:[self _rightBarItemTitle]
+   style:UIBarButtonItemStylePlain
+   target:self
+   action:@selector(_didTapRightBarItem:)];
 }
 
 - (void)viewWillAppear:(BOOL)animated
