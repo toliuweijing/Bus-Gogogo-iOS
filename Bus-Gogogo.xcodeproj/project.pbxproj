@@ -12,6 +12,7 @@
 		3F731F59194CE4D700C79812 /* RoutePickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3F731F58194CE4D700C79812 /* RoutePickerView.xib */; };
 		3F731F5C194CF1D800C79812 /* RoutePickerViewDefault.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3F731F5B194CF1D800C79812 /* RoutePickerViewDefault.xib */; };
 		8B4DC82B194DF2890013C6BD /* PTDashboardRoutePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B4DC82A194DF2890013C6BD /* PTDashboardRoutePickerView.m */; };
+		8B4DC82E194E0FCC0013C6BD /* PTStopMonitoringDownloadRequester.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B4DC82D194E0FCC0013C6BD /* PTStopMonitoringDownloadRequester.m */; };
 		E3D78FF620B54F618D846F7C /* libPods-Bus-GogogoTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CEC9CA41AFE4D5EA4247A62 /* libPods-Bus-GogogoTests.a */; };
 		E966D16F18F9800700CD8C0F /* PTPolyline.m in Sources */ = {isa = PBXBuildFile; fileRef = E966D16E18F9800700CD8C0F /* PTPolyline.m */; };
 		FB01A5DE18E76226001C793F /* PTMonitoredVehicleJourney.m in Sources */ = {isa = PBXBuildFile; fileRef = FB01A5DD18E76226001C793F /* PTMonitoredVehicleJourney.m */; };
@@ -94,6 +95,8 @@
 		6CEC9CA41AFE4D5EA4247A62 /* libPods-Bus-GogogoTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Bus-GogogoTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B4DC829194DF2890013C6BD /* PTDashboardRoutePickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTDashboardRoutePickerView.h; sourceTree = "<group>"; };
 		8B4DC82A194DF2890013C6BD /* PTDashboardRoutePickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTDashboardRoutePickerView.m; sourceTree = "<group>"; };
+		8B4DC82C194E0FCC0013C6BD /* PTStopMonitoringDownloadRequester.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTStopMonitoringDownloadRequester.h; sourceTree = "<group>"; };
+		8B4DC82D194E0FCC0013C6BD /* PTStopMonitoringDownloadRequester.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTStopMonitoringDownloadRequester.m; sourceTree = "<group>"; };
 		E966D16D18F9800700CD8C0F /* PTPolyline.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTPolyline.h; sourceTree = "<group>"; };
 		E966D16E18F9800700CD8C0F /* PTPolyline.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTPolyline.m; sourceTree = "<group>"; };
 		FB01A5DC18E76226001C793F /* PTMonitoredVehicleJourney.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTMonitoredVehicleJourney.h; sourceTree = "<group>"; };
@@ -290,6 +293,8 @@
 			isa = PBXGroup;
 			children = (
 				FBD8B66419375BCF00E43725 /* DEPRECATED */,
+				8B4DC82C194E0FCC0013C6BD /* PTStopMonitoringDownloadRequester.h */,
+				8B4DC82D194E0FCC0013C6BD /* PTStopMonitoringDownloadRequester.m */,
 				FB8714BF1944F54300670513 /* PTDownloadTask.h */,
 				FB8714C01944F54300670513 /* PTDownloadTask.m */,
 				FB8714CF1945109500670513 /* PTStopGroupDownloadRequester.h */,
@@ -699,6 +704,7 @@
 				FB189F451927BE8D0071B8F9 /* PTMainScreenViewController.m in Sources */,
 				FB189F481927C1790071B8F9 /* PTObjectPickerView.m in Sources */,
 				FB5145C31934BF4C00B20EF9 /* PTObjectPickerTableViewController.m in Sources */,
+				8B4DC82E194E0FCC0013C6BD /* PTStopMonitoringDownloadRequester.m in Sources */,
 				FBA258D019389A0B007B05DE /* PTRoutePresenterView.m in Sources */,
 				FB129CD018F10D29009AAEA7 /* PTMonitoredVehicleJourneyDownloader.m in Sources */,
 				FBB5EB3A18E738E6007921A3 /* PTBus.m in Sources */,
