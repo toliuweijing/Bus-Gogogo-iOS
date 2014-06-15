@@ -21,6 +21,7 @@ typedef NS_ENUM(NSInteger, PTRoutePresenterViewMode) {
 - (UIView *)view;
 
 - (void)setRoute:(PTRoute *)route;
+- (void)setRoute:(PTRoute *)route direction:(int)direction;
 
 - (void)setStopGroup:(PTStopGroup *)stopGroup;
 

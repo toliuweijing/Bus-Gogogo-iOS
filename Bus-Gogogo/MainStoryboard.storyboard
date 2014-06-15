@@ -410,6 +410,10 @@
                                             </label>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                        <gestureRecognizers/>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="aKe-8k-12X" appends="YES" id="Per-eo-yMr"/>
+                                        </connections>
                                     </view>
                                     <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="m3h-qq-nKG" userLabel="LinePickerContainer">
                                         <rect key="frame" x="0.0" y="0.0" width="83" height="61"/>
@@ -436,6 +440,9 @@
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                         <gestureRecognizers/>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="Epl-fZ-iR7" appends="YES" id="yvS-dy-Z5O"/>
+                                        </connections>
                                     </view>
                                     <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tJS-ij-6MZ" userLabel="Vertical Separator">
                                         <rect key="frame" x="83" y="0.0" width="1" height="61"/>
@@ -476,6 +483,9 @@
                                             <constraint firstAttribute="centerY" secondItem="6Ch-BK-18h" secondAttribute="centerY" id="xAF-kK-zx9"/>
                                         </constraints>
                                         <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="3ae-bC-yYp" appends="YES" id="XyA-s3-Wzk"/>
+                                        </connections>
                                     </view>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -500,6 +510,21 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MOS-UF-k5s" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="3ae-bC-yYp" userLabel="Empty - Tap Gesture Recognizer">
+                    <connections>
+                        <segue destination="cMf-PX-Sfo" kind="push" identifier="RoutePickerViewController" id="8op-oZ-8BQ"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="Epl-fZ-iR7" userLabel="Line - Tap Gesture Recognizer">
+                    <connections>
+                        <segue destination="cMf-PX-Sfo" kind="push" identifier="RoutePickerViewController" id="ZmN-85-x7X"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="aKe-8k-12X" userLabel="Direction - Tap Gesture Recognizer">
+                    <connections>
+                        <action selector="_didTapDirectionPicker:" destination="428-o4-QMZ" id="93e-EI-79u"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="-34" y="114"/>
         </scene>
@@ -1166,4 +1191,7 @@
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
+    <inferredMetricsTieBreakers>
+        <segue reference="ZmN-85-x7X"/>
+    </inferredMetricsTieBreakers>
 </document>

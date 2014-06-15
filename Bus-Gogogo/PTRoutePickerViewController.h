@@ -25,7 +25,7 @@
   UITableViewDataSource
 >
 
-@property (nonatomic, weak)
+@property (nonatomic, weak) IBOutlet
 id <PTRoutePickerViewControllerDelegate> delegate;
 
 @end

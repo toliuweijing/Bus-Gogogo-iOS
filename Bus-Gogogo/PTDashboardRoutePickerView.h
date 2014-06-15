@@ -21,4 +21,6 @@
 - (void)setRoute:(PTRoute *)route;
 - (void)flipDirection;
 
+- (int)direction;
+
 @end

@@ -24,6 +24,7 @@
 - (void)flipDirection
 {
   _direction = _direction == 1 ? 0 : 1;
+  _directionTextLabel.text = [self _directionText];
 }
 
 - (void)setRoute:(PTRoute *)route
@@ -46,6 +47,11 @@
   }
   NSString *text = [components componentsJoinedByString:@" to "];
   return text;
+}
+
+- (int)direction
+{
+  return _direction;
 }
 
 /*

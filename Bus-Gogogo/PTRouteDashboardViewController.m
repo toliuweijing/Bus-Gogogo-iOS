@@ -18,6 +18,8 @@
   __weak IBOutlet UIView *_presenterContainerView;
   __weak IBOutlet PTDashboardRoutePickerView *_pickerContainerView;
   
+  PTRoute *_route;
+  
   PTRoutePresenterController *_presenterController;
 }
 
@@ -64,11 +66,21 @@
   }
 }
 
+- (IBAction)_didTapDirectionPicker:(id)sender
+{
+  [_pickerContainerView flipDirection];
+  [_presenterController setRoute:_route direction:[_pickerContainerView direction]];
+}
+
 #pragma mark - PTRoutePickerViewControllerDelegate
 
 - (void)routePickerViewController:(PTRoutePickerViewController *)controller didFinishWithRoute:(PTRoute *)route
 {
+  _route = route;
   [_pickerContainerView setRoute:route];
+  [_presenterController setRoute:route
+                       direction:[_pickerContainerView direction]];
+  
   [self.navigationController
    popToViewController:self
    animated:YES];
