@@ -7,59 +7,75 @@
 //
 
 #import "PTRoutePickerViewController.h"
-#import "PTRegionHeaderView.h"
 #import "PTRouteSummaryCell.h"
+#import "PTRouteSummaryCell.h"
+#import "PTRouteFilter.h"
+#import "PTRouteStore.h"
+#import "PTRoute.h"
 
-@interface PTRoutePickerViewController () <
-  UITableViewDataSource,
-  UITableViewDelegate
->
+@interface PTRoutePickerViewController ()
 {
-  __weak IBOutlet UIView *_regionHeaderContainer;
-  
-  PTRegionHeaderView *_regionHeader;
-  UITableView *_tableView;
+  __weak IBOutlet PTRegionHeaderView *_regionHeaderView;
+  __weak IBOutlet UITableView *_tableView;
+
+  PTRouteFilter *_routeFilter;
 }
 
 @end
 
 @implementation PTRoutePickerViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+- (id)initWithCoder:(NSCoder *)aDecoder
 {
-  self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-  if (self) {
-    // Custom initialization
+  if (self = [super initWithCoder:aDecoder]) {
+    [self _onInit];
   }
   return self;
+}
+
+- (void)_onInit
+{
 }
 
 - (void)viewDidLoad
 {
   [super viewDidLoad];
   
-//  // 1. _regionHeaderContainer contains _regionHeader
-//  _regionHeader = [PTRegionHeaderView loadNibWithOwner:self];
-//  _regionHeader.frame = _regionHeaderContainer.bounds;
-//  [_regionHeaderContainer addSubview:_regionHeader];
-//  
-//  // 2. self.view contains _tableView
-//  _tableView =
-//  [[UITableView alloc] initWithFrame:
-//   CGRectMake(0,
-//              CGRectGetMaxY(_regionHeaderContainer.frame)+1,
-//              CGRectGetWidth(self.view.bounds),
-//              CGRectGetHeight(self.view.bounds) - CGRectGetMaxY(_regionHeaderContainer.frame))];
-//  [_tableView registerNib:[UINib nibWithNibName:@"PTRouteSummaryCell" bundle:nil] forCellReuseIdentifier:@"RouteSummaryCell"];
-//  _tableView.dataSource = self;
-//  _tableView.delegate = self;
-//  [self.view addSubview:_tableView];
+  [[PTRouteStore sharedStore] retrieveRoutes:^(NSArray *routes) {
+    _routeFilter = [[PTRouteFilter alloc] initWithRoutes:routes];
+    [self _setSelectedRegion:[_regionHeaderView selectedRegion]];
+  }];
 }
 
-- (void)didReceiveMemoryWarning
+- (void)_setSelectedRegion:(NSString *)region
 {
-  [super didReceiveMemoryWarning];
-  // Dispose of any resources that can be recreated.
+  assert(_routeFilter);
+  [_routeFilter filterByRegion:region];
+  [_tableView reloadData];
+}
+
+- (NSString *)_region
+{
+  return [_regionHeaderView selectedRegion];
+}
+
+- (NSString *)_lineAtRow:(int)row
+{
+  return [[_routeFilter lines] objectAtIndex:row];
+}
+
+- (PTRoute *)_routeAtRow:(int)row
+{
+  return [_routeFilter routeWithRegion:[self _region]
+                                  line:[self _lineAtRow:row]];
+}
+
+#pragma mark - PTRegionHeaderViewDelegate
+
+- (void)regionHeaderView:(PTRegionHeaderView *)view
+      selectionDidChange:(NSString *)selection
+{
+  [self _setSelectedRegion:selection];
 }
 
 #pragma mark - UITableView
@@ -71,26 +87,34 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-  UITableViewCell *cell = [tableView
-                           dequeueReusableCellWithIdentifier:@"RouteSummaryCell"
-                           forIndexPath:indexPath];
+  NSString *identifier = indexPath.row % 2 == 0 ?
+  [PTRouteSummaryCell whiteGreenIdentifier] :
+  [PTRouteSummaryCell greenGrayIdentifier];
+  
+  PTRouteSummaryCell *cell = [tableView
+                              dequeueReusableCellWithIdentifier:identifier
+                              forIndexPath:indexPath];
+  assert([cell isKindOfClass:[PTRouteSummaryCell class]]);
+  
+  PTRoute *route = [self _routeAtRow:indexPath.row];
+  cell.leftLabel.text = route.shortName;
+  cell.destinationLabel.text = route.longName;
+  cell.subtitleLabel.text = route.viaDescription;
+  
   return cell;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-  return 1;
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-  return 33;
+  return [_routeFilter lines].count;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-  // pop back to PTRouteDashboardViewController
-  //self.delegate
+  NSLog(@"selected %@", [self _routeAtRow:indexPath.row].shortName);
+  [self.delegate
+   routePickerViewController:self
+   didFinishWithRoute:[self _routeAtRow:indexPath.row]];
 }
 
 /*

@@ -16,4 +16,10 @@
 
 - (NSString *)number; // i.e. X in X27
 
+- (NSString *)shortName;
+
+- (NSString *)longName;
+
+- (NSString *)viaDescription;
+
 @end

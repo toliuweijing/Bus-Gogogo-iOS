@@ -67,4 +67,19 @@
   return copy;
 }
 
+- (NSString *)shortName
+{
+  return _oba.ShortName;
+}
+
+- (NSString *)longName
+{
+  return _oba.LongName;
+}
+
+- (NSString *)viaDescription
+{
+  return _oba.Description;
+}
+
 @end

@@ -10,6 +10,13 @@
 
 @interface PTRouteSummaryCell : UITableViewCell
 
+@property (weak, nonatomic) IBOutlet UILabel *leftLabel;
+@property (weak, nonatomic) IBOutlet UILabel *destinationLabel;
+@property (weak, nonatomic) IBOutlet UILabel *subtitleLabel;
+
 + (PTRouteSummaryCell *)loadNibWithOwner:(id)owner;
+
++ (NSString *)whiteGreenIdentifier;
++ (NSString *)greenGrayIdentifier;
 
 @end

@@ -40,4 +40,14 @@
           firstObject];
 }
 
++ (NSString *)whiteGreenIdentifier
+{
+  return @"PTRouteSummaryCell_WhiteGreen";
+}
+
++ (NSString *)greenGrayIdentifier
+{
+  return @"PTRouteSummaryCell_GreenGray";
+}
+
 @end

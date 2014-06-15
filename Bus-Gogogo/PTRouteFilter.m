@@ -58,9 +58,14 @@
 
 - (PTRoute *)route
 {
+  return [self routeWithRegion:_regionFilter line:_lineFilter];
+}
+
+- (PTRoute *)routeWithRegion:(NSString *)region line:(NSString *)line
+{
   for (PTRoute *route in _routes) {
-    if ([route.regionPrefix isEqualToString:_regionFilter] &&
-        [route.number isEqualToString:_lineFilter]) {
+    if ([route.regionPrefix isEqualToString:region] &&
+        [route.number isEqualToString:line]) {
       return route;
     }
   }

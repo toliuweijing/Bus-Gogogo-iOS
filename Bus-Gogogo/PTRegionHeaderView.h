@@ -19,11 +19,9 @@
 
 @interface PTRegionHeaderView : UIView
 
-@property (nonatomic, weak)
+@property (nonatomic, weak) IBOutlet
 id<PTRegionHeaderViewDelegate> delegate;
 
 - (NSString *)selectedRegion;
-
-+ (PTRegionHeaderView *)loadNibWithOwner:(id)owner;
 
 @end
