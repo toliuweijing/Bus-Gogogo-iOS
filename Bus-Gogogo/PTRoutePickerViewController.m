@@ -38,22 +38,22 @@
 {
   [super viewDidLoad];
   
-  // 1. _regionHeaderContainer contains _regionHeader
-  _regionHeader = [PTRegionHeaderView loadNibWithOwner:self];
-  _regionHeader.frame = _regionHeaderContainer.bounds;
-  [_regionHeaderContainer addSubview:_regionHeader];
-  
-  // 2. self.view contains _tableView
-  _tableView =
-  [[UITableView alloc] initWithFrame:
-   CGRectMake(0,
-              CGRectGetMaxY(_regionHeaderContainer.frame)+1,
-              CGRectGetWidth(self.view.bounds),
-              CGRectGetHeight(self.view.bounds) - CGRectGetMaxY(_regionHeaderContainer.frame))];
-  [_tableView registerNib:[UINib nibWithNibName:@"PTRouteSummaryCell" bundle:nil] forCellReuseIdentifier:@"RouteSummaryCell"];
-  _tableView.dataSource = self;
-  _tableView.delegate = self;
-  [self.view addSubview:_tableView];
+//  // 1. _regionHeaderContainer contains _regionHeader
+//  _regionHeader = [PTRegionHeaderView loadNibWithOwner:self];
+//  _regionHeader.frame = _regionHeaderContainer.bounds;
+//  [_regionHeaderContainer addSubview:_regionHeader];
+//  
+//  // 2. self.view contains _tableView
+//  _tableView =
+//  [[UITableView alloc] initWithFrame:
+//   CGRectMake(0,
+//              CGRectGetMaxY(_regionHeaderContainer.frame)+1,
+//              CGRectGetWidth(self.view.bounds),
+//              CGRectGetHeight(self.view.bounds) - CGRectGetMaxY(_regionHeaderContainer.frame))];
+//  [_tableView registerNib:[UINib nibWithNibName:@"PTRouteSummaryCell" bundle:nil] forCellReuseIdentifier:@"RouteSummaryCell"];
+//  _tableView.dataSource = self;
+//  _tableView.delegate = self;
+//  [self.view addSubview:_tableView];
 }
 
 - (void)didReceiveMemoryWarning

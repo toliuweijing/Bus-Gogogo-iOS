@@ -530,6 +530,7 @@
                                     </label>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstItem="yU3-Hc-rPi" firstAttribute="centerY" secondItem="x1R-75-gzT" secondAttribute="centerY" constant="1" id="5cT-Rc-rBN"/>
                                     <constraint firstAttribute="centerX" secondItem="yU3-Hc-rPi" secondAttribute="centerX" constant="-88.5" id="Nzg-m9-P82"/>
@@ -539,6 +540,9 @@
                                     <constraint firstItem="yU3-Hc-rPi" firstAttribute="leading" secondItem="x1R-75-gzT" secondAttribute="trailing" constant="128" id="cZZ-GT-Yw0"/>
                                 </constraints>
                                 <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="etk-6Q-KP7" appends="YES" id="PKf-A4-8Rz"/>
+                                </connections>
                             </view>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fV1-3K-mq2" userLabel="Horizontal Separator">
                                 <rect key="frame" x="0.0" y="61" width="320" height="1"/>
@@ -555,13 +559,18 @@
                     <navigationItem key="navigationItem" id="a8q-jc-xN8"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8Fz-mN-N6t" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="etk-6Q-KP7">
+                    <connections>
+                        <segue destination="cMf-PX-Sfo" kind="push" id="9tF-Tf-ctw"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="-559" y="-525"/>
         </scene>
-        <!--View Controller - Pick Route-->
+        <!--Route Picker View Controller - Pick Route-->
         <scene sceneID="9TP-9j-Oig">
             <objects>
-                <viewController id="cMf-PX-Sfo" sceneMemberID="viewController">
+                <viewController id="cMf-PX-Sfo" customClass="PTRoutePickerViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="zxZ-wg-jXA"/>
                         <viewControllerLayoutGuide type="bottom" id="Uti-O9-UKT"/>
@@ -1310,4 +1319,7 @@
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
+    <inferredMetricsTieBreakers>
+        <segue reference="RGs-yV-rqw"/>
+    </inferredMetricsTieBreakers>
 </document>
