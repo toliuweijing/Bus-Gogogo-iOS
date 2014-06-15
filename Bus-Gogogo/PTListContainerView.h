@@ -15,6 +15,8 @@
  */
 @interface PTListContainerView : UIView
 
+- (void)setRoute:(PTRoute *)route;
+
 - (void)setStopGroup:(PTStopGroup *)stopGroup
      vehicleJourneys:(NSArray *)vehicleJourneys;
 

@@ -77,6 +77,7 @@
 - (void)setRoute:(PTRoute *)route
 {
   _route = route;
+  [_listView setRoute:route];
   [self _updateVehicleJourneysPeriodic:YES];
 }
 

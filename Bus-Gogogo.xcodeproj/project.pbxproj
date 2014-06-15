@@ -13,6 +13,8 @@
 		3F731F5C194CF1D800C79812 /* RoutePickerViewDefault.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3F731F5B194CF1D800C79812 /* RoutePickerViewDefault.xib */; };
 		8B4DC82B194DF2890013C6BD /* PTDashboardRoutePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B4DC82A194DF2890013C6BD /* PTDashboardRoutePickerView.m */; };
 		8B4DC82E194E0FCC0013C6BD /* PTStopMonitoringDownloadRequester.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B4DC82D194E0FCC0013C6BD /* PTStopMonitoringDownloadRequester.m */; };
+		8B4DC831194E14DF0013C6BD /* PTReminderManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B4DC830194E14DF0013C6BD /* PTReminderManager.m */; };
+		8B4DC833194E20700013C6BD /* Iphone-SMS-Tone-Original.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8B4DC832194E20700013C6BD /* Iphone-SMS-Tone-Original.mp3 */; };
 		E3D78FF620B54F618D846F7C /* libPods-Bus-GogogoTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CEC9CA41AFE4D5EA4247A62 /* libPods-Bus-GogogoTests.a */; };
 		E966D16F18F9800700CD8C0F /* PTPolyline.m in Sources */ = {isa = PBXBuildFile; fileRef = E966D16E18F9800700CD8C0F /* PTPolyline.m */; };
 		FB01A5DE18E76226001C793F /* PTMonitoredVehicleJourney.m in Sources */ = {isa = PBXBuildFile; fileRef = FB01A5DD18E76226001C793F /* PTMonitoredVehicleJourney.m */; };
@@ -97,6 +99,9 @@
 		8B4DC82A194DF2890013C6BD /* PTDashboardRoutePickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTDashboardRoutePickerView.m; sourceTree = "<group>"; };
 		8B4DC82C194E0FCC0013C6BD /* PTStopMonitoringDownloadRequester.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTStopMonitoringDownloadRequester.h; sourceTree = "<group>"; };
 		8B4DC82D194E0FCC0013C6BD /* PTStopMonitoringDownloadRequester.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTStopMonitoringDownloadRequester.m; sourceTree = "<group>"; };
+		8B4DC82F194E14DF0013C6BD /* PTReminderManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTReminderManager.h; sourceTree = "<group>"; };
+		8B4DC830194E14DF0013C6BD /* PTReminderManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTReminderManager.m; sourceTree = "<group>"; };
+		8B4DC832194E20700013C6BD /* Iphone-SMS-Tone-Original.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Iphone-SMS-Tone-Original.mp3"; sourceTree = "<group>"; };
 		E966D16D18F9800700CD8C0F /* PTPolyline.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTPolyline.h; sourceTree = "<group>"; };
 		E966D16E18F9800700CD8C0F /* PTPolyline.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTPolyline.m; sourceTree = "<group>"; };
 		FB01A5DC18E76226001C793F /* PTMonitoredVehicleJourney.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTMonitoredVehicleJourney.h; sourceTree = "<group>"; };
@@ -375,6 +380,7 @@
 		FB517C3E18DDDF43005C7881 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				8B4DC832194E20700013C6BD /* Iphone-SMS-Tone-Original.mp3 */,
 				FB517C3F18DDDF43005C7881 /* Bus-Gogogo-Info.plist */,
 				FB517C4018DDDF43005C7881 /* InfoPlist.strings */,
 				FB517C4318DDDF43005C7881 /* main.m */,
@@ -481,6 +487,8 @@
 				FBA258CF19389A0B007B05DE /* PTRoutePresenterView.m */,
 				FB2AE9A21938B1020038D4EE /* PTListContainerView.h */,
 				FB2AE9A31938B1020038D4EE /* PTListContainerView.m */,
+				8B4DC82F194E14DF0013C6BD /* PTReminderManager.h */,
+				8B4DC830194E14DF0013C6BD /* PTReminderManager.m */,
 			);
 			name = RoutePresenter;
 			sourceTree = "<group>";
@@ -647,6 +655,7 @@
 				3F731F56194CD18D00C79812 /* RoutePresenterCell_BusAtStop.xib in Resources */,
 				FB517C4218DDDF43005C7881 /* InfoPlist.strings in Resources */,
 				FBB001F81944A44400974AB4 /* RoutePresenterCell_top.xib in Resources */,
+				8B4DC833194E20700013C6BD /* Iphone-SMS-Tone-Original.mp3 in Resources */,
 				FB612B5619441BD900BBDD89 /* PTRouteSummaryCell_WhiteGreen.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -714,6 +723,7 @@
 				FBD7894518E74E580077F68A /* MTADataModels.m in Sources */,
 				FBA258C9193762E7007B05DE /* PTStopGroupPickerController.m in Sources */,
 				FB786CC018F99510002A7CFF /* PTMapContainerView.m in Sources */,
+				8B4DC831194E14DF0013C6BD /* PTReminderManager.m in Sources */,
 				FBA258CD193899FB007B05DE /* PTRoutePresenterController.m in Sources */,
 				FBC773AA18DE1D7600621261 /* PTStop+MKAnnotation.m in Sources */,
 				FB65611F19154236009EA53E /* PTRoute.m in Sources */,
