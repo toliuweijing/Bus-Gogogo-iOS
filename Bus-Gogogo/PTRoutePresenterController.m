@@ -28,7 +28,6 @@
   PTStopGroup *_stopGroup;
   NSArray *_vehcileJourneys;
   PTMonitoredVehicleJourneyDownloader *_downloader;
-  PTDownloadTask *_stopGroupTask;
   NSTimer *_timer;
 }
 
@@ -84,7 +83,6 @@
 {
   [self setRoute:route];
   
-  _stopGroupTask =
   [PTDownloadTask
    scheduledTaskWithRequester:[[PTStopGroupDownloadRequester alloc] initWithRouteId:route.identifier]
    callback:^(NSArray *stopGroups, NSError *error) {

@@ -21,9 +21,6 @@
   // A mapper indexed by PTRoute ids.
   NSMutableDictionary *_routesMap;
   
-  // A download task for fetching PTRoute objects.
-  PTDownloadTask *_task;
-  
   // Queued listeners
   NSMutableArray *_listeners;
 }
@@ -64,7 +61,6 @@
 
 - (void)_syncAllRoutes
 {
-  _task =
   [PTDownloadTask
    scheduledTaskWithRequester:[[PTAllRoutesDownloadRequester alloc] init]
    callback:^(NSArray *routes, NSError *error) {

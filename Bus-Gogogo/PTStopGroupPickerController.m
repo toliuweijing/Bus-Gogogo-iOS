@@ -26,7 +26,6 @@
   PTObjectPickerView *_view;
   NSArray *_stopGroups;
   PTRoute *_route;
-  PTDownloadTask *_task;
 }
 
 - (UIView *)view
@@ -46,7 +45,9 @@
   // reset
   [self _reset];
   
-  _task = [PTDownloadTask scheduledTaskWithRequester:[[PTStopGroupDownloadRequester alloc] initWithRouteId:_route.identifier] callback:^(NSArray *stopGroups, NSError *error) {
+  [PTDownloadTask
+   scheduledTaskWithRequester:[[PTStopGroupDownloadRequester alloc] initWithRouteId:_route.identifier]
+   callback:^(NSArray *stopGroups, NSError *error) {
     if (error == nil) {
       _stopGroups = stopGroups;
     } else {
