@@ -11,7 +11,7 @@
 #import "PTListContainerView.h"
 #import "PTRoutePresenterView.h"
 #import "PTStopGroupDownloadRequester.h"
-#import "PTMonitoredVehicleJourneyDownloadRequester.h"
+#import "PTVehicleMonitoringDownloadRequester.h"
 #import "PTRoute.h"
 #import "PTStopGroup.h"
 
@@ -101,7 +101,7 @@
 - (void)_updateVehicleJourneys:(NSTimer *)timer
 {
   [PTDownloadTask
-   scheduledTaskWithRequester:[[PTMonitoredVehicleJourneyDownloadRequester alloc] initWithRouteId:_route.identifier]
+   scheduledTaskWithRequester:[[PTVehicleMonitoringDownloadRequester alloc] initWithRouteId:_route.identifier]
    callback:^(NSArray *journeys, NSError *error) {
      if (error == nil) {
        [self _setVehicleJourneys:journeys];

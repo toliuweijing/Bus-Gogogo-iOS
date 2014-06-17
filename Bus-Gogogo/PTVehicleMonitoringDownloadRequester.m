@@ -6,11 +6,11 @@
 //  Copyright (c) 2014 Weijing Liu. All rights reserved.
 //
 
-#import "PTMonitoredVehicleJourneyDownloadRequester.h"
+#import "PTVehicleMonitoringDownloadRequester.h"
 #import "PTMonitoredVehicleJourney.h"
 #import "MTADataModels.h"
 
-@implementation PTMonitoredVehicleJourneyDownloadRequester
+@implementation PTVehicleMonitoringDownloadRequester
 {
   NSString *_routeId;
 }

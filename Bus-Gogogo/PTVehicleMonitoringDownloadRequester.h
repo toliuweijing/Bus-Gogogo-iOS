@@ -8,7 +8,7 @@
 
 #import "PTDownloadTask.h"
 
-@interface PTMonitoredVehicleJourneyDownloadRequester : NSObject <PTDownloadRequester>
+@interface PTVehicleMonitoringDownloadRequester : NSObject <PTDownloadRequester>
 
 - (instancetype)initWithRouteId:(NSString *)routeId;
 
