@@ -19,7 +19,6 @@
 		FB0CAA8E193407E80088A314 /* PTRouteStore.m in Sources */ = {isa = PBXBuildFile; fileRef = FB0CAA8D193407E80088A314 /* PTRouteStore.m */; };
 		FB0CAA91193421490088A314 /* PTMainScreenView.m in Sources */ = {isa = PBXBuildFile; fileRef = FB0CAA90193421490088A314 /* PTMainScreenView.m */; };
 		FB0CAA94193423ED0088A314 /* PTRoutePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = FB0CAA93193423ED0088A314 /* PTRoutePickerView.m */; };
-		FB129CD018F10D29009AAEA7 /* PTMonitoredVehicleJourneyDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = FB129CCF18F10D29009AAEA7 /* PTMonitoredVehicleJourneyDownloader.m */; };
 		FB189F451927BE8D0071B8F9 /* PTMainScreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FB189F441927BE8D0071B8F9 /* PTMainScreenViewController.m */; };
 		FB189F481927C1790071B8F9 /* PTObjectPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = FB189F471927C1790071B8F9 /* PTObjectPickerView.m */; };
 		FB2AE9A41938B1020038D4EE /* PTListContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = FB2AE9A31938B1020038D4EE /* PTListContainerView.m */; };
@@ -106,8 +105,6 @@
 		FB0CAA90193421490088A314 /* PTMainScreenView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTMainScreenView.m; sourceTree = "<group>"; };
 		FB0CAA92193423ED0088A314 /* PTRoutePickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTRoutePickerView.h; sourceTree = "<group>"; };
 		FB0CAA93193423ED0088A314 /* PTRoutePickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTRoutePickerView.m; sourceTree = "<group>"; };
-		FB129CCE18F10D29009AAEA7 /* PTMonitoredVehicleJourneyDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTMonitoredVehicleJourneyDownloader.h; sourceTree = "<group>"; };
-		FB129CCF18F10D29009AAEA7 /* PTMonitoredVehicleJourneyDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTMonitoredVehicleJourneyDownloader.m; sourceTree = "<group>"; };
 		FB189F431927BE8D0071B8F9 /* PTMainScreenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTMainScreenViewController.h; sourceTree = "<group>"; };
 		FB189F441927BE8D0071B8F9 /* PTMainScreenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTMainScreenViewController.m; sourceTree = "<group>"; };
 		FB189F461927C1790071B8F9 /* PTObjectPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTObjectPickerView.h; sourceTree = "<group>"; };
@@ -289,7 +286,6 @@
 		FB0CAA8A1933EBDD0088A314 /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				FBD8B66419375BCF00E43725 /* DEPRECATED */,
 				FB8714BF1944F54300670513 /* PTDownloadTask.h */,
 				FB8714C01944F54300670513 /* PTDownloadTask.m */,
 				FB8714CF1945109500670513 /* PTStopGroupDownloadRequester.h */,
@@ -505,15 +501,6 @@
 			name = RoutePickerView;
 			sourceTree = "<group>";
 		};
-		FBD8B66419375BCF00E43725 /* DEPRECATED */ = {
-			isa = PBXGroup;
-			children = (
-				FB129CCE18F10D29009AAEA7 /* PTMonitoredVehicleJourneyDownloader.h */,
-				FB129CCF18F10D29009AAEA7 /* PTMonitoredVehicleJourneyDownloader.m */,
-			);
-			name = DEPRECATED;
-			sourceTree = "<group>";
-		};
 		FBDBB9A2193BC744008374A2 /* Machine */ = {
 			isa = PBXGroup;
 			children = (
@@ -700,7 +687,6 @@
 				FB189F481927C1790071B8F9 /* PTObjectPickerView.m in Sources */,
 				FB5145C31934BF4C00B20EF9 /* PTObjectPickerTableViewController.m in Sources */,
 				FBA258D019389A0B007B05DE /* PTRoutePresenterView.m in Sources */,
-				FB129CD018F10D29009AAEA7 /* PTMonitoredVehicleJourneyDownloader.m in Sources */,
 				FBB5EB3A18E738E6007921A3 /* PTBus.m in Sources */,
 				FB0CAA8E193407E80088A314 /* PTRouteStore.m in Sources */,
 				FB8714D7194515D100670513 /* PTMonitoredVehicleJourneyDownloadRequester.m in Sources */,

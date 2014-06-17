@@ -10,12 +10,12 @@
 #import "PTMapContainerView.h"
 #import "PTListContainerView.h"
 #import "PTRoutePresenterView.h"
-#import "PTMonitoredVehicleJourneyDownloader.h"
 #import "PTStopGroupDownloadRequester.h"
+#import "PTMonitoredVehicleJourneyDownloadRequester.h"
 #import "PTRoute.h"
 #import "PTStopGroup.h"
 
-@interface PTRoutePresenterController () <PTMonitoredVehicleJourneyDownloaderDelegate>
+@interface PTRoutePresenterController ()
 
 @end
 
@@ -27,7 +27,6 @@
   PTRoute *_route;
   PTStopGroup *_stopGroup;
   NSArray *_vehcileJourneys;
-  PTMonitoredVehicleJourneyDownloader *_downloader;
   NSTimer *_timer;
 }
 
@@ -97,18 +96,17 @@
    }];
 }
 
-#pragma mark - PTMonitoredVehicleJourneyDownloaderDelegate
-
-- (void)downloader:(PTMonitoredVehicleJourneyDownloader *)downloader didReceiveVehicleJourneys:(NSArray *)vehicleJourneys
-{
-  [self _setVehicleJourneys:vehicleJourneys];
-}
-
 #pragma mark - Private
 
 - (void)_updateVehicleJourneys:(NSTimer *)timer
 {
-  _downloader = [[PTMonitoredVehicleJourneyDownloader alloc] initWithRouteIdentifier:_route.identifier delegate:self];
+  [PTDownloadTask
+   scheduledTaskWithRequester:[[PTMonitoredVehicleJourneyDownloadRequester alloc] initWithRouteId:_route.identifier]
+   callback:^(NSArray *journeys, NSError *error) {
+     if (error == nil) {
+       [self _setVehicleJourneys:journeys];
+     }
+   }];
 }
 
 - (void)_updateVehicleJourneysPeriodic:(BOOL)periodic
