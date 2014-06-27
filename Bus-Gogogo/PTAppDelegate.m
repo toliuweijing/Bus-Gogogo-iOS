@@ -57,5 +57,10 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData*)deviceToken {
     NSLog(@"pushToken:%@",self.pushToken);
 }
 
+- (void)application:(UIApplication *)app didFailToRegisterForRemoteNotificationsWithError:(NSError *)err {
+    
+    NSString *str = [NSString stringWithFormat: @"Error: %@", err];
+    NSLog(@"Fail to register the APNS push service:%@",str);
+}
 
 @end
