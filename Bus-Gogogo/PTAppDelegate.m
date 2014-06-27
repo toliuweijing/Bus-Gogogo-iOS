@@ -15,7 +15,7 @@
 {
   //Register and allow the push of notification
   [[UIApplication sharedApplication] registerForRemoteNotificationTypes:
-     (UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
+     (UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
   return YES;
 }
 
