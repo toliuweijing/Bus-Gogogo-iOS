@@ -52,8 +52,8 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData*)deviceToken {
     //Get the push token
     NSString *tokenStr = [deviceToken description];
     NSString *pushToken = [[tokenStr stringByReplacingOccurrencesOfString:@"" withString:@""]stringByReplacingOccurrencesOfString:@" " withString:@""];
+    //the push token is something like <edfsdfsfxxxxxxx>,we need to move the first letter and the last letter
     self.pushToken=[pushToken substringWithRange:NSMakeRange(1,pushToken.length-2)];
-    
     NSLog(@"pushToken:%@",self.pushToken);
 }
 
