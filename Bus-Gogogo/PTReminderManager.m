@@ -13,6 +13,8 @@
 #import "PTMonitoredVehicleJourney.h"
 #import <AVFoundation/AVAudioPlayer.h>
 #import <AudioToolbox/AudioToolbox.h>
+#import "PTAppDelegate.h"
+
 
 @interface PTReminderManager () <UIAlertViewDelegate>
 {
@@ -38,6 +40,32 @@
     _route = route;
     _direction = direction;
     _stopsAway = stopsAway;
+    
+    //sending request to the server
+      NSString *format =
+      @"http://ec2-54-88-127-149.compute-1.amazonaws.com/monitor/?"
+      "LineRef=%@&"
+      "MonitoringRef=%@&"
+      "DirectionRef=%d&"
+      "StopsAway=%d&"
+      "Device=%@&"
+      "Message=%@";
+    PTAppDelegate *d = [[UIApplication sharedApplication] delegate];
+    NSString *sendingMessage=[NSString stringWithFormat:
+                                @"A %@ is arriving %@", _route.shortName, _stop.name];
+    NSString *urlString = [NSString stringWithFormat:format, _route.identifier, _stop.identifier, _direction,stopsAway,d.pushToken,sendingMessage];
+    urlString = [urlString stringByReplacingOccurrencesOfString:@" " withString:@"%20"];
+    NSMutableURLRequest *request=[NSMutableURLRequest requestWithURL:[NSURL URLWithString:urlString] cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:15];
+    [request setHTTPMethod:@"GET"];
+    
+    [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:
+       ^(NSURLResponse *response, NSData *result, NSError *error){       //只会进入一次，方法内部已经实现了Buffer作用
+           
+               NSLog(@"Response:%@",response);
+           
+       }];
+      
+      
     [self onTick:nil];
     _timer = [NSTimer
               scheduledTimerWithTimeInterval:30
