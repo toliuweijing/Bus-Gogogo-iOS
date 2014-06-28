@@ -13,6 +13,8 @@
 #import "PTMonitoredVehicleJourney.h"
 #import <AVFoundation/AVAudioPlayer.h>
 #import <AudioToolbox/AudioToolbox.h>
+#import "PTAppDelegate.h"
+
 
 @interface PTReminderManager () <UIAlertViewDelegate>
 {
@@ -38,6 +40,36 @@
     _route = route;
     _direction = direction;
     _stopsAway = stopsAway;
+    
+    //sending request to the server
+      NSString *format =
+      @"http://ec2-54-88-127-149.compute-1.amazonaws.com/monitor/?"
+      "LineRef=%@&"
+      "MonitoringRef=%@&"
+      "DirectionRef=%d&"
+      "StopsAway=%d&"
+      "Device=%@&"
+      "Message=%@";
+    
+    PTAppDelegate *myappDele = [[UIApplication sharedApplication] delegate];
+    NSString *sendingMessage=[NSString stringWithFormat:@"A %@ is arriving %@", _route.shortName, _stop.name];
+    //use for simulator test
+    if (myappDele.pushToken==nil)
+    {
+    myappDele.pushToken=@"ebe293a6e1651defb50cd4a4a6f2f91f250afba1584987f47d0de8209a7586b4";
+    }
+    NSString *urlString = [NSString stringWithFormat:format, _route.identifier, _stop.identifier, _direction,stopsAway,myappDele.pushToken,sendingMessage];
+    urlString = [urlString stringByReplacingOccurrencesOfString:@" " withString:@"%20"];
+    NSMutableURLRequest *request=[NSMutableURLRequest requestWithURL:[NSURL URLWithString:urlString] cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:15];
+    [request setHTTPMethod:@"GET"];
+    
+    [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:
+       ^(NSURLResponse *response, NSData *result, NSError *error){
+               NSLog(@"Response:%@",response);
+               //if the response is nil, the project should deal with it.
+       }];
+      
+      
     [self onTick:nil];
     _timer = [NSTimer
               scheduledTimerWithTimeInterval:30

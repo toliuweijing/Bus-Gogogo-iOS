@@ -13,6 +13,9 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+  //Register and allow the push of notification
+  [[UIApplication sharedApplication] registerForRemoteNotificationTypes:
+     (UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
   return YES;
 }
 
@@ -41,6 +44,23 @@
 - (void)applicationWillTerminate:(UIApplication *)application
 {
   // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+- (void)application:(UIApplication*)application
+didRegisterForRemoteNotificationsWithDeviceToken:(NSData*)deviceToken {
+    
+    //Get the push token
+    NSString *tokenStr = [deviceToken description];
+    NSString *pushToken = [[tokenStr stringByReplacingOccurrencesOfString:@"" withString:@""]stringByReplacingOccurrencesOfString:@" " withString:@""];
+    //the push token is something like <edfsdfsfxxxxxxx>,we need to move the first letter and the last letter
+    self.pushToken=[pushToken substringWithRange:NSMakeRange(1,pushToken.length-2)];
+    NSLog(@"pushToken:%@",self.pushToken);
+}
+
+- (void)application:(UIApplication *)app didFailToRegisterForRemoteNotificationsWithError:(NSError *)err {
+    
+    NSString *str = [NSString stringWithFormat: @"Error: %@", err];
+    NSLog(@"Fail to register the APNS push service:%@",str);
 }
 
 @end
