@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		3F4CAB69195F51C0002BC4BE /* RoutePresenterCell_BusAtStopBottom.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3F4CAB68195F51C0002BC4BE /* RoutePresenterCell_BusAtStopBottom.xib */; };
+		3F4CAB6B195F56F2002BC4BE /* PTStopDetailHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3F4CAB6A195F56F2002BC4BE /* PTStopDetailHeaderView.xib */; };
+		3F4CAB70195F58DF002BC4BE /* PTStopDetailPresenterCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3F4CAB6F195F58DF002BC4BE /* PTStopDetailPresenterCell.xib */; };
+		3F4CAB72195F5B82002BC4BE /* PTStopDetailPresenterCell_Bus.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3F4CAB71195F5B82002BC4BE /* PTStopDetailPresenterCell_Bus.xib */; };
 		3F731F56194CD18D00C79812 /* RoutePresenterCell_BusAtStopMiddle.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3F731F54194CD18D00C79812 /* RoutePresenterCell_BusAtStopMiddle.xib */; };
 		3F731F57194CD18D00C79812 /* RoutePresenterCell_BusDriving.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3F731F55194CD18D00C79812 /* RoutePresenterCell_BusDriving.xib */; };
 		3F731F59194CE4D700C79812 /* RoutePickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3F731F58194CE4D700C79812 /* RoutePickerView.xib */; };
@@ -92,6 +95,9 @@
 		1C459DDA767F4C4AA42E4783 /* Pods-Bus-GogogoTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bus-GogogoTests.xcconfig"; path = "Pods/Pods-Bus-GogogoTests.xcconfig"; sourceTree = "<group>"; };
 		2B3FAB90E95E497C9F4BB358 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F4CAB68195F51C0002BC4BE /* RoutePresenterCell_BusAtStopBottom.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RoutePresenterCell_BusAtStopBottom.xib; sourceTree = "<group>"; };
+		3F4CAB6A195F56F2002BC4BE /* PTStopDetailHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PTStopDetailHeaderView.xib; sourceTree = "<group>"; };
+		3F4CAB6F195F58DF002BC4BE /* PTStopDetailPresenterCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PTStopDetailPresenterCell.xib; sourceTree = "<group>"; };
+		3F4CAB71195F5B82002BC4BE /* PTStopDetailPresenterCell_Bus.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PTStopDetailPresenterCell_Bus.xib; sourceTree = "<group>"; };
 		3F731F54194CD18D00C79812 /* RoutePresenterCell_BusAtStopMiddle.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RoutePresenterCell_BusAtStopMiddle.xib; sourceTree = "<group>"; };
 		3F731F55194CD18D00C79812 /* RoutePresenterCell_BusDriving.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RoutePresenterCell_BusDriving.xib; sourceTree = "<group>"; };
 		3F731F58194CE4D700C79812 /* RoutePickerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RoutePickerView.xib; sourceTree = "<group>"; };
@@ -237,6 +243,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3F4CAB6C195F56F7002BC4BE /* PTStopDetailView */ = {
+			isa = PBXGroup;
+			children = (
+				3F4CAB6A195F56F2002BC4BE /* PTStopDetailHeaderView.xib */,
+				3F4CAB6F195F58DF002BC4BE /* PTStopDetailPresenterCell.xib */,
+				3F4CAB71195F5B82002BC4BE /* PTStopDetailPresenterCell_Bus.xib */,
+			);
+			name = PTStopDetailView;
+			sourceTree = "<group>";
+		};
 		3F731F5A194CE4E300C79812 /* RoutePickerView */ = {
 			isa = PBXGroup;
 			children = (
@@ -292,6 +308,7 @@
 				FB189F471927C1790071B8F9 /* PTObjectPickerView.m */,
 				FBB001F91944A9A200974AB4 /* RoutePresenterCell */,
 				3F731F5A194CE4E300C79812 /* RoutePickerView */,
+				3F4CAB6C195F56F7002BC4BE /* PTStopDetailView */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -651,8 +668,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3F4CAB72195F5B82002BC4BE /* PTStopDetailPresenterCell_Bus.xib in Resources */,
 				FBB001F619449E8D00974AB4 /* PTRouteSummaryCell_GreenGray.xib in Resources */,
 				FBE61DF819434F9B00CAE3F7 /* MainStoryboard.storyboard in Resources */,
+				3F4CAB70195F58DF002BC4BE /* PTStopDetailPresenterCell.xib in Resources */,
 				FB2B86C319440CBB008187BA /* PTRegionHeaderView.xib in Resources */,
 				3F4CAB69195F51C0002BC4BE /* RoutePresenterCell_BusAtStopBottom.xib in Resources */,
 				3F731F57194CD18D00C79812 /* RoutePresenterCell_BusDriving.xib in Resources */,
@@ -663,6 +682,7 @@
 				FB517C5018DDDF43005C7881 /* Images.xcassets in Resources */,
 				3F731F56194CD18D00C79812 /* RoutePresenterCell_BusAtStopMiddle.xib in Resources */,
 				FB517C4218DDDF43005C7881 /* InfoPlist.strings in Resources */,
+				3F4CAB6B195F56F2002BC4BE /* PTStopDetailHeaderView.xib in Resources */,
 				FBB001F81944A44400974AB4 /* RoutePresenterCell_top.xib in Resources */,
 				8B4DC833194E20700013C6BD /* Iphone-SMS-Tone-Original.mp3 in Resources */,
 				FB612B5619441BD900BBDD89 /* PTRouteSummaryCell_WhiteGreen.xib in Resources */,
