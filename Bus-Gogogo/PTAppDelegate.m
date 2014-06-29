@@ -11,13 +11,33 @@
 
 @implementation PTAppDelegate
 
+- (BOOL)is4Inch
+{
+  return [[UIScreen mainScreen] bounds].size.height == 568;
+}
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
   //Register and allow the push of notification
-//  [[UIApplication sharedApplication] registerForRemoteNotificationTypes:
-//     (UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
+  [[UIApplication sharedApplication] registerForRemoteNotificationTypes:
+     (UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
+  
+  // 2. load storyboard based on screen size.
+  UIStoryboard *mainStoryboard = nil;
+  if (![self is4Inch]) {
+    mainStoryboard = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
+  } else {
+    mainStoryboard = [UIStoryboard storyboardWithName:@"MainStoryboard_4inch" bundle:nil];
+  }
+  
+  self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+  self.window.rootViewController = [mainStoryboard instantiateInitialViewController];
+  [self.window makeKeyAndVisible];
+  
+  return YES;
   return YES;
 }
+      
 
 - (void)applicationWillResignActive:(UIApplication *)application
 {

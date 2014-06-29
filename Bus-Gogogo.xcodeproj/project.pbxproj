@@ -19,6 +19,7 @@
 		8B4DC82E194E0FCC0013C6BD /* PTStopMonitoringDownloadRequester.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B4DC82D194E0FCC0013C6BD /* PTStopMonitoringDownloadRequester.m */; };
 		8B4DC831194E14DF0013C6BD /* PTReminderManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B4DC830194E14DF0013C6BD /* PTReminderManager.m */; };
 		8B4DC833194E20700013C6BD /* Iphone-SMS-Tone-Original.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8B4DC832194E20700013C6BD /* Iphone-SMS-Tone-Original.mp3 */; };
+		8B7B8B9919607AEB004E986B /* MainStoryboard_4inch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8B7B8B9819607AEB004E986B /* MainStoryboard_4inch.storyboard */; };
 		8BBF035F1960462800D970C4 /* RoutePresenterCell_BusAtStopTop.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8BBF035E1960462800D970C4 /* RoutePresenterCell_BusAtStopTop.xib */; };
 		8BBF036219604F5900D970C4 /* PTRoutePresenterCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BBF036119604F5900D970C4 /* PTRoutePresenterCell.m */; };
 		E3D78FF620B54F618D846F7C /* libPods-Bus-GogogoTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CEC9CA41AFE4D5EA4247A62 /* libPods-Bus-GogogoTests.a */; };
@@ -112,6 +113,7 @@
 		8B4DC82F194E14DF0013C6BD /* PTReminderManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTReminderManager.h; sourceTree = "<group>"; };
 		8B4DC830194E14DF0013C6BD /* PTReminderManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTReminderManager.m; sourceTree = "<group>"; };
 		8B4DC832194E20700013C6BD /* Iphone-SMS-Tone-Original.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Iphone-SMS-Tone-Original.mp3"; sourceTree = "<group>"; };
+		8B7B8B9819607AEB004E986B /* MainStoryboard_4inch.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainStoryboard_4inch.storyboard; sourceTree = "<group>"; };
 		8BBF035E1960462800D970C4 /* RoutePresenterCell_BusAtStopTop.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RoutePresenterCell_BusAtStopTop.xib; sourceTree = "<group>"; };
 		8BBF036019604F5900D970C4 /* PTRoutePresenterCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTRoutePresenterCell.h; sourceTree = "<group>"; };
 		8BBF036119604F5900D970C4 /* PTRoutePresenterCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTRoutePresenterCell.m; sourceTree = "<group>"; };
@@ -386,6 +388,7 @@
 				FB517C4618DDDF43005C7881 /* PTAppDelegate.h */,
 				FB517C4718DDDF43005C7881 /* PTAppDelegate.m */,
 				FBE61DF719434F9B00CAE3F7 /* MainStoryboard.storyboard */,
+				8B7B8B9819607AEB004E986B /* MainStoryboard_4inch.storyboard */,
 				FBE61DF91943529B00CAE3F7 /* PTRouteDashboardViewController.h */,
 				FBE61DFA1943529B00CAE3F7 /* PTRouteDashboardViewController.m */,
 				FB5440591945458C00EF7ACE /* RoutePickerViewController */,
@@ -685,6 +688,7 @@
 				3F4CAB69195F51C0002BC4BE /* RoutePresenterCell_BusAtStopBottom.xib in Resources */,
 				3F731F57194CD18D00C79812 /* RoutePresenterCell_BusDriving.xib in Resources */,
 				3F731F59194CE4D700C79812 /* RoutePickerView.xib in Resources */,
+				8B7B8B9919607AEB004E986B /* MainStoryboard_4inch.storyboard in Resources */,
 				FBB001FD1944ABCB00974AB4 /* RoutePresenterCell_bottom.xib in Resources */,
 				3F731F5C194CF1D800C79812 /* RoutePickerViewDefault.xib in Resources */,
 				FBB001FB1944AA4A00974AB4 /* RoutePresenterCell_middle.xib in Resources */,
