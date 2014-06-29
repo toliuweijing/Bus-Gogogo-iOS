@@ -19,6 +19,7 @@
 		8B4DC82E194E0FCC0013C6BD /* PTStopMonitoringDownloadRequester.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B4DC82D194E0FCC0013C6BD /* PTStopMonitoringDownloadRequester.m */; };
 		8B4DC831194E14DF0013C6BD /* PTReminderManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B4DC830194E14DF0013C6BD /* PTReminderManager.m */; };
 		8B4DC833194E20700013C6BD /* Iphone-SMS-Tone-Original.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8B4DC832194E20700013C6BD /* Iphone-SMS-Tone-Original.mp3 */; };
+		8BBF035F1960462800D970C4 /* RoutePresenterCell_BusAtStopTop.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8BBF035E1960462800D970C4 /* RoutePresenterCell_BusAtStopTop.xib */; };
 		E3D78FF620B54F618D846F7C /* libPods-Bus-GogogoTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CEC9CA41AFE4D5EA4247A62 /* libPods-Bus-GogogoTests.a */; };
 		E966D16F18F9800700CD8C0F /* PTPolyline.m in Sources */ = {isa = PBXBuildFile; fileRef = E966D16E18F9800700CD8C0F /* PTPolyline.m */; };
 		FB01A5DE18E76226001C793F /* PTMonitoredVehicleJourney.m in Sources */ = {isa = PBXBuildFile; fileRef = FB01A5DD18E76226001C793F /* PTMonitoredVehicleJourney.m */; };
@@ -110,6 +111,7 @@
 		8B4DC82F194E14DF0013C6BD /* PTReminderManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTReminderManager.h; sourceTree = "<group>"; };
 		8B4DC830194E14DF0013C6BD /* PTReminderManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTReminderManager.m; sourceTree = "<group>"; };
 		8B4DC832194E20700013C6BD /* Iphone-SMS-Tone-Original.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Iphone-SMS-Tone-Original.mp3"; sourceTree = "<group>"; };
+		8BBF035E1960462800D970C4 /* RoutePresenterCell_BusAtStopTop.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RoutePresenterCell_BusAtStopTop.xib; sourceTree = "<group>"; };
 		E966D16D18F9800700CD8C0F /* PTPolyline.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTPolyline.h; sourceTree = "<group>"; };
 		E966D16E18F9800700CD8C0F /* PTPolyline.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTPolyline.m; sourceTree = "<group>"; };
 		FB01A5DC18E76226001C793F /* PTMonitoredVehicleJourney.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTMonitoredVehicleJourney.h; sourceTree = "<group>"; };
@@ -521,6 +523,7 @@
 				FBB001FA1944AA4A00974AB4 /* RoutePresenterCell_middle.xib */,
 				FBB001FC1944ABCB00974AB4 /* RoutePresenterCell_bottom.xib */,
 				3F4CAB68195F51C0002BC4BE /* RoutePresenterCell_BusAtStopBottom.xib */,
+				8BBF035E1960462800D970C4 /* RoutePresenterCell_BusAtStopTop.xib */,
 			);
 			name = RoutePresenterCell;
 			sourceTree = "<group>";
@@ -668,6 +671,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8BBF035F1960462800D970C4 /* RoutePresenterCell_BusAtStopTop.xib in Resources */,
 				3F4CAB72195F5B82002BC4BE /* PTStopDetailPresenterCell_Bus.xib in Resources */,
 				FBB001F619449E8D00974AB4 /* PTRouteSummaryCell_GreenGray.xib in Resources */,
 				FBE61DF819434F9B00CAE3F7 /* MainStoryboard.storyboard in Resources */,
