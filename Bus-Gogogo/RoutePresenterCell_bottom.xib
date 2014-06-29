@@ -25,7 +25,7 @@
                         <rect key="frame" x="22" y="0.0" width="10" height="33"/>
                     </view>
                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="SHORE RD/71 ST" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gvz-zM-LtV">
-                        <rect key="frame" x="40" y="0.0" width="280" height="44"/>
+                        <rect key="frame" x="33" y="0.0" width="280" height="44"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>

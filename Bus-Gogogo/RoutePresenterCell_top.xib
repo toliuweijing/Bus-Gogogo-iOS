@@ -22,7 +22,7 @@
                         <color key="backgroundColor" red="0.25704131099999999" green="0.45001594389999999" blue="0.26349111250000001" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="KINGS PLZ/KINGS PLZ" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jvK-15-2M1">
-                        <rect key="frame" x="34" y="0.0" width="286" height="44"/>
+                        <rect key="frame" x="33" y="0.0" width="286" height="44"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
