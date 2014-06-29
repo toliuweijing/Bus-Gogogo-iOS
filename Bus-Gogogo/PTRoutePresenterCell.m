@@ -62,4 +62,16 @@
   return nil;
 }
 
++ (PTRoutePresenterCell *)cellWithType:(PTRoutePresenterCellType)type
+                                 owner:(id)owner
+{
+  PTRoutePresenterCell *cell =
+  [[[NSBundle mainBundle]
+   loadNibNamed:[self reuseIdentifierWithType:type]
+   owner:owner
+   options:nil] firstObject];
+  assert([cell isKindOfClass:[PTRoutePresenterCell class]]);
+  return cell;
+}
+
 @end

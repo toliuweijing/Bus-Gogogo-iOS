@@ -14,8 +14,8 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
   //Register and allow the push of notification
-  [[UIApplication sharedApplication] registerForRemoteNotificationTypes:
-     (UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
+//  [[UIApplication sharedApplication] registerForRemoteNotificationTypes:
+//     (UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
   return YES;
 }
 

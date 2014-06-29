@@ -24,4 +24,7 @@ typedef NS_ENUM(NSInteger, PTRoutePresenterCellType) {
 
 + (NSString *)reuseIdentifierWithType:(PTRoutePresenterCellType)type;
 
++ (PTRoutePresenterCell *)cellWithType:(PTRoutePresenterCellType)type
+                                 owner:(id)owner;
+
 @end

@@ -8,6 +8,7 @@
 
 #import "PTListContainerView.h"
 #import "PTStopGroup.h"
+#import "PTRoutePresenterCell.h"
 #import "PTMonitoredVehicleJourney.h"
 #import "PTStore.h"
 #import "PTStop.h"
@@ -61,20 +62,52 @@
 
 #pragma mark - UITableViewDataSource
 
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-  static NSString *identifier = @"PTListContainerView";
-  UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
-  if (cell == nil) {
-    cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:identifier];
-  }
-  
+  // 1. Journey and stop
   NSString *stopID = [_stopGroup.stopIDs objectAtIndex:indexPath.row];
-  
   PTStop *stop = [[PTStore sharedStore] stopWithIdentifier:stopID];
   PTMonitoredVehicleJourney *journey = [self _journeyAtStop:stopID];
-  [self _configureCell:cell withVehicleJourney:journey stop:stop];
   
+  // 2. cellType.
+  PTRoutePresenterCellType cellType;
+  BOOL isTop = indexPath.row == 0;
+  BOOL isBottom = indexPath.row == _stopGroup.stopIDs.count - 1;
+  if (journey) {
+    cellType = PTRoutePresenterCellTypeBusAtStopMiddle;
+    cellType = isTop ? PTRoutePresenterCellTypeBusAtStopTop : cellType;
+    cellType = isBottom ? PTRoutePresenterCellTypeBusAtStopBottom : cellType;
+  } else {
+    cellType = PTRoutePresenterCellTypeStopMiddle;
+    cellType = isTop ? PTRoutePresenterCellTypeStopTop : cellType;
+    cellType = isBottom ? PTRoutePresenterCellTypeStopBottom : cellType;
+  }
+  
+  // 3. cell
+  NSString *reuseIdentifier = [PTRoutePresenterCell reuseIdentifierWithType:cellType];
+  PTRoutePresenterCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseIdentifier];
+  if (cell == nil) {
+    cell = [PTRoutePresenterCell cellWithType:cellType owner:self];
+  }
+  assert([cell isKindOfClass:[PTRoutePresenterCell class]]);
+  
+  // 4. configure cell
+  NSString *description = [NSString stringWithFormat:@"(%@)", journey.presentableDistance];
+  cell.descriptionLabel.text = journey ? [NSString stringWithFormat:@"%@ %@", stop.name, description] : stop.name;
+//  static NSString *identifier = @"PTListContainerView";
+//  UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+//  if (cell == nil) {
+//    cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:identifier];
+//  }
+//  
+//  NSString *stopID = [_stopGroup.stopIDs objectAtIndex:indexPath.row];
+//  
+//  PTStop *stop = [[PTStore sharedStore] stopWithIdentifier:stopID];
+//  PTMonitoredVehicleJourney *journey = [self _journeyAtStop:stopID];
+//  [self _configureCell:cell withVehicleJourney:journey stop:stop];
+//  
+//  return cell;
   return cell;
 }
 
@@ -115,16 +148,16 @@
   cell.detailTextLabel.font = [PTBase font];
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-  NSString *stopID = [_stopGroup.stopIDs objectAtIndex:indexPath.row];
-  PTMonitoredVehicleJourney *journey = [self _journeyAtStop:stopID];
-  if (journey) {
-    return 60;
-  } else {
-    return 30;
-  }
-}
+//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+//  NSString *stopID = [_stopGroup.stopIDs objectAtIndex:indexPath.row];
+//  PTMonitoredVehicleJourney *journey = [self _journeyAtStop:stopID];
+//  if (journey) {
+//    return 60;
+//  } else {
+//    return 30;
+//  }
+//}
 
 - (void)setRoute:(PTRoute *)route
 {
