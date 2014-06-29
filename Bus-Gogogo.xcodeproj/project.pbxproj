@@ -522,13 +522,13 @@
 			children = (
 				8BBF036019604F5900D970C4 /* PTRoutePresenterCell.h */,
 				8BBF036119604F5900D970C4 /* PTRoutePresenterCell.m */,
+				8BBF035E1960462800D970C4 /* RoutePresenterCell_BusAtStopTop.xib */,
 				3F731F54194CD18D00C79812 /* RoutePresenterCell_BusAtStopMiddle.xib */,
+				3F4CAB68195F51C0002BC4BE /* RoutePresenterCell_BusAtStopBottom.xib */,
 				3F731F55194CD18D00C79812 /* RoutePresenterCell_BusDriving.xib */,
 				FBB001F71944A44400974AB4 /* RoutePresenterCell_top.xib */,
 				FBB001FA1944AA4A00974AB4 /* RoutePresenterCell_middle.xib */,
 				FBB001FC1944ABCB00974AB4 /* RoutePresenterCell_bottom.xib */,
-				3F4CAB68195F51C0002BC4BE /* RoutePresenterCell_BusAtStopBottom.xib */,
-				8BBF035E1960462800D970C4 /* RoutePresenterCell_BusAtStopTop.xib */,
 			);
 			name = RoutePresenterCell;
 			sourceTree = "<group>";
