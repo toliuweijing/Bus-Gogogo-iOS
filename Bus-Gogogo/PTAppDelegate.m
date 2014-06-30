@@ -34,7 +34,6 @@
   [self.window makeKeyAndVisible];
   
   return YES;
-  return YES;
 }
       
 
