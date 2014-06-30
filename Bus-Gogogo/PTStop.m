@@ -7,6 +7,7 @@
 //
 
 #import "PTStop.h"
+#import <CoreLocation/CoreLocation.h>
 
 @interface PTStop ()
 

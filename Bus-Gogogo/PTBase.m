@@ -10,24 +10,27 @@
 #import "OBADataModel.h"
 #import "PTBase.h"
 
-NSMutableArray *decodePolyLines(NSArray *polylines)
+@implementation PTBase
+
++ (NSMutableArray *)decodePolyLines:(NSArray *)polylines
 {
   NSMutableArray *collection = [[NSMutableArray alloc] init];
   for (OBAPolyline *polyline in polylines) {
     assert([polyline isKindOfClass:[OBAPolyline class]]);
-    [collection addObjectsFromArray:decodePolyLine(polyline)];
+    [collection addObjectsFromArray:[self decodePolyLine:polyline]];
   }
   return collection;
 }
 
-NSMutableArray *decodePolyLine(OBAPolyline *polyline)
++ (NSMutableArray *)decodePolyLine:(OBAPolyline *)polyline
 {
-  return decodePolyLineStr(polyline.Points);
+  return [self decodePolyLineStr:polyline.Points];
 }
 
-NSMutableArray *decodePolyLineStr(NSString *encodedStr)
++ (NSMutableArray *)decodePolyLineStr:(NSString *)encodedStr
 {
-  NSMutableString *encoded = [[NSMutableString alloc] initWithCapacity:[encodedStr length]];
+//  NSMutableString *encoded = [[NSMutableString alloc] initWithCapacity:[encodedStr length]];
+  NSMutableString *encoded = [[NSMutableString alloc] initWithString:@""];
   [encoded appendString:encodedStr];
   [encoded replaceOccurrencesOfString:@"\\\\" withString:@"\\"
                               options:NSLiteralSearch
@@ -66,3 +69,22 @@ NSMutableArray *decodePolyLineStr(NSString *encodedStr)
   
   return array;
 }
+
++ (NSString *)shuttlePictureImageName
+{
+  static NSString *const kShuttlePictureImageName = @"Shuttle-Picture.png";
+  return kShuttlePictureImageName;
+}
+
++ (UIFont *)font
+{
+  return [self fontWithSize:12];
+}
+
++ (UIFont *)fontWithSize:(CGFloat)size
+{
+  return [UIFont fontWithName:@"Avenir" size:size];
+}
+
+@end
+

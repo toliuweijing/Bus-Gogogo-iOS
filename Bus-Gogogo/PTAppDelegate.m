@@ -7,25 +7,35 @@
 //
 
 #import "PTAppDelegate.h"
-#import "PTLinePickerViewController.h"
-#import "PTStopDetailViewController.h"
-#import "PTRouteDetailTableViewController.h"
 
 @implementation PTAppDelegate
 
+- (BOOL)is4Inch
+{
+  return [[UIScreen mainScreen] bounds].size.height == 568;
+}
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+  //Register and allow the push of notification
+  [[UIApplication sharedApplication] registerForRemoteNotificationTypes:
+     (UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
+  
+  // 2. load storyboard based on screen size.
+  UIStoryboard *mainStoryboard = nil;
+  if (![self is4Inch]) {
+    mainStoryboard = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
+  } else {
+    mainStoryboard = [UIStoryboard storyboardWithName:@"MainStoryboard_4inch" bundle:nil];
+  }
+  
   self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-  self.window.backgroundColor = [UIColor whiteColor];
-  
-  PTLinePickerViewController *vc = [[PTLinePickerViewController alloc] init];
-//  UIViewController *vc = [[PTRouteDetailTableViewController alloc] initWithStyle:UITableViewStylePlain];
-  UINavigationController *navigator = [[UINavigationController alloc] initWithRootViewController:vc];
-  
-  self.window.rootViewController = navigator;
+  self.window.rootViewController = [mainStoryboard instantiateInitialViewController];
   [self.window makeKeyAndVisible];
+  
   return YES;
 }
+      
 
 - (void)applicationWillResignActive:(UIApplication *)application
 {
@@ -52,6 +62,23 @@
 - (void)applicationWillTerminate:(UIApplication *)application
 {
   // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+- (void)application:(UIApplication*)application
+didRegisterForRemoteNotificationsWithDeviceToken:(NSData*)deviceToken {
+    
+    //Get the push token
+    NSString *tokenStr = [deviceToken description];
+    NSString *pushToken = [[tokenStr stringByReplacingOccurrencesOfString:@"" withString:@""]stringByReplacingOccurrencesOfString:@" " withString:@""];
+    //the push token is something like <edfsdfsfxxxxxxx>,we need to move the first letter and the last letter
+    self.pushToken=[pushToken substringWithRange:NSMakeRange(1,pushToken.length-2)];
+    NSLog(@"pushToken:%@",self.pushToken);
+}
+
+- (void)application:(UIApplication *)app didFailToRegisterForRemoteNotificationsWithError:(NSError *)err {
+    
+    NSString *str = [NSString stringWithFormat: @"Error: %@", err];
+    NSLog(@"Fail to register the APNS push service:%@",str);
 }
 
 @end

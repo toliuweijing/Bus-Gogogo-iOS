@@ -8,6 +8,14 @@
 
 @class OBAPolyline;
 
-NSMutableArray *decodePolyLine(OBAPolyline *polyline);
-NSMutableArray *decodePolyLines(NSArray *polylines);
-NSMutableArray *decodePolyLineStr(NSString *encodedStr);
+@interface PTBase : NSObject
+
++ (NSMutableArray *)decodePolyLine:(OBAPolyline *)polyline;
++ (NSMutableArray *)decodePolyLines:(NSArray *)polylines;
++ (NSMutableArray *)decodePolyLineStr:(NSString *)encodedStr;
+
++ (NSString *)shuttlePictureImageName;
++ (UIFont *)font;
++ (UIFont *)fontWithSize:(CGFloat)size;
+
+@end

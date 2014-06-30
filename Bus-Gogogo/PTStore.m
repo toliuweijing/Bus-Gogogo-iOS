@@ -8,10 +8,18 @@
 
 #import "PTStore.h"
 #import "PTStop.h"
+#import "PTRoute.h"
 
 @interface PTStore ()
+{
+  NSMutableDictionary *_stopsMap; // stopID -> PTStop
+  NSMutableDictionary *_routesMap; // routeID -> PTRoute
+  
+  // PTRouteStore callbacks
+  NSMutableArray *_routeStoreCallbacks;
+}
 
-@property (nonatomic, strong) NSMutableDictionary *stopsMap;
+@property (nonatomic, assign) BOOL allRoutesLoaded;
 
 @end
 
@@ -21,6 +29,8 @@
 {
   if (self = [super init]) {
     _stopsMap = [[NSMutableDictionary alloc] init];
+    _routesMap = [[NSMutableDictionary alloc] init];
+    _routeStoreCallbacks = [[NSMutableArray alloc] init];
   }
   return self;
 }
@@ -38,12 +48,12 @@
 - (PTStop *)stopWithIdentifier:(NSString *)identifier
 {
   assert(identifier);
-  return [self.stopsMap objectForKey:identifier];
+  return [_stopsMap objectForKey:identifier];
 }
 
 - (void)saveStop:(PTStop *)stop
 {
-  [self.stopsMap setObject:stop forKey:stop.identifier];
+  [_stopsMap setObject:stop forKey:stop.identifier];
 }
 
 - (void)populateWithOBAResponse:(OBAResponse *)oba
@@ -54,5 +64,6 @@
     [self saveStop:ptStop];
   }
 }
+
 
 @end
