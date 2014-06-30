@@ -264,6 +264,17 @@
 		E94206E618F4E514009E9D3D /* Base */ = {
 			isa = PBXGroup;
 			children = (
+				8B80068A195F4A3700EA96B6 /* PTRemoteService.h */,
+				8B80068B195F4A3700EA96B6 /* PTRemoteService.m */,
+				8BA1726A195F4BAF00AB1300 /* PTRemoteReminderRequest.h */,
+				8BA1726B195F4BAF00AB1300 /* PTRemoteReminderRequest.m */,
+			);
+			name = RemoteService;
+			sourceTree = "<group>";
+		};
+		E94206E618F4E514009E9D3D /* Base */ = {
+			isa = PBXGroup;
+			children = (
 				FBFF62ED18E876D1008D94F9 /* PTMacro.h */,
 				FB3D48EA18F0487E00302031 /* PTBase.h */,
 				FB3D48EB18F0487E00302031 /* PTBase.m */,
