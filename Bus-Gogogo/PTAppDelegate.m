@@ -7,7 +7,6 @@
 //
 
 #import "PTAppDelegate.h"
-#import "PTMainScreenViewController.h"
 
 @implementation PTAppDelegate
 
