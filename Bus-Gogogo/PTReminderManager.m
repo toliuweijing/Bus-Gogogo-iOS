@@ -43,13 +43,13 @@
     
     //sending request to the server
       NSString *format =
-      @"http://ec2-54-88-127-149.compute-1.amazonaws.com/monitor/?"
-      "LineRef=%@&"
-      "MonitoringRef=%@&"
-      "DirectionRef=%d&"
-      "StopsAway=%d&"
-      "Device=%@&"
-      "Message=%@";
+      @"http://ec2-54-88-127-149.compute-1.amazonaws.com:85/CreateArrivialReminder?"
+      "routeid=%@&"
+      "stopid=%@&"
+      "direction=%d&"
+      "stopaway=%d&"
+      "clientid=%@&"
+      "message=%@";
     
     PTAppDelegate *myappDele = [[UIApplication sharedApplication] delegate];
     NSString *sendingMessage=[NSString stringWithFormat:@"A %@ is arriving %@", _route.shortName, _stop.name];
