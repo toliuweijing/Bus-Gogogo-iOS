@@ -52,13 +52,13 @@
 - (NSURLRequest *)_buildRequest
 {
   NSString *format =
-  @"http://ec2-54-88-127-149.compute-1.amazonaws.com/monitor/?"
-  "LineRef=%@&"
-  "MonitoringRef=%@&"
-  "DirectionRef=%d&"
-  "StopsAway=%d&"
-  "Device=%@&"
-  "Message=%@";
+  @"http://ec2-54-88-127-149.compute-1.amazonaws.com:85/CreateArrivialReminder?"
+  "routeid=%@&"
+  "stopid=%@&"
+  "direction=%d&"
+  "stopaway=%d&"
+  "clientid=%@&"
+  "message=%@";
   
   NSString *sendingMessage = [NSString stringWithFormat:@"A %@ is arriving %@", _route.shortName, _stop.name];
   
@@ -85,6 +85,11 @@
                                 arrivalRadar:(int)arrivalRadar
 {
   PTAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+  //Add simulator test support
+  if (appDelegate.pushToken==nil)
+  {
+      appDelegate.pushToken=@"ebe293a6e1651defb50cd4a4a6f2f91f250afba1584987f47d0de8209a7586b4";
+  }
   return [[PTRemoteReminderRequest alloc]
           initWithStop:stop
           route:route
