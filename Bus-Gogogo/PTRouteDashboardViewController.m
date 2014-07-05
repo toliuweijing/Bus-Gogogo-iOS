@@ -59,18 +59,21 @@
   
   [_presenterContainerView addSubview:[_presenterController view]];
   [_presenterController view].frame = _presenterContainerView.bounds;
-  
-  self.navigationItem.rightBarButtonItem =
-  [[UIBarButtonItem alloc]
-   initWithTitle:[self _rightBarItemTitle]
-   style:UIBarButtonItemStylePlain
-   target:self
-   action:@selector(_didTapRightBarItem:)];
+
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
   [super viewWillAppear:animated];
+  
+  if (_route) {
+    self.navigationItem.rightBarButtonItem =
+    [[UIBarButtonItem alloc]
+     initWithTitle:[self _rightBarItemTitle]
+     style:UIBarButtonItemStylePlain
+     target:self
+     action:@selector(_didTapRightBarItem:)];
+  }
 }
 
 #pragma mark - Navigation
