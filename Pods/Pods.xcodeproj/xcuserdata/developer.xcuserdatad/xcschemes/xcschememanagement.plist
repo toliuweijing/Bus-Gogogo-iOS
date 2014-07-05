@@ -9,11 +9,6 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods-Bus-GogogoTests-Tweaks.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>Pods-Bus-GogogoTests.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -22,17 +17,12 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>35AC5CBEF41449BF84123E8E</key>
+		<key>07B010A565E244D3BC08878C</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>82A720100CBA45C7B10B9940</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>C3936CFDC3CC416784042CE5</key>
+		<key>2809B5D2F93F4128A2DB62AD</key>
 		<dict>
 			<key>primary</key>
 			<true/>

@@ -8,7 +8,6 @@ end
 target "Bus-GogogoTests" do
 
 pod 'OCMock'
-pod 'Tweaks'
 
 end
 
