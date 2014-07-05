@@ -23,4 +23,5 @@
 
 - (int)direction;
 
+- (void)setLoadingIndicator:(BOOL)enable;
 @end
