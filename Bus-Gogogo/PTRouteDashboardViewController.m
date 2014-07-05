@@ -10,6 +10,7 @@
 #import "PTRoutePresenterController.h"
 #import "PTRoutePickerViewController.h"
 #import "PTDashboardRoutePickerView.h"
+#import "PTRouteStore.h"
 
 @interface PTRouteDashboardViewController () <
   PTRoutePickerViewControllerDelegate
@@ -59,18 +60,31 @@
   
   [_presenterContainerView addSubview:[_presenterController view]];
   [_presenterController view].frame = _presenterContainerView.bounds;
-  
-  self.navigationItem.rightBarButtonItem =
-  [[UIBarButtonItem alloc]
-   initWithTitle:[self _rightBarItemTitle]
-   style:UIBarButtonItemStylePlain
-   target:self
-   action:@selector(_didTapRightBarItem:)];
+
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
   [super viewWillAppear:animated];
+  
+  if (_route) {
+    self.navigationItem.rightBarButtonItem =
+    [[UIBarButtonItem alloc]
+     initWithTitle:[self _rightBarItemTitle]
+     style:UIBarButtonItemStylePlain
+     target:self
+     action:@selector(_didTapRightBarItem:)];
+  }
+  
+  // Before data is ready,
+  // 1. spin up a loading indicator.
+  // 2. disable user interaction.
+  [_pickerContainerView setLoadingIndicator:YES];
+  _pickerContainerView.userInteractionEnabled = NO;
+  [[PTRouteStore sharedStore] retrieveRoutes:^(NSArray *routes) {
+    [_pickerContainerView setLoadingIndicator:NO];
+  _pickerContainerView.userInteractionEnabled = YES;
+  }];
 }
 
 #pragma mark - Navigation

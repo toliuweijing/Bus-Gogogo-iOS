@@ -20,10 +20,10 @@
 		8B4DC831194E14DF0013C6BD /* PTReminderManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B4DC830194E14DF0013C6BD /* PTReminderManager.m */; };
 		8B4DC833194E20700013C6BD /* Iphone-SMS-Tone-Original.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8B4DC832194E20700013C6BD /* Iphone-SMS-Tone-Original.mp3 */; };
 		8B7B8B9919607AEB004E986B /* MainStoryboard_4inch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8B7B8B9819607AEB004E986B /* MainStoryboard_4inch.storyboard */; };
-		8BBF035F1960462800D970C4 /* RoutePresenterCell_BusAtStopTop.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8BBF035E1960462800D970C4 /* RoutePresenterCell_BusAtStopTop.xib */; };
-		8BBF036219604F5900D970C4 /* PTRoutePresenterCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BBF036119604F5900D970C4 /* PTRoutePresenterCell.m */; };
 		8B80068C195F4A3700EA96B6 /* PTRemoteService.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B80068B195F4A3700EA96B6 /* PTRemoteService.m */; };
 		8BA1726C195F4BAF00AB1300 /* PTRemoteReminderRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BA1726B195F4BAF00AB1300 /* PTRemoteReminderRequest.m */; };
+		8BBF035F1960462800D970C4 /* RoutePresenterCell_BusAtStopTop.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8BBF035E1960462800D970C4 /* RoutePresenterCell_BusAtStopTop.xib */; };
+		8BBF036219604F5900D970C4 /* PTRoutePresenterCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BBF036119604F5900D970C4 /* PTRoutePresenterCell.m */; };
 		E3D78FF620B54F618D846F7C /* libPods-Bus-GogogoTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CEC9CA41AFE4D5EA4247A62 /* libPods-Bus-GogogoTests.a */; };
 		E966D16F18F9800700CD8C0F /* PTPolyline.m in Sources */ = {isa = PBXBuildFile; fileRef = E966D16E18F9800700CD8C0F /* PTPolyline.m */; };
 		FB01A5DE18E76226001C793F /* PTMonitoredVehicleJourney.m in Sources */ = {isa = PBXBuildFile; fileRef = FB01A5DD18E76226001C793F /* PTMonitoredVehicleJourney.m */; };
@@ -107,13 +107,13 @@
 		8B4DC830194E14DF0013C6BD /* PTReminderManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTReminderManager.m; sourceTree = "<group>"; };
 		8B4DC832194E20700013C6BD /* Iphone-SMS-Tone-Original.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Iphone-SMS-Tone-Original.mp3"; sourceTree = "<group>"; };
 		8B7B8B9819607AEB004E986B /* MainStoryboard_4inch.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainStoryboard_4inch.storyboard; sourceTree = "<group>"; };
-		8BBF035E1960462800D970C4 /* RoutePresenterCell_BusAtStopTop.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RoutePresenterCell_BusAtStopTop.xib; sourceTree = "<group>"; };
-		8BBF036019604F5900D970C4 /* PTRoutePresenterCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTRoutePresenterCell.h; sourceTree = "<group>"; };
-		8BBF036119604F5900D970C4 /* PTRoutePresenterCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTRoutePresenterCell.m; sourceTree = "<group>"; };
 		8B80068A195F4A3700EA96B6 /* PTRemoteService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTRemoteService.h; sourceTree = "<group>"; };
 		8B80068B195F4A3700EA96B6 /* PTRemoteService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTRemoteService.m; sourceTree = "<group>"; };
 		8BA1726A195F4BAF00AB1300 /* PTRemoteReminderRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTRemoteReminderRequest.h; sourceTree = "<group>"; };
 		8BA1726B195F4BAF00AB1300 /* PTRemoteReminderRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTRemoteReminderRequest.m; sourceTree = "<group>"; };
+		8BBF035E1960462800D970C4 /* RoutePresenterCell_BusAtStopTop.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RoutePresenterCell_BusAtStopTop.xib; sourceTree = "<group>"; };
+		8BBF036019604F5900D970C4 /* PTRoutePresenterCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTRoutePresenterCell.h; sourceTree = "<group>"; };
+		8BBF036119604F5900D970C4 /* PTRoutePresenterCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTRoutePresenterCell.m; sourceTree = "<group>"; };
 		E966D16D18F9800700CD8C0F /* PTPolyline.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTPolyline.h; sourceTree = "<group>"; };
 		E966D16E18F9800700CD8C0F /* PTPolyline.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTPolyline.m; sourceTree = "<group>"; };
 		FB01A5DC18E76226001C793F /* PTMonitoredVehicleJourney.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTMonitoredVehicleJourney.h; sourceTree = "<group>"; };
@@ -251,17 +251,6 @@
 			sourceTree = "<group>";
 		};
 		8B80068D195F4A4100EA96B6 /* RemoteService */ = {
-			isa = PBXGroup;
-			children = (
-				8B80068A195F4A3700EA96B6 /* PTRemoteService.h */,
-				8B80068B195F4A3700EA96B6 /* PTRemoteService.m */,
-				8BA1726A195F4BAF00AB1300 /* PTRemoteReminderRequest.h */,
-				8BA1726B195F4BAF00AB1300 /* PTRemoteReminderRequest.m */,
-			);
-			name = RemoteService;
-			sourceTree = "<group>";
-		};
-		E94206E618F4E514009E9D3D /* Base */ = {
 			isa = PBXGroup;
 			children = (
 				8B80068A195F4A3700EA96B6 /* PTRemoteService.h */,
@@ -856,7 +845,7 @@
 				INFOPLIST_FILE = "Bus-Gogogo/Bus-Gogogo-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "3CC4200D-DFB7-463C-A222-C22DED61271B";
+				PROVISIONING_PROFILE = "58524BA6-2790-42C9-92DE-D8B2088F5295";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -873,7 +862,7 @@
 				INFOPLIST_FILE = "Bus-Gogogo/Bus-Gogogo-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "3CC4200D-DFB7-463C-A222-C22DED61271B";
+				PROVISIONING_PROFILE = "58524BA6-2790-42C9-92DE-D8B2088F5295";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

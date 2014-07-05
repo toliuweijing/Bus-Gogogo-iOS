@@ -19,7 +19,7 @@
 {
   //Register and allow the push of notification
   [[UIApplication sharedApplication] registerForRemoteNotificationTypes:
-     (UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
+     (UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeBadge)];
   
   // 2. load storyboard based on screen size.
   UIStoryboard *mainStoryboard = nil;
@@ -32,6 +32,7 @@
   self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
   self.window.rootViewController = [mainStoryboard instantiateInitialViewController];
   [self.window makeKeyAndVisible];
+  [application setStatusBarStyle:UIStatusBarStyleLightContent];
   
   return YES;
 }

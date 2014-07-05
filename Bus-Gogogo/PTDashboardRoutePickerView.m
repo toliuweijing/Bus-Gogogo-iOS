@@ -15,6 +15,8 @@
   int _direction;
   IBOutlet UILabel *_routeTextLabel;
   IBOutlet UILabel *_directionTextLabel;
+  IBOutlet UILabel *_chooseLabel;
+  IBOutlet UIActivityIndicatorView *_indicator;
 }
 
 @end
@@ -52,6 +54,19 @@
 - (int)direction
 {
   return _direction;
+}
+
+- (void)setLoadingIndicator:(BOOL)enable;
+{
+  if (enable) {
+    [_indicator startAnimating];
+    _indicator.hidden = NO;
+    _chooseLabel.hidden = YES;
+  } else {
+    [_indicator stopAnimating];
+    _indicator.hidden = YES;
+    _chooseLabel.hidden = NO;
+  }
 }
 
 /*
