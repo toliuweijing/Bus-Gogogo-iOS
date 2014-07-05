@@ -29,7 +29,7 @@
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                 </view>
             </objects>
-            <point key="canvasLocation" x="-536" y="278"/>
+            <point key="canvasLocation" x="-546" y="114"/>
         </scene>
         <!--Route Dashboard View Controller - BusGoGoGo-->
         <scene sceneID="Ego-Rd-YMr">
@@ -630,97 +630,6 @@
             </objects>
             <point key="canvasLocation" x="-125" y="764"/>
         </scene>
-        <!--Route Picker View Controller-->
-        <scene sceneID="ra2-di-ix0">
-            <objects>
-                <viewController id="98V-uu-w7h" customClass="PTRoutePickerViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="a5I-Al-XAR"/>
-                        <viewControllerLayoutGuide type="bottom" id="JOP-wm-Fga"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="6Cr-oj-rpK">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gDa-2y-EpY" userLabel="RegionHeaderContainer">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="29"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                            </view>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="DTw-en-6xI"/>
-                    <connections>
-                        <outlet property="_regionHeaderContainer" destination="gDa-2y-EpY" id="rGI-Yn-xEb"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="4PV-pp-Hz4" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="396" y="-471"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="LH5-BF-lLH">
-            <objects>
-                <viewController id="jWZ-h3-E3U" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Ud3-e3-s19"/>
-                        <viewControllerLayoutGuide type="bottom" id="lAs-Vm-jF3"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="suh-jz-bPe">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fcT-3B-h2w" userLabel="EmptyRoutePicker">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="61"/>
-                                <subviews>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Route" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x1R-75-gzT">
-                                        <rect key="frame" x="3" y="9" width="81" height="43"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                        <color key="textColor" red="0.00094125861849999996" green="0.45509805479999998" blue="0.001460381196" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="arrow2" translatesAutoresizingMaskIntoConstraints="NO" id="Ta5-kI-e79">
-                                        <rect key="frame" x="292" y="24" width="8" height="12"/>
-                                    </imageView>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Choose" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yU3-Hc-rPi">
-                                        <rect key="frame" x="217" y="19" width="63" height="21"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                                <gestureRecognizers/>
-                                <constraints>
-                                    <constraint firstItem="yU3-Hc-rPi" firstAttribute="centerY" secondItem="x1R-75-gzT" secondAttribute="centerY" constant="1" id="5cT-Rc-rBN"/>
-                                    <constraint firstAttribute="centerX" secondItem="yU3-Hc-rPi" secondAttribute="centerX" constant="-88.5" id="Nzg-m9-P82"/>
-                                    <constraint firstAttribute="centerY" secondItem="x1R-75-gzT" secondAttribute="centerY" id="PUv-zr-lYc"/>
-                                    <constraint firstItem="Ta5-kI-e79" firstAttribute="leading" secondItem="yU3-Hc-rPi" secondAttribute="trailing" constant="20" id="Wqq-2D-Npu"/>
-                                    <constraint firstItem="Ta5-kI-e79" firstAttribute="centerY" secondItem="yU3-Hc-rPi" secondAttribute="centerY" constant="-0.5" id="YdB-ot-3JX"/>
-                                    <constraint firstItem="yU3-Hc-rPi" firstAttribute="leading" secondItem="x1R-75-gzT" secondAttribute="trailing" constant="128" id="cZZ-GT-Yw0"/>
-                                </constraints>
-                            </view>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fV1-3K-mq2" userLabel="Horizontal Separator">
-                                <rect key="frame" x="0.0" y="72" width="320" height="1"/>
-                                <color key="backgroundColor" red="0.00094125861849999996" green="0.45509805479999998" blue="0.001460381196" alpha="1" colorSpace="calibratedRGB"/>
-                            </view>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tOd-qg-KAb">
-                                <rect key="frame" x="0.0" y="215" width="320" height="355"/>
-                            </mapView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="a8q-jc-xN8"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="8Fz-mN-N6t" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="etk-6Q-KP7">
-                    <connections>
-                        <segue destination="cMf-PX-Sfo" kind="push" id="9tF-Tf-ctw"/>
-                    </connections>
-                </tapGestureRecognizer>
-            </objects>
-            <point key="canvasLocation" x="-559" y="-525"/>
-        </scene>
         <!--Route Picker View Controller - Pick Route-->
         <scene sceneID="9TP-9j-Oig">
             <objects>
@@ -730,11 +639,11 @@
                         <viewControllerLayoutGuide type="bottom" id="Uti-O9-UKT"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="sqe-kZ-mqA">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="20" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="VsV-6w-gLa">
-                                <rect key="frame" x="0.0" y="62" width="320" height="506"/>
+                                <rect key="frame" x="0.0" y="61" width="320" height="446"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <inset key="scrollIndicatorInsets" minX="0.0" minY="-1" maxX="0.0" maxY="0.0"/>
                                 <inset key="separatorInset" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -940,6 +849,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Pick Route" id="khD-eb-JrP"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                     <connections>
                         <outlet property="_regionHeaderView" destination="Jxa-OR-U6v" id="fpV-dQ-B09"/>
                         <outlet property="_tableView" destination="VsV-6w-gLa" id="SWX-Q0-s8w"/>
@@ -947,7 +857,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nR1-UF-P00" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-7" y="-478"/>
+            <point key="canvasLocation" x="424" y="114"/>
         </scene>
     </scenes>
     <resources>
@@ -963,6 +873,6 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="9tF-Tf-ctw"/>
+        <segue reference="ZmN-85-x7X"/>
     </inferredMetricsTieBreakers>
 </document>
