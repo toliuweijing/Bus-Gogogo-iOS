@@ -12,6 +12,6 @@
 
 @property (strong, nonatomic) UIWindow *window;
 
-@property (strong, nonatomic) NSString *pushToken;
+@property (strong, nonatomic) NSString *clientID;
 
 @end

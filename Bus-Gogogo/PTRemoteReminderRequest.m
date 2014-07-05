@@ -17,7 +17,7 @@
   id<PTStopProtocol> _stop;
   int _direction;
   int _arrivalRadar;
-  NSString *_pushToken;
+  NSString *_clientID;
   NSURLRequest *_urlRequest;
 }
 
@@ -29,14 +29,14 @@
                        route:(id<PTRouteProtocol>)route
                    direction:(int)direction
                 arrivalRadar:(int)arrivalRadar
-                   pushToken:(NSString *)pushToken
+                   clientID:(NSString *)clientID
 {
   if (self = [super init]) {
     _stop = stop;
     _route = route;
     _direction = direction;
     _arrivalRadar = arrivalRadar;
-    _pushToken = pushToken;
+    _clientID = clientID;
   }
   return self;
 }
@@ -53,7 +53,7 @@
 {
   
   NSString *format =
-  @"http://ec2-54-88-127-149.compute-1.amazonaws.com:85/CreateArrivialReminder?"
+  @"http://ec2-54-88-127-149.compute-1.amazonaws.com:85/CreateArrivalReminder?"
   "routeid=%@&"
   "stopid=%@&"
   "direction=%d&"
@@ -70,7 +70,7 @@
    _stop.identifier,
    _direction,
    _arrivalRadar,
-   _pushToken,
+   _clientID,
    sendingMessage];
   
   urlString = [urlString stringByReplacingOccurrencesOfString:@" " withString:@"%20"];
@@ -86,16 +86,12 @@
                                 arrivalRadar:(int)arrivalRadar
 {
   PTAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
-  if (appDelegate.pushToken==nil)
-  {
-      appDelegate.pushToken=@"ebe293a6e1651defb50cd4a4a6f2f91f250afba1584987f47d0de8209a7586b4";
-  }
-  return [[PTRemoteReminderRequest alloc]
+    return [[PTRemoteReminderRequest alloc]
           initWithStop:stop
           route:route
           direction:direction
           arrivalRadar:arrivalRadar
-          pushToken:appDelegate.pushToken];
+          clientID:appDelegate.clientID];
 }
 
 @end
