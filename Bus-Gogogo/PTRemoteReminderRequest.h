@@ -15,7 +15,7 @@
                        route:(id<PTRouteProtocol>)route
                    direction:(int)direction
                 arrivalRadar:(int)arrivalRadar
-                   pushToken:(NSString *)pushToken;
+                   clientID:(NSString *)clientID;
 
 
 - (NSURLRequest *)urlRequest;

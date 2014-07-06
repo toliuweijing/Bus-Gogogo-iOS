@@ -65,21 +65,110 @@
   // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 
+
+/**
+ *  This function is used to get a clientID for app (From default or register)
+ *
+ *  @param pushToken the new apns token
+ */
+-(void) getTheClientIDForServer:(NSString *)pushToken
+{
+    /**
+     *  check if the default has got a ID
+     */
+    NSUserDefaults *defaults =[NSUserDefaults standardUserDefaults];
+    if ([defaults objectForKey:@"clientID"]==nil)
+    {
+        /**
+         *  If we don't find one the clientID in the user default
+         */
+        self.clientID=nil;
+        dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
+            NSString *format =
+            @"http://ec2-54-88-127-149.compute-1.amazonaws.com:85/RegisterByToken?"
+            "token=%@";
+            NSString *urlString =
+            [NSString
+             stringWithFormat:format,
+             pushToken];
+            urlString = [urlString stringByReplacingOccurrencesOfString:@" " withString:@"%20"];
+            NSData* data = [NSData dataWithContentsOfURL:
+                            [NSURL URLWithString:urlString]];
+            NSError *error;
+            NSDictionary *JSONResponse = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
+            self.clientID=JSONResponse[@"ClientID"];
+            NSLog(@"clientID:%@",self.clientID);
+            [defaults setObject:self.clientID forKey:@"clientID"];
+        });
+        
+    }
+    else
+    {
+        /**
+         *  if we found clientID in user default
+         */
+        self.clientID=[defaults objectForKey:@"clientID"];
+        NSLog(@"Retrieve the old clientID:%@",self.clientID);
+        //check if the push token change
+        NSString *oldPushToken=[defaults objectForKey:@"pushToken"];
+        if (oldPushToken!=pushToken)
+        {
+            /**
+             *  if the old push token is not the same with the new push token we get
+             */
+            dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
+                NSString *format =
+                @"http://ec2-54-88-127-149.compute-1.amazonaws.com:85/UpdateToken?"
+                "clientid=%@&"
+                "token=%@";
+                NSString* urlString=[NSString
+                                     stringWithFormat:format,self.clientID,
+                                     pushToken];
+                urlString = [urlString stringByReplacingOccurrencesOfString:@" " withString:@"%20"];
+                NSData* data = [NSData dataWithContentsOfURL:
+                                [NSURL URLWithString:urlString]];
+                NSError *error;
+                /**
+                 *  need to check if the json is success or not, but do need to negotiate with Jim about the return value. So mark it as TODO
+                 */
+                NSDictionary *JSONResponse = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
+                /**
+                 *  Store the new key into user default
+                 */
+                [defaults setObject:pushToken forKey:@"pushToken"];
+                
+            });
+        }
+        
+    }
+
+}
+
 - (void)application:(UIApplication*)application
-didRegisterForRemoteNotificationsWithDeviceToken:(NSData*)deviceToken {
+didRegisterForRemoteNotificationsWithDeviceToken:(NSData*)deviceToken
+{
     
     //Get the push token
     NSString *tokenStr = [deviceToken description];
     NSString *pushToken = [[tokenStr stringByReplacingOccurrencesOfString:@"" withString:@""]stringByReplacingOccurrencesOfString:@" " withString:@""];
     //the push token is something like <edfsdfsfxxxxxxx>,we need to move the first letter and the last letter
-    self.pushToken=[pushToken substringWithRange:NSMakeRange(1,pushToken.length-2)];
-    NSLog(@"pushToken:%@",self.pushToken);
+    pushToken=[pushToken substringWithRange:NSMakeRange(1,pushToken.length-2)];
+    NSLog(@"pushToken:%@",pushToken);
+    [self getTheClientIDForServer:pushToken];
 }
 
-- (void)application:(UIApplication *)app didFailToRegisterForRemoteNotificationsWithError:(NSError *)err {
-    
+- (void)application:(UIApplication *)app didFailToRegisterForRemoteNotificationsWithError:(NSError *)err
+{
+    /**
+     *  The app fail to register the pushtoken, probably because of the simulator running.
+     */
     NSString *str = [NSString stringWithFormat: @"Error: %@", err];
     NSLog(@"Fail to register the APNS push service:%@",str);
+    /**
+     *  Try to use the push token for my own phone for testing
+     */
+    NSString *testPushToken=@"ebe293a6e1651defb50cd4a4a6f2f91f250afba1584987f47d0de8209a7586b4";
+    [self getTheClientIDForServer:testPushToken];
 }
 
 @end
