@@ -8,10 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
+@class PTRemoteService;
+
 @interface PTAppDelegate : UIResponder <UIApplicationDelegate>
+
++ (PTAppDelegate *)mainDelegate;
 
 @property (strong, nonatomic) UIWindow *window;
 
-@property (strong, nonatomic) NSString *clientID;
+@property (nonatomic, strong) PTRemoteService *remoteService;
 
 @end

@@ -53,12 +53,13 @@
 
 - (void)_fireRemoteReminder
 {
-  [[PTRemoteService sharedService]
+  [[PTAppDelegate mainDelegate].remoteService
    registerRemoteReminder:[PTRemoteReminderRequest
                            requestWithStop:_stop
                            route:_route
                            direction:_direction
-                           arrivalRadar:_stopsAway]
+                           arrivalRadar:_stopsAway
+                           clientID:[PTAppDelegate mainDelegate].remoteService.clientID]
    completionHandler:^(NSURLResponse *response, NSError *error) {
      NSLog(@"%s", __func__);
    }];
