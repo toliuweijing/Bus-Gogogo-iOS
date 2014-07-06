@@ -9,7 +9,6 @@
 #import "PTRemoteReminderRequest.h"
 #import "PTRouteProtocol.h"
 #import "PTStopProtocol.h"
-#import "PTAppDelegate.h"
 
 @interface PTRemoteReminderRequest ()
 {
@@ -84,14 +83,14 @@
                                        route:(id<PTRouteProtocol>)route
                                    direction:(int)direction
                                 arrivalRadar:(int)arrivalRadar
+                                    clientID:(NSString *)clientID
 {
-  PTAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
-    return [[PTRemoteReminderRequest alloc]
+  return [[PTRemoteReminderRequest alloc]
           initWithStop:stop
           route:route
           direction:direction
           arrivalRadar:arrivalRadar
-          clientID:appDelegate.clientID];
+          clientID:clientID];
 }
 
 @end

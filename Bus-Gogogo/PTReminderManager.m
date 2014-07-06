@@ -58,7 +58,8 @@
                            requestWithStop:_stop
                            route:_route
                            direction:_direction
-                           arrivalRadar:_stopsAway]
+                           arrivalRadar:_stopsAway
+                           clientID:[PTAppDelegate mainDelegate].clientID]
    completionHandler:^(NSURLResponse *response, NSError *error) {
      NSLog(@"%s", __func__);
    }];

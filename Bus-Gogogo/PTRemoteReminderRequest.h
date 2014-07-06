@@ -11,19 +11,14 @@
 
 @interface PTRemoteReminderRequest : NSObject
 
-- (instancetype)initWithStop:(id<PTStopProtocol>)stop
-                       route:(id<PTRouteProtocol>)route
-                   direction:(int)direction
-                arrivalRadar:(int)arrivalRadar
-                   clientID:(NSString *)clientID;
-
-
 - (NSURLRequest *)urlRequest;
 
 // temporary helper to build request
 + (PTRemoteReminderRequest *)requestWithStop:(id<PTStopProtocol>)stop
                                        route:(id<PTRouteProtocol>)route
                                    direction:(int)direction
-                                arrivalRadar:(int)arrivalRadar;
+                                arrivalRadar:(int)arrivalRadar
+                                    clientID:(NSString *)clientID;
+;
 
 @end

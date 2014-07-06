@@ -171,4 +171,9 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData*)deviceToken
     [self getTheClientIDForServer:testPushToken];
 }
 
++ (PTAppDelegate *)mainDelegate
+{
+  return [[UIApplication sharedApplication] delegate];
+}
+
 @end

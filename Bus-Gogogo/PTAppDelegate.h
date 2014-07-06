@@ -10,6 +10,8 @@
 
 @interface PTAppDelegate : UIResponder <UIApplicationDelegate>
 
++ (PTAppDelegate *)mainDelegate;
+
 @property (strong, nonatomic) UIWindow *window;
 
 @property (strong, nonatomic) NSString *clientID;
