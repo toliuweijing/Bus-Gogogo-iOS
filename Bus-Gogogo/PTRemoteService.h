@@ -10,9 +10,11 @@
 
 @interface PTRemoteService : NSObject
 
-+ (PTRemoteService *)sharedService;
+- (instancetype)initWithPushToken:(NSString *)pushToken;
 
 - (void)registerRemoteReminder:(PTRemoteReminderRequest *)request
              completionHandler:(void (^)(NSURLResponse *response, NSError *error))completionHandler;
+
+@property (nonatomic, strong) NSString *clientID;
 
 @end

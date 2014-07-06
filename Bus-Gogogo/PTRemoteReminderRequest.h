@@ -19,6 +19,5 @@
                                    direction:(int)direction
                                 arrivalRadar:(int)arrivalRadar
                                     clientID:(NSString *)clientID;
-;
 
 @end
