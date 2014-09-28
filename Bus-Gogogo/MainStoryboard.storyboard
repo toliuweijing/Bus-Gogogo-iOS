@@ -32,7 +32,7 @@
             </objects>
             <point key="canvasLocation" x="-518" y="114"/>
         </scene>
-        <!--Main View Controller-->
+        <!--NEARBY-->
         <scene sceneID="DVm-Fb-Haf">
             <objects>
                 <viewController id="1Hg-k7-b0E" customClass="MainViewController" sceneMemberID="viewController">
@@ -148,7 +148,9 @@
                             <constraint firstItem="YjY-39-Edz" firstAttribute="top" secondItem="b5b-H7-Ju1" secondAttribute="top" priority="250" constant="-348" id="x3m-cY-qW9"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="I5W-GZ-tvK"/>
+                    <navigationItem key="navigationItem" title="NEARBY" id="I5W-GZ-tvK">
+                        <barButtonItem key="rightBarButtonItem" systemItem="search" id="BOR-5a-yP0"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="_tableView" destination="YjY-39-Edz" id="cm4-nu-dEd"/>
                     </connections>
