@@ -77,9 +77,9 @@
   return _mURLRequest;
 }
 
-- (id)parseData:(NSData *)data
+- (void)parseData:(NSData *)data
 {
-  return _mParsedResult;
+  _mParsedResult = data;
 }
 
 - (void)verify
@@ -88,22 +88,44 @@
   [_mSession verify];
 }
 
-- (void)testTaskShouldCallbackOnMainthread
+- (void)testTaskShouldCallParseResult
 {
   // expectation
   [[_mDataTask expect] resume];
-//  [[_mSession expect]
-//   dataTaskWithRequest:_mURLRequest
-//   completionHandler:[OCMArg any]];
+  _mParsedResult = nil;
   
   // run test
   __block BOOL callbackReceived = NO;
   [PTDownloadTask
    scheduledTaskWithRequester:self
-   callback:^(id result, NSError *error) {
+   callback:^(id requester, NSError *error) {
      XCTAssertTrue([NSThread isMainThread],
                    @"expecting to be called on main-thread");
-     XCTAssertTrue(_mParsedResult == result,
+     XCTAssertTrue(requester == self, @"requester");
+     XCTAssertNotNil(_mParsedResult, @"expecting parseResult called");
+     callbackReceived = YES;
+   }];
+  
+  [self
+   runRunLoopUntilTimeout:1
+   condition:^BOOL{
+     return callbackReceived;
+   }];
+}
+
+- (void)testTaskShouldCallbackOnMainthread
+{
+  // expectation
+  [[_mDataTask expect] resume];
+  
+  // run test
+  __block BOOL callbackReceived = NO;
+  [PTDownloadTask
+   scheduledTaskWithRequester:self
+   callback:^(id requester, NSError *error) {
+     XCTAssertTrue([NSThread isMainThread],
+                   @"expecting to be called on main-thread");
+     XCTAssertTrue(requester == self,
                    @"expecting parsed result");
      callbackReceived = YES;
    }];

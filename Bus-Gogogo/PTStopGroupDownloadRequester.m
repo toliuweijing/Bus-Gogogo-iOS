@@ -14,6 +14,7 @@
 @interface PTStopGroupDownloadRequester ()
 {
   NSString *_routeId;
+  OBAResponse *_response;
 }
 
 @end
@@ -36,18 +37,21 @@
   return [NSURLRequest requestWithURL:[NSURL URLWithString:base]];
 }
 
-- (id)parseData:(NSData *)data
+- (void)parseData:(NSData *)data
 {
   NSError *error;
   NSDictionary *JSONResponse = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
   assert(!error);
   
-  OBAResponse *oba = [[OBAResponse alloc] initWithDictionary:JSONResponse];
+  _response = [[OBAResponse alloc] initWithDictionary:JSONResponse];
   
   // populate results into global store
-  [[PTStore sharedStore] populateWithOBAResponse:oba];
- 
-  OBAStopGrouping *stopGrouping = oba.Data.StopGroupings.firstObject;
+  [[PTStore sharedStore] populateWithOBAResponse:_response];
+}
+
+- (NSArray *)obaStopGroups
+{
+  OBAStopGrouping *stopGrouping = _response.Data.StopGroupings.firstObject;
   OBAStopGroup *stopGroupA = stopGrouping.StopGroups.firstObject;
   OBAStopGroup *stopGroupB = stopGrouping.StopGroups.lastObject;
   NSArray *ptStopGroups = @[[PTStopGroup stopGroupFromOBACounterPart:stopGroupA],

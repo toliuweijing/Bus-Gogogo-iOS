@@ -10,11 +10,11 @@
 
 - (NSURLRequest *)request;
 
-- (id)parseData:(NSData *)data;
+- (void)parseData:(NSData *)data;
 
 @end
 
-typedef void(^download_task_callback_t)(id result, NSError *error);
+typedef void(^download_task_callback_t)(id requester, NSError *error);
 
 @interface PTDownloadTask : NSObject
 

@@ -13,6 +13,7 @@
 @implementation PTMonitoredVehicleJourneyDownloadRequester
 {
   NSString *_routeId;
+  NSArray *_ptMonitoredVehicleJourney;
 }
 
 - (instancetype)initWithRouteId:(NSString *)routeId
@@ -32,9 +33,9 @@
   return [NSURLRequest requestWithURL:url];
 }
 
-- (id)parseData:(NSData *)data
+- (void)parseData:(NSData *)data
 {
-  return [self vehicleJourneysFromData:data];
+  _ptMonitoredVehicleJourney = [self vehicleJourneysFromData:data];
 }
 
 - (NSArray *)vehicleJourneysFromData:(NSData *)data
@@ -55,6 +56,11 @@
     [collection addObject:[[PTMonitoredVehicleJourney alloc] initWithMTACounterPart:journey]];
   }
   return collection;
+}
+
+- (NSArray *)ptMonitoredVehicleJourney
+{
+  return _ptMonitoredVehicleJourney;
 }
 
 @end

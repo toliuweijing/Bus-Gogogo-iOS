@@ -50,12 +50,11 @@
   [[_session
    dataTaskWithRequest:[_requester request]
    completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-     id result;
-     if (error == nil) {
-       result = [_requester parseData:data];
+     if (!error) {
+       [_requester parseData:data];
      }
      dispatch_async(dispatch_get_main_queue(), ^{
-       _callback(result, error);
+       _callback(_requester, error);
      });
    }] resume];
 }

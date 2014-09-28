@@ -12,4 +12,6 @@
 
 - (instancetype)initWithRouteId:(NSString *)routeId;
 
+- (NSArray *)ptMonitoredVehicleJourney;
+
 @end

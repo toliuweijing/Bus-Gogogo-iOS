@@ -10,4 +10,6 @@
 
 @interface PTAllRoutesDownloadRequester : NSObject <PTDownloadRequester>
 
+- (NSArray *)ptRoutes;
+
 @end

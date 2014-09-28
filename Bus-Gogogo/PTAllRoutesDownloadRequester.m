@@ -10,15 +10,18 @@
 #import "PTRoute.h"
 
 @implementation PTAllRoutesDownloadRequester
+{
+  NSArray *_ptRoutes;
+}
 
 - (NSURLRequest *)request
 {
   return [NSURLRequest requestWithURL:[NSURL URLWithString:@"http://bustime.mta.info/api/where/routes-for-agency/MTA%20NYCT.json?key=cfb3c75b-5a43-4e66-b7f8-14e666b0c1c1"]];
 }
 
-- (id)parseData:(NSData *)data
+- (void)parseData:(NSData *)data
 {
-  return [self _routesFromData:data];
+  _ptRoutes = [self _routesFromData:data];
 }
 
 - (NSArray *)_routesFromData:(NSData *)data
@@ -36,6 +39,11 @@
     [collection addObject:ptRoute];
   }
   return [collection copy];
+}
+
+- (NSArray *)ptRoutes
+{
+  return _ptRoutes;
 }
 
 @end

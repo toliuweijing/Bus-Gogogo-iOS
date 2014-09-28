@@ -13,4 +13,6 @@
 
 - (instancetype)initWithLocation:(CLLocation *)location;
 
+- (NSArray *)obaRoutes;
+
 @end

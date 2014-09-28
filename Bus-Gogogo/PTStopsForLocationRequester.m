@@ -12,6 +12,7 @@
 @interface PTStopsForLocationRequester ()
 {
   CLLocation *_location;
+  OBAResponse *_response;
 }
 
 @end
@@ -33,15 +34,18 @@
   return [NSURLRequest requestWithURL:[NSURL URLWithString:urlText]];
 }
 
-- (id)parseData:(NSData *)data
+- (void)parseData:(NSData *)data
 {
   NSError *error;
   NSDictionary *JSONResponse = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
   assert(!error);
  
-  OBAResponse *obaResponse = [[OBAResponse alloc] initWithDictionary:JSONResponse];
-  
-  return obaResponse.Data.Stops;
+  _response = [[OBAResponse alloc] initWithDictionary:JSONResponse];
+}
+
+- (NSArray *)obaRoutes
+{
+  return _response.Data.Stops;
 }
 
 @end
