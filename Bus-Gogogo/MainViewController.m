@@ -8,6 +8,7 @@
 
 #import "MainViewController.h"
 #import <MapKit/MapKit.h>
+#import "PTMainTableViewCell.h"
 
 static const NSString *kMainTableViewCellIdentifier = @"MainTableViewCell";
 typedef enum : NSUInteger {
@@ -40,7 +41,9 @@ typedef enum : NSUInteger {
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-  UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kMainTableViewCellIdentifier];
+  PTMainTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([PTMainTableViewCell class])];
+  cell.head.titleLabel.text = @"B";
+  cell.title.text = @"To Kings Plaza";
 //  UIButton *button = (UIButton *) [cell.contentView viewWithTag:MainTableViewCellTagLeftHead];
 //  button.titleLabel.text = [@"B" stringByAppendingString: [@(indexPath.row) stringValue]];
 //  UILabel *title = (UILabel *) [cell.contentView viewWithTag:MainTableViewCellTagTitle];

@@ -18,6 +18,7 @@
 
 - (BOOL)is4Inch
 {
+  return NO;
   return [[UIScreen mainScreen] bounds].size.height == 568;
 }
 
@@ -27,13 +28,13 @@
   [[UIApplication sharedApplication] registerForRemoteNotificationTypes:
    (UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeBadge)];
   
-  // 2. load storyboard based on screen size.
-  self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-//  self.window.rootViewController = [MainViewController new];
-  self.window.rootViewController = [[self loadStoryboard] instantiateInitialViewController];
-  [self.window makeKeyAndVisible];
+//  // 2. load storyboard based on screen size.
+//  self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+////  self.window.rootViewController = [MainViewController new];
+//  self.window.rootViewController = [[self loadStoryboard] instantiateInitialViewController];
+//  [self.window makeKeyAndVisible];
   
-  [self configureLocationServiceAuthorization];
+//  [self configureLocationServiceAuthorization];
   
   return YES;
 }
