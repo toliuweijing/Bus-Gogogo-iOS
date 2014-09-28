@@ -31,6 +31,7 @@
 		FB0CAA8E193407E80088A314 /* PTRouteStore.m in Sources */ = {isa = PBXBuildFile; fileRef = FB0CAA8D193407E80088A314 /* PTRouteStore.m */; };
 		FB129CD018F10D29009AAEA7 /* PTMonitoredVehicleJourneyDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = FB129CCF18F10D29009AAEA7 /* PTMonitoredVehicleJourneyDownloader.m */; };
 		FB189F481927C1790071B8F9 /* PTObjectPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = FB189F471927C1790071B8F9 /* PTObjectPickerView.m */; };
+		FB28BA5219D888B800B021CF /* PTDesignableButton.m in Sources */ = {isa = PBXBuildFile; fileRef = FB28BA5119D888B800B021CF /* PTDesignableButton.m */; };
 		FB2AE9A41938B1020038D4EE /* PTListContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = FB2AE9A31938B1020038D4EE /* PTListContainerView.m */; };
 		FB2B86C319440CBB008187BA /* PTRegionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB2B86C219440CBB008187BA /* PTRegionHeaderView.xib */; };
 		FB2B86C6194410C5008187BA /* PTRegionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = FB2B86C5194410C5008187BA /* PTRegionHeaderView.m */; };
@@ -59,6 +60,7 @@
 		FB8714D11945109500670513 /* PTStopGroupDownloadRequester.m in Sources */ = {isa = PBXBuildFile; fileRef = FB8714D01945109500670513 /* PTStopGroupDownloadRequester.m */; };
 		FB8714D41945144000670513 /* PTAllRoutesDownloadRequester.m in Sources */ = {isa = PBXBuildFile; fileRef = FB8714D31945144000670513 /* PTAllRoutesDownloadRequester.m */; };
 		FB8714D7194515D100670513 /* PTMonitoredVehicleJourneyDownloadRequester.m in Sources */ = {isa = PBXBuildFile; fileRef = FB8714D6194515D100670513 /* PTMonitoredVehicleJourneyDownloadRequester.m */; };
+		FB93767619D7679000B0487C /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FB93767519D7679000B0487C /* MainViewController.m */; };
 		FBA258CD193899FB007B05DE /* PTRoutePresenterController.m in Sources */ = {isa = PBXBuildFile; fileRef = FBA258CC193899FB007B05DE /* PTRoutePresenterController.m */; };
 		FBA258D019389A0B007B05DE /* PTRoutePresenterView.m in Sources */ = {isa = PBXBuildFile; fileRef = FBA258CF19389A0B007B05DE /* PTRoutePresenterView.m */; };
 		FBB001F619449E8D00974AB4 /* PTRouteSummaryCell_GreenGray.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBB001F519449E8D00974AB4 /* PTRouteSummaryCell_GreenGray.xib */; };
@@ -126,6 +128,8 @@
 		FB129CCF18F10D29009AAEA7 /* PTMonitoredVehicleJourneyDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTMonitoredVehicleJourneyDownloader.m; sourceTree = "<group>"; };
 		FB189F461927C1790071B8F9 /* PTObjectPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTObjectPickerView.h; sourceTree = "<group>"; };
 		FB189F471927C1790071B8F9 /* PTObjectPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTObjectPickerView.m; sourceTree = "<group>"; };
+		FB28BA5019D888B800B021CF /* PTDesignableButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTDesignableButton.h; sourceTree = "<group>"; };
+		FB28BA5119D888B800B021CF /* PTDesignableButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTDesignableButton.m; sourceTree = "<group>"; };
 		FB2AE9A21938B1020038D4EE /* PTListContainerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTListContainerView.h; sourceTree = "<group>"; };
 		FB2AE9A31938B1020038D4EE /* PTListContainerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTListContainerView.m; sourceTree = "<group>"; };
 		FB2B86C219440CBB008187BA /* PTRegionHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PTRegionHeaderView.xib; sourceTree = "<group>"; };
@@ -172,6 +176,8 @@
 		FB8714D31945144000670513 /* PTAllRoutesDownloadRequester.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTAllRoutesDownloadRequester.m; sourceTree = "<group>"; };
 		FB8714D5194515D100670513 /* PTMonitoredVehicleJourneyDownloadRequester.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTMonitoredVehicleJourneyDownloadRequester.h; sourceTree = "<group>"; };
 		FB8714D6194515D100670513 /* PTMonitoredVehicleJourneyDownloadRequester.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTMonitoredVehicleJourneyDownloadRequester.m; sourceTree = "<group>"; };
+		FB93767419D7679000B0487C /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
+		FB93767519D7679000B0487C /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		FBA258CB193899FB007B05DE /* PTRoutePresenterController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTRoutePresenterController.h; sourceTree = "<group>"; };
 		FBA258CC193899FB007B05DE /* PTRoutePresenterController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTRoutePresenterController.m; sourceTree = "<group>"; };
 		FBA258CE19389A0B007B05DE /* PTRoutePresenterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTRoutePresenterView.h; sourceTree = "<group>"; };
@@ -283,6 +289,8 @@
 				FB189F471927C1790071B8F9 /* PTObjectPickerView.m */,
 				3F731F5A194CE4E300C79812 /* RoutePickerView */,
 				3F4CAB6C195F56F7002BC4BE /* PTStopDetailView */,
+				FB28BA5019D888B800B021CF /* PTDesignableButton.h */,
+				FB28BA5119D888B800B021CF /* PTDesignableButton.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -356,10 +364,8 @@
 				FB517C4718DDDF43005C7881 /* PTAppDelegate.m */,
 				FBE61DF719434F9B00CAE3F7 /* MainStoryboard.storyboard */,
 				8B7B8B9819607AEB004E986B /* MainStoryboard_4inch.storyboard */,
-				FBE61DF91943529B00CAE3F7 /* PTRouteDashboardViewController.h */,
-				FBE61DFA1943529B00CAE3F7 /* PTRouteDashboardViewController.m */,
+				FB93767319D7675500B0487C /* ViewControllers */,
 				8B80068D195F4A4100EA96B6 /* RemoteService */,
-				FB5440591945458C00EF7ACE /* RoutePickerViewController */,
 				E94206E618F4E514009E9D3D /* Base */,
 				FB517C7318DDE4FB005C7881 /* Model */,
 				FB0CAA8C1933EF0B0088A314 /* Store */,
@@ -461,6 +467,18 @@
 				FBB001F519449E8D00974AB4 /* PTRouteSummaryCell_GreenGray.xib */,
 			);
 			name = PTRouteSummaryCell;
+			sourceTree = "<group>";
+		};
+		FB93767319D7675500B0487C /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				FB5440591945458C00EF7ACE /* RoutePickerViewController */,
+				FBE61DF91943529B00CAE3F7 /* PTRouteDashboardViewController.h */,
+				FBE61DFA1943529B00CAE3F7 /* PTRouteDashboardViewController.m */,
+				FB93767419D7679000B0487C /* MainViewController.h */,
+				FB93767519D7679000B0487C /* MainViewController.m */,
+			);
+			name = ViewControllers;
 			sourceTree = "<group>";
 		};
 		FBA258D119389A0E007B05DE /* RoutePresenter */ = {
@@ -576,7 +594,7 @@
 				ORGANIZATIONNAME = "Weijing Liu";
 				TargetAttributes = {
 					FB517C3318DDDF43005C7881 = {
-						DevelopmentTeam = S62C7BAM48;
+						DevelopmentTeam = DZT2JVFH9F;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -688,6 +706,7 @@
 				FB189F481927C1790071B8F9 /* PTObjectPickerView.m in Sources */,
 				8B4DC82E194E0FCC0013C6BD /* PTStopMonitoringDownloadRequester.m in Sources */,
 				FBA258D019389A0B007B05DE /* PTRoutePresenterView.m in Sources */,
+				FB28BA5219D888B800B021CF /* PTDesignableButton.m in Sources */,
 				FB129CD018F10D29009AAEA7 /* PTMonitoredVehicleJourneyDownloader.m in Sources */,
 				8BBF036219604F5900D970C4 /* PTRoutePresenterCell.m in Sources */,
 				FBB5EB3A18E738E6007921A3 /* PTBus.m in Sources */,
@@ -706,6 +725,7 @@
 				FB3D48EC18F0487E00302031 /* PTBase.m in Sources */,
 				FB3D48E118EFB26200302031 /* OBADataModel.m in Sources */,
 				FB2B86C6194410C5008187BA /* PTRegionHeaderView.m in Sources */,
+				FB93767619D7679000B0487C /* MainViewController.m in Sources */,
 				FB2AE9A41938B1020038D4EE /* PTListContainerView.m in Sources */,
 				FB8714D41945144000670513 /* PTAllRoutesDownloadRequester.m in Sources */,
 				FB517C4418DDDF43005C7881 /* main.m in Sources */,
@@ -838,14 +858,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Haomin Wu (55LG226ZJV)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Haomin Wu (55LG226ZJV)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Bus-Gogogo/Bus-Gogogo-Prefix.pch";
 				INFOPLIST_FILE = "Bus-Gogogo/Bus-Gogogo-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "58524BA6-2790-42C9-92DE-D8B2088F5295";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -855,14 +875,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Haomin Wu (55LG226ZJV)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Haomin Wu (55LG226ZJV)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Bus-Gogogo/Bus-Gogogo-Prefix.pch";
 				INFOPLIST_FILE = "Bus-Gogogo/Bus-Gogogo-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "58524BA6-2790-42C9-92DE-D8B2088F5295";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

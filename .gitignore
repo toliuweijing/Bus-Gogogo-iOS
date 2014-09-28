@@ -1,3 +1,7 @@
 Bus-Gogogo.xcworkspace/xcshareddata/Bus-Gogogo.xccheckout
 .DS_Store
-Bus-Gogogo.xcworkspace/xcuserdata/developer.xcuserdatad/
+Bus-Gogogo.xcworkspace/*
+DerivedData/
+build/
+.*.un~
+..*.un~

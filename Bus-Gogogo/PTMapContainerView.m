@@ -53,6 +53,7 @@ static NSString *const kMapViewReuseIdentifierVehcileJourneys = @"vehcile_journe
 {
   [super layoutSubviews];
   
+
   self.mapView.frame = self.bounds;
   
   const CGFloat kToolBarHeight = 35.0;

@@ -1,25 +1,25 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="Gfz-gn-cZV">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="Gfz-gn-cZV">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
+        <deployment defaultVersion="1808" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
     </dependencies>
     <scenes>
         <!--Navigation Controller-->
         <scene sceneID="wq4-GU-7de">
             <objects>
                 <navigationController definesPresentationContext="YES" id="Gfz-gn-cZV" sceneMemberID="viewController">
-                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
-                    <navigationBar key="navigationBar" userInteractionEnabled="NO" contentMode="scaleToFill" translucent="NO" id="gDb-Fk-ao5">
+                    <navigationBar key="navigationBar" userInteractionEnabled="NO" contentMode="scaleToFill" id="gDb-Fk-ao5">
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" red="0.00094125861849999996" green="0.45509805479999998" blue="0.001460381196" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <color key="barTintColor" red="0.00094125861849999996" green="0.45509805479999998" blue="0.001460381196" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="barTintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <textAttributes key="titleTextAttributes">
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </textAttributes>
                     </navigationBar>
                     <connections>
-                        <segue destination="428-o4-QMZ" kind="relationship" relationship="rootViewController" id="EOG-zA-rNo"/>
+                        <segue destination="uOG-bG-MBL" kind="relationship" relationship="rootViewController" id="lXu-qg-4Pt"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eMZ-O0-LUO" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -31,7 +31,7 @@
             </objects>
             <point key="canvasLocation" x="-546" y="114"/>
         </scene>
-        <!--Route Dashboard View Controller - BusGoGoGo-->
+        <!--BusGoGoGo-->
         <scene sceneID="Ego-Rd-YMr">
             <objects>
                 <viewController id="428-o4-QMZ" customClass="PTRouteDashboardViewController" sceneMemberID="viewController">
@@ -40,7 +40,7 @@
                         <viewControllerLayoutGuide type="bottom" id="ed7-d7-5mE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="U2v-5Q-mTH">
-                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view tag="10" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GF4-Tw-hT9" userLabel="RoutePresenterView">
@@ -52,7 +52,7 @@
                                         <color key="separatorColor" red="0.00094125861849999996" green="0.45509805479999998" blue="0.001460381196" alpha="1" colorSpace="calibratedRGB"/>
                                         <inset key="separatorInset" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         <prototypes>
-                                            <tableViewCell appearanceType="aqua" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="RoutePresenterCell_top" id="EsX-44-zIZ" customClass="PTRoutePresenterCell">
+                                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="RoutePresenterCell_top" id="EsX-44-zIZ" customClass="PTRoutePresenterCell">
                                                 <rect key="frame" x="0.0" y="22" width="320" height="33"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="EsX-44-zIZ" id="WpW-ch-VhC">
@@ -83,7 +83,7 @@
                                                     <outlet property="descriptionLabel" destination="zct-4V-F5Q" id="OLi-js-hrx"/>
                                                 </connections>
                                             </tableViewCell>
-                                            <tableViewCell appearanceType="aqua" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="RoutePresenterCell_BusAtStopTop" rowHeight="44" id="Ve9-TJ-q25" customClass="PTRoutePresenterCell">
+                                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="RoutePresenterCell_BusAtStopTop" rowHeight="44" id="Ve9-TJ-q25" customClass="PTRoutePresenterCell">
                                                 <rect key="frame" x="0.0" y="55" width="320" height="44"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Ve9-TJ-q25" id="VdB-wN-QWN">
@@ -115,7 +115,7 @@
                                                     <outlet property="descriptionLabel" destination="aPG-mZ-HoR" id="ydf-0a-2WJ"/>
                                                 </connections>
                                             </tableViewCell>
-                                            <tableViewCell appearanceType="aqua" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="RoutePresenterCell_BusDriving" id="Bzh-Ml-t0h" customClass="PTRoutePresenterCell">
+                                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="RoutePresenterCell_BusDriving" id="Bzh-Ml-t0h" customClass="PTRoutePresenterCell">
                                                 <rect key="frame" x="0.0" y="99" width="320" height="33"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Bzh-Ml-t0h" id="O3l-3R-4y2">
@@ -146,7 +146,7 @@
                                                     <outlet property="descriptionLabel" destination="hud-iJ-dmL" id="g9D-Oy-mZz"/>
                                                 </connections>
                                             </tableViewCell>
-                                            <tableViewCell appearanceType="aqua" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="RoutePresenterCell_BusAtStopMiddle" rowHeight="44" id="OHC-ql-uRD" customClass="PTRoutePresenterCell">
+                                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="RoutePresenterCell_BusAtStopMiddle" rowHeight="44" id="OHC-ql-uRD" customClass="PTRoutePresenterCell">
                                                 <rect key="frame" x="0.0" y="132" width="320" height="44"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="OHC-ql-uRD" id="9zD-AA-bTa">
@@ -178,7 +178,7 @@
                                                     <outlet property="descriptionLabel" destination="Ict-LE-x7O" id="Ne1-2f-dyi"/>
                                                 </connections>
                                             </tableViewCell>
-                                            <tableViewCell appearanceType="aqua" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="RoutePresenterCell_middle" id="icj-WU-fLt" customClass="PTRoutePresenterCell">
+                                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="RoutePresenterCell_middle" id="icj-WU-fLt" customClass="PTRoutePresenterCell">
                                                 <rect key="frame" x="0.0" y="176" width="320" height="33"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="icj-WU-fLt" id="g0f-Yk-Csb">
@@ -209,7 +209,7 @@
                                                     <outlet property="descriptionLabel" destination="dxs-iw-fk6" id="xEg-JX-N0l"/>
                                                 </connections>
                                             </tableViewCell>
-                                            <tableViewCell appearanceType="aqua" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="RoutePresenterCell_bottom" id="hcW-Sg-QKq" customClass="PTRoutePresenterCell">
+                                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="RoutePresenterCell_bottom" id="hcW-Sg-QKq" customClass="PTRoutePresenterCell">
                                                 <rect key="frame" x="0.0" y="209" width="320" height="33"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hcW-Sg-QKq" id="byf-8a-tqR">
@@ -239,7 +239,7 @@
                                                     <outlet property="descriptionLabel" destination="3ij-N7-oed" id="VrW-PR-F1v"/>
                                                 </connections>
                                             </tableViewCell>
-                                            <tableViewCell appearanceType="aqua" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="RoutePresenterCell_BusAtStopBottom" id="kDX-nP-yVJ" customClass="PTRoutePresenterCell">
+                                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="RoutePresenterCell_BusAtStopBottom" id="kDX-nP-yVJ" customClass="PTRoutePresenterCell">
                                                 <rect key="frame" x="0.0" y="242" width="320" height="33"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="kDX-nP-yVJ" id="RMv-S9-V73">
@@ -344,7 +344,7 @@
                                         <rect key="frame" x="83" y="0.0" width="1" height="61"/>
                                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                     </view>
-                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JzT-ty-wbY" userLabel="EmptyRoutePicker">
+                                    <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JzT-ty-wbY" userLabel="EmptyRoutePicker">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="61"/>
                                         <subviews>
                                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Route" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Ch-BK-18h">
@@ -417,7 +417,28 @@
             </objects>
             <point key="canvasLocation" x="-34" y="114"/>
         </scene>
-        <!--View Controller - asdf-->
+        <!--View Controller-->
+        <scene sceneID="Qhz-U7-x4j">
+            <objects>
+                <viewController id="uOG-bG-MBL" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Gi8-Fz-ZMs"/>
+                        <viewControllerLayoutGuide type="bottom" id="04s-kO-xMB"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="vMa-Ta-0QG" customClass="Main">
+                        <rect key="frame" x="0.0" y="64" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="tTQ-HR-RgK">
+                        <barButtonItem key="leftBarButtonItem" style="plain" systemItem="search" id="hi3-mK-oM6"/>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MtK-A8-SIe" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-555" y="931"/>
+        </scene>
+        <!--asdf-->
         <scene sceneID="VnT-VK-CBq">
             <objects>
                 <viewController id="F1N-uX-KV8" sceneMemberID="viewController">
@@ -630,7 +651,7 @@
             </objects>
             <point key="canvasLocation" x="-125" y="764"/>
         </scene>
-        <!--Route Picker View Controller - Pick Route-->
+        <!--Pick Route-->
         <scene sceneID="9TP-9j-Oig">
             <objects>
                 <viewController id="cMf-PX-Sfo" customClass="PTRoutePickerViewController" sceneMemberID="viewController">

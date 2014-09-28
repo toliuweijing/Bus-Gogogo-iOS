@@ -8,8 +8,13 @@
 
 #import "PTAppDelegate.h"
 #import "PTRemoteService.h"
+#import "MainViewController.h"
+#import <CoreLocation/CoreLocation.h>
 
 @implementation PTAppDelegate
+{
+  CLLocationManager *_locationManager;
+}
 
 - (BOOL)is4Inch
 {
@@ -23,19 +28,26 @@
    (UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeBadge)];
   
   // 2. load storyboard based on screen size.
-  UIStoryboard *mainStoryboard = nil;
-  if (![self is4Inch]) {
-    mainStoryboard = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
-  } else {
-    mainStoryboard = [UIStoryboard storyboardWithName:@"MainStoryboard_4inch" bundle:nil];
-  }
-  
   self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-  self.window.rootViewController = [mainStoryboard instantiateInitialViewController];
+//  self.window.rootViewController = [MainViewController new];
+  self.window.rootViewController = [[self loadStoryboard] instantiateInitialViewController];
   [self.window makeKeyAndVisible];
-  [application setStatusBarStyle:UIStatusBarStyleLightContent];
+  
+  [self configureLocationServiceAuthorization];
   
   return YES;
+}
+
+- (void)configureLocationServiceAuthorization
+{
+  _locationManager = [CLLocationManager new];
+  [_locationManager requestAlwaysAuthorization];
+}
+
+- (UIStoryboard *)loadStoryboard
+{
+  NSString *name = [self is4Inch] ? @"MainStoryboard_4inch" : @"MainStoryboard";
+  return [UIStoryboard storyboardWithName:name bundle:nil];
 }
 
 
