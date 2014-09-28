@@ -32,6 +32,8 @@ typedef enum : NSUInteger {
 - (void)viewDidLoad
 {
   [super viewDidLoad];
+  
+  _tableView.tableFooterView = [UIView new];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -44,12 +46,6 @@ typedef enum : NSUInteger {
   PTMainTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([PTMainTableViewCell class])];
   cell.head.titleLabel.text = @"B";
   cell.title.text = @"To Kings Plaza";
-//  UIButton *button = (UIButton *) [cell.contentView viewWithTag:MainTableViewCellTagLeftHead];
-//  button.titleLabel.text = [@"B" stringByAppendingString: [@(indexPath.row) stringValue]];
-//  UILabel *title = (UILabel *) [cell.contentView viewWithTag:MainTableViewCellTagTitle];
-//  title.text = [@(indexPath.row) stringValue];
-//  UILabel *subtitle = (UILabel *) [cell.contentView viewWithTag:MainTableViewCellTagSubtitle];
-//  subtitle.text = [@(indexPath.row) stringValue];
   return cell;
 }
 @end
