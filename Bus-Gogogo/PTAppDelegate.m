@@ -34,7 +34,7 @@
 //  self.window.rootViewController = [[self loadStoryboard] instantiateInitialViewController];
 //  [self.window makeKeyAndVisible];
   
-//  [self configureLocationServiceAuthorization];
+  [self configureLocationServiceAuthorization];
   
   return YES;
 }
