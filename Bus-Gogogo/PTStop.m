@@ -39,4 +39,14 @@
   return self.obaStop.Id;
 }
 
+- (CLLocation *)location
+{
+  return [[CLLocation alloc] initWithLatitude:[self.obaStop.Lat floatValue] longitude:[self.obaStop.Lon floatValue]];
+}
+
+- (NSString *)directionText
+{
+  return self.obaStop.Direction;
+}
+
 @end

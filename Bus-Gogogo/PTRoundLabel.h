@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 IB_DESIGNABLE
-@interface PTDesignableButton : UIButton
+@interface PTRoundLabel : UILabel
 
 @property (nonatomic, assign) IBInspectable NSInteger cornerRadius;
 @property (nonatomic, assign) IBInspectable CGFloat borderWidth;

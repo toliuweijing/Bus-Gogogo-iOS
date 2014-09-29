@@ -14,7 +14,7 @@
 {
   NSString *_stopId;
   NSString *_routeId;
-  int _direction;
+  NSArray *_monitoredJourneys;
 }
 
 @end
@@ -25,46 +25,48 @@
 {
   return [[PTStopMonitoringDownloadRequester alloc]
           initWithStopId:@"MTA_301008"
-          routeId:@"MTA NYCT_B9"
-          direction:1];
+          routeId:@"MTA NYCT_B9"];
 }
 
 + (instancetype)sampleB9ShoreRd
 {
   return [[PTStopMonitoringDownloadRequester alloc]
           initWithStopId:@"MTA_300071"
-          routeId:@"MTA NYCT_B9"
-          direction:1];
+          routeId:@"MTA NYCT_B9"];
 }
 
 - (instancetype)initWithStopId:(NSString *)stopId
                        routeId:(NSString *)routeId
-                     direction:(int)direction
 {
   if (self = [super init]) {
     _stopId = stopId;
     _routeId = routeId;
-    _direction = direction;
   }
   return self;
 }
 
 - (NSURLRequest *)request
 {
+  assert(_stopId);
   NSString *format =
   @"http://bustime.mta.info/api/siri/stop-monitoring.json?"
   "key=cfb3c75b-5a43-4e66-b7f8-14e666b0c1c1&"
-  "LineRef=%@&"
-  "MonitoringRef=%@&"
-  "DirectionRef=%d";
-  NSString *urlString = [NSString stringWithFormat:format, _routeId, _stopId, _direction];
+  "&MonitoringRef=%@";
+  NSString *urlString = [NSString stringWithFormat:format, _stopId];
+  urlString = [urlString stringByAppendingString:[NSString stringWithFormat:@"LineRef=%@", _routeId]];
   urlString = [urlString stringByReplacingOccurrencesOfString:@" " withString:@"%20"];
   return [NSURLRequest requestWithURL:[NSURL URLWithString:urlString]];
 }
 
-- (id)parseData:(NSData *)data
+- (void)parseData:(NSData *)data
 {
-  return [self vehicleJourneysFromData:data];
+  _monitoredJourneys = [self vehicleJourneysFromData:data];
+}
+
+
+- (NSArray *)monitoredJourneys
+{
+  return _monitoredJourneys;
 }
 
 - (NSArray *)vehicleJourneysFromData:(NSData *)data

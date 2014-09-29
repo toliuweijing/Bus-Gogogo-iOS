@@ -22,4 +22,10 @@
 
 - (NSString *)viaDescription;
 
+- (NSArray *)destinations;
+
+- (UIColor *)color;
+
+- (UIColor *)textColor;
+
 @end

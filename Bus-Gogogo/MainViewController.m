@@ -7,10 +7,11 @@
 //
 
 #import "MainViewController.h"
-#import <MapKit/MapKit.h>
 #import "PTMainTableViewCell.h"
+#import "PTBase.h"
 #import "PTDownloadTask.h"
 #import "PTStopsForLocationRequester.h"
+#import "PTStopMonitoringDownloadRequester.h"
 
 static const NSString *kMainTableViewCellIdentifier = @"MainTableViewCell";
 typedef enum : NSUInteger {
@@ -28,6 +29,9 @@ typedef enum : NSUInteger {
   __weak IBOutlet UITableView *_tableView;
   
   CLLocationManager *_locationManager;
+  CLLocation *_location;
+  
+  NSArray *_routeStopPairs;
 }
 
 @end
@@ -53,14 +57,23 @@ typedef enum : NSUInteger {
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-  return 2;
+  return _routeStopPairs.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
   PTMainTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([PTMainTableViewCell class])];
-  cell.head.titleLabel.text = @"B";
-  cell.title.text = @"To Kings Plaza";
+  RouteStopPair *pair = [_routeStopPairs objectAtIndex:indexPath.row];
+  cell.head.text = pair.route.shortName;
+  cell.head.textColor = pair.route.textColor;
+  cell.head.backgroundColor = pair.route.color;
+  //TODO:Still couldn't get the destination
+  cell.title.text = [@"To " stringByAppendingString:[pair.route.destinations objectAtIndex:pair.stop.directionText.length % 2]];
+  
+  NSArray *component = @[[PTBase distanceStringBetweenA:_location b:pair.stop.location],
+                         pair.stop.directionText,
+                         pair.stop.name];
+  cell.subtitle.text = [component componentsJoinedByString:@", "];
   return cell;
 }
 
@@ -70,10 +83,49 @@ typedef enum : NSUInteger {
 {
   [PTDownloadTask
    scheduledTaskWithRequester:[[PTStopsForLocationRequester alloc] initWithLocation:location]
-   callback:^(NSArray *obaStops, NSError *error) {
+   callback:^(PTStopsForLocationRequester *requester, NSError *error) {
      assert(!error);
-     NSLog(@"done");
+     _routeStopPairs = [self _sortRouteStopPairsByDistance:requester.routeStopPairs];
+     [_tableView reloadData];
    }];
+}
+
+- (void)_fetchStopMonitoringData:(NSArray *)stopIds
+{
+  for (NSString *identifier in stopIds) {
+    [PTDownloadTask scheduledTaskWithRequester:
+     [[PTStopMonitoringDownloadRequester alloc] initWithStopId:identifier routeId:nil]
+                                      callback:
+     ^(PTStopMonitoringDownloadRequester *requester, NSError *error) {
+       assert(!error);
+       [requester monitoredJourneys];
+     }];
+  }
+}
+
+- (NSArray *)_sortRouteStopPairsByDistance:(NSArray *)routeStopPairs
+{
+  // routeId, direction,
+  routeStopPairs = [routeStopPairs sortedArrayUsingComparator:^NSComparisonResult(RouteStopPair *a, RouteStopPair *b) {
+    if ([a.route.identifier isEqualToString:b.route.identifier]) {
+      if ([a.stop.directionText isEqualToString:b.stop.directionText]) {
+        return fabs([a.stop.location distanceFromLocation:_location]) >
+          fabs([b.stop.location distanceFromLocation:_location]);
+      }
+      return [a.stop.directionText compare:b.stop.directionText];
+    }
+    return [a.route.identifier compare:b.route.identifier];
+  }];
+  
+  NSMutableArray *tmp = [NSMutableArray new];
+  for (RouteStopPair *p in routeStopPairs) {
+    RouteStopPair *q = tmp.lastObject;
+    if (![p.route.identifier isEqualToString:q.route.identifier] &&
+        ![p.stop.directionText isEqualToString:q.stop.directionText]) {
+      [tmp addObject:p];
+    }
+  }
+  return tmp;
 }
 
 - (void)_startPollLocation
@@ -87,6 +139,7 @@ typedef enum : NSUInteger {
 - (void)locationManager:(CLLocationManager *)manager
      didUpdateLocations:(NSArray *)locations
 {
+  _location = locations.firstObject;
   [manager stopUpdatingLocation];
   if (locations.firstObject) {
     [self _fetchStopsForLocation:locations.firstObject];

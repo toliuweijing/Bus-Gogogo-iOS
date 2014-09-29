@@ -19,4 +19,6 @@
 // location of bus stop, derived from coorindate.
 @property (nonatomic, strong, readonly) CLLocation *location;
 
+@property (nonatomic, readonly) NSString *directionText;
+
 @end

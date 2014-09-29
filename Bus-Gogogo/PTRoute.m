@@ -7,6 +7,7 @@
 //
 
 #import "PTRoute.h"
+#import "PTBase.h"
 
 @interface PTRoute ()
 {
@@ -80,6 +81,21 @@
 - (NSString *)viaDescription
 {
   return _oba.Description;
+}
+
+- (NSArray *)destinations
+{
+  return [_oba.LongName componentsSeparatedByString:@" - "];
+}
+
+- (UIColor *)color
+{
+  return [PTBase colorWithHex:_oba.Color];
+}
+
+- (UIColor *)textColor
+{
+  return [PTBase colorWithHex:_oba.TextColor];
 }
 
 @end

@@ -7,6 +7,8 @@
 //
 
 @class OBAPolyline;
+@class CLLocation;
+
 
 @interface PTBase : NSObject
 
@@ -17,5 +19,9 @@
 + (NSString *)shuttlePictureImageName;
 + (UIFont *)font;
 + (UIFont *)fontWithSize:(CGFloat)size;
++ (NSString *)distanceStringBetweenA:(CLLocation *)a b:(CLLocation *)b;
 
++ (UIColor *)colorWithHex:(NSString *)string;
+// Punch = #
++ (UIColor *)colorWithHexWithPunch:(NSString *)string;
 @end

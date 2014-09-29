@@ -11,8 +11,9 @@
 @interface PTStopMonitoringDownloadRequester : NSObject <PTDownloadRequester>
 
 - (instancetype)initWithStopId:(NSString *)stopId
-                       routeId:(NSString *)routeId
-                     direction:(int)direction;
+                       routeId:(NSString *)routeId;
+
+- (NSArray *)monitoredJourneys;
 
 + (instancetype)sampleB9EightAv;
 + (instancetype)sampleB9ShoreRd;

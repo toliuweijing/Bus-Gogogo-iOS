@@ -15,6 +15,8 @@
   OBAResponse *_response;
 }
 
+@property (nonatomic, strong) NSArray *routeStopPairs;
+
 @end
 
 @implementation PTStopsForLocationRequester
@@ -48,4 +50,35 @@
   return _response.Data.Stops;
 }
 
+- (NSArray *)routeStopPairs
+{
+  if (_routeStopPairs) {
+    return _routeStopPairs;
+  }
+  
+  if (!_response) {
+    return nil;
+  }
+  
+  NSMutableArray *pairs = [NSMutableArray new];
+  for (OBAStop *stop in _response.Data.Stops) {
+    for (OBARoute *route in stop.Routes) {
+      RouteStopPair *p = [RouteStopPair new];
+      p.route = [[PTRoute alloc] initWithOBACounterPart:route];
+      p.stop = [[PTStop alloc] initWithOBAStop:stop];
+      [pairs addObject:p];
+    }
+  }
+  _routeStopPairs = pairs;
+  return _routeStopPairs;
+}
+
+- (NSArray *)stopIds
+{
+  return [_response valueForKeyPath:@"Data.Stops.Id"];
+}
+
+@end
+
+@implementation RouteStopPair
 @end

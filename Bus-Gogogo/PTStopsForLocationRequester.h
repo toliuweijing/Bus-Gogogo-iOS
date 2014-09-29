@@ -9,10 +9,24 @@
 #import "PTDownloadTask.h"
 #import <CoreLocation/CoreLocation.h>
 
+#import "PTRoute.h"
+#import "PTStop.h"
+
 @interface PTStopsForLocationRequester : NSObject <PTDownloadRequester>
 
 - (instancetype)initWithLocation:(CLLocation *)location;
 
 - (NSArray *)obaRoutes;
+
+@property (nonatomic, readonly) NSArray *routeStopPairs;
+
+@property (nonatomic, readonly) NSArray *stopIds;
+
+@end
+
+@interface RouteStopPair : NSObject
+
+@property (nonatomic, strong) PTRoute *route;
+@property (nonatomic, strong) PTStop *stop;
 
 @end

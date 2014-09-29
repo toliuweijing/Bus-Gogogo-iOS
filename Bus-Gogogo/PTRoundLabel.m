@@ -6,12 +6,13 @@
 //  Copyright (c) 2014 Weijing Liu. All rights reserved.
 //
 
-#import "PTDesignableButton.h"
+#import "PTRoundLabel.h"
 
-@implementation PTDesignableButton
+@implementation PTRoundLabel
 
 - (void)setCornerRadius:(NSInteger)cornerRadius
 {
+  
   _cornerRadius = cornerRadius;
   self.layer.cornerRadius = cornerRadius;
 }

@@ -10,7 +10,7 @@
 
 @interface PTMainTableViewCell : UITableViewCell
 
-@property (weak, nonatomic) IBOutlet UIButton *head;
+@property (weak, nonatomic) IBOutlet UILabel *head;
 
 @property (weak, nonatomic) IBOutlet UILabel *title;
 
