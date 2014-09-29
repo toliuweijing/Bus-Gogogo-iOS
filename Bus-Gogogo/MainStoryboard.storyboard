@@ -34,7 +34,7 @@
         <!--NEARBY-->
         <scene sceneID="DVm-Fb-Haf">
             <objects>
-                <viewController id="1Hg-k7-b0E" customClass="MainViewController" sceneMemberID="viewController">
+                <viewController id="1Hg-k7-b0E" customClass="MainViewController" customModule="Bus_Gogogo" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="gFx-kc-gP7"/>
                         <viewControllerLayoutGuide type="bottom" id="B2V-44-IgR"/>
@@ -112,8 +112,8 @@
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
-                                    <outlet property="dataSource" destination="1Hg-k7-b0E" id="zDD-5Z-NkG"/>
-                                    <outlet property="delegate" destination="1Hg-k7-b0E" id="LLz-0M-UHc"/>
+                                    <outlet property="dataSource" destination="1Hg-k7-b0E" id="FVD-bD-j36"/>
+                                    <outlet property="delegate" destination="1Hg-k7-b0E" id="Kak-cf-5l3"/>
                                 </connections>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b5b-H7-Ju1">
@@ -143,7 +143,7 @@
                         <barButtonItem key="rightBarButtonItem" systemItem="search" id="BOR-5a-yP0"/>
                     </navigationItem>
                     <connections>
-                        <outlet property="_tableView" destination="YjY-39-Edz" id="cm4-nu-dEd"/>
+                        <outlet property="tableView" destination="YjY-39-Edz" id="ZhO-9V-WUx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wi6-1P-0nR" userLabel="First Responder" sceneMemberID="firstResponder"/>

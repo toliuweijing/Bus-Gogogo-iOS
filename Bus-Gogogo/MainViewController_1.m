@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 Weijing Liu. All rights reserved.
 //
 
-#import "MainViewController.h"
+#import "MainViewController_1.h"
 #import "PTMainTableViewCell.h"
 #import "PTBase.h"
 #import "PTDownloadTask.h"
@@ -20,7 +20,7 @@ typedef enum : NSUInteger {
   MainTableViewCellTagSubtitle,
 } MainTableViewCellTag;
 
-@interface MainViewController () <
+@interface MainViewController_1 () <
   CLLocationManagerDelegate,
   UITableViewDataSource,
   UITableViewDelegate
@@ -36,7 +36,7 @@ typedef enum : NSUInteger {
 
 @end
 
-@implementation MainViewController
+@implementation MainViewController_1
 
 - (void)awakeFromNib
 {

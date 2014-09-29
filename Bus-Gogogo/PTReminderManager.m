@@ -92,8 +92,7 @@
   PTStopMonitoringDownloadRequester *requester =
   [[PTStopMonitoringDownloadRequester alloc]
    initWithStopId:_stop.identifier
-   routeId:_route.identifier
-   direction:_direction];
+   routeId:_route.identifier];
   
   _task = [PTDownloadTask
            scheduledTaskWithRequester:requester
