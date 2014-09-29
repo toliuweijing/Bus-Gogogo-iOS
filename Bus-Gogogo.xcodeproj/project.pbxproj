@@ -16,6 +16,7 @@
 		E966D16F18F9800700CD8C0F /* PTPolyline.m in Sources */ = {isa = PBXBuildFile; fileRef = E966D16E18F9800700CD8C0F /* PTPolyline.m */; };
 		FB01A5DE18E76226001C793F /* PTMonitoredVehicleJourney.m in Sources */ = {isa = PBXBuildFile; fileRef = FB01A5DD18E76226001C793F /* PTMonitoredVehicleJourney.m */; };
 		FB01A5E118E76427001C793F /* MTADataModelAdaptors.m in Sources */ = {isa = PBXBuildFile; fileRef = FB01A5E018E76427001C793F /* MTADataModelAdaptors.m */; };
+		FB0FFE5519DA037700E36333 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB0FFE5419DA037700E36333 /* Store.swift */; };
 		FB129CD018F10D29009AAEA7 /* PTMonitoredVehicleJourneyDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = FB129CCF18F10D29009AAEA7 /* PTMonitoredVehicleJourneyDownloader.m */; };
 		FB28BA5219D888B800B021CF /* PTRoundLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = FB28BA5119D888B800B021CF /* PTRoundLabel.m */; };
 		FB3D48E118EFB26200302031 /* OBADataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FB3D48E018EFB26200302031 /* OBADataModel.m */; };
@@ -51,7 +52,6 @@
 		FBD7894518E74E580077F68A /* MTADataModels.m in Sources */ = {isa = PBXBuildFile; fileRef = FBD7894418E74E580077F68A /* MTADataModels.m */; };
 		FBD8B66319360DDE00E43725 /* PTRouteFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = FBD8B66219360DDE00E43725 /* PTRouteFilter.m */; };
 		FBE61DF819434F9B00CAE3F7 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FBE61DF719434F9B00CAE3F7 /* MainStoryboard.storyboard */; };
-		FBEDDDB219D9863E00251B12 /* PTStore.m in Sources */ = {isa = PBXBuildFile; fileRef = FBEDDDB119D9863E00251B12 /* PTStore.m */; };
 		FBEDDDC119D9F70900251B12 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBEDDDC019D9F70900251B12 /* MainViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -85,6 +85,7 @@
 		FB01A5DD18E76226001C793F /* PTMonitoredVehicleJourney.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTMonitoredVehicleJourney.m; sourceTree = "<group>"; };
 		FB01A5DF18E76427001C793F /* MTADataModelAdaptors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTADataModelAdaptors.h; sourceTree = "<group>"; };
 		FB01A5E018E76427001C793F /* MTADataModelAdaptors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTADataModelAdaptors.m; sourceTree = "<group>"; };
+		FB0FFE5419DA037700E36333 /* Store.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
 		FB129CCE18F10D29009AAEA7 /* PTMonitoredVehicleJourneyDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTMonitoredVehicleJourneyDownloader.h; sourceTree = "<group>"; };
 		FB129CCF18F10D29009AAEA7 /* PTMonitoredVehicleJourneyDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTMonitoredVehicleJourneyDownloader.m; sourceTree = "<group>"; };
 		FB28BA5019D888B800B021CF /* PTRoundLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTRoundLabel.h; sourceTree = "<group>"; };
@@ -148,8 +149,6 @@
 		FBDBB9A5193BDB7A008374A2 /* PTStopProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTStopProtocol.h; sourceTree = "<group>"; };
 		FBDBB9A6193BDBFF008374A2 /* PTMonitoredVehicleJourneyProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTMonitoredVehicleJourneyProtocol.h; sourceTree = "<group>"; };
 		FBE61DF719434F9B00CAE3F7 /* MainStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainStoryboard.storyboard; sourceTree = "<group>"; };
-		FBEDDDB019D9863E00251B12 /* PTStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTStore.h; sourceTree = "<group>"; };
-		FBEDDDB119D9863E00251B12 /* PTStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTStore.m; sourceTree = "<group>"; };
 		FBEDDDBF19D9F70800251B12 /* Bus-Gogogo-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bus-Gogogo-Bridging-Header.h"; sourceTree = "<group>"; };
 		FBEDDDC019D9F70900251B12 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		FBFF62ED18E876D1008D94F9 /* PTMacro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PTMacro.h; sourceTree = "<group>"; };
@@ -248,8 +247,7 @@
 		FB0CAA8C1933EF0B0088A314 /* Store */ = {
 			isa = PBXGroup;
 			children = (
-				FBEDDDB019D9863E00251B12 /* PTStore.h */,
-				FBEDDDB119D9863E00251B12 /* PTStore.m */,
+				FB0FFE5419DA037700E36333 /* Store.swift */,
 			);
 			name = Store;
 			sourceTree = "<group>";
@@ -559,7 +557,6 @@
 				FB8714D7194515D100670513 /* PTMonitoredVehicleJourneyDownloadRequester.m in Sources */,
 				FBD7894518E74E580077F68A /* MTADataModels.m in Sources */,
 				FB786CC018F99510002A7CFF /* PTMapContainerView.m in Sources */,
-				FBEDDDB219D9863E00251B12 /* PTStore.m in Sources */,
 				8BA1726C195F4BAF00AB1300 /* PTRemoteReminderRequest.m in Sources */,
 				8B4DC831194E14DF0013C6BD /* PTReminderManager.m in Sources */,
 				FBC773AA18DE1D7600621261 /* PTStop+MKAnnotation.m in Sources */,
@@ -571,6 +568,7 @@
 				FB93767619D7679000B0487C /* MainViewController_1.m in Sources */,
 				FBA4E41019D8B692007E2090 /* PTMainTableViewCell.m in Sources */,
 				FB8714D41945144000670513 /* PTAllRoutesDownloadRequester.m in Sources */,
+				FB0FFE5519DA037700E36333 /* Store.swift in Sources */,
 				FB517C4418DDDF43005C7881 /* main.m in Sources */,
 				FB8714C11944F54300670513 /* PTDownloadTask.m in Sources */,
 				E966D16F18F9800700CD8C0F /* PTPolyline.m in Sources */,
