@@ -8,7 +8,6 @@
 
 #import "PTStopGroupDownloadRequester.h"
 #import "OBADataModel.h"
-#import "PTStore.h"
 #import "PTStopGroup.h"
 
 @interface PTStopGroupDownloadRequester ()
@@ -46,7 +45,7 @@
   _response = [[OBAResponse alloc] initWithDictionary:JSONResponse];
   
   // populate results into global store
-  [[PTStore sharedStore] populateWithOBAResponse:_response];
+  assert(false); // broken
 }
 
 - (NSArray *)obaStopGroups
