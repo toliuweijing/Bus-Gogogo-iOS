@@ -8,7 +8,6 @@
 
 #import "PTAppDelegate.h"
 #import "PTRemoteService.h"
-#import "MainViewController_1.h"
 #import <CoreLocation/CoreLocation.h>
 
 @implementation PTAppDelegate

@@ -21,4 +21,6 @@
 
 @property (nonatomic, readonly) NSString *directionText;
 
+@property (nonatomic, readonly) NSArray *routes;
+
 @end

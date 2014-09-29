@@ -24,6 +24,6 @@ class Store<T> {
 struct StoreHub {
   static let stops: Store<PTStop> = Store<PTStop>()
   static let routes: Store<PTRoute> = Store<PTRoute>()
-  static let stopGroups: Store<PTStopGroup> = Store<PTStopGroup>()
+//  static let stopGroups: Store<PTStopGroup> = Store<PTStopGroup>()
 }
 

@@ -8,6 +8,7 @@
 
 #import "PTStop.h"
 #import <CoreLocation/CoreLocation.h>
+#import "PTRoute.h"
 
 @interface PTStop ()
 
@@ -47,6 +48,15 @@
 - (NSString *)directionText
 {
   return self.obaStop.Direction;
+}
+
+- (NSArray *)routes
+{
+  NSMutableArray *routes = [NSMutableArray new];
+  for (OBARoute *r in self.obaStop.Routes) {
+    [routes addObject:[[PTRoute alloc] initWithOBACounterPart:r]];
+  }
+  return routes;
 }
 
 @end

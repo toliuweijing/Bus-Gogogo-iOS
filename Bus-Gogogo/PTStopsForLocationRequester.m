@@ -15,7 +15,7 @@
   OBAResponse *_response;
 }
 
-@property (nonatomic, strong) NSArray *routeStopPairs;
+@property (nonatomic, strong) NSArray *stops;
 
 @end
 
@@ -43,42 +43,13 @@
   assert(!error);
  
   _response = [[OBAResponse alloc] initWithDictionary:JSONResponse];
-}
-
-- (NSArray *)obaRoutes
-{
-  return _response.Data.Stops;
-}
-
-- (NSArray *)routeStopPairs
-{
-  if (_routeStopPairs) {
-    return _routeStopPairs;
+  NSMutableArray *a = [NSMutableArray new];
+  for (OBAStop *s in _response.Data.Stops) {
+    PTStop *ptstop = [[PTStop alloc] initWithOBAStop:s];
+    [a addObject:ptstop];
   }
-  
-  if (!_response) {
-    return nil;
-  }
-  
-  NSMutableArray *pairs = [NSMutableArray new];
-  for (OBAStop *stop in _response.Data.Stops) {
-    for (OBARoute *route in stop.Routes) {
-      RouteStopPair *p = [RouteStopPair new];
-      p.route = [[PTRoute alloc] initWithOBACounterPart:route];
-      p.stop = [[PTStop alloc] initWithOBAStop:stop];
-      [pairs addObject:p];
-    }
-  }
-  _routeStopPairs = pairs;
-  return _routeStopPairs;
-}
-
-- (NSArray *)stopIds
-{
-  return [_response valueForKeyPath:@"Data.Stops.Id"];
+  _stops = a;
 }
 
 @end
 
-@implementation RouteStopPair
-@end

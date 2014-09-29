@@ -7,12 +7,13 @@
 //
 
 #import "PTDownloadTask.h"
+#import "OBADataModel.h"
 
 @interface PTStopGroupDownloadRequester : NSObject <PTDownloadRequester>
 
 - (instancetype)initWithRouteId:(NSString *)routeId;
 
-- (NSArray *)obaStopGroups;
+- (OBAResponse *)response;
 
 @end
 

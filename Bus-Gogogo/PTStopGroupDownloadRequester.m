@@ -43,20 +43,11 @@
   assert(!error);
   
   _response = [[OBAResponse alloc] initWithDictionary:JSONResponse];
-  
-  // populate results into global store
-  assert(false); // broken
 }
 
-- (NSArray *)obaStopGroups
+- (OBAResponse *)response
 {
-  OBAStopGrouping *stopGrouping = _response.Data.StopGroupings.firstObject;
-  OBAStopGroup *stopGroupA = stopGrouping.StopGroups.firstObject;
-  OBAStopGroup *stopGroupB = stopGrouping.StopGroups.lastObject;
-  NSArray *ptStopGroups = @[[PTStopGroup stopGroupFromOBACounterPart:stopGroupA],
-                            [PTStopGroup stopGroupFromOBACounterPart:stopGroupB]];
-  return ptStopGroups;
+  return _response;
 }
-
 
 @end
