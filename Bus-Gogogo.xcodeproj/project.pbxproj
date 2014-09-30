@@ -53,6 +53,7 @@
 		FBD8B66319360DDE00E43725 /* PTRouteFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = FBD8B66219360DDE00E43725 /* PTRouteFilter.m */; };
 		FBE61DF819434F9B00CAE3F7 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FBE61DF719434F9B00CAE3F7 /* MainStoryboard.storyboard */; };
 		FBEDDDC119D9F70900251B12 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBEDDDC019D9F70900251B12 /* MainViewController.swift */; };
+		FBFF267F19DACCE10066CB92 /* RestTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBFF267E19DACCE10066CB92 /* RestTask.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -150,6 +151,7 @@
 		FBE61DF719434F9B00CAE3F7 /* MainStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainStoryboard.storyboard; sourceTree = "<group>"; };
 		FBEDDDBF19D9F70800251B12 /* Bus-Gogogo-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bus-Gogogo-Bridging-Header.h"; sourceTree = "<group>"; };
 		FBEDDDC019D9F70900251B12 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		FBFF267E19DACCE10066CB92 /* RestTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestTask.swift; sourceTree = "<group>"; };
 		FBFF62ED18E876D1008D94F9 /* PTMacro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PTMacro.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -231,6 +233,7 @@
 				8B4DC82D194E0FCC0013C6BD /* PTStopMonitoringDownloadRequester.m */,
 				FB8714BF1944F54300670513 /* PTDownloadTask.h */,
 				FB8714C01944F54300670513 /* PTDownloadTask.m */,
+				FBFF267E19DACCE10066CB92 /* RestTask.swift */,
 				FB93452719D8C55400298B98 /* PTStopsForLocationRequester.h */,
 				FB93452819D8C55400298B98 /* PTStopsForLocationRequester.m */,
 				FB8714CF1945109500670513 /* PTStopGroupDownloadRequester.h */,
@@ -560,6 +563,7 @@
 				8B4DC831194E14DF0013C6BD /* PTReminderManager.m in Sources */,
 				FBC773AA18DE1D7600621261 /* PTStop+MKAnnotation.m in Sources */,
 				FB65611F19154236009EA53E /* PTRoute.m in Sources */,
+				FBFF267F19DACCE10066CB92 /* RestTask.swift in Sources */,
 				FB3D48E918EFC1F900302031 /* PTStopGroup.m in Sources */,
 				FB01A5DE18E76226001C793F /* PTMonitoredVehicleJourney.m in Sources */,
 				FB3D48EC18F0487E00302031 /* PTBase.m in Sources */,
