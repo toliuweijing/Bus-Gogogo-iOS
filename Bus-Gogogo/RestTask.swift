@@ -13,9 +13,9 @@ protocol RestRequester {
   func parse(data: NSData)
 }
 
-class RestTask<T: RestRequester> {
+class RestTask<T where T: PTDownloadRequester> {
   
-  typealias Callback = (T?, NSError?)->()
+  typealias Callback = (T, NSError!)->()
   
   private var _requester: T
   
@@ -27,13 +27,13 @@ class RestTask<T: RestRequester> {
     _requester = requester
   }
   
-  func start(callback: Callback!) {
+  func start(callback: Callback) {
     var config = NSURLSessionConfiguration.defaultSessionConfiguration()
     config.requestCachePolicy = NSURLRequestCachePolicy.ReloadIgnoringLocalAndRemoteCacheData
     _dataTask = NSURLSession(configuration: config).dataTaskWithRequest(_requester.request())
     { (data: NSData!, response: NSURLResponse!, error: NSError!) -> Void in
-      if error != nil {
-        self._requester.parse(data)
+      if error == nil {
+        self._requester.parseData(data!)
       }
       dispatch_async(dispatch_get_main_queue()) {
         callback(self._requester, error)

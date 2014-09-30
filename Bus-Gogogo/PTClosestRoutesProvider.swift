@@ -36,19 +36,21 @@ class ClosestRouteProvider {
   }
   
   private func start() {
-    PTDownloadTask.scheduledTaskWithRequester(
-      PTStopsForLocationRequester(location: _location),
-      callback: { (obj: AnyObject!, error: NSError!) -> Void in
-        let requester = obj as? PTStopsForLocationRequester
-        self.stopsForLocationFinish(requester)
-    })
+    RestTask<PTStopsForLocationRequester>(requester: PTStopsForLocationRequester(location: _location)).start {
+      (requester: PTStopsForLocationRequester!, error: NSError!) -> () in
+      assert(requester != nil)
+      self.stopsForLocationFinish(requester)
+    }
   }
   
   private func stopsForLocationFinish(requester: PTStopsForLocationRequester!) {
-    let stops = requester.stops as [PTStop]
+    let stops = requester.stops as NSArray
+    _stops = [PTStop]()
     var seen = Dictionary<NSString, Int>()
     var routes = [PTRoute]()
-    for s in stops {
+    for ss in stops {
+      let s = ss as PTStop
+      _stops.append(s)
       StoreHub.stops.set(s, identifier: s.identifier)
       for obj in s.routes {
         let r = obj as PTRoute
@@ -59,21 +61,17 @@ class ClosestRouteProvider {
       }
     }
     
-    _stops = stops
     _routes = routes
     var requesters = [PTStopGroupDownloadRequester]()
     
     for r in routes {
-      PTDownloadTask.scheduledTaskWithRequester(
-        PTStopGroupDownloadRequester(routeId: r.identifier()),
-        callback: { (obj: AnyObject!, error: NSError!) -> Void in
-          let requester = obj as PTStopGroupDownloadRequester
-          requesters.append(requester)
-          
-          if requesters.count == routes.count {
-            self.stopGroupRequestersFinish(requesters)
-          }
-      })
+      RestTask(requester: PTStopGroupDownloadRequester(routeId: r.identifier())).start {
+        (r: PTStopGroupDownloadRequester?, e: NSError?) -> () in
+        requesters.append(r!)
+        if requesters.count == routes.count {
+          self.stopGroupRequestersFinish(requesters)
+        }
+      }
       NSLog("%@", r.identifier())
     }
     NSLog("finish")
@@ -94,7 +92,6 @@ class ClosestRouteProvider {
         let stop = findClosestStop(stopGroup.StopIds)
         let distance = Int(stop.location.distanceFromLocation(_location))
         let distanceText = NSString(format: "%dm", distance)
-        NSLog("route=%@, stop=%@, distination=%@", route.identifier(), stop.identifier, destination)
         ret.append(ClosestRoute(route: route, stop: stop, destination: destination, distanceText: distanceText))
       }
     }
@@ -102,6 +99,7 @@ class ClosestRouteProvider {
   }
   
   private func findClosestStop(stopIds: NSArray!) -> PTStop {
+    NSLog("%d", stopIds.count)
     var bestDistance = 10000000.0
     var bestStop = PTStop()
     for s in _stops {
