@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import CoreLocation
 
 struct ClosestRoute {
   var route: PTRoute
@@ -36,21 +37,19 @@ class ClosestRouteProvider {
   }
   
   private func start() {
-    RestTask<PTStopsForLocationRequester>(requester: PTStopsForLocationRequester(location: _location)).start {
-      (requester: PTStopsForLocationRequester!, error: NSError!) -> () in
+    RestTask<RestStopsForLocationRequester>(requester: RestStopsForLocationRequester(location: _location)).start {
+      (requester: RestStopsForLocationRequester!, error: NSError!) -> () in
       assert(requester != nil)
       self.stopsForLocationFinish(requester)
     }
   }
   
-  private func stopsForLocationFinish(requester: PTStopsForLocationRequester!) {
-    let stops = requester.stops as NSArray
-    _stops = [PTStop]()
+  private func stopsForLocationFinish(requester: RestStopsForLocationRequester!) {
     var seen = Dictionary<NSString, Int>()
     var routes = [PTRoute]()
-    for ss in stops {
-      let s = ss as PTStop
-      _stops.append(s)
+    
+    _stops = requester._stops
+    for s in _stops {
       StoreHub.stops.set(s, identifier: s.identifier)
       for obj in s.routes {
         let r = obj as PTRoute

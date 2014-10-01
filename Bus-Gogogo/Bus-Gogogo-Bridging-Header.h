@@ -3,7 +3,6 @@
 //
 
 #import "PTMainTableViewCell.h"
-#import "PTStopsForLocationRequester.h"
 #import "PTStop.h"
 #import "PTRoute.h"
 #import "OBADataModel.h"
