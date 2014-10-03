@@ -9,14 +9,18 @@
 import Foundation
 
 extension NSURL {
-  class Builder {
+  class Builder: Printable {
    
-    var _urlText: String = String()
+    private var _query: String = String()
     
-    var _hasParam: Bool = false
+    private var _params: String = String()
+    
+    var description: String {
+      return build().description
+    }
     
     func query(query: String) -> Builder {
-      _urlText += query
+      _query = query
       return self
     }
     
@@ -25,15 +29,23 @@ extension NSURL {
     }
     
     func param(key: String, var value: String) -> Builder {
-      value = value.stringByReplacingOccurrencesOfString(" ", withString: "%20")
-      let separator = _hasParam ? "&" : "?"
-      _hasParam = true
-      _urlText += separator + key + "=" + value
+      var separator = _params.isEmpty ? "" : "&"
+      _params += separator + key + "=" + format(value)
       return self
     }
     
     func build() -> NSURL {
-      return NSURL(string: _urlText)
+      assert(!_query.isEmpty, "query is invalid")
+      if _params.isEmpty {
+        return NSURL(string: _query)
+      } else {
+        return NSURL(string: _query + "?" + _params)
+      }
+    }
+    
+    // Used to format string values to be compatible to URL standard, i.e. space replacement.
+    private func format(string: String) -> String {
+      return string.stringByReplacingOccurrencesOfString(" ", withString: "%20")
     }
   }
 }
