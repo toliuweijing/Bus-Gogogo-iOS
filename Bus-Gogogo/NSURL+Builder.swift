@@ -24,7 +24,8 @@ extension NSURL {
       return param(key, value: "\(value)")
     }
     
-    func param(key: String, value: String) -> Builder {
+    func param(key: String, var value: String) -> Builder {
+      value = value.stringByReplacingOccurrencesOfString(" ", withString: "%20")
       let separator = _hasParam ? "&" : "?"
       _hasParam = true
       _urlText += separator + key + "=" + value

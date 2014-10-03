@@ -50,6 +50,7 @@
 		FBC00D9719DC2A6800ED61FF /* RestStopsForLocationRequester.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC00D9619DC2A6800ED61FF /* RestStopsForLocationRequester.swift */; };
 		FBC00D9919DC2AC300ED61FF /* NSURL+Builder.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC00D9819DC2AC300ED61FF /* NSURL+Builder.swift */; };
 		FBC00D9B19DC329E00ED61FF /* RestApis.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC00D9A19DC329E00ED61FF /* RestApis.swift */; };
+		FBC00D9F19DD77FA00ED61FF /* RestStopMonitoringRequester.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC00D9E19DD77FA00ED61FF /* RestStopMonitoringRequester.swift */; };
 		FBC773AA18DE1D7600621261 /* PTStop+MKAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = FBC773A918DE1D7600621261 /* PTStop+MKAnnotation.m */; };
 		FBD7894518E74E580077F68A /* MTADataModels.m in Sources */ = {isa = PBXBuildFile; fileRef = FBD7894418E74E580077F68A /* MTADataModels.m */; };
 		FBD8B66319360DDE00E43725 /* PTRouteFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = FBD8B66219360DDE00E43725 /* PTRouteFilter.m */; };
@@ -142,6 +143,7 @@
 		FBC00D9619DC2A6800ED61FF /* RestStopsForLocationRequester.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestStopsForLocationRequester.swift; sourceTree = "<group>"; };
 		FBC00D9819DC2AC300ED61FF /* NSURL+Builder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSURL+Builder.swift"; sourceTree = "<group>"; };
 		FBC00D9A19DC329E00ED61FF /* RestApis.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestApis.swift; sourceTree = "<group>"; };
+		FBC00D9E19DD77FA00ED61FF /* RestStopMonitoringRequester.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestStopMonitoringRequester.swift; sourceTree = "<group>"; };
 		FBC773A818DE1D7600621261 /* PTStop+MKAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PTStop+MKAnnotation.h"; sourceTree = "<group>"; };
 		FBC773A918DE1D7600621261 /* PTStop+MKAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "PTStop+MKAnnotation.m"; sourceTree = "<group>"; };
 		FBD7894318E74E580077F68A /* MTADataModels.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTADataModels.h; sourceTree = "<group>"; };
@@ -240,6 +242,7 @@
 				FBFF267E19DACCE10066CB92 /* RestTask.swift */,
 				FBC00D9A19DC329E00ED61FF /* RestApis.swift */,
 				FBC00D9619DC2A6800ED61FF /* RestStopsForLocationRequester.swift */,
+				FBC00D9E19DD77FA00ED61FF /* RestStopMonitoringRequester.swift */,
 				FB8714CF1945109500670513 /* PTStopGroupDownloadRequester.h */,
 				FB8714D01945109500670513 /* PTStopGroupDownloadRequester.m */,
 				FB8714D21945144000670513 /* PTAllRoutesDownloadRequester.h */,
@@ -588,6 +591,7 @@
 				FB01A5E118E76427001C793F /* MTADataModelAdaptors.m in Sources */,
 				FBD8B66319360DDE00E43725 /* PTRouteFilter.m in Sources */,
 				FB517C7218DDE4F4005C7881 /* PTStop.m in Sources */,
+				FBC00D9F19DD77FA00ED61FF /* RestStopMonitoringRequester.swift in Sources */,
 				FB517C6F18DDE30F005C7881 /* PTLine.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

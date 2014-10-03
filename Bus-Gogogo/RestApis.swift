@@ -15,6 +15,24 @@ struct RestApis {
   
   struct Siri {
     
+    static let FORMAT = "http://api.prod.obanyc.com/api/siri/%@.json"
+    
+    static let QUERY_STOP_MONITORING = "stop-monitoring"
+    
+    static let PARAM_MONITORING_REF = "MonitoringRef"
+    
+    static let PARAM_LINE_REF = "LineRef"
+    
+    static func stopMonitoring(monitoringRef: String, lineRef: String)
+      -> NSURLRequest {
+      let url = NSURL.Builder()
+        .query(NSString(format: FORMAT, QUERY_STOP_MONITORING))
+        .param(PARAM_KEY, value: VAL_KEY)
+        .param(PARAM_MONITORING_REF, value: monitoringRef)
+        .param(PARAM_LINE_REF, value: lineRef)
+        .build()
+      return NSURLRequest(URL: url)
+    }
   }
   
   struct Oba {

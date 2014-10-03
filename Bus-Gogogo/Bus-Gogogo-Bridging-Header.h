@@ -5,5 +5,7 @@
 #import "PTMainTableViewCell.h"
 #import "PTStop.h"
 #import "PTRoute.h"
+#import "PTMonitoredVehicleJourney.h"
 #import "OBADataModel.h"
+#import "MTADataModels.h"
 #import "PTStopGroupDownloadRequester.h"
