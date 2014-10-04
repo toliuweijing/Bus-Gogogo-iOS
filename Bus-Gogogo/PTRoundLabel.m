@@ -12,8 +12,8 @@
 
 - (void)setCornerRadius:(NSInteger)cornerRadius
 {
-  
   _cornerRadius = cornerRadius;
+  self.layer.masksToBounds = YES;
   self.layer.cornerRadius = cornerRadius;
 }
 
