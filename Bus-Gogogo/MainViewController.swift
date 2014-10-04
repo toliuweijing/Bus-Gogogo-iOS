@@ -26,7 +26,15 @@ class MainViewController:
   
   var _location: CLLocation?
   
-  var _closestRoutes: [ClosestRoute]?
+  var _closestRoutes: [ClosestRoute] = [ClosestRoute]()
+  
+  var _closestRouteMonitor: [RouteStopKey: String] = [RouteStopKey: String]()
+  
+  var _timer: NSTimer?
+  
+  class func key(r: PTRoute, s: PTStop) -> String {
+    return r.identifier() + s.identifier
+  }
   
   required init(coder aDecoder: NSCoder) {
     super.init(coder: aDecoder)
@@ -36,8 +44,22 @@ class MainViewController:
   private func fetchClosestRoute() {
     ClosestRouteProvider(location: _location) { (closestRoute, error) -> () in
       assert(error == nil, "should be nil")
-      self._closestRoutes = closestRoute
+      self._closestRoutes = closestRoute!
       self.tableView.reloadData()
+      self.fetchMonitor()
+    }
+  }
+  
+  @objc private func fetchMonitor() {
+    for c in _closestRoutes {
+      RestTask(requester: RestStopMonitoringRequester(monitoringRef: c.stop.identifier, lineRef: c.route.identifier())).start
+      { (req: RestStopMonitoringRequester, error: NSError!) -> () in
+        var key = RouteStopKey(r: c.route, s: c.stop)
+        var journey = req._monitoredJourneys.first?
+        
+        self._closestRouteMonitor[key] = journey == nil ? "" : journey!.presentableDistance
+        self.tableView.reloadData()
+      }
     }
   }
   
@@ -46,6 +68,14 @@ class MainViewController:
     super.viewWillAppear(animated)
     
     _locationManager.startUpdatingLocation()
+    
+    _timer?.invalidate()
+    _timer = NSTimer.scheduledTimerWithTimeInterval(20, target: self, selector: Selector("fetchMonitor"), userInfo: nil, repeats: true)
+  }
+  
+  override func viewWillDisappear(animated: Bool) {
+    super.viewWillDisappear(animated)
+    _timer?.invalidate()
   }
   
   // CLLocationManagerDelegate_____________________
@@ -57,27 +87,44 @@ class MainViewController:
   
   // UITableViewDataSource__________________________
   func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    if let routes = _closestRoutes? {
-      return routes.count
-    } else {
-      return 0
-    }
+    return _closestRoutes.count
   }
   
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    let closestRoute = _closestRoutes[indexPath.row]
+    
     var identifier = NSStringFromClass(PTMainTableViewCell.classForCoder())
     var cell = tableView.dequeueReusableCellWithIdentifier(
       identifier, forIndexPath: indexPath) as PTMainTableViewCell
-    cell.head.text = _closestRoutes![indexPath.row].route.shortName()
-    cell.head.textColor = _closestRoutes![indexPath.row].route.textColor()
-    cell.head.backgroundColor = _closestRoutes![indexPath.row].route.color()
-    var dest = _closestRoutes![indexPath.row].destination
+    cell.head.text = _closestRoutes[indexPath.row].route.shortName()
+    cell.head.textColor = _closestRoutes[indexPath.row].route.textColor()
+    cell.head.backgroundColor = _closestRoutes[indexPath.row].route.color()
+    var dest = _closestRoutes[indexPath.row].destination
     let location = dest.rangeOfString("via").location
     if location != NSNotFound {
       dest = dest.substringToIndex(location)
     }
     cell.title.text = "To " + dest
-    cell.subtitle.text = _closestRoutes![indexPath.row].stop.name
+    
+    let monitor = _closestRouteMonitor[RouteStopKey(r: closestRoute.route, s: closestRoute.stop)]
+    cell.subtitle.text = _closestRoutes[indexPath.row].stop.name
+    cell.subline.text = (monitor == nil ? "" : monitor!)
+    
     return cell
   }
 }
+
+class RouteStopKey: Hashable, Equatable {
+  var key: String
+  required init(r: PTRoute, s: PTStop) {
+    key = r.identifier() + s.identifier
+  }
+  
+  var hashValue: Int {
+    return key.hashValue
+  }
+}
+func ==(lhs: RouteStopKey, rhs: RouteStopKey) -> Bool {
+  return lhs.hashValue == rhs.hashValue
+}
+    

@@ -20,7 +20,9 @@ class RestStopsForLocationRequester: PTDownloadRequester {
   }
   
   func request() -> NSURLRequest! {
-    return RestApis.Oba.stopsForLocation(_location)
+    var req = RestApis.Oba.stopsForLocation(_location)
+    NSLog("%@", req)
+    return req
   }
   
   func parseData(data: NSData!) {

@@ -16,4 +16,6 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *subtitle;
 
+@property (weak, nonatomic) IBOutlet UILabel *subline;
+
 @end

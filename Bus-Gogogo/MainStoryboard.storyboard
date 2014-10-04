@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="Gfz-gn-cZV">
     <dependencies>
+        <deployment defaultVersion="1808" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
     </dependencies>
     <scenes>
@@ -46,15 +47,15 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="YjY-39-Edz">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="356"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <inset key="separatorInset" minX="74" minY="0.0" maxX="30" maxY="0.0"/>
+                                <inset key="separatorInset" minX="70" minY="0.0" maxX="30" maxY="0.0"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PTMainTableViewCell" id="4kQ-9O-bPg" customClass="PTMainTableViewCell">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" tableViewCell="4kQ-9O-bPg" id="qJF-2t-XmX">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6G1-Rs-rQ7" customClass="PTRoundLabel">
-                                                    <rect key="frame" x="10" y="15" width="50" height="50"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6G1-Rs-rQ7" customClass="PTRoundLabel">
+                                                    <rect key="frame" x="10" y="16" width="50" height="50"/>
                                                     <color key="backgroundColor" red="0.58431375029999999" green="0.88235300780000003" blue="0.57254904510000004" alpha="1" colorSpace="deviceRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="50" id="MGl-9U-w1x"/>
@@ -71,28 +72,38 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </label>
                                                 <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1Sh-kO-EjV">
-                                                    <rect key="frame" x="70" y="15" width="220" height="50"/>
+                                                    <rect key="frame" x="70" y="16" width="220" height="50"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="To Bay Ridge Ave" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RTd-8c-p6W">
-                                                            <rect key="frame" x="0.0" y="0.0" width="220" height="21"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="To Bay Ridge Ave" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RTd-8c-p6W">
+                                                            <rect key="frame" x="0.0" y="1" width="220" height="21"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="300 ft * 3 stops away" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yqf-Ni-UFF">
                                                             <rect key="frame" x="0.0" y="36" width="220" height="14"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Bay Ridge Av/Shore RD" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zPX-cH-Mnm">
+                                                            <rect key="frame" x="0.0" y="16" width="220" height="21"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                                             <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
+                                                        <constraint firstItem="zPX-cH-Mnm" firstAttribute="leading" secondItem="1Sh-kO-EjV" secondAttribute="leading" id="9gD-9E-EF8"/>
                                                         <constraint firstAttribute="trailing" secondItem="RTd-8c-p6W" secondAttribute="trailing" id="JQu-pv-JRH"/>
                                                         <constraint firstItem="RTd-8c-p6W" firstAttribute="leading" secondItem="1Sh-kO-EjV" secondAttribute="leading" id="Kos-mW-IzA"/>
+                                                        <constraint firstItem="zPX-cH-Mnm" firstAttribute="top" secondItem="RTd-8c-p6W" secondAttribute="bottom" id="Rh7-AB-9Jo"/>
+                                                        <constraint firstItem="Yqf-Ni-UFF" firstAttribute="top" secondItem="zPX-cH-Mnm" secondAttribute="bottom" id="Y82-5K-dt8"/>
                                                         <constraint firstItem="RTd-8c-p6W" firstAttribute="top" secondItem="1Sh-kO-EjV" secondAttribute="top" id="YWx-7l-gzN"/>
                                                         <constraint firstAttribute="trailing" secondItem="Yqf-Ni-UFF" secondAttribute="trailing" id="lbn-yz-sAT"/>
                                                         <constraint firstAttribute="bottom" secondItem="Yqf-Ni-UFF" secondAttribute="bottom" id="n48-ez-uTa"/>
+                                                        <constraint firstAttribute="trailing" secondItem="zPX-cH-Mnm" secondAttribute="trailing" id="n61-yK-3bh"/>
                                                         <constraint firstItem="Yqf-Ni-UFF" firstAttribute="leading" secondItem="1Sh-kO-EjV" secondAttribute="leading" id="x8J-Qg-Ghf"/>
                                                     </constraints>
                                                 </view>
@@ -106,7 +117,8 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="head" destination="6G1-Rs-rQ7" id="niM-Jw-lTb"/>
-                                            <outlet property="subtitle" destination="Yqf-Ni-UFF" id="FP4-wG-0Kn"/>
+                                            <outlet property="subline" destination="Yqf-Ni-UFF" id="dta-Yc-i2N"/>
+                                            <outlet property="subtitle" destination="zPX-cH-Mnm" id="8wT-qI-KSR"/>
                                             <outlet property="title" destination="RTd-8c-p6W" id="klb-T2-Mqy"/>
                                         </connections>
                                     </tableViewCell>
@@ -149,7 +161,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wi6-1P-0nR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-518" y="710"/>
+            <point key="canvasLocation" x="-518" y="708"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
