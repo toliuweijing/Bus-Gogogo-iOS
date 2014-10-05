@@ -45,7 +45,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="YjY-39-Edz">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="356"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="416"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <inset key="separatorInset" minX="70" minY="0.0" maxX="35" maxY="0.0"/>
                                 <prototypes>
@@ -106,38 +106,24 @@
                                                         <constraint firstItem="Yqf-Ni-UFF" firstAttribute="leading" secondItem="1Sh-kO-EjV" secondAttribute="leading" id="x8J-Qg-Ghf"/>
                                                     </constraints>
                                                 </view>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DYL-xl-cNO" customClass="PTRoundLabel">
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GhX-9H-noA" customClass="CircularProgressBar" customModule="Bus_Gogogo" customModuleProvider="target">
                                                     <rect key="frame" x="260" y="25" width="30" height="30"/>
-                                                    <color key="backgroundColor" red="0.58431375029999999" green="0.88235300780000003" blue="0.57254904510000004" alpha="1" colorSpace="deviceRGB"/>
+                                                    <gestureRecognizers/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="30" id="XFD-oR-x0Y"/>
-                                                        <constraint firstAttribute="width" constant="30" id="iFq-Gk-Rh2"/>
+                                                        <constraint firstAttribute="height" constant="30" id="ZcQ-FF-BQW"/>
+                                                        <constraint firstAttribute="width" constant="30" id="biJ-So-FSF"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                    <userDefinedRuntimeAttributes>
-                                                        <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                                            <real key="value" value="1"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                            <integer key="value" value="15"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                        <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                            <color key="value" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                    </userDefinedRuntimeAttributes>
-                                                </label>
+                                                </view>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="1Sh-kO-EjV" firstAttribute="bottom" secondItem="6G1-Rs-rQ7" secondAttribute="bottom" id="AN2-8l-xx2"/>
                                                 <constraint firstAttribute="centerY" secondItem="6G1-Rs-rQ7" secondAttribute="centerY" id="QhH-2n-Nj7"/>
                                                 <constraint firstItem="1Sh-kO-EjV" firstAttribute="top" secondItem="6G1-Rs-rQ7" secondAttribute="top" id="cMg-yS-zyK"/>
-                                                <constraint firstItem="1Sh-kO-EjV" firstAttribute="centerY" secondItem="DYL-xl-cNO" secondAttribute="centerY" id="faj-Cy-nWc"/>
-                                                <constraint firstItem="DYL-xl-cNO" firstAttribute="leading" secondItem="1Sh-kO-EjV" secondAttribute="trailing" id="h14-fa-ozV"/>
+                                                <constraint firstItem="6G1-Rs-rQ7" firstAttribute="centerY" secondItem="GhX-9H-noA" secondAttribute="centerY" id="h6h-Nu-Mim"/>
                                                 <constraint firstAttribute="trailing" secondItem="1Sh-kO-EjV" secondAttribute="trailing" constant="60" id="hSf-KQ-sAd"/>
                                                 <constraint firstItem="1Sh-kO-EjV" firstAttribute="leading" secondItem="6G1-Rs-rQ7" secondAttribute="trailing" constant="10" id="mlp-xl-mP0"/>
                                                 <constraint firstItem="6G1-Rs-rQ7" firstAttribute="leading" secondItem="qJF-2t-XmX" secondAttribute="leading" constant="10" id="qQt-Vi-7Kt"/>
+                                                <constraint firstItem="GhX-9H-noA" firstAttribute="leading" secondItem="1Sh-kO-EjV" secondAttribute="trailing" id="tDR-fa-rjg"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
@@ -154,10 +140,9 @@
                                 </connections>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b5b-H7-Ju1">
-                                <rect key="frame" x="0.0" y="356" width="320" height="60"/>
                                 <color key="backgroundColor" red="0.6705882352941176" green="0.85098039215686272" blue="0.58823529411764708" alpha="1" colorSpace="deviceRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="6as-RO-eg8"/>
+                                    <constraint firstAttribute="height" id="6as-RO-eg8"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="18"/>
                                 <state key="normal" title="CHOOSE LINES">

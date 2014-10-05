@@ -63,7 +63,7 @@ class MainViewController:
     }
   }
   
-  // UIViewController______________________________
+  //MARK: - UIViewController
   override func viewWillAppear(animated: Bool) {
     super.viewWillAppear(animated)
     
@@ -78,14 +78,14 @@ class MainViewController:
     _timer?.invalidate()
   }
   
-  // CLLocationManagerDelegate_____________________
+  //MARK: - CLLocationManagerDelegate
   func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
     _locationManager.stopUpdatingLocation()
     _location = locations.first as? CLLocation
     fetchClosestRoute()
   }
   
-  // UITableViewDataSource__________________________
+  //MARK: - UITableViewDataSource
   func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     return _closestRoutes.count
   }
