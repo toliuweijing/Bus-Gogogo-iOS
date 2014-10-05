@@ -57,7 +57,7 @@ class MainViewController:
         var key = RouteStopKey(r: c.route, s: c.stop)
         var journey = req._monitoredJourneys.first?
         
-        self._closestRouteMonitor[key] = journey == nil ? "" : journey!.presentableDistance
+        self._closestRouteMonitor[key] = journey?.presentableDistance
         self.tableView.reloadData()
       }
     }
@@ -113,7 +113,7 @@ class MainViewController:
     
     let monitor = _closestRouteMonitor[RouteStopKey(r: closestRoute.route, s: closestRoute.stop)]
     cell.subtitle.text = _closestRoutes[indexPath.row].stop.name
-    cell.subline.text = (monitor == nil ? "" : monitor!)
+    cell.subline.text = (monitor == nil) ? "Not Available" : monitor!
     
     return cell
   }
