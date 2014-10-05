@@ -12,6 +12,7 @@
 
 // id
 @property (nonatomic, copy, readonly) NSString *identifier;
+@property (nonatomic, copy, readonly) NSString *code;
 
 // stop name.
 @property (nonatomic, copy, readonly) NSString *name;

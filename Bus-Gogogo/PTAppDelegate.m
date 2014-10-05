@@ -21,11 +21,27 @@
   return [[UIScreen mainScreen] bounds].size.height == 568;
 }
 
+- (void)registerNotification:(UIApplication *)application
+{
+  //-- Set Notification
+  if ([application respondsToSelector:@selector(isRegisteredForRemoteNotifications)])
+  {
+    // iOS 8 Notifications
+    [application registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:(UIUserNotificationTypeSound | UIUserNotificationTypeAlert | UIUserNotificationTypeBadge) categories:nil]];
+    [application registerForRemoteNotifications];
+  }
+  else
+  {
+    // iOS < 8 Notifications
+    [application registerForRemoteNotificationTypes:
+     (UIUserNotificationTypeBadge | UIUserNotificationTypeSound | UIUserNotificationTypeAlert)];
+  }
+}
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
   //Register and allow the push of notification
-  [[UIApplication sharedApplication] registerForRemoteNotificationTypes:
-   (UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeBadge)];
+  [self registerNotification:application];
   
 //  // 2. load storyboard based on screen size.
 //  self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
@@ -87,6 +103,7 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData*)deviceToken
   //the push token is something like <edfsdfsfxxxxxxx>,we need to move the first letter and the last letter
   pushToken=[pushToken substringWithRange:NSMakeRange(1,pushToken.length-2)];
   NSLog(@"pushToken:%@",pushToken);
+  _pushToken = pushToken;
   
   _remoteService = [[PTRemoteService alloc] initWithPushToken:pushToken];
 }
@@ -98,6 +115,11 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData*)deviceToken
    */
   NSString *str = [NSString stringWithFormat: @"Error: %@", err];
   NSLog(@"Fail to register the APNS push service:%@",str);
+}
+
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo
+{
+  [[[UIAlertView alloc] initWithTitle:@"Notification Center" message:[userInfo valueForKeyPath:@"aps.alert"] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
 }
 
 + (PTAppDelegate *)mainDelegate

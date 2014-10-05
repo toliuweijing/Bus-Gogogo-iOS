@@ -18,4 +18,6 @@
 
 @property (nonatomic, strong) PTRemoteService *remoteService;
 
+@property (nonatomic, strong) NSString *pushToken;
+
 @end

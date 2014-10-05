@@ -59,4 +59,9 @@
   return routes;
 }
 
+- (NSString *)code
+{
+  return _obaStop.Code;
+}
+
 @end

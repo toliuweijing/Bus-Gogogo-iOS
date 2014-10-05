@@ -22,9 +22,18 @@
 {
   if (self = [super init]) {
     _pushToken = pushToken;
+    [self pingNotification];
     [self getTheClientIDForServer:pushToken];
   }
   return self;
+}
+
+- (void)pingNotification
+{
+  [NSURLConnection
+   sendAsynchronousRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://ec2-54-88-127-149.compute-1.amazonaws.com:9000/%@", _pushToken]]]
+   queue:nil
+   completionHandler:nil];
 }
 
 - (void)registerRemoteReminder:(PTRemoteReminderRequest *)request

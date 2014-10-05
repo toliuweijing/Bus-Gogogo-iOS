@@ -50,6 +50,22 @@
 
 - (void)_fireRemoteReminder
 {
+  NSString *query = @"http://ec2-54-88-127-149.compute-1.amazonaws.com:9000/stopmonitor";
+  NSString *stopId = [@"/" stringByAppendingString:_stop.code];
+  NSString *routeId = [@"/" stringByAppendingString:_route.identifier];
+  routeId = [routeId stringByReplacingOccurrencesOfString:@" " withString:@"%20"];
+  NSString *distance = @"/3";
+  NSString *token = [@"/" stringByAppendingString:[PTAppDelegate mainDelegate].pushToken];
+  NSString *urlString = [[[[query stringByAppendingString:stopId] stringByAppendingString:routeId] stringByAppendingString:distance] stringByAppendingString:token];
+  NSLog(@"%@", urlString);
+  [NSURLConnection sendAsynchronousRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:urlString]]
+                                     queue:[NSOperationQueue mainQueue]
+                         completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+                           NSLog(@"connectionError=%@"
+                                 @"data=%@",
+                                 connectionError,
+                                 data);
+                         }];
 //  [[PTAppDelegate mainDelegate].remoteService
 //   registerRemoteReminder:[PTRemoteReminderRequest
 //                           requestWithStop:_stop
