@@ -14,7 +14,6 @@
 
 - (id)initWithStop:(PTStop *)stop
              route:(PTRoute *)route
-         direction:(int)direction
          stopsAway:(int)stopsAway;
 
 - (void)cancel;

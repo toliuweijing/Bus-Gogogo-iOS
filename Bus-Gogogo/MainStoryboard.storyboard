@@ -49,7 +49,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <inset key="separatorInset" minX="70" minY="0.0" maxX="35" maxY="0.0"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PTMainTableViewCell" id="4kQ-9O-bPg" customClass="PTMainTableViewCell">
+                                    <tableViewCell contentMode="scaleToFill" restorationIdentifier="MainTableViewCell" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Bus_Gogogo.MainTableViewCell" id="4kQ-9O-bPg" customClass="MainTableViewCell" customModule="Bus_Gogogo" customModuleProvider="target">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" tableViewCell="4kQ-9O-bPg" id="qJF-2t-XmX">
                                             <autoresizingMask key="autoresizingMask"/>
@@ -79,14 +79,14 @@
                                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="300 ft * 3 stops away" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yqf-Ni-UFF">
-                                                            <rect key="frame" x="0.0" y="38" width="190" height="12"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Bay Ridge Av/Shore RD" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zPX-cH-Mnm">
+                                                            <rect key="frame" x="0.0" y="17" width="190" height="21"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                                             <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Bay Ridge Av/Shore RD" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zPX-cH-Mnm">
-                                                            <rect key="frame" x="0.0" y="17" width="190" height="21"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="300 ft * 3 stops away" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yqf-Ni-UFF">
+                                                            <rect key="frame" x="0.0" y="38" width="190" height="12"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                                             <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                             <nil key="highlightedColor"/>
@@ -127,10 +127,11 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="head" destination="6G1-Rs-rQ7" id="niM-Jw-lTb"/>
-                                            <outlet property="subline" destination="Yqf-Ni-UFF" id="dta-Yc-i2N"/>
-                                            <outlet property="subtitle" destination="zPX-cH-Mnm" id="8wT-qI-KSR"/>
-                                            <outlet property="title" destination="RTd-8c-p6W" id="klb-T2-Mqy"/>
+                                            <outlet property="head" destination="6G1-Rs-rQ7" id="wqT-Ci-fpu"/>
+                                            <outlet property="progressBar" destination="GhX-9H-noA" id="Uj0-kd-Hs0"/>
+                                            <outlet property="subline" destination="Yqf-Ni-UFF" id="G1O-KG-K18"/>
+                                            <outlet property="subtitle" destination="zPX-cH-Mnm" id="hBK-1C-gbt"/>
+                                            <outlet property="title" destination="RTd-8c-p6W" id="tPg-50-p53"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

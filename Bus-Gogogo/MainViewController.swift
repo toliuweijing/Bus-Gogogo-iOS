@@ -63,6 +63,11 @@ class MainViewController:
     }
   }
   
+  //MARK: - Private
+  private func getClosestRoute(indexPath: NSIndexPath) -> ClosestRoute {
+    return _closestRoutes[indexPath.row]
+  }
+  
   //MARK: - UIViewController
   override func viewWillAppear(animated: Bool) {
     super.viewWillAppear(animated)
@@ -93,9 +98,9 @@ class MainViewController:
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
     let closestRoute = _closestRoutes[indexPath.row]
     
-    var identifier = NSStringFromClass(PTMainTableViewCell.classForCoder())
+    var identifier = NSStringFromClass(MainTableViewCell.classForCoder())
     var cell = tableView.dequeueReusableCellWithIdentifier(
-      identifier, forIndexPath: indexPath) as PTMainTableViewCell
+      identifier, forIndexPath: indexPath) as MainTableViewCell
     cell.head.text = _closestRoutes[indexPath.row].route.shortName()
     cell.head.textColor = _closestRoutes[indexPath.row].route.textColor()
     cell.head.backgroundColor = _closestRoutes[indexPath.row].route.color()
@@ -112,6 +117,17 @@ class MainViewController:
     
     return cell
   }
+  
+  func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    let closestRoute = getClosestRoute(indexPath)
+    let cell = tableView.cellForRowAtIndexPath(indexPath) as MainTableViewCell
+    
+    cell.progressBar.onTap()
+    if (cell.progressBar.state == CircularProgressBar.State.Loading) {
+      PTReminderManager(stop: closestRoute.stop, route: closestRoute.route, stopsAway:3)
+    }
+  }
+  
 }
 
 class RouteStopKey: Hashable, Equatable {

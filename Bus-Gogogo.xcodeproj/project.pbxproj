@@ -43,8 +43,8 @@
 		FB8714D11945109500670513 /* PTStopGroupDownloadRequester.m in Sources */ = {isa = PBXBuildFile; fileRef = FB8714D01945109500670513 /* PTStopGroupDownloadRequester.m */; };
 		FB8714D41945144000670513 /* PTAllRoutesDownloadRequester.m in Sources */ = {isa = PBXBuildFile; fileRef = FB8714D31945144000670513 /* PTAllRoutesDownloadRequester.m */; };
 		FB8714D7194515D100670513 /* PTMonitoredVehicleJourneyDownloadRequester.m in Sources */ = {isa = PBXBuildFile; fileRef = FB8714D6194515D100670513 /* PTMonitoredVehicleJourneyDownloadRequester.m */; };
-		FBA4E41019D8B692007E2090 /* PTMainTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FBA4E40F19D8B692007E2090 /* PTMainTableViewCell.m */; };
 		FBAEB35419E0B0C000103DDF /* CircularProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBAEB35319E0B0C000103DDF /* CircularProgressBar.swift */; };
+		FBAEB35619E1106100103DDF /* MainTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBAEB35519E1106100103DDF /* MainTableViewCell.swift */; };
 		FBB54463193B8B9B00F72979 /* PTRouteFilterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FBB54462193B8B9B00F72979 /* PTRouteFilterTests.m */; };
 		FBB5EB3A18E738E6007921A3 /* PTBus.m in Sources */ = {isa = PBXBuildFile; fileRef = FBB5EB3918E738E6007921A3 /* PTBus.m */; };
 		FBB5EB3D18E739BD007921A3 /* PTBusMapOverlay.m in Sources */ = {isa = PBXBuildFile; fileRef = FBB5EB3C18E739BD007921A3 /* PTBusMapOverlay.m */; };
@@ -134,9 +134,8 @@
 		FB8714D31945144000670513 /* PTAllRoutesDownloadRequester.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTAllRoutesDownloadRequester.m; sourceTree = "<group>"; };
 		FB8714D5194515D100670513 /* PTMonitoredVehicleJourneyDownloadRequester.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTMonitoredVehicleJourneyDownloadRequester.h; sourceTree = "<group>"; };
 		FB8714D6194515D100670513 /* PTMonitoredVehicleJourneyDownloadRequester.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTMonitoredVehicleJourneyDownloadRequester.m; sourceTree = "<group>"; };
-		FBA4E40E19D8B692007E2090 /* PTMainTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTMainTableViewCell.h; sourceTree = "<group>"; };
-		FBA4E40F19D8B692007E2090 /* PTMainTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTMainTableViewCell.m; sourceTree = "<group>"; };
 		FBAEB35319E0B0C000103DDF /* CircularProgressBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircularProgressBar.swift; sourceTree = "<group>"; };
+		FBAEB35519E1106100103DDF /* MainTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTableViewCell.swift; sourceTree = "<group>"; };
 		FBB54462193B8B9B00F72979 /* PTRouteFilterTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTRouteFilterTests.m; sourceTree = "<group>"; };
 		FBB5EB3818E738E6007921A3 /* PTBus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTBus.h; sourceTree = "<group>"; };
 		FBB5EB3918E738E6007921A3 /* PTBus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTBus.m; sourceTree = "<group>"; };
@@ -227,8 +226,7 @@
 				FB786CBF18F99510002A7CFF /* PTMapContainerView.m */,
 				FB28BA5019D888B800B021CF /* PTRoundLabel.h */,
 				FB28BA5119D888B800B021CF /* PTRoundLabel.m */,
-				FBA4E40E19D8B692007E2090 /* PTMainTableViewCell.h */,
-				FBA4E40F19D8B692007E2090 /* PTMainTableViewCell.m */,
+				FBAEB35519E1106100103DDF /* MainTableViewCell.swift */,
 				FBAEB35319E0B0C000103DDF /* CircularProgressBar.swift */,
 			);
 			name = View;
@@ -580,8 +578,8 @@
 				FB3D48EC18F0487E00302031 /* PTBase.m in Sources */,
 				FBAEB35419E0B0C000103DDF /* CircularProgressBar.swift in Sources */,
 				FB3D48E118EFB26200302031 /* OBADataModel.m in Sources */,
-				FBA4E41019D8B692007E2090 /* PTMainTableViewCell.m in Sources */,
 				FB8714D41945144000670513 /* PTAllRoutesDownloadRequester.m in Sources */,
+				FBAEB35619E1106100103DDF /* MainTableViewCell.swift in Sources */,
 				FB0FFE5519DA037700E36333 /* Store.swift in Sources */,
 				FBC00D9919DC2AC300ED61FF /* NSURL+Builder.swift in Sources */,
 				FB517C4418DDDF43005C7881 /* main.m in Sources */,

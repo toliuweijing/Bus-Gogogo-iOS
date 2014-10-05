@@ -53,7 +53,7 @@
   "key=cfb3c75b-5a43-4e66-b7f8-14e666b0c1c1&"
   "&MonitoringRef=%@";
   NSString *urlString = [NSString stringWithFormat:format, _stopId];
-  urlString = [urlString stringByAppendingString:[NSString stringWithFormat:@"LineRef=%@", _routeId]];
+  urlString = [urlString stringByAppendingString:[NSString stringWithFormat:@"&LineRef=%@", _routeId]];
   urlString = [urlString stringByReplacingOccurrencesOfString:@" " withString:@"%20"];
   return [NSURLRequest requestWithURL:[NSURL URLWithString:urlString]];
 }

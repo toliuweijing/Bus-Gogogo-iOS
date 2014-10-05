@@ -26,13 +26,13 @@ class RestStopMonitoringRequester: PTDownloadRequester {
   }
   
   func request() -> NSURLRequest! {
+    NSLog("%@", RestApis.Siri.stopMonitoring(_monitoringRef, lineRef: _lineRef))
     return RestApis.Siri.stopMonitoring(_monitoringRef, lineRef: _lineRef)
   }
   
   func parseData(data: NSData!) {
     var error: NSError?
     var json = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: &error) as NSDictionary?
-    NSLog("%@", json!)
     if error != nil {
       return
     }

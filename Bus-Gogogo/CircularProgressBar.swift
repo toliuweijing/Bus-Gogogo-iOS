@@ -54,6 +54,12 @@ class CircularProgressBar: UIView {
     state = state == State.Loading ? State.Normal : State.Loading
   }
   
+  override func setNeedsDisplay() {
+    super.setNeedsDisplay()
+    self.layer.setNeedsDisplay()
+    self.layer.sublayers?.first?.needsDisplay()
+  }
+  
   func setNormal() {
     self.layer.removeAllAnimations()
     self.layer.sublayers?.removeAll(keepCapacity: true)
@@ -64,7 +70,7 @@ class CircularProgressBar: UIView {
     self.layer.borderColor = color.CGColor
     self.layer.masksToBounds = true
     
-    self.layer.setNeedsDisplay()
+    self.setNeedsDisplay()
   }
   
   func setLoading() {
@@ -99,8 +105,7 @@ class CircularProgressBar: UIView {
     self.layer.removeAllAnimations()
     self.layer.addAnimation(animation, forKey: "rotation")
     
-    self.layer.setNeedsDisplay()
-    self.layer.sublayers.first?.setNeedsDisplay()
+    self.setNeedsDisplay()
   }
 }
 

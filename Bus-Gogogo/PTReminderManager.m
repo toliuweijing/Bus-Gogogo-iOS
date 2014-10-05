@@ -25,7 +25,6 @@
   PTStop *_stop;
   PTRoute *_route;
   int _stopsAway;
-  int _direction;
 }
 
 @end
@@ -34,13 +33,11 @@
 
 - (id)initWithStop:(PTStop *)stop
              route:(PTRoute *)route
-         direction:(int)direction
          stopsAway:(int)stopsAway
 {
   if (self = [super init]) {
     _stop = stop;
     _route = route;
-    _direction = direction;
     _stopsAway = stopsAway;
     
     // Fire remote reminder.
@@ -53,16 +50,16 @@
 
 - (void)_fireRemoteReminder
 {
-  [[PTAppDelegate mainDelegate].remoteService
-   registerRemoteReminder:[PTRemoteReminderRequest
-                           requestWithStop:_stop
-                           route:_route
-                           direction:_direction
-                           arrivalRadar:_stopsAway
-                           clientID:[PTAppDelegate mainDelegate].remoteService.clientID]
-   completionHandler:^(NSURLResponse *response, NSError *error) {
-     NSLog(@"%s", __func__);
-   }];
+//  [[PTAppDelegate mainDelegate].remoteService
+//   registerRemoteReminder:[PTRemoteReminderRequest
+//                           requestWithStop:_stop
+//                           route:_route
+//                           direction:_direction
+//                           arrivalRadar:_stopsAway
+//                           clientID:[PTAppDelegate mainDelegate].remoteService.clientID]
+//   completionHandler:^(NSURLResponse *response, NSError *error) {
+//     NSLog(@"%s", __func__);
+//   }];
 }
 
 - (void)_startLocalReminder
@@ -96,8 +93,8 @@
   
   _task = [PTDownloadTask
            scheduledTaskWithRequester:requester
-           callback:^(NSArray *journeys, NSError *error) {
-             for (PTMonitoredVehicleJourney *j in journeys) {
+           callback:^(PTStopMonitoringDownloadRequester *requester, NSError *error) {
+             for (PTMonitoredVehicleJourney *j in [requester monitoredJourneys]) {
                NSLog(@"stopsFromCall = %d", j.stopsFromCall);
                if (j.stopsFromCall <= _stopsAway) {
                  
